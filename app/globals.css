@@ -517,3 +517,19 @@
     gap:.18em;
   }
 }
+
+/* HEADER BRAND TITLE */
+.header .brand strong{
+  display:block;
+  font-size:clamp(28px,2.15vw,38px) !important;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-0.045em;
+  white-space:nowrap;
+}
+
+@media (max-width:650px){
+  .header .brand strong{
+    font-size:25px !important;
+  }
+}

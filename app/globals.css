@@ -317,3 +317,18 @@
     margin:0;
   }
 }
+
+/* PROJECT HERO DESKTOP WIDTH FIX */
+@media (min-width:651px){
+  .project-detail-overlay{
+    width:min(1180px, calc(100% - 48px));
+    box-sizing:border-box;
+  }
+
+  .project-detail-overlay h1{
+    max-width:950px;
+    font-size:clamp(48px,6vw,88px);
+    line-height:.95;
+    overflow-wrap:normal;
+  }
+}

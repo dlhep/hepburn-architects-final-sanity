@@ -33,21 +33,7 @@ export default async function HomePage(){
     </div>
   </section>
 
-  <section className="section featured-projects-home">
-    <div className="shell split-intro">
-      <div><small className="eyebrow">Selected genuine work</small><h2>Residential projects by Hepburn Architects.</h2></div>
-      <p>Explore sustainable new homes, extensions and whole-house transformations developed for real clients and sites.</p>
-    </div>
-    <div className="shell featured-project-grid">
-      {projects.slice(0, 3).map((project) => (
-        <Link href={`/projects/${project.slug}`} key={project.slug}>
-          <img src={projectImageUrl(project.featuredImage, 1200)} alt={projectImageAlt(project)} loading="lazy"/>
-          <small>{project.location}</small>
-          <h3>{project.title}</h3>
-        </Link>
-      ))}
-    </div>
-  </section>
+  
 
   <section className="section"><div className="shell split-intro"><div><small className="eyebrow">Before drawings begin</small><h2>Four answers create a clearer route forward.</h2></div><p>Every project is different. These four early decisions work for extensions, conversions, HMOs, remodelling, new homes and small developments.</p></div>
    <div className="shell answer-grid">

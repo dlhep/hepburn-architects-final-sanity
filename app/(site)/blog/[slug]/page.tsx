@@ -95,8 +95,10 @@ export default async function BlogPostPage({
               priority
               style={{
                 width: "100%",
-                height: "min(520px, 55vw)",
-                objectFit: "cover",
+                height: "auto",
+                maxHeight: "700px",
+                objectFit: "contain",
+                background: "#f3f3f1",
                 borderRadius: "18px",
                 margin: "2rem 0",
               }}

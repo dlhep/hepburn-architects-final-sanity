@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#d9d2c6"/>
+<rect y="720" width="1600" height="280" fill="#8e9e76"/>
+<rect x="250" y="370" width="1100" height="390" fill="#c5b6a3"/>
+<path d="M210 390L800 125l590 265" fill="#5c5148"/>
+<rect x="340" y="485" width="190" height="275" fill="#eee6da"/>
+<rect x="650" y="485" width="155" height="150" fill="#d7e0df"/>
+<rect x="980" y="485" width="155" height="150" fill="#d7e0df"/>
+<g fill="#485c45"><circle cx="150" cy="680" r="95"/><circle cx="1450" cy="670" r="105"/></g>
+<text x="55" y="80" fill="#171715" font-family="Arial" font-size="34" font-weight="700">Bungalow Remodelling — Existing</text>
+</svg>

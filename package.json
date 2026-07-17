@@ -1,0 +1,34 @@
+{
+  "name": "hepburn-architects-website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "sanity:manage": "sanity manage",
+    "sanity:import-projects": "node scripts/import-projects.mjs"
+  },
+  "dependencies": {
+    "@sanity/image-url": "^2.1.1",
+    "@sanity/vision": "^6.5.0",
+    "lucide-react": "^0.468.0",
+    "next": "^16.0.0",
+    "next-sanity": "^13.1.3",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "sanity": "^6.5.0",
+    "styled-components": "^6.1.19",
+    "@sanity/client": "^7.23.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

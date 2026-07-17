@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#bfcbd0"/><stop offset="1" stop-color="#efe5d4"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#sky)"/>
+<rect y="710" width="1600" height="290" fill="#7f956f"/>
+<rect x="220" y="350" width="760" height="410" fill="#a7765b"/>
+<path d="M190 370L600 160l410 210" fill="#4d4741"/>
+<rect x="850" y="445" width="520" height="315" fill="#3c4747"/>
+<g fill="#283238" stroke="#d9e3e2" stroke-width="8">
+<rect x="900" y="500" width="130" height="260"/><rect x="1030" y="500" width="130" height="260"/><rect x="1160" y="500" width="160" height="260"/>
+</g>
+<rect x="820" y="760" width="620" height="45" fill="#bca98e"/>
+<g fill="#3c5e42"><circle cx="130" cy="690" r="100"/><circle cx="1480" cy="680" r="110"/></g>
+<circle cx="1330" cy="175" r="90" fill="#f0c27c" opacity=".75"/>
+<text x="55" y="80" fill="#171715" font-family="Arial" font-size="34" font-weight="700">Bungalow Remodelling — Proposed Transformation</text>
+</svg>

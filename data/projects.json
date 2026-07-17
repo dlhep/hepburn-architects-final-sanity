@@ -1,0 +1,113 @@
+[
+  {
+    "slug": "passive-house-solihull",
+    "title": "Passive House Eco Home",
+    "location": "Solihull",
+    "category": "New Homes",
+    "projectType": "New-build Passive House",
+    "featuredImage": "https://www.hepburnarchitects.com/wp-content/uploads/2023/11/karen-1024x524.jpg",
+    "gallery": [],
+    "alt": "Passive House eco home in Solihull designed by Hepburn Architects",
+    "description": "A highly sustainable family home designed to support multigenerational living, privacy and flexible long-term use.",
+    "localAuthority": "Solihull Metropolitan Borough Council",
+    "applicationType": "Full planning application",
+    "contractValue": "Approximately \u00a3565,000",
+    "completion": "Pending",
+    "services": [
+      "Feasibility",
+      "Concept design",
+      "Full planning application",
+      "Consultant coordination"
+    ],
+    "featured": true,
+    "published": true
+  },
+  {
+    "slug": "passivhaus-shropshire",
+    "title": "Passivhaus Eco Home",
+    "location": "Shropshire",
+    "category": "New Homes",
+    "projectType": "New-build Passivhaus",
+    "featuredImage": "https://www.hepburnarchitects.com/wp-content/uploads/2023/11/passive-3.jpg",
+    "gallery": [],
+    "alt": "Contemporary Passivhaus eco home in Shropshire by Hepburn Architects",
+    "description": "A contemporary rural home based on the proportions of an agricultural barn, using timber cladding, a metal roof and extensive glazing.",
+    "localAuthority": "Telford & Wrekin Council",
+    "applicationType": "Full planning application",
+    "contractValue": "Approximately \u00a3500,000",
+    "completion": "Pending",
+    "services": [
+      "Site appraisal",
+      "Residential design",
+      "Planning application",
+      "Sustainability coordination"
+    ],
+    "featured": true,
+    "published": true
+  },
+  {
+    "slug": "contemporary-bungalow-upton",
+    "title": "Contemporary Bungalow Renovation",
+    "location": "Upton upon Severn",
+    "category": "Remodelling",
+    "projectType": "Bungalow conversion and remodelling",
+    "featuredImage": "https://www.hepburnarchitects.com/wp-content/uploads/2023/11/MINGE-LANE-1.webp",
+    "gallery": [],
+    "alt": "Contemporary bungalow renovation in Upton upon Severn by Hepburn Architects",
+    "description": "A major bungalow transformation introducing contemporary materials, slim-profile windows and a mezzanine within the principal living space.",
+    "localAuthority": "Malvern Hills District Council",
+    "applicationType": "Householder planning application",
+    "contractValue": "Approximately \u00a3375,000",
+    "completion": "September 2019",
+    "services": [
+      "Measured survey",
+      "Design development",
+      "Planning application",
+      "Technical design"
+    ],
+    "featured": true,
+    "published": true
+  },
+  {
+    "slug": "sutton-coldfield-extension",
+    "title": "Family Home Extension",
+    "location": "Sutton Coldfield",
+    "category": "Extensions",
+    "projectType": "Single and two-storey extension",
+    "featuredImage": "https://www.hepburnarchitects.com/wp-content/uploads/2024/02/Sutton-Coldfield-kitchen-extension-01-1024x485.jpg",
+    "gallery": [],
+    "alt": "Kitchen extension in Sutton Coldfield designed by Hepburn Architects",
+    "description": "A coordinated rear, side and front extension strategy creating a larger kitchen and dining space, additional bedrooms and improved family accommodation.",
+    "localAuthority": "Birmingham City Council",
+    "applicationType": "Householder planning application",
+    "contractValue": "Approximately \u00a3130,000",
+    "completion": "2023",
+    "services": [
+      "Measured survey",
+      "Householder planning",
+      "Building Regulations",
+      "Consultant coordination"
+    ],
+    "featured": false,
+    "published": true
+  },
+  {
+    "slug": "black-cladding-extension",
+    "title": "Black Cladding Extension",
+    "location": "West Midlands",
+    "category": "Extensions",
+    "projectType": "Contemporary rear extension",
+    "featuredImage": "https://www.hepburnarchitects.com/wp-content/uploads/2024/09/Black-cladding-extension.png",
+    "gallery": [],
+    "alt": "Black-clad contemporary residential extension by Hepburn Architects",
+    "description": "A bold contemporary addition using dark cladding and large-format glazing to create a strong connection between the house and garden.",
+    "services": [
+      "Concept design",
+      "Planning drawings",
+      "Material strategy",
+      "Technical coordination"
+    ],
+    "featured": false,
+    "published": true
+  }
+]

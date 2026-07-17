@@ -402,3 +402,69 @@
     font-size:24px;
   }
 }
+
+/* GUIDES TWO-COLUMN CARD LAYOUT */
+.guides-index{
+  max-width:1180px;
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:24px;
+}
+
+.guide-index-card{
+  display:grid;
+  grid-template-columns:1fr 32px;
+  grid-template-rows:auto 1fr;
+  align-items:start;
+  gap:18px;
+  min-height:250px;
+  padding:34px;
+  border-radius:22px;
+}
+
+.guide-index-card > span{
+  grid-column:1 / -1;
+  font-size:15px;
+  font-weight:800;
+}
+
+.guide-index-card > div{
+  grid-column:1;
+  align-self:end;
+}
+
+.guide-index-card > svg{
+  grid-column:2;
+  grid-row:2;
+  align-self:end;
+  justify-self:end;
+}
+
+.guide-index-card h2{
+  font-size:30px;
+  line-height:1.05;
+  margin:0 0 12px;
+  max-width:100%;
+}
+
+.guide-index-card p{
+  margin:0;
+  line-height:1.5;
+  max-width:100%;
+}
+
+@media (max-width:800px){
+  .guides-index{
+    grid-template-columns:1fr;
+    max-width:100%;
+  }
+
+  .guide-index-card{
+    min-height:210px;
+    padding:26px 22px;
+  }
+
+  .guide-index-card h2{
+    font-size:26px;
+  }
+}

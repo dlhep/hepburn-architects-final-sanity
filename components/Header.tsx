@@ -17,7 +17,7 @@ export function Header() {
       <header className="header">
         <div className="shell nav">
           <Link className="brand brand-one-line" href="/" onClick={() => setOpen(false)}>
-            <strong className="brand-wordmark"><span>HEPBURN</span><span>ARCHITECTS</span></strong>
+            <strong className="brand-title">HEPBURN ARCHITECTS</strong>
           </Link>
           <nav className="desktop-nav">
             <Link href="/services">Services</Link>

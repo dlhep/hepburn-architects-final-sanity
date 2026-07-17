@@ -332,3 +332,26 @@
     overflow-wrap:normal;
   }
 }
+
+/* FINAL PROJECT HERO POSITION FIX */
+@media (min-width:651px){
+  .project-detail-overlay{
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    transform:none !important;
+    width:100% !important;
+    max-width:none !important;
+    box-sizing:border-box;
+    padding:38px max(24px, calc((100vw - 1180px) / 2)) 42px;
+  }
+
+  .project-detail-overlay h1{
+    width:100%;
+    max-width:1050px;
+    margin:8px 0 14px;
+    font-size:clamp(48px,5.4vw,86px);
+    line-height:.94;
+    overflow-wrap:normal;
+  }
+}

@@ -76,20 +76,16 @@ const ARTICLE_FIELDS = `
   }
 `;
 
-export const ARTICLES_QUERY = defineQuery(`
-  *[_type == "article" && defined(slug.current)] | order(featured desc, publishedAt desc) {
-    ${ARTICLE_FIELDS}
-  }
-`);
-
 export const GUIDES_QUERY = defineQuery(`
-  *[_type == "article" && contentType == "guide" && defined(slug.current)] | order(featured desc, publishedAt desc) {
+  *[_type == "article" && contentType == "guide" && defined(slug.current)]
+  | order(featured desc, publishedAt desc) {
     ${ARTICLE_FIELDS}
   }
 `);
 
 export const BLOG_POSTS_QUERY = defineQuery(`
-  *[_type == "article" && contentType == "blog" && defined(slug.current)] | order(featured desc, publishedAt desc) {
+  *[_type == "article" && contentType == "blog" && defined(slug.current)]
+  | order(featured desc, publishedAt desc) {
     ${ARTICLE_FIELDS}
   }
 `);
@@ -100,6 +96,3 @@ export const ARTICLE_QUERY = defineQuery(`
   }
 `);
 
-export const ARTICLE_SLUGS_QUERY = defineQuery(`
-  *[_type == "article" && defined(slug.current)][]{"slug": slug.current, contentType}
-`);

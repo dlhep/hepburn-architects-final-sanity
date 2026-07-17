@@ -22,8 +22,7 @@ export function Header() {
           <nav className="desktop-nav">
             <Link href="/services">Services</Link>
             <Link href="/projects">Projects</Link>
-            <Link href="/guides">Guides</Link>
-            <Link href="/blog">Blog</Link>
+            <Link href="/guides">Insights</Link>
             <Link href="/about">Studio</Link>
             <Link href="/estimate">Fee calculator</Link>
             <a className="nav-phone" href={site.phoneHref}><Phone size={16} /> {site.phone}</a>
@@ -37,8 +36,7 @@ export function Header() {
           <nav className="mobile-nav shell">
             <Link href="/services" onClick={() => setOpen(false)}>Services</Link>
             <Link href="/projects" onClick={() => setOpen(false)}>Projects</Link>
-            <Link href="/guides" onClick={() => setOpen(false)}>Guides</Link>
-            <Link href="/blog" onClick={() => setOpen(false)}>Blog</Link>
+            <Link href="/guides" onClick={() => setOpen(false)}>Insights</Link>
             <Link href="/about" onClick={() => setOpen(false)}>Studio</Link>
             <Link href="/estimate" onClick={() => setOpen(false)}>Fee calculator</Link>
             <a className="btn call-btn" href={site.phoneHref}><Phone size={18} /> Call {site.phone}</a>

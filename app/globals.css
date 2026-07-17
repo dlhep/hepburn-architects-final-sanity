@@ -273,26 +273,3 @@
 
 /* SEO location links and project image control */
 .nearby-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.nearby-links a{display:inline-flex;padding:10px 14px;border:1px solid rgba(255,255,255,.25);border-radius:999px}.project-detail-hero{position:relative;overflow:hidden}.project-detail-hero>img{width:100%;height:520px;object-fit:cover}.project-detail-overlay{position:absolute;inset:auto 0 0;color:#fff;padding-bottom:36px;text-shadow:0 2px 18px rgba(0,0,0,.55)}@media(max-width:768px){.project-detail-hero>img{height:340px}}
-
-/* Sanity-managed guides and blog */
-.article-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.article-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease}
-.article-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.08)}
-.article-card>img{width:100%;height:260px;object-fit:cover}
-.article-card>div{padding:24px;display:flex;flex-direction:column;flex:1}
-.article-card small{color:var(--orange);text-transform:uppercase;letter-spacing:.12em;font-weight:800}
-.article-card h2{font-size:30px;margin:12px 0}
-.article-card span{margin-top:auto;display:flex;align-items:center;gap:7px;font-weight:800}
-.article-meta{font-size:13px;margin:0 0 30px}
-.article-hero-image{width:100%;height:520px;object-fit:cover;border-radius:26px;margin:32px 0 12px}
-.portable-article{max-width:760px;margin-top:54px}
-.portable-article h2{font-size:38px;margin:48px 0 18px}
-.portable-article h3{font-size:27px;margin:34px 0 12px}
-.portable-article p,.portable-article li{font-size:18px;line-height:1.75}
-.portable-article a{text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:3px}
-.portable-article blockquote{border-left:4px solid var(--orange);margin:34px 0;padding:8px 0 8px 24px;font-size:23px;font-weight:700}
-.article-image{margin:38px 0}
-.article-image img{width:100%;height:auto;border-radius:20px}
-.article-image figcaption{font-size:13px;color:var(--muted);margin-top:9px}
-@media(max-width:900px){.article-card-grid{grid-template-columns:1fr 1fr}.article-hero-image{height:430px}}
-@media(max-width:650px){.article-card-grid{grid-template-columns:1fr}.article-card>img{height:230px}.article-hero-image{height:320px;border-radius:18px}.portable-article p,.portable-article li{font-size:17px}}

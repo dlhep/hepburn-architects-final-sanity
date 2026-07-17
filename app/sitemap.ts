@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const projectSlugs = await getProjectSlugs();
-  const paths = ["", "/services", "/estimate", "/projects", "/before-after", "/about", "/contact", "/privacy"];
+  const paths = ["", "/services", "/locations", "/guides", "/estimate", "/projects", "/before-after", "/about", "/contact", "/privacy"];
   const dynamic = [
     ...services.map((item) => `/services/${item.slug}`),
     ...locations.map((item) => `/locations/${item.slug}`),

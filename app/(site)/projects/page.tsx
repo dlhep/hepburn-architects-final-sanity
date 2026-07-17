@@ -3,8 +3,8 @@ import { ProjectsFilter } from "@/components/ProjectsFilter";
 import { getProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {
-  title: "Residential Architecture Projects | Hepburn Architects",
-  description: "Explore Hepburn Architects projects including house extensions, Passivhaus homes, bungalow remodelling and contemporary residential design.",
+  title: "Residential Architecture Projects | Extensions, New Homes & Conversions",
+  description: "Explore genuine Hepburn Architects projects including house extensions, barn conversions, Passivhaus homes, new-build houses and whole-home remodelling.",
   alternates: { canonical: "/projects" },
 };
 

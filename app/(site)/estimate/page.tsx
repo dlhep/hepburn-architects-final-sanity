@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { ArchitectFeeCalculator } from "@/components/ArchitectFeeCalculator";
 
 export const metadata: Metadata = {
-  title: "Architect Fee Calculator",
-  description: "Get an indicative fee for residential design, planning and Building Regulations services.",
+  title: "Architect Fee Calculator | Residential Design & Planning Fees",
+  description: "Use our architect fee calculator for an indicative cost for house extensions, loft conversions, new homes, planning and Building Regulations services.",
   alternates: { canonical: "/estimate" },
 };
 

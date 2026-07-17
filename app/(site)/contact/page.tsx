@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact Hepburn Architects | Birmingham & Nunthorpe",
+  title: "Contact Residential Architects | Birmingham & Nunthorpe",
   description:
     "Contact Hepburn Architects in Birmingham or Nunthorpe about extensions, loft conversions, new homes, HMOs, planning and Building Regulations.",
   alternates: { canonical: "/contact" },

@@ -5,9 +5,9 @@ import { serviceDetails } from "@/lib/service-details";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Residential Architectural Services",
+  title: "Residential Architectural Services | Planning & Building Regulations",
   description:
-    "Explore Hepburn Architects services for extensions, loft conversions, new homes, HMOs, planning applications and Building Regulations.",
+    "Residential architectural services for house extensions, loft conversions, new homes, HMOs, planning applications and Building Regulations drawings.",
   alternates: { canonical: "/services" },
 };
 

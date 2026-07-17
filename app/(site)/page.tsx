@@ -7,9 +7,9 @@ import { getFeaturedProjects, projectImageAlt, projectImageUrl } from "@/lib/pro
 import { GoogleReviewPanel } from "@/components/GoogleReviewPanel";
 
 export const metadata: Metadata = {
-  title: "Residential Architects Birmingham & Teesside | Hepburn",
+  title: "Residential Architects Birmingham & Teesside | Hepburn Architects",
   description:
-    "Residential architects for extensions, loft conversions, new homes, HMOs and planning across Birmingham, the West Midlands and Teesside.",
+    "ARB-registered residential architects for house extensions, loft conversions, new homes, HMOs, planning and Building Regulations across Birmingham, the West Midlands and Teesside.",
   alternates: { canonical: "/" },
 };
 

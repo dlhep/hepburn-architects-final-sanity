@@ -3,9 +3,9 @@ import { CheckCircle2, Compass, Handshake, Leaf, Ruler, ShieldCheck } from "luci
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Hepburn Architects",
+  title: "About Hepburn Architects | Residential Architects",
   description:
-    "Discover the ethos, values and residential design approach of Hepburn Architects, an ARB-registered and RIBA Chartered Practice.",
+    "Meet Hepburn Architects, an ARB-registered and RIBA Chartered Practice specialising in residential design, planning and Building Regulations.",
   alternates: { canonical: "/about" },
 };
 

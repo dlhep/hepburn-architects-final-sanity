@@ -31,11 +31,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const heroImage = projectImageUrl(project.featuredImage, 2000);
   const projectSchema = {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
+    "@type": ["CreativeWork", "VisualArtwork"],
     name: project.title,
     description: project.description,
     image: heroImage,
-    creator: { "@type": "Organization", name: "Hepburn Architects Ltd" },
+    creator: { "@type": "Organization", "@id": `${site.url}/#organization`, name: "Hepburn Architects Ltd" },
     locationCreated: project.location,
     url: `${site.url}/projects/${project.slug}`,
   };
@@ -71,7 +71,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           ))}
         </div></section>
       )}
-      <section className="section sand-section"><div className="shell service-deliverables"><div><small className="eyebrow">Architectural services</small><h2>Support provided by Hepburn Architects.</h2></div><div className="deliverables-grid">{project.services.map((service) => <div key={service}><CheckCircle2 /> {service}</div>)}</div></div></section>
+      <section className="section sand-section"><div className="shell service-deliverables"><div><small className="eyebrow">Architectural services</small><h2>Support provided by Hepburn Architects.</h2></div><div className="deliverables-grid">{(project.services ?? []).map((service) => <div key={service}><CheckCircle2 /> {service}</div>)}</div></div></section>
       <section className="section"><div className="shell final-cta"><small className="eyebrow">Start your project</small><h2>Planning a similar residential project?</h2><p>Discuss the property, approval route and next steps directly with Hepburn Architects.</p><div className="actions centered-actions"><Link className="btn primary" href="/estimate">Get an indicative fee <ArrowRight size={17} /></Link><a className="btn secondary" href={site.phoneHref}>Call {site.phone}</a></div></div></section>
     </>
   );

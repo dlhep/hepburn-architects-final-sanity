@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 const photos=[
-  {src:"https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1800&q=90",alt:"Modern residential rear extension with large glazing and landscaped garden"},
+  {src:"/images/homepage-hero.png",alt:"Modern residential rear extension with large glazing and landscaped garden"},
   {src:"https://www.hepburnarchitects.com/wp-content/uploads/2024/09/Black-cladding-extension.png",alt:"Black-clad contemporary house extension designed by Hepburn Architects"},
   {src:"https://www.hepburnarchitects.com/wp-content/uploads/2023/11/MINGE-LANE-1.webp",alt:"Contemporary bungalow renovation at Upton upon Severn by Hepburn Architects"},
 ];

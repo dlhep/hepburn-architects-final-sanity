@@ -22,32 +22,60 @@ const photos=[
 export default async function HomePage(){
  const projects = await getFeaturedProjects();
  return <>
-  <section className="hero"><div className="shell hero-grid"><div className="hero-copy"><small className="eyebrow">Residential architecture · planning · technical design</small><h1>Residential architects creating exceptional homes.</h1><p>Design, planning and Building Regulations expertise for extensions, loft conversions, new homes, HMOs and residential developments across Birmingham, the West Midlands, Teesside and the wider UK.</p><div className="actions"><Link className="btn primary" href="/estimate">Get an indicative fee <ArrowRight size={18}/></Link><a className="btn secondary" href={site.calendly}><CalendarDays size={18}/>Book a free consultation</a></div><div className="hero-trust"><span><ShieldCheck/>ARB registered</span><span><CheckCircle2/>RIBA Chartered Practice</span></div></div><div className="hero-visual photo-frame"><img src={photos[0].src} alt={photos[0].alt}/><div className="hero-note">Residential design with planning strategy built in</div></div></div></section>
+  
+<section className="section selected-work-section">
+  <div className="shell">
+    <div className="selected-work-heading">
+      <small className="eyebrow">Selected residential work</small>
+      <h2>Architecture shaped around real homes and real lives.</h2>
+    </div>
 
-  <section className="trust-proof">
-    <div className="shell trust-proof-grid">
-      <div><strong>ARB</strong><span>Registered architect</span></div>
-      <div><strong>RIBA</strong><span>Chartered Practice</span></div>
-      <div><strong>Director-led</strong><span>Speak directly with David</span></div>
-      <a href={site.googleBusiness} target="_blank" rel="noopener noreferrer"><strong>Google</strong><span>View our business profile</span></a>
-    </div>
-  </section>
+    <div className="selected-work-grid">
+      <Link href="/projects" className="selected-work-main" aria-label="View selected residential projects">
+        <img
+          src="/images/selected-work-1.png"
+          alt="Contemporary white rendered home with timber cladding and glazed gable"
+          loading="lazy"
+        />
+        <div className="selected-work-overlay">
+          <span>New homes</span>
+          <strong>Contemporary residential design</strong>
+        </div>
+      </Link>
 
-  <section className="section featured-projects-home">
-    <div className="shell split-intro">
-      <div><small className="eyebrow">Selected genuine work</small><h2>Residential projects by Hepburn Architects.</h2></div>
-      <p>Explore sustainable new homes, extensions and whole-house transformations developed for real clients and sites.</p>
+      <Link href="/projects" className="selected-work-small" aria-label="View residential extension projects">
+        <img
+          src="/images/selected-work-2.png"
+          alt="Contemporary dark-clad extension to a traditional stone house"
+          loading="lazy"
+        />
+        <div className="selected-work-overlay">
+          <span>Extensions</span>
+          <strong>Old and new in balance</strong>
+        </div>
+      </Link>
+
+      <Link href="/projects" className="selected-work-small" aria-label="View barn conversion projects">
+        <img
+          src="/images/selected-work-3.png"
+          alt="High-quality stone barn conversion with landscaped terrace"
+          loading="lazy"
+        />
+        <div className="selected-work-overlay">
+          <span>Conversions</span>
+          <strong>Character retained, space transformed</strong>
+        </div>
+      </Link>
     </div>
-    <div className="shell featured-project-grid">
-      {projects.slice(0, 3).map((project) => (
-        <Link href={`/projects/${project.slug}`} key={project.slug}>
-          <img src={projectImageUrl(project.featuredImage, 1200)} alt={projectImageAlt(project)} loading="lazy"/>
-          <small>{project.location}</small>
-          <h3>{project.title}</h3>
-        </Link>
-      ))}
+
+    <div className="selected-work-action">
+      <Link className="btn primary" href="/projects">
+        View all projects <ArrowRight size={18} />
+      </Link>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <section className="section"><div className="shell split-intro"><div><small className="eyebrow">Before drawings begin</small><h2>Four answers create a clearer route forward.</h2></div><p>Every project is different. These four early decisions work for extensions, conversions, HMOs, remodelling, new homes and small developments.</p></div>
    <div className="shell answer-grid">

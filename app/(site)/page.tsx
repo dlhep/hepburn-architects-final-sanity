@@ -22,54 +22,7 @@ const photos=[
 export default async function HomePage(){
  const projects = await getFeaturedProjects();
  return <>
-  <section className="hero"><div className="shell hero-grid"><div className="hero-copy"><small className="eyebrow">Residential architecture · planning · technical design</small><h1>Residential architects creating exceptional homes.</h1><p>Design, planning and Building Regulations expertise for extensions, loft conversions, new homes, HMOs and residential developments across Birmingham, the West Midlands, Teesside and the wider UK.</p><div className="actions"><Link className="btn primary" href="/estimate">Get an indicative fee <ArrowRight size={18}/></Link><a className="btn secondary" href={site.calendly}><CalendarDays size={18}/>Book a free consultation</a></div><div className="hero-trust"><span><ShieldCheck/>ARB registered</span><span><CheckCircle2/>RIBA Chartered Practice</span></div></div><div className="hero-visual photo-frame"><img src={photos[0].src} alt={photos[0].alt}/><div className="hero-note">Residential design with planning strategy built in</div></div></div></section>
-
-  <section className="trust-proof">
-    <div className="shell trust-proof-grid">
-      <div><strong>ARB</strong><span>Registered architect</span></div>
-      <div><strong>RIBA</strong><span>Chartered Practice</span></div>
-      <div><strong>Director-led</strong><span>Speak directly with David</span></div>
-      <a href={site.googleBusiness} target="_blank" rel="noopener noreferrer"><strong>Google</strong><span>View our business profile</span></a>
-    </div>
-  </section>
-
-  <section className="section featured-projects-home">
-    <div className="shell split-intro">
-      <div><small className="eyebrow">Selected genuine work</small><h2>Residential projects by Hepburn Architects.</h2></div>
-      <p>Explore sustainable new homes, extensions and whole-house transformations developed for real clients and sites.</p>
-    </div>
-    <div className="shell featured-project-grid">
-      {projects.slice(0, 3).map((project) => (
-        <Link href={`/projects/${project.slug}`} key={project.slug}>
-          <img src={projectImageUrl(project.featuredImage, 1200)} alt={projectImageAlt(project)} loading="lazy"/>
-          <small>{project.location}</small>
-          <h3>{project.title}</h3>
-        </Link>
-      ))}
-    </div>
-  </section>
-
-  <section className="section"><div className="shell split-intro"><div><small className="eyebrow">Before drawings begin</small><h2>Four answers create a clearer route forward.</h2></div><p>Every project is different. These four early decisions work for extensions, conversions, HMOs, remodelling, new homes and small developments.</p></div>
-   <div className="shell answer-grid">
-    <article><span>01</span><Home/><h3>What are you planning?</h3><p>Define the project type, spaces, occupancy and what success looks like.</p></article>
-    <article><span>02</span><Search/><h3>What does the property allow?</h3><p>Review the building, site, planning history, access and physical constraints.</p></article>
-    <article><span>03</span><FileCheck2/><h3>Which approval route applies?</h3><p>Permitted development, lawful development, full planning, prior approval or technical approval.</p></article>
-    <article><span>04</span><Layers3/><h3>What information is needed next?</h3><p>Survey, design options, planning drawings, technical information or specialist reports.</p></article>
-   </div>
-  </section>
-
-  <section className="image-band"><div className="shell image-band-grid"><img src={photos[1].src} alt={photos[1].alt}/><div><small className="eyebrow">Design that adds value</small><h2>Light, proportion and materials should work as hard as the floor plan.</h2><p>We look beyond simply adding area. The strongest residential projects improve circulation, outlook, daylight and the relationship between inside and outside.</p><Link className="btn primary" href="/projects">Explore projects <ArrowRight size={18}/></Link></div></div></section>
-
-  <section className="section"><div className="shell split-intro"><div><small className="eyebrow">Services</small><h2>From first appraisal to construction-ready information.</h2></div><p>Choose a complete route or appoint only the stages you need.</p></div><div className="shell service-grid">{services.map((s,i)=>{const Icons=[Home,Ruler,Compass,DraftingCompass,ShieldCheck,CheckCircle2];const Icon=Icons[i%Icons.length];return <Link className="service-card" href={`/services/${s.slug}`} key={s.slug}><Icon/><small>0{i+1}</small><h3>{s.shortTitle}</h3><p>{s.description}</p><span>Explore service <ArrowRight size={16}/></span></Link>})}</div></section>
-
-  <section className="section dark-section"><div className="shell package-intro"><small className="eyebrow">Clear service packages</small><h2>Defined stages. Clear outputs. Fewer surprises.</h2></div><div className="shell package-grid">
-   <article><div className="package-number">01</div><small>Start</small><h3>Planning Foundation</h3><p>For clients who need the existing property recorded and a clear planning design prepared.</p><ul><li>Measured survey option</li><li>Design development</li><li>Planning drawings</li><li>Application submission</li></ul><Link href="/estimate">Estimate this package <ArrowRight/></Link></article>
-   <article className="featured-package"><div className="package-number">02</div><small>Most popular</small><h3>Planning + Technical</h3><p>A coordinated route from initial design through planning and Building Regulations.</p><ul><li>Design and planning</li><li>Building Regulations drawings</li><li>Consultant coordination</li><li>Building Control support</li></ul><Link href="/estimate">Estimate this package <ArrowRight/></Link></article>
-   <article><div className="package-number">03</div><small>Focused support</small><h3>Technical Design</h3><p>For clients who already hold planning approval and need the project developed technically.</p><ul><li>Construction information</li><li>Fire and thermal coordination</li><li>Drainage and ventilation</li><li>Building Control submission</li></ul><Link href="/estimate">Estimate this package <ArrowRight/></Link></article>
-  </div></section>
-
-  
-<section className="section sand-section selected-work-section">
+  <section className="section sand-section selected-work-section">
   <div className="shell">
     <div className="selected-work-heading">
       <small className="eyebrow">Selected residential work</small>
@@ -133,6 +86,28 @@ export default async function HomePage(){
     </div>
   </div>
 </section>
+
+  <section className="section"><div className="shell split-intro"><div><small className="eyebrow">Before drawings begin</small><h2>Four answers create a clearer route forward.</h2></div><p>Every project is different. These four early decisions work for extensions, conversions, HMOs, remodelling, new homes and small developments.</p></div>
+   <div className="shell answer-grid">
+    <article><span>01</span><Home/><h3>What are you planning?</h3><p>Define the project type, spaces, occupancy and what success looks like.</p></article>
+    <article><span>02</span><Search/><h3>What does the property allow?</h3><p>Review the building, site, planning history, access and physical constraints.</p></article>
+    <article><span>03</span><FileCheck2/><h3>Which approval route applies?</h3><p>Permitted development, lawful development, full planning, prior approval or technical approval.</p></article>
+    <article><span>04</span><Layers3/><h3>What information is needed next?</h3><p>Survey, design options, planning drawings, technical information or specialist reports.</p></article>
+   </div>
+  </section>
+
+  <section className="image-band"><div className="shell image-band-grid"><img src={photos[1].src} alt={photos[1].alt}/><div><small className="eyebrow">Design that adds value</small><h2>Light, proportion and materials should work as hard as the floor plan.</h2><p>We look beyond simply adding area. The strongest residential projects improve circulation, outlook, daylight and the relationship between inside and outside.</p><Link className="btn primary" href="/projects">Explore projects <ArrowRight size={18}/></Link></div></div></section>
+
+  <section className="section"><div className="shell split-intro"><div><small className="eyebrow">Services</small><h2>From first appraisal to construction-ready information.</h2></div><p>Choose a complete route or appoint only the stages you need.</p></div><div className="shell service-grid">{services.map((s,i)=>{const Icons=[Home,Ruler,Compass,DraftingCompass,ShieldCheck,CheckCircle2];const Icon=Icons[i%Icons.length];return <Link className="service-card" href={`/services/${s.slug}`} key={s.slug}><Icon/><small>0{i+1}</small><h3>{s.shortTitle}</h3><p>{s.description}</p><span>Explore service <ArrowRight size={16}/></span></Link>})}</div></section>
+
+  <section className="section dark-section"><div className="shell package-intro"><small className="eyebrow">Clear service packages</small><h2>Defined stages. Clear outputs. Fewer surprises.</h2></div><div className="shell package-grid">
+   <article><div className="package-number">01</div><small>Start</small><h3>Planning Foundation</h3><p>For clients who need the existing property recorded and a clear planning design prepared.</p><ul><li>Measured survey option</li><li>Design development</li><li>Planning drawings</li><li>Application submission</li></ul><Link href="/estimate">Estimate this package <ArrowRight/></Link></article>
+   <article className="featured-package"><div className="package-number">02</div><small>Most popular</small><h3>Planning + Technical</h3><p>A coordinated route from initial design through planning and Building Regulations.</p><ul><li>Design and planning</li><li>Building Regulations drawings</li><li>Consultant coordination</li><li>Building Control support</li></ul><Link href="/estimate">Estimate this package <ArrowRight/></Link></article>
+   <article><div className="package-number">03</div><small>Focused support</small><h3>Technical Design</h3><p>For clients who already hold planning approval and need the project developed technically.</p><ul><li>Construction information</li><li>Fire and thermal coordination</li><li>Drainage and ventilation</li><li>Building Control submission</li></ul><Link href="/estimate">Estimate this package <ArrowRight/></Link></article>
+  </div></section>
+
+  
+
 
 
 

@@ -68,7 +68,72 @@ export default async function HomePage(){
    <article><div className="package-number">03</div><small>Focused support</small><h3>Technical Design</h3><p>For clients who already hold planning approval and need the project developed technically.</p><ul><li>Construction information</li><li>Fire and thermal coordination</li><li>Drainage and ventilation</li><li>Building Control submission</li></ul><Link href="/estimate">Estimate this package <ArrowRight/></Link></article>
   </div></section>
 
-  <section className="section sand-section"><div className="shell visual-project-grid"><div><small className="eyebrow">Selected residential work</small><h2>Built around real sites, real constraints and real lives.</h2><p>View extensions, new homes, Passivhaus projects and whole-house transformations from the Hepburn portfolio.</p><Link className="btn primary" href="/projects">View all projects <ArrowRight/></Link></div><img src={photos[2].src} alt={photos[2].alt}/></div></section>
+  
+<section className="section sand-section selected-work-section">
+  <div className="shell">
+    <div className="selected-work-heading">
+      <small className="eyebrow">Selected residential work</small>
+      <h2>Architecture shaped around real homes and real lives.</h2>
+    </div>
+
+    <div className="selected-work-grid">
+      <Link
+        href="/projects"
+        className="selected-work-main"
+        aria-label="View selected new home projects"
+      >
+        <img
+          src="/images/selected-work-1.png"
+          alt="Contemporary rendered home with timber cladding and glazed gable"
+          loading="lazy"
+        />
+        <div className="selected-work-overlay">
+          <span>New homes</span>
+          <strong>Contemporary residential design</strong>
+        </div>
+      </Link>
+
+      <Link
+        href="/projects"
+        className="selected-work-small"
+        aria-label="View residential extension projects"
+      >
+        <img
+          src="/images/selected-work-2.png"
+          alt="Contemporary dark-clad extension to a traditional stone house"
+          loading="lazy"
+        />
+        <div className="selected-work-overlay">
+          <span>Extensions</span>
+          <strong>Old and new in balance</strong>
+        </div>
+      </Link>
+
+      <Link
+        href="/projects"
+        className="selected-work-small"
+        aria-label="View residential conversion projects"
+      >
+        <img
+          src="/images/selected-work-3.png"
+          alt="Stone barn conversion with landscaped terrace"
+          loading="lazy"
+        />
+        <div className="selected-work-overlay">
+          <span>Conversions</span>
+          <strong>Character retained, space transformed</strong>
+        </div>
+      </Link>
+    </div>
+
+    <div className="selected-work-action">
+      <Link className="btn primary" href="/projects">
+        View all projects <ArrowRight size={18} />
+      </Link>
+    </div>
+  </div>
+</section>
+
 
 
 

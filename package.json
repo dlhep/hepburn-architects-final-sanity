@@ -20,7 +20,8 @@
     "react-dom": "^19.2.3",
     "sanity": "^6.5.0",
     "styled-components": "^6.1.19",
-    "@sanity/client": "^7.23.2"
+    "@sanity/client": "^7.23.2",
+    "@portabletext/react": "^3.2.1"
   },
   "devDependencies": {
     "@types/node": "^22.20.1",

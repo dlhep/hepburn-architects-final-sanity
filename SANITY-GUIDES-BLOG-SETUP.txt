@@ -1,0 +1,17 @@
+SANITY GUIDES AND BLOG SETUP
+
+After uploading this update and Vercel shows Ready:
+
+1. Open https://www.hepburnarchitects.net/studio
+2. You will see a new section named "Guides & Blog Posts".
+3. Click Create new.
+4. Choose Content type: Guide or Blog post.
+5. Complete the title and click Generate beside Page address.
+6. Add a short summary of 80-220 characters.
+7. Choose a category and publication date.
+8. Add the article content using Heading 2, Heading 3, paragraphs, lists, links and images.
+9. Add a featured image and image description.
+10. Add an SEO title and meta description, or leave them blank to use the article title and summary.
+11. Click Publish.
+
+Published guides appear at /guides and blog posts appear at /blog.

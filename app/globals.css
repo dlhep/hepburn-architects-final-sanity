@@ -468,3 +468,31 @@
     font-size:26px;
   }
 }
+
+/* HEPBURN ARCHITECTS WORDMARK */
+.brand-wordmark{
+  display:inline-flex;
+  align-items:baseline;
+  gap:.28em;
+  font-family:"Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  font-size:clamp(22px,2vw,34px);
+  font-weight:800;
+  letter-spacing:-.045em;
+  line-height:1;
+  white-space:nowrap;
+}
+
+.brand-wordmark span:first-child{
+  color:var(--ink);
+}
+
+.brand-wordmark span:last-child{
+  color:var(--orange);
+}
+
+@media (max-width:650px){
+  .brand-wordmark{
+    font-size:26px;
+    gap:.22em;
+  }
+}

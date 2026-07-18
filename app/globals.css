@@ -660,3 +660,76 @@
     font-size:clamp(38px,11vw,58px);
   }
 }
+
+
+/* Why Hepburn Architects */
+.why-hepburn-section {
+  background: #f4f0e8;
+}
+
+.why-hepburn-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: center;
+}
+
+.why-hepburn-image {
+  min-height: 560px;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+.why-hepburn-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  display: block;
+  object-fit: cover;
+}
+
+.why-hepburn-content h2 {
+  max-width: 660px;
+  margin: 14px 0 20px;
+}
+
+.why-hepburn-content > p {
+  max-width: 620px;
+  margin-bottom: 30px;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.why-hepburn-list {
+  list-style: none;
+  margin: 0 0 34px;
+  padding: 0;
+  display: grid;
+  gap: 15px;
+}
+
+.why-hepburn-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.why-hepburn-list li span {
+  color: var(--orange);
+  font-weight: 800;
+}
+
+@media (max-width: 820px) {
+  .why-hepburn-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .why-hepburn-image,
+  .why-hepburn-image img {
+    min-height: 360px;
+  }
+}

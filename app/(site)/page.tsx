@@ -112,7 +112,42 @@ export default async function HomePage(){
 
   <section className="image-band"><div className="shell image-band-grid"><img src={photos[1].src} alt={photos[1].alt}/><div><small className="eyebrow">Design that adds value</small><h2>Light, proportion and materials should work as hard as the floor plan.</h2><p>We look beyond simply adding area. The strongest residential projects improve circulation, outlook, daylight and the relationship between inside and outside.</p><Link className="btn primary" href="/projects">Explore projects <ArrowRight size={18}/></Link></div></div></section>
 
-  <section className="section"><div className="shell split-intro"><div><small className="eyebrow">Services</small><h2>From first appraisal to construction-ready information.</h2></div><p>Choose a complete route or appoint only the stages you need.</p></div><div className="shell service-grid">{services.map((s,i)=>{const Icons=[Home,Ruler,Compass,DraftingCompass,ShieldCheck,CheckCircle2];const Icon=Icons[i%Icons.length];return <Link className="service-card" href={`/services/${s.slug}`} key={s.slug}><Icon/><small>0{i+1}</small><h3>{s.shortTitle}</h3><p>{s.description}</p><span>Explore service <ArrowRight size={16}/></span></Link>})}</div></section>
+  
+<section className="section why-hepburn-section">
+  <div className="shell why-hepburn-grid">
+    <div className="why-hepburn-image">
+      <img
+        src={photos[0].src}
+        alt={photos[0].alt}
+        loading="lazy"
+      />
+    </div>
+
+    <div className="why-hepburn-content">
+      <small className="eyebrow">Why Hepburn Architects</small>
+      <h2>Architectural expertise with clear, personal guidance.</h2>
+      <p>
+        Work directly with a Chartered Architect throughout the design,
+        planning and technical stages of your residential project.
+      </p>
+
+      <ul className="why-hepburn-list">
+        <li><span>✓</span> ARB Registered Architect</li>
+        <li><span>✓</span> RIBA Chartered Practice</li>
+        <li><span>✓</span> Direct involvement from David</li>
+        <li><span>✓</span> Residential planning and technical expertise</li>
+        <li><span>✓</span> Clear advice without unnecessary jargon</li>
+        <li><span>✓</span> Design focused on value, light and usability</li>
+      </ul>
+
+      <Link className="btn primary" href="/contact">
+        Book a consultation <ArrowRight size={18}/>
+      </Link>
+    </div>
+  </div>
+</section>
+
+<section className="section"><div className="shell split-intro"><div><small className="eyebrow">Services</small><h2>From first appraisal to construction-ready information.</h2></div><p>Choose a complete route or appoint only the stages you need.</p></div><div className="shell service-grid">{services.map((s,i)=>{const Icons=[Home,Ruler,Compass,DraftingCompass,ShieldCheck,CheckCircle2];const Icon=Icons[i%Icons.length];return <Link className="service-card" href={`/services/${s.slug}`} key={s.slug}><Icon/><small>0{i+1}</small><h3>{s.shortTitle}</h3><p>{s.description}</p><span>Explore service <ArrowRight size={16}/></span></Link>})}</div></section>
 
   <section className="section dark-section"><div className="shell package-intro"><small className="eyebrow">Clear service packages</small><h2>Defined stages. Clear outputs. Fewer surprises.</h2></div><div className="shell package-grid">
    <article><div className="package-number">01</div><small>Start</small><h3>Planning Foundation</h3><p>For clients who need the existing property recorded and a clear planning design prepared.</p><ul><li>Measured survey option</li><li>Design development</li><li>Planning drawings</li><li>Application submission</li></ul><Link href="/estimate">Estimate this package <ArrowRight/></Link></article>

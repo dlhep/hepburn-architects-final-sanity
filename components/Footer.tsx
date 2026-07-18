@@ -51,7 +51,7 @@ export function Footer() {
           <h3>Explore</h3>
           <Link href="/services">Services</Link>
           <Link href="/projects">Projects</Link>
-          <Link href="/before-after">Before & after</Link>
+          
           <Link href="/guides">Guides</Link>
           <Link href="/estimate">Fee calculator</Link>
           <Link href="/about">About</Link>

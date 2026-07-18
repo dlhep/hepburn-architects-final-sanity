@@ -161,20 +161,7 @@ export default async function HomePage(){
 
 
 
-  <section className="section before-after-promo">
-    <div className="shell before-after-promo-grid">
-      <div className="before-after-promo-images">
-        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=82" alt="Traditional house before architectural extension and remodelling"/>
-        <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=88" alt="Modern glazed residential extension after architectural transformation"/>
-      </div>
-      <div>
-        <small className="eyebrow">Before and after</small>
-        <h2>See what thoughtful residential design can change.</h2>
-        <p>Explore interactive transformation examples showing how extensions, remodelling and better material choices can unlock a property.</p>
-        <Link className="btn primary" href="/before-after">View transformations <ArrowRight size={17}/></Link>
-      </div>
-    </div>
-  </section>
+  
 
   <section className="section founder-home-section">
     <div className="shell founder-home-grid">

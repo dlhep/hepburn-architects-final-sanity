@@ -26,7 +26,7 @@ export const projectType = defineType({
     defineField({ name: "location", title: "Location", type: "string", group: "content", validation: (rule) => rule.required() }),
     defineField({ name: "category", title: "Project category", type: "string", group: "content", options: { list: categories.map((title) => ({ title, value: title })), layout: "dropdown" }, validation: (rule) => rule.required() }),
     defineField({ name: "projectType", title: "Project type", type: "string", group: "content", validation: (rule) => rule.required() }),
-    defineField({ name: "description", title: "Project summary", type: "text", rows: 6, group: "content", description: "This automatically becomes the page meta description.", validation: (rule) => rule.required().min(80).max(600) }),
+    defineField({ name: "description", title: "Project summary", type: "text", rows: 6, group: "content", description: "This automatically becomes the page meta description.", validation: (rule) => rule.required().min(10).max(600) }),
     defineField({ name: "localAuthority", title: "Local authority", type: "string", group: "content" }),
     defineField({ name: "applicationType", title: "Application type", type: "string", group: "content" }),
     defineField({ name: "contractValue", title: "Indicative contract value", type: "string", group: "content" }),

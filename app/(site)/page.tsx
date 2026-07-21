@@ -5,7 +5,6 @@ import { services, locations, guides } from "@/lib/content";
 import { site } from "@/lib/site";
 import { getFeaturedProjects, projectImageAlt, projectImageUrl } from "@/lib/projects";
 import { GoogleReviewPanel } from "@/components/GoogleReviewPanel";
-import { WestMidlandsHomepageLinks } from "@/components/WestMidlandsSeoLinks";
 
 export const metadata: Metadata = {
   title: "Residential Architects Birmingham & West Midlands | Hepburn Architects",
@@ -195,7 +194,5 @@ export default async function HomePage(){
 
   <section className="section"><div className="shell social-showcase"><div><Instagram/><small className="eyebrow">Follow the studio</small><h2>Projects, drawings and planning insights.</h2><p>See current work, before-and-after transformations and practical residential design advice.</p><a className="btn primary" href={site.instagram} target="_blank">Follow on Instagram</a></div><div className="social-photo-grid"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Contemporary residential interior with large glazed doors"/><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80" alt="Modern residential extension with timber and glazing"/></div></div></section>
  
-      {/* WEST MIDLANDS INTERNAL LINKS */}
-      <WestMidlandsHomepageLinks />
       </>;
 }

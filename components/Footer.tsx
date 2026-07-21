@@ -26,7 +26,7 @@ export function Footer() {
         </div>
 
         <div>
-          <h3>Birmingham Office</h3>
+          <h3>Birmingham Studio</h3>
           <address>
             Izabella House<br />
             24-26 Regent Place<br />
@@ -34,6 +34,23 @@ export function Footer() {
             B1 3NJ
           </address>
           <a href={site.offices.birmingham.mapUrl} target="_blank" rel="noopener noreferrer">View map</a>
+        </div>
+
+        <div>
+          <h3>Nunthorpe Studio</h3>
+          <address>
+            1 Church Lane<br />
+            Nunthorpe<br />
+            Middlesbrough<br />
+            TS7 0PD
+          </address>
+          <a
+            href={site.offices.nunthorpe.mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View map
+          </a>
         </div>
 
         <div className="footer-links-column">

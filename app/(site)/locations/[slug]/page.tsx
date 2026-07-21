@@ -760,7 +760,7 @@ export default async function LocationPage({
       <section className="section sand-section">
         <div className="shell local-office-panel">
           <div>
-            <small className="eyebrow">Nearest Hepburn Architects office</small>
+            <small className="eyebrow">Nearest Hepburn Architects studio</small>
             <h2>{office.name}</h2>
             <address>
               {office.streetAddress}

@@ -13,7 +13,7 @@ export const site = {
     "Residential architects for extensions, loft conversions, new homes, HMOs and planning across Birmingham, Solihull and the West Midlands.",
   offices: {
     birmingham: {
-      name: "Birmingham Office",
+      name: "Birmingham Studio",
       streetAddress: "Izabella House, 24-26 Regent Place",
       addressLocality: "Birmingham",
       postalCode: "B1 3NJ",
@@ -22,7 +22,7 @@ export const site = {
         "https://www.google.com/maps/search/?api=1&query=Izabella+House+24-26+Regent+Place+Birmingham+B1+3NJ",
     },
     nunthorpe: {
-      name: "Nunthorpe Office",
+      name: "Nunthorpe Studio",
       streetAddress: "1 Church Lane",
       addressLocality: "Nunthorpe",
       postalTown: "Middlesbrough",

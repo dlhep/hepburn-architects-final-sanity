@@ -470,7 +470,7 @@ export default async function SolihullArchitectPage() {
       <section className="section sand-section">
         <div className="shell local-office-panel">
           <div>
-            <small className="eyebrow">Nearest Hepburn Architects office</small>
+            <small className="eyebrow">Nearest Hepburn Architects studio</small>
             <h2>{office.name}</h2>
             <address>
               {office.streetAddress}
@@ -482,7 +482,7 @@ export default async function SolihullArchitectPage() {
           </div>
           <div>
             <p>
-              Contact the Birmingham office to discuss your Solihull property,
+              Contact the Birmingham studio to discuss your Solihull property,
               planning strategy and the most proportionate architectural service.
             </p>
             <div className="actions">

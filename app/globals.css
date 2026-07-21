@@ -1010,3 +1010,42 @@
   }
 }
 
+
+/* CONSISTENT PROJECT GALLERY IMAGE FRAMES */
+.project-gallery{
+  align-items:stretch;
+  grid-auto-rows:1fr;
+}
+
+.project-gallery figure{
+  display:flex;
+  min-width:0;
+  height:100%;
+  margin:0;
+  flex-direction:column;
+}
+
+.project-gallery figure img,
+.project-gallery-single figure img{
+  width:100%;
+  height:auto;
+  aspect-ratio:4 / 3;
+  object-fit:contain;
+  object-position:center;
+  background:#f3f0ea;
+  border-radius:18px;
+}
+
+.project-gallery figcaption{
+  min-height:1.5em;
+  margin-top:10px;
+  line-height:1.45;
+}
+
+@media(max-width:700px){
+  .project-gallery figure img,
+  .project-gallery-single figure img{
+    aspect-ratio:4 / 3;
+    max-height:none;
+  }
+}

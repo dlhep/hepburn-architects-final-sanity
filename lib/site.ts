@@ -6,7 +6,7 @@ export const site = {
   phone: "07720 813035",
   phoneHref: "tel:+447720813035",
   calendly: "https://calendly.com/david-hepburnarchitects/30min",
-  instagram: "https://www.instagram.com/hepburn.architects/",
+  instagram: "https://www.instagram.com/hepburn.architects?igsh=MXMxNWpnbmRkcGMwbg==",
   facebook: "https://www.facebook.com/HepburnArchitects",
   googleBusiness: "https://share.google/Y9FBnkeA0VU3bqqJa",
   description:

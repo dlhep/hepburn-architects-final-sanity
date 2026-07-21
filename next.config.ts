@@ -7,7 +7,22 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/locations/birmingham",
-        destination: "/locations/birmingham-architect",
+        destination: "/locations/birmingham-architects",
+        permanent: true,
+      },
+      {
+        source: "/locations/solihull-architect",
+        destination: "/locations/solihull-architects",
+        permanent: true,
+      },
+      {
+        source: "/locations/solihull",
+        destination: "/locations/solihull-architects",
+        permanent: true,
+      },
+      {
+        source: "/locations/birmingham-architect",
+        destination: "/locations/birmingham-architects",
         permanent: true,
       },
     ];

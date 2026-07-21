@@ -132,7 +132,7 @@ export default async function LocationPage({
     "stockton-on-tees",
     "yarm",
   ].includes(slug);
-  const isBirmingham = slug === "birmingham-architect";
+  const isBirmingham = slug === "birmingham-architects";
   const office = northEast ? site.offices.nunthorpe : site.offices.birmingham;
   const relatedServices = services.filter((service) =>
     page.serviceSlugs.includes(service.slug),

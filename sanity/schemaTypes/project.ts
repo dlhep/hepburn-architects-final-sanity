@@ -27,6 +27,35 @@ export const projectType = defineType({
     defineField({ name: "category", title: "Project category", type: "string", group: "content", options: { list: categories.map((title) => ({ title, value: title })), layout: "dropdown" }, validation: (rule) => rule.required() }),
     defineField({ name: "projectType", title: "Project type", type: "string", group: "content", validation: (rule) => rule.required() }),
     defineField({ name: "description", title: "Project summary", type: "text", rows: 6, group: "content", description: "This automatically becomes the page meta description.", validation: (rule) => rule.required().min(10).max(600) }),
+    defineField({
+      name: "projectDescription",
+      title: "Full project description",
+      type: "array",
+      group: "content",
+      description:
+        "Add the longer project story, including the client brief, design approach, planning considerations and outcome.",
+      of: [
+        defineArrayMember({
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "Section heading", value: "h2" },
+            { title: "Subheading", value: "h3" },
+            { title: "Quote", value: "blockquote" },
+          ],
+          lists: [
+            { title: "Bullet list", value: "bullet" },
+            { title: "Numbered list", value: "number" },
+          ],
+          marks: {
+            decorators: [
+              { title: "Bold", value: "strong" },
+              { title: "Italic", value: "em" },
+            ],
+          },
+        }),
+      ],
+    }),
     defineField({ name: "localAuthority", title: "Local authority", type: "string", group: "content" }),
     defineField({ name: "applicationType", title: "Application type", type: "string", group: "content" }),
     defineField({ name: "contractValue", title: "Indicative contract value", type: "string", group: "content" }),

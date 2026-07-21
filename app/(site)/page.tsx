@@ -117,9 +117,9 @@ export default async function HomePage(){
   <div className="shell why-hepburn-grid">
     <div className="why-hepburn-image">
       <img
-        src={photos[0].src}
-        alt={photos[0].alt}
-        loading="lazy"
+        src="/images/architectural-expertise-home.webp"
+  alt="Contemporary new build home with brick, render and full-height glazing"
+  loading="lazy"
       />
     </div>
 

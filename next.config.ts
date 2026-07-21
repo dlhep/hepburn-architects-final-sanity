@@ -25,6 +25,46 @@ const nextConfig: NextConfig = {
         destination: "/locations/birmingham-architects",
         permanent: true,
       },
+      {
+        source: "/locations/moseley",
+        destination: "/locations/moseley-architects",
+        permanent: true,
+      },
+      {
+        source: "/locations/moseley-architect",
+        destination: "/locations/moseley-architects",
+        permanent: true,
+      },
+      {
+        source: "/locations/harborne",
+        destination: "/locations/harborne-architects",
+        permanent: true,
+      },
+      {
+        source: "/locations/harborne-architect",
+        destination: "/locations/harborne-architects",
+        permanent: true,
+      },
+      {
+        source: "/locations/edgbaston",
+        destination: "/locations/edgbaston-architects",
+        permanent: true,
+      },
+      {
+        source: "/locations/edgbaston-architect",
+        destination: "/locations/edgbaston-architects",
+        permanent: true,
+      },
+      {
+        source: "/locations/sutton-coldfield",
+        destination: "/locations/sutton-coldfield-architects",
+        permanent: true,
+      },
+      {
+        source: "/locations/sutton-coldfield-architect",
+        destination: "/locations/sutton-coldfield-architects",
+        permanent: true,
+      },
     ];
   },
   images: {

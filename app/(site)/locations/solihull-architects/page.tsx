@@ -465,10 +465,10 @@ export default async function SolihullArchitectPage() {
             </p>
             <div className="nearby-links">
               <Link href="/locations/birmingham-architects">Birmingham</Link>
-              <Link href="/locations/edgbaston">Edgbaston</Link>
-              <Link href="/locations/harborne">Harborne</Link>
-              <Link href="/locations/moseley">Moseley</Link>
-              <Link href="/locations/sutton-coldfield">Sutton Coldfield</Link>
+              <Link href="/locations/edgbaston-architects">Edgbaston</Link>
+              <Link href="/locations/harborne-architects">Harborne</Link>
+              <Link href="/locations/moseley-architects">Moseley</Link>
+              <Link href="/locations/sutton-coldfield-architects">Sutton Coldfield</Link>
             </div>
           </div>
         </div>

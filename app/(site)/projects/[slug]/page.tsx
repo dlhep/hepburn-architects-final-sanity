@@ -5,6 +5,7 @@ import { ArrowRight, CheckCircle2, MapPin } from "lucide-react";
 import { getProject, getProjectSlugs, projectImageAlt, projectImageUrl } from "@/lib/projects";
 import { site } from "@/lib/site";
 import { urlFor } from "@/sanity/lib/image";
+import { ProjectLocationLink } from "@/components/WestMidlandsSeoLinks";
 
 type PortableTextBlock = {
   children?: Array<{ text?: string }>;
@@ -34,6 +35,67 @@ const projectDescriptionComponents: PortableTextComponents = {
     number: ({ children }) => <ol className="project-description-list">{children}</ol>,
   },
 };
+
+
+const localLocationPages: Array<{
+  terms: string[];
+  slug: string;
+  name: string;
+}> = [
+  {
+    terms: ["moseley", "kings heath", "balsall heath", "hall green"],
+    slug: "moseley-architects",
+    name: "Moseley",
+  },
+  {
+    terms: ["harborne", "selly oak", "quinton", "bartley green", "moor pool"],
+    slug: "harborne-architects",
+    name: "Harborne",
+  },
+  {
+    terms: ["edgbaston", "calthorpe", "ladywood"],
+    slug: "edgbaston-architects",
+    name: "Edgbaston",
+  },
+  {
+    terms: [
+      "sutton coldfield",
+      "four oaks",
+      "boldmere",
+      "wylde green",
+      "streetly",
+      "mere green",
+    ],
+    slug: "sutton-coldfield-architects",
+    name: "Sutton Coldfield",
+  },
+  {
+    terms: [
+      "solihull",
+      "knowle",
+      "dorridge",
+      "shirley",
+      "olton",
+      "balsall common",
+      "dickens heath",
+    ],
+    slug: "solihull-architects",
+    name: "Solihull",
+  },
+  {
+    terms: ["birmingham", "west midlands"],
+    slug: "birmingham-architects",
+    name: "Birmingham",
+  },
+];
+
+function getProjectLocationPage(location: string) {
+  const normalised = location.toLowerCase();
+
+  return localLocationPages.find((page) =>
+    page.terms.some((term) => normalised.includes(term)),
+  );
+}
 
 export async function generateStaticParams() {
   const slugs = await getProjectSlugs();
@@ -70,6 +132,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const hasProjectDescription = Boolean(project.projectDescription?.length);
   const useDescriptionColumns =
     portableTextCharacterCount(project.projectDescription as PortableTextBlock[] | undefined) >= 360;
+  const localLocationPage = getProjectLocationPage(project.location);
 
   const projectSchema = {
     "@context": "https://schema.org",
@@ -215,6 +278,29 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
+
+      {localLocationPage && (
+        <section className="section">
+          <div className="shell content-cta">
+            <small className="eyebrow">Local architectural services</small>
+            <h2>
+              Planning another residential project in {localLocationPage.name}?
+            </h2>
+            <p>
+              Explore local design, planning and Building Regulations services,
+              nearby project experience and area-specific planning guidance.
+            </p>
+            <Link
+              className="btn light-btn"
+              href={`/locations/${localLocationPage.slug}`}
+            >
+              View {localLocationPage.name} architects{" "}
+              <ArrowRight size={17} />
+            </Link>
+          </div>
+        </section>
+      )}
+
       <section className="section">
         <div className="shell final-cta">
           <small className="eyebrow">Start your project</small>
@@ -233,7 +319,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </section>
-    </>
+    
+      {/* PROJECT LOCATION INTERNAL LINK */}
+      <ProjectLocationLink location={project.location} />
+      </>
   );
 }
 

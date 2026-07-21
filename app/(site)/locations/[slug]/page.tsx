@@ -85,6 +85,37 @@ function selectBirminghamProjects(projects: Project[]): Project[] {
   ].slice(0, 3);
 }
 
+
+function selectLocationProjects(
+  projects: Project[],
+  projectTerms: string[],
+): Project[] {
+  const local = projects.filter((project) => {
+    const location = project.location.toLowerCase();
+    return projectTerms.some((term) => location.includes(term));
+  });
+
+  const regional = projects.filter((project) => {
+    const location = project.location.toLowerCase();
+    return birminghamProjectTerms.some((term) => location.includes(term));
+  });
+
+  return [
+    ...local,
+    ...regional.filter(
+      (project) =>
+        !local.some((localProject) => localProject.slug === project.slug),
+    ),
+    ...projects.filter(
+      (project) =>
+        !local.some((localProject) => localProject.slug === project.slug) &&
+        !regional.some(
+          (regionalProject) => regionalProject.slug === project.slug,
+        ),
+    ),
+  ].slice(0, 3);
+}
+
 export function generateStaticParams() {
   return locations.map((item) => ({ slug: item.slug }));
 }
@@ -133,6 +164,7 @@ export default async function LocationPage({
     "yarm",
   ].includes(slug);
   const isBirmingham = slug === "birmingham-architects";
+  const isEnhancedWestMidlands = isBirmingham || Boolean(page.authorityPage);
   const office = northEast ? site.offices.nunthorpe : site.offices.birmingham;
   const relatedServices = services.filter((service) =>
     page.serviceSlugs.includes(service.slug),
@@ -140,9 +172,13 @@ export default async function LocationPage({
   const relatedLocations = locations
     .filter((location) => page.nearbyAreas.includes(location.shortTitle))
     .slice(0, 5);
+  const allProjects = isEnhancedWestMidlands ? await getProjects() : [];
   const regionalProjects = isBirmingham
-    ? selectBirminghamProjects(await getProjects())
-    : [];
+    ? selectBirminghamProjects(allProjects)
+    : page.authorityPage
+      ? selectLocationProjects(allProjects, page.projectTerms ?? [])
+      : [];
+  const locationFaqs = isBirmingham ? birminghamFaqs : page.faqs ?? [];
 
   const schemas: Array<Record<string, unknown>> = [
     {
@@ -176,11 +212,11 @@ export default async function LocationPage({
     },
   ];
 
-  if (isBirmingham) {
+  if (locationFaqs.length > 0) {
     schemas.push({
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: birminghamFaqs.map((item) => ({
+      mainEntity: locationFaqs.map((item) => ({
         "@type": "Question",
         name: item.question,
         acceptedAnswer: {
@@ -501,6 +537,197 @@ export default async function LocationPage({
                 </div>
               </div>
               <ContactForm source="Birmingham architect landing page" />
+            </div>
+          </section>
+        </>
+      )}
+
+
+      {!isBirmingham && page.authorityPage && (
+        <>
+          <section className="section dark-section birmingham-planning-section">
+            <div className="shell">
+              <div className="page-intro">
+                <small className="eyebrow">
+                  Planning in {page.shortTitle}
+                </small>
+                <h2>Local planning considerations built into the design.</h2>
+                <p className="lead">{page.planningIntro}</p>
+              </div>
+
+              <div className="authority-grid">
+                {(page.planningTopics ?? []).map((topic, index) => (
+                  <article key={topic.title}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <h3>{topic.title}</h3>
+                    <p>{topic.body}</p>
+                    <a
+                      href={topic.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {topic.linkLabel} <ExternalLink size={15} />
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {regionalProjects.length > 0 && (
+            <section className="section selected-work-section">
+              <div className="shell">
+                <div className="selected-work-heading">
+                  <small className="eyebrow">
+                    {page.shortTitle} and Birmingham projects
+                  </small>
+                  <h2>Relevant residential work.</h2>
+                  <p>
+                    {page.projectIntro ??
+                      `A selection of residential projects from ${page.shortTitle} and the wider West Midlands.`}
+                  </p>
+                </div>
+
+                <div className="selected-work-grid">
+                  {regionalProjects.map((project, index) => (
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className={
+                        index === 0
+                          ? "selected-work-main"
+                          : "selected-work-small"
+                      }
+                      key={project.slug}
+                    >
+                      <img
+                        src={projectImageUrl(project.featuredImage, 1400)}
+                        alt={projectImageAlt(project)}
+                        loading="lazy"
+                      />
+                      <div className="selected-work-overlay">
+                        <span>
+                          {project.location} · {project.projectType}
+                        </span>
+                        <strong>{project.title}</strong>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+
+                <div className="selected-work-action">
+                  <Link className="btn secondary" href="/projects">
+                    View all projects <ArrowRight size={17} />
+                  </Link>
+                </div>
+              </div>
+            </section>
+          )}
+
+          <section className="section sand-section">
+            <div className="shell service-detail-columns">
+              <div>
+                <small className="eyebrow">Useful guidance</small>
+                <h2>
+                  Planning information for {page.shortTitle} homeowners.
+                </h2>
+              </div>
+              <div className="related-guide-grid">
+                <Link href="/guides/planning-permission-house-extension">
+                  <h3>Planning permission for house extensions</h3>
+                  <p>
+                    Understand when planning permission or permitted development
+                    may apply.
+                  </p>
+                  <span>
+                    Read guide <ArrowRight size={15} />
+                  </span>
+                </Link>
+                <Link href="/guides/single-storey-extension-rules">
+                  <h3>Single-storey extension rules</h3>
+                  <p>
+                    Review common limits, design issues and approval routes.
+                  </p>
+                  <span>
+                    Read guide <ArrowRight size={15} />
+                  </span>
+                </Link>
+                <Link href="/guides/loft-conversion-planning-permission">
+                  <h3>Loft conversion planning</h3>
+                  <p>
+                    Check dormers, roof-volume limits and local planning controls.
+                  </p>
+                  <span>
+                    Read guide <ArrowRight size={15} />
+                  </span>
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          <section className="section">
+            <div className="shell service-detail-columns">
+              <div>
+                <small className="eyebrow">Common questions</small>
+                <h2>
+                  Planning and architectural services in {page.shortTitle}.
+                </h2>
+              </div>
+              <div className="faq-list">
+                {locationFaqs.map((item) => (
+                  <details key={item.question}>
+                    <summary>{item.question}</summary>
+                    <p>{item.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section
+            className="section dark-section birmingham-enquiry-section"
+            id="project-enquiry"
+          >
+            <div className="shell contact-grid">
+              <div>
+                <small className="eyebrow">
+                  Discuss your {page.shortTitle} project
+                </small>
+                <h2>
+                  Start with the property, brief and likely approval route.
+                </h2>
+                <p className="lead">
+                  Tell us where the property is and what you are considering.
+                  David will review the enquiry and advise on a proportionate
+                  next step.
+                </p>
+                <ul className="enquiry-trust-list">
+                  <li>
+                    <CheckCircle2 size={18} /> Direct involvement from David
+                  </li>
+                  <li>
+                    <CheckCircle2 size={18} /> RIBA Chartered and ARB registered
+                  </li>
+                  <li>
+                    <CheckCircle2 size={18} /> Planning and technical services
+                  </li>
+                </ul>
+                <div className="actions">
+                  <a className="btn primary" href={site.phoneHref}>
+                    <Phone size={17} /> Call {site.phone}
+                  </a>
+                  <a
+                    className="btn light-btn"
+                    href={site.calendly}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book a consultation
+                  </a>
+                </div>
+              </div>
+              <ContactForm
+                source={`${page.shortTitle} architects landing page`}
+              />
             </div>
           </section>
         </>

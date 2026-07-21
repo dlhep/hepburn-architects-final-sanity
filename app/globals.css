@@ -1079,3 +1079,106 @@
     height:320px !important;
   }
 }
+
+/* WEST MIDLANDS INTERNAL LINKING */
+.west-midlands-link-section{
+  padding-top:72px;
+  padding-bottom:72px;
+}
+.west-midlands-link-panel{
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(36px,6vw,84px);
+  align-items:center;
+  padding:clamp(32px,5vw,64px);
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:#f3f0ea;
+}
+.west-midlands-link-panel h2{
+  margin:10px 0 18px;
+  font-size:clamp(36px,4.4vw,62px);
+}
+.west-midlands-link-cards{
+  display:grid;
+  gap:14px;
+}
+.west-midlands-link-cards>a{
+  display:grid;
+  gap:10px;
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+  transition:transform .2s ease,border-color .2s ease;
+}
+.west-midlands-link-cards>a:hover{
+  transform:translateY(-2px);
+  border-color:var(--orange);
+}
+.west-midlands-link-cards strong{
+  font-size:22px;
+}
+.west-midlands-link-cards span{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:var(--orange);
+  font-weight:800;
+}
+.footer-location-links{
+  display:grid;
+  gap:8px;
+  margin-top:24px;
+}
+.footer-location-links strong{
+  margin-bottom:3px;
+}
+.footer-location-links a{
+  width:max-content;
+  max-width:100%;
+}
+.project-location-link-section{
+  padding-top:0;
+}
+.project-location-link-panel{
+  display:flex;
+  justify-content:space-between;
+  gap:32px;
+  align-items:center;
+  padding:32px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:#f3f0ea;
+}
+.project-location-link-panel h2{
+  margin:8px 0 10px;
+}
+.project-location-link-panel p{
+  max-width:680px;
+  margin:0;
+}
+@media(max-width:800px){
+  .west-midlands-link-panel{
+    grid-template-columns:1fr;
+  }
+  .project-location-link-panel{
+    display:grid;
+  }
+}
+
+
+/* FOOTER LOCATION GROUPS */
+.footer-links-column{
+  display:grid;
+  align-content:start;
+  gap:28px;
+}
+.footer-link-group{
+  display:grid;
+  align-content:start;
+  gap:9px;
+}
+.footer-link-group h3{
+  margin:0 0 3px;
+}

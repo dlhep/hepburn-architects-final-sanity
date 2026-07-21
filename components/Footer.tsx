@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Facebook, Instagram, MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site";
-import { WestMidlandsFooterLinks } from "@/components/WestMidlandsSeoLinks";
 
 export function Footer() {
   return (
@@ -48,31 +47,30 @@ export function Footer() {
           <a href={site.offices.nunthorpe.mapUrl} target="_blank" rel="noopener noreferrer">View map</a>
         </div>
 
-        <div>
-          <h3>Explore</h3>
-          <Link href="/services">Services</Link>
-          <Link href="/projects">Projects</Link>
-          <Link href="/locations">Locations</Link>
-          <Link href="/locations/birmingham-architects">
-            Architects in Birmingham
-          </Link>
-          <Link href="/locations/solihull-architects">
-            Architects in Solihull
-          </Link>
-          
-          <Link href="/guides">Guides</Link>
-          <Link href="/estimate">Fee calculator</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/privacy">Privacy</Link>
+        <div className="footer-links-column">
+          <div className="footer-link-group">
+            <h3>Explore</h3>
+            <Link href="/services">Services</Link>
+            <Link href="/projects">Projects</Link>
+            <Link href="/guides">Guides</Link>
+            <Link href="/estimate">Fee calculator</Link>
+            <Link href="/about">About</Link>
+            <Link href="/contact">Contact</Link>
+            <Link href="/privacy">Privacy</Link>
+          </div>
+
+          <div className="footer-link-group">
+            <h3>Locations</h3>
+            <Link href="/locations/birmingham-architects">Birmingham</Link>
+            <Link href="/locations/solihull-architects">Solihull</Link>
+            <Link href="/locations">View all locations</Link>
+          </div>
         </div>
       </div>
       <div className="shell footer-bottom">
         © {new Date().getFullYear()} Hepburn Architects Ltd.
       </div>
-    
-      {/* WEST MIDLANDS FOOTER LINKS */}
-      <WestMidlandsFooterLinks />
+
     </footer>
   );
 }

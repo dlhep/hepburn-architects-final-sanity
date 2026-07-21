@@ -887,3 +887,126 @@
     display:grid;
   }
 }
+
+
+/* PROJECT DETAIL EDITORIAL LAYOUT */
+.project-content-section{
+  padding-bottom:72px;
+}
+
+.project-description-panel{
+  margin-top:72px;
+  padding-top:54px;
+  border-top:1px solid var(--line);
+  text-align:left;
+}
+
+.project-description-heading{
+  max-width:760px;
+  margin:0 0 30px;
+}
+
+.project-description-heading h2{
+  margin:10px 0 0;
+  font-size:clamp(38px,5vw,64px);
+}
+
+.project-description-copy{
+  max-width:780px;
+  text-align:left;
+}
+
+.project-description-copy.is-multicolumn{
+  max-width:none;
+  column-count:2;
+  column-gap:clamp(46px,6vw,82px);
+  column-fill:balance;
+}
+
+.project-description-paragraph{
+  margin:0 0 22px;
+  font-size:17px;
+  line-height:1.78;
+  break-inside:avoid-column;
+}
+
+.project-description-subheading,
+.project-description-minor-heading,
+.project-description-quote,
+.project-description-list{
+  break-inside:avoid-column;
+}
+
+.project-description-subheading{
+  margin:38px 0 16px;
+  font-size:clamp(30px,3vw,46px);
+}
+
+.project-description-minor-heading{
+  margin:30px 0 12px;
+  font-size:26px;
+}
+
+.project-description-quote{
+  margin:28px 0;
+  padding:8px 0 8px 22px;
+  border-left:4px solid var(--orange);
+  font-size:21px;
+  line-height:1.55;
+}
+
+.project-description-list{
+  display:grid;
+  gap:9px;
+  margin:0 0 24px;
+  padding-left:24px;
+}
+
+.project-gallery-section{
+  padding-top:0;
+}
+
+.project-gallery-single{
+  grid-template-columns:minmax(0,1fr);
+}
+
+.project-gallery-single figure{
+  width:min(100%,1000px);
+}
+
+.project-gallery-single img{
+  width:100%;
+  max-height:none;
+}
+
+@media(max-width:850px){
+  .project-description-panel{
+    margin-top:54px;
+    padding-top:42px;
+  }
+
+  .project-description-copy.is-multicolumn{
+    column-count:1;
+  }
+}
+
+@media(max-width:650px){
+  .project-content-section{
+    padding-bottom:54px;
+  }
+
+  .project-description-panel{
+    margin-top:42px;
+    padding-top:34px;
+  }
+
+  .project-description-heading{
+    margin-bottom:22px;
+  }
+
+  .project-description-paragraph{
+    font-size:16px;
+    line-height:1.72;
+  }
+}
+

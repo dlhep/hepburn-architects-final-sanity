@@ -5,11 +5,12 @@ import { services, locations, guides } from "@/lib/content";
 import { site } from "@/lib/site";
 import { getFeaturedProjects, projectImageAlt, projectImageUrl } from "@/lib/projects";
 import { GoogleReviewPanel } from "@/components/GoogleReviewPanel";
+import { WestMidlandsHomepageLinks } from "@/components/WestMidlandsSeoLinks";
 
 export const metadata: Metadata = {
-  title: "Residential Architects Birmingham & Teesside | Hepburn Architects",
+  title: "Residential Architects Birmingham & West Midlands | Hepburn Architects",
   description:
-    "ARB-registered residential architects for house extensions, loft conversions, new homes, HMOs, planning and Building Regulations across Birmingham, the West Midlands and Teesside.",
+    "ARB-registered residential architects for house extensions, loft conversions, new homes, HMOs, planning and Building Regulations across Birmingham, Solihull and the West Midlands.",
   alternates: { canonical: "/" },
 };
 
@@ -22,7 +23,7 @@ const photos=[
 export default async function HomePage(){
  const projects = await getFeaturedProjects();
  return <>
-  <section className="hero"><div className="shell hero-grid"><div className="hero-copy"><small className="eyebrow">Residential architecture · planning · technical design</small><h1>Residential architects creating exceptional homes.</h1><p>Design, planning and Building Regulations expertise for extensions, loft conversions, new homes, HMOs and residential developments across Birmingham, the West Midlands, Teesside and the wider UK.</p><div className="actions"><Link className="btn primary" href="/estimate">Get an indicative fee <ArrowRight size={18}/></Link><a className="btn secondary" href={site.calendly}><CalendarDays size={18}/>Book a free consultation</a></div><div className="hero-trust"><span><ShieldCheck/>ARB registered</span><span><CheckCircle2/>RIBA Chartered Practice</span></div></div><div className="hero-visual photo-frame"><img src={photos[0].src} alt={photos[0].alt}/><div className="hero-note">Residential design with planning strategy built in</div></div></div></section>
+  <section className="hero"><div className="shell hero-grid"><div className="hero-copy"><small className="eyebrow">Residential architecture · planning · technical design</small><h1>Residential architects creating exceptional homes.</h1><p>Design, planning and Building Regulations expertise for extensions, loft conversions, new homes, HMOs and residential developments across Birmingham, Solihull and the wider West Midlands.</p><div className="actions"><Link className="btn primary" href="/estimate">Get an indicative fee <ArrowRight size={18}/></Link><a className="btn secondary" href={site.calendly}><CalendarDays size={18}/>Book a free consultation</a></div><div className="hero-trust"><span><ShieldCheck/>ARB registered</span><span><CheckCircle2/>RIBA Chartered Practice</span></div></div><div className="hero-visual photo-frame"><img src={photos[0].src} alt={photos[0].alt}/><div className="hero-note">Residential design with planning strategy built in</div></div></div></section>
 
   <section className="trust-proof">
     <div className="shell trust-proof-grid">
@@ -188,10 +189,13 @@ export default async function HomePage(){
     </div>
   </section>
 
-  <section className="section"><div className="shell split-intro"><div><small className="eyebrow">Local expertise</small><h2>Residential architects across two key regions.</h2></div><p>Focused guidance for Birmingham, Solihull, Teesside and surrounding areas.</p></div><div className="shell location-grid">{locations.map(l=><Link href={`/locations/${l.slug}`} key={l.slug}><span>{l.shortTitle}</span><ArrowRight/></Link>)}</div></section>
+  <section className="section"><div className="shell split-intro"><div><small className="eyebrow">Local expertise</small><h2>Residential architects across two key regions.</h2></div><p>Focused guidance for Birmingham, Solihull and surrounding West Midlands areas.</p></div><div className="shell location-grid">{locations.map(l=><Link href={`/locations/${l.slug}`} key={l.slug}><span>{l.shortTitle}</span><ArrowRight/></Link>)}</div></section>
 
   <section className="section dark-section"><div className="shell split-intro light"><div><small className="eyebrow">Knowledge centre</small><h2>Planning and design guidance people actually search for.</h2></div><p>Practical articles covering extensions, lofts, conversions, HMOs, fees and technical approvals.</p></div><div className="shell guide-grid">{guides.slice(0,8).map(g=><Link className="guide-card" href={`/guides/${g.slug}`} key={g.slug}><small>Guide</small><h3>{g.shortTitle}</h3><p>{g.description}</p><span>Read guide <ArrowRight size={16}/></span></Link>)}</div><div className="shell centered-action"><Link className="btn light-btn" href="/guides">Browse all guides</Link></div></section>
 
   <section className="section"><div className="shell social-showcase"><div><Instagram/><small className="eyebrow">Follow the studio</small><h2>Projects, drawings and planning insights.</h2><p>See current work, before-and-after transformations and practical residential design advice.</p><a className="btn primary" href={site.instagram} target="_blank">Follow on Instagram</a></div><div className="social-photo-grid"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80" alt="Contemporary residential interior with large glazed doors"/><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80" alt="Modern residential extension with timber and glazing"/></div></div></section>
- </>;
+ 
+      {/* WEST MIDLANDS INTERNAL LINKS */}
+      <WestMidlandsHomepageLinks />
+      </>;
 }

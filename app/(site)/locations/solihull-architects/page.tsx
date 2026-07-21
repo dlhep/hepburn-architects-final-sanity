@@ -76,13 +76,7 @@ function selectSolihullProjects(projects: Project[]): Project[] {
     return solihullProjectTerms.some((term) => location.includes(term));
   });
 
-  return [
-    ...regional,
-    ...projects.filter(
-      (project) =>
-        !regional.some((regionalProject) => regionalProject.slug === project.slug),
-    ),
-  ].slice(0, 3);
+  return regional.slice(0, 3);
 }
 
 export default async function SolihullArchitectPage() {
@@ -121,11 +115,10 @@ export default async function SolihullArchitectPage() {
     },
     {
       "@context": "https://schema.org",
-      "@type": ["Architect", "LocalBusiness"],
-      name: "Hepburn Architects Solihull",
+      "@type": "Service",
+      name: "Residential architectural services in Solihull",
+      serviceType: "Residential architectural services",
       url: `${site.url}/locations/solihull-architects`,
-      telephone: "+44 7720 813035",
-      email: site.email,
       areaServed: [
         "Solihull",
         "Knowle",
@@ -135,7 +128,7 @@ export default async function SolihullArchitectPage() {
         "Dickens Heath",
         "Balsall Common",
       ],
-      parentOrganization: { "@id": `${site.url}/#organization` },
+      provider: { "@id": `${site.url}/#organization` },
     },
     {
       "@context": "https://schema.org",

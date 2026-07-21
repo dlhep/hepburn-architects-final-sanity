@@ -65,6 +65,31 @@ const nextConfig: NextConfig = {
         destination: "/locations/sutton-coldfield-architects",
         permanent: true,
       },
+      {
+        source: "/locations/middlesbrough",
+        destination: "https://www.hepburnarchitects.com/architects-middlesbrough",
+        permanent: true,
+      },
+      {
+        source: "/locations/teesside",
+        destination: "https://www.hepburnarchitects.com/architects-middlesbrough",
+        permanent: true,
+      },
+      {
+        source: "/locations/nunthorpe",
+        destination: "https://www.hepburnarchitects.com/architects-middlesbrough",
+        permanent: true,
+      },
+      {
+        source: "/locations/stockton-on-tees",
+        destination: "https://www.hepburnarchitects.com/architects-middlesbrough",
+        permanent: true,
+      },
+      {
+        source: "/locations/yarm",
+        destination: "https://www.hepburnarchitects.com/architects-middlesbrough",
+        permanent: true,
+      },
     ];
   },
   images: {

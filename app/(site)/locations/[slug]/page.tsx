@@ -77,12 +77,7 @@ function selectBirminghamProjects(projects: Project[]): Project[] {
     return birminghamProjectTerms.some((term) => location.includes(term));
   });
 
-  return [
-    ...regional,
-    ...projects.filter(
-      (project) => !regional.some((regionalProject) => regionalProject.slug === project.slug),
-    ),
-  ].slice(0, 3);
+  return regional.slice(0, 3);
 }
 
 
@@ -105,13 +100,6 @@ function selectLocationProjects(
     ...regional.filter(
       (project) =>
         !local.some((localProject) => localProject.slug === project.slug),
-    ),
-    ...projects.filter(
-      (project) =>
-        !local.some((localProject) => localProject.slug === project.slug) &&
-        !regional.some(
-          (regionalProject) => regionalProject.slug === project.slug,
-        ),
     ),
   ].slice(0, 3);
 }
@@ -156,16 +144,9 @@ export default async function LocationPage({
   const page = locations.find((item) => item.slug === slug);
   if (!page) notFound();
 
-  const northEast = [
-    "middlesbrough",
-    "teesside",
-    "nunthorpe",
-    "stockton-on-tees",
-    "yarm",
-  ].includes(slug);
   const isBirmingham = slug === "birmingham-architects";
   const isEnhancedWestMidlands = isBirmingham || Boolean(page.authorityPage);
-  const office = northEast ? site.offices.nunthorpe : site.offices.birmingham;
+  const office = site.offices.birmingham;
   const relatedServices = services.filter((service) =>
     page.serviceSlugs.includes(service.slug),
   );
@@ -200,16 +181,34 @@ export default async function LocationPage({
         },
       ],
     },
-    {
-      "@context": "https://schema.org",
-      "@type": ["Architect", "LocalBusiness"],
-      name: `Hepburn Architects ${page.shortTitle}`,
-      url: `${site.url}/locations/${slug}`,
-      telephone: "+44 7720 813035",
-      email: site.email,
-      areaServed: [page.shortTitle, ...page.nearbyAreas],
-      parentOrganization: { "@id": `${site.url}/#organization` },
-    },
+    isBirmingham
+      ? {
+          "@context": "https://schema.org",
+          "@type": ["Architect", "LocalBusiness"],
+          "@id": `${site.url}/locations/birmingham-architects#business`,
+          name: "Hepburn Architects Birmingham",
+          url: `${site.url}/locations/birmingham-architects`,
+          telephone: "+44 7720 813035",
+          email: site.email,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: site.offices.birmingham.streetAddress,
+            addressLocality: site.offices.birmingham.addressLocality,
+            postalCode: site.offices.birmingham.postalCode,
+            addressCountry: site.offices.birmingham.addressCountry,
+          },
+          areaServed: ["Birmingham", "West Midlands"],
+          parentOrganization: { "@id": `${site.url}/#organization` },
+        }
+      : {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: `Residential architectural services in ${page.shortTitle}`,
+          serviceType: "Residential architectural services",
+          url: `${site.url}/locations/${slug}`,
+          areaServed: [page.shortTitle, ...page.nearbyAreas],
+          provider: { "@id": `${site.url}/#organization` },
+        },
   ];
 
   if (locationFaqs.length > 0) {
@@ -767,7 +766,7 @@ export default async function LocationPage({
               {office.streetAddress}
               <br />
               {office.addressLocality}
-              {northEast ? `, ${site.offices.nunthorpe.postalTown}` : ""}
+
               <br />
               {office.postalCode}
             </address>

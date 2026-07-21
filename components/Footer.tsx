@@ -12,7 +12,7 @@ export function Footer() {
           </div>
           <p>
             Residential architecture, planning and technical design across Birmingham,
-            the West Midlands, Teesside and the wider UK.
+            Solihull and the wider West Midlands.
           </p>
           <a className="footer-phone" href={site.phoneHref}>
             <Phone size={16} /> <strong>{site.phone}</strong>
@@ -34,17 +34,6 @@ export function Footer() {
             B1 3NJ
           </address>
           <a href={site.offices.birmingham.mapUrl} target="_blank" rel="noopener noreferrer">View map</a>
-        </div>
-
-        <div>
-          <h3>Nunthorpe Office</h3>
-          <address>
-            1 Church Lane<br />
-            Nunthorpe<br />
-            Middlesbrough<br />
-            TS7 0PD
-          </address>
-          <a href={site.offices.nunthorpe.mapUrl} target="_blank" rel="noopener noreferrer">View map</a>
         </div>
 
         <div className="footer-links-column">

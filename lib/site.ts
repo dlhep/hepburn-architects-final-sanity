@@ -10,7 +10,7 @@ export const site = {
   facebook: "https://www.facebook.com/HepburnArchitects",
   googleBusiness: "https://share.google/Y9FBnkeA0VU3bqqJa",
   description:
-    "Residential architects for extensions, loft conversions, new homes, HMOs and planning across Birmingham, the West Midlands and Teesside.",
+    "Residential architects for extensions, loft conversions, new homes, HMOs and planning across Birmingham, Solihull and the West Midlands.",
   offices: {
     birmingham: {
       name: "Birmingham Office",

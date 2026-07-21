@@ -9,6 +9,7 @@ const PROJECT_FIELDS = `
   category,
   projectType,
   description,
+  projectDescription,
   localAuthority,
   applicationType,
   contractValue,

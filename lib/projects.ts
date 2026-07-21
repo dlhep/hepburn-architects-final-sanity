@@ -21,6 +21,7 @@ export type Project = {
   category: string;
   projectType: string;
   description: string;
+  projectDescription?: any[];
   localAuthority?: string;
   applicationType?: string;
   contractValue?: string;

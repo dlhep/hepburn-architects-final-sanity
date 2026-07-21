@@ -23,14 +23,16 @@ export function ProjectsFilter({ projects }: { projects: Project[] }) {
           </button>
         ))}
       </div>
-      <div className="projects-grid expanded-projects genuine-projects">
+      <div className="projects-grid expanded-projects genuine-projects" style={{ alignItems: "start" }}>
         {visible.map((project) => (
-          <Link href={`/projects/${project.slug}`} className="project-card" key={project.slug}>
+          <Link href={`/projects/${project.slug}`} className="project-card" key={project.slug} style={{ alignSelf: "start" }}>
             <img src={projectImageUrl(project.featuredImage, 1200)} alt={projectImageAlt(project)} loading="lazy" />
             <div>
               <small>{project.location} · {project.projectType}</small>
               <h2>{project.title}</h2>
-              <p>{project.description}</p>
+              <p style={{ display: "-webkit-box", WebkitLineClamp: 5, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                {project.description}
+              </p>
               <span>View case study <ArrowUpRight size={16} /></span>
             </div>
           </Link>

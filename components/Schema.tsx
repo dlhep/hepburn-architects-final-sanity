@@ -26,7 +26,7 @@ export function IdentitySchema() {
       "@id": `${site.url}/#birmingham-office`,
       name: "Hepburn Architects Birmingham",
       parentOrganization: { "@id": `${site.url}/#organization` },
-      url: `${site.url}/locations/birmingham`,
+      url: `${site.url}/locations/birmingham-architect`,
       telephone: "+44 7720 813035",
       email: site.email,
       address: {

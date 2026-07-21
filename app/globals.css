@@ -1049,3 +1049,33 @@
     max-height:none;
   }
 }
+
+/* FINAL EQUAL PROJECT GALLERY HEIGHTS */
+.project-gallery:not(.project-gallery-single) figure{
+  display:grid;
+  grid-template-rows:auto minmax(1.5em,auto);
+  align-content:start;
+}
+
+.project-gallery:not(.project-gallery-single) figure img{
+  display:block;
+  width:100% !important;
+  height:clamp(320px,36vw,500px) !important;
+  max-height:none !important;
+  aspect-ratio:auto !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  background:#fff !important;
+  border-radius:18px;
+}
+
+.project-gallery:not(.project-gallery-single) figcaption{
+  min-height:1.5em;
+  margin-top:10px;
+}
+
+@media(max-width:700px){
+  .project-gallery:not(.project-gallery-single) figure img{
+    height:320px !important;
+  }
+}

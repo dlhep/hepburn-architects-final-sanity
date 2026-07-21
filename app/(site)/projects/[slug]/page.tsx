@@ -5,7 +5,6 @@ import { ArrowRight, CheckCircle2, MapPin } from "lucide-react";
 import { getProject, getProjectSlugs, projectImageAlt, projectImageUrl } from "@/lib/projects";
 import { site } from "@/lib/site";
 import { urlFor } from "@/sanity/lib/image";
-import { ProjectLocationLink } from "@/components/WestMidlandsSeoLinks";
 
 type PortableTextBlock = {
   children?: Array<{ text?: string }>;
@@ -320,8 +319,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
     
-      {/* PROJECT LOCATION INTERNAL LINK */}
-      <ProjectLocationLink location={project.location} />
       </>
   );
 }

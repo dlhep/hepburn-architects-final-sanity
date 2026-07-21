@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Facebook, Instagram, MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site";
+import { WestMidlandsFooterLinks } from "@/components/WestMidlandsSeoLinks";
 
 export function Footer() {
   return (
@@ -51,6 +52,13 @@ export function Footer() {
           <h3>Explore</h3>
           <Link href="/services">Services</Link>
           <Link href="/projects">Projects</Link>
+          <Link href="/locations">Locations</Link>
+          <Link href="/locations/birmingham-architects">
+            Architects in Birmingham
+          </Link>
+          <Link href="/locations/solihull-architects">
+            Architects in Solihull
+          </Link>
           
           <Link href="/guides">Guides</Link>
           <Link href="/estimate">Fee calculator</Link>
@@ -62,6 +70,9 @@ export function Footer() {
       <div className="shell footer-bottom">
         © {new Date().getFullYear()} Hepburn Architects Ltd.
       </div>
+    
+      {/* WEST MIDLANDS FOOTER LINKS */}
+      <WestMidlandsFooterLinks />
     </footer>
   );
 }

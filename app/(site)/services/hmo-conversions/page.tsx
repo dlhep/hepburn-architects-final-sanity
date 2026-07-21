@@ -399,10 +399,13 @@ export default function HmoConversionsPage() {
               const Icon = item.icon;
 
               return (
-                <article key={item.title}>
-                  <Icon />
+                <article
+                  key={item.title}
+                  style={{ color: "var(--ink)" }}
+                >
+                  <Icon style={{ color: "var(--orange)" }} />
                   <h3>{item.title}</h3>
-                  <p>{item.text}</p>
+                  <p style={{ color: "var(--muted)" }}>{item.text}</p>
                 </article>
               );
             })}

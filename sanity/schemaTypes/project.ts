@@ -61,7 +61,22 @@ export const projectType = defineType({
     defineField({ name: "contractValue", title: "Indicative contract value", type: "string", group: "content" }),
     defineField({ name: "completion", title: "Completion / status", type: "string", group: "content" }),
     defineField({ name: "services", title: "Architectural services", type: "array", group: "content", of: [defineArrayMember({ type: "string" })], options: { layout: "tags" }, validation: (rule) => rule.min(1) }),
-    defineField({ name: "featured", title: "Feature on homepage", type: "boolean", group: "content", initialValue: false }),
+    defineField({
+      name: "featured",
+      title: "Feature in homepage project grid",
+      type: "boolean",
+      group: "content",
+      description: "Use this for the three project images near the top of the homepage.",
+      initialValue: false,
+    }),
+    defineField({
+      name: "featuredCaseStudy",
+      title: "Use as homepage featured case study",
+      type: "boolean",
+      group: "content",
+      description: "Select this on one project only. It controls the large featured case study beneath the three homepage project images.",
+      initialValue: false,
+    }),
     defineField({
       name: "featuredImage",
       title: "Featured image",

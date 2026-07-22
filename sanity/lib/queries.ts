@@ -16,6 +16,7 @@ const PROJECT_FIELDS = `
   completion,
   services,
   featured,
+  featuredCaseStudy,
   featuredImage {
     alt,
     caption,
@@ -33,13 +34,13 @@ const PROJECT_FIELDS = `
 `;
 
 export const PROJECTS_QUERY = defineQuery(`
-  *[_type == "project" && defined(slug.current)] | order(featured desc, _updatedAt desc) {
+  *[_type == "project" && defined(slug.current)] | order(featuredCaseStudy desc, featured desc, _updatedAt desc) {
     ${PROJECT_FIELDS}
   }
 `);
 
 export const FEATURED_PROJECTS_QUERY = defineQuery(`
-  *[_type == "project" && defined(slug.current) && featured == true] | order(_updatedAt desc)[0...3] {
+  *[_type == "project" && defined(slug.current) && featured == true && featuredCaseStudy != true] | order(_updatedAt desc)[0...3] {
     ${PROJECT_FIELDS}
   }
 `);

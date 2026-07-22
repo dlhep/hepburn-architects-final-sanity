@@ -39,7 +39,7 @@ export function ArchitectFeeCalculator(){
     let multiplier=current.multiplier*scaleMultiplier;
     if(route==="full")multiplier*=1.1;
     if(route==="complex")multiplier*=1.22;
-    const adjusted=key==="survey"?Math.round((base*(current.metric==="area"?1:1.15))/50)*50:Math.round((base*multiplier)/50)*50;
+    const adjusted=key==="survey"?Math.round((base*(current.metric==="area"?1:1.15))/50)*50:Math.round((base*multiplier*.9)/50)*50;
     return {key,label,adjusted};
   }),[current,scaleMultiplier,route,selected]);
 

@@ -1,4 +1,5 @@
 import { articleType } from "./article";
+import { collaboratorType } from "./collaborator";
 import { projectType } from "./project";
 
-export const schemaTypes = [projectType, articleType];
+export const schemaTypes = [projectType, articleType, collaboratorType];

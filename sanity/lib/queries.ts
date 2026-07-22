@@ -98,3 +98,25 @@ export const ARTICLE_QUERY = defineQuery(`
   }
 `);
 
+export const COLLABORATORS_QUERY = defineQuery(`
+  *[_type == "collaborator" && active != false]
+  | order(coalesce(displayOrder, 999) asc, name asc) {
+    _id,
+    name,
+    role,
+    relationshipLabel,
+    company,
+    bio,
+    qualifications,
+    website,
+    linkedin,
+    email,
+    displayOrder,
+    photo {
+      alt,
+      hotspot,
+      crop,
+      asset->{_id, url, metadata{dimensions}}
+    }
+  }
+`);

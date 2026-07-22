@@ -145,8 +145,7 @@ export default async function GuidePage({
 
             <ArticleBody value={sanityPage.body || []} />
 
-            {slug === "complete-house-extension-guide" ? (
-) : null}
+            
 
             <div className="content-cta">
               <h2>Get project-specific advice.</h2>

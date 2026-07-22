@@ -153,6 +153,93 @@ export const articleType = defineType({
             defineField({ name: "caption", title: "Caption", type: "string" }),
           ],
         }),
+
+        defineArrayMember({
+          name: "callout",
+          title: "Expert tip or warning",
+          type: "object",
+          fields: [
+            defineField({
+              name: "tone",
+              title: "Style",
+              type: "string",
+              options: {
+                list: [
+                  { title: "Expert tip", value: "tip" },
+                  { title: "Important", value: "important" },
+                  { title: "Warning", value: "warning" },
+                ],
+                layout: "radio",
+              },
+              initialValue: "tip",
+            }),
+            defineField({ name: "title", title: "Heading", type: "string", validation: (rule) => rule.required() }),
+            defineField({ name: "text", title: "Text", type: "text", rows: 4, validation: (rule) => rule.required() }),
+          ],
+          preview: { select: { title: "title", subtitle: "tone" } },
+        }),
+        defineArrayMember({
+          name: "checklist",
+          title: "Checklist",
+          type: "object",
+          fields: [
+            defineField({ name: "title", title: "Checklist heading", type: "string", validation: (rule) => rule.required() }),
+            defineField({ name: "items", title: "Items", type: "array", of: [{ type: "string" }], validation: (rule) => rule.required().min(1) }),
+          ],
+          preview: { select: { title: "title" } },
+        }),
+        defineArrayMember({
+          name: "faqGroup",
+          title: "FAQ section",
+          type: "object",
+          fields: [
+            defineField({ name: "title", title: "Section heading", type: "string", initialValue: "Frequently asked questions" }),
+            defineField({
+              name: "items",
+              title: "Questions",
+              type: "array",
+              of: [
+                defineArrayMember({
+                  type: "object",
+                  fields: [
+                    defineField({ name: "question", title: "Question", type: "string", validation: (rule) => rule.required() }),
+                    defineField({ name: "answer", title: "Answer", type: "text", rows: 4, validation: (rule) => rule.required() }),
+                  ],
+                  preview: { select: { title: "question" } },
+                }),
+              ],
+              validation: (rule) => rule.required().min(1),
+            }),
+          ],
+          preview: { select: { title: "title" } },
+        }),
+        defineArrayMember({
+          name: "youtube",
+          title: "YouTube video",
+          type: "object",
+          fields: [
+            defineField({ name: "title", title: "Video title", type: "string", validation: (rule) => rule.required() }),
+            defineField({ name: "url", title: "YouTube URL", type: "url", validation: (rule) => rule.required() }),
+          ],
+          preview: { select: { title: "title", subtitle: "url" } },
+        }),
+        defineArrayMember({
+          name: "download",
+          title: "Download box",
+          type: "object",
+          fields: [
+            defineField({ name: "title", title: "Download title", type: "string", validation: (rule) => rule.required() }),
+            defineField({ name: "description", title: "Description", type: "text", rows: 3 }),
+            defineField({ name: "buttonText", title: "Button text", type: "string", initialValue: "Download guide" }),
+            defineField({
+              name: "url",
+              title: "Download or form URL",
+              type: "url",
+              validation: (rule) => rule.required().uri({ allowRelative: true, scheme: ["http", "https"] }),
+            }),
+          ],
+          preview: { select: { title: "title", subtitle: "url" } },
+        }),
       ],
       validation: (rule) => rule.required().min(1),
     }),

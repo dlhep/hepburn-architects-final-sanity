@@ -191,17 +191,16 @@ export default async function AboutPage() {
         <div className="shell studio-v4-hero-grid">
           <div className="studio-v4-hero-copy">
             <small className="eyebrow">The studio</small>
-            <h1>A residential architecture practice built around direct expertise.</h1>
+            <h1>Residential architecture, led with direct expertise.</h1>
             <p className="lead">
-              Hepburn Architects is a director-led studio working with homeowners,
-              developers and property owners across Birmingham, the West Midlands,
-              Teesside and the wider UK.
+              Hepburn Architects is a director-led studio for homeowners, developers
+              and property owners across Birmingham, the West Midlands, Teesside
+              and the wider UK.
             </p>
             <p>
-              We combine architectural design, planning strategy and technical
-              coordination within one clear process. Where additional expertise is
-              required, a trusted network of independent consultants is assembled
-              around the needs of the project.
+              Design, planning strategy and technical coordination are brought
+              together through one clear process, with trusted independent
+              specialists added where the project requires them.
             </p>
             <div className="studio-v4-hero-actions">
               <a

@@ -3019,3 +3019,29 @@
   }
 }
 /* STUDIO HERO COMPACT V5 - END */
+
+/* STUDIO PORTRAIT SIZE V6 - START */
+.studio-v4-hero-grid {
+  grid-template-columns: minmax(0, 680px) 380px;
+  gap: 42px;
+}
+
+.studio-v4-founder-visual {
+  width: 380px;
+  max-height: 475px;
+}
+
+@media (max-width: 950px) {
+  .studio-v4-founder-visual {
+    width: min(100%, 350px);
+    max-height: 438px;
+  }
+}
+
+@media (max-width: 650px) {
+  .studio-v4-founder-visual {
+    width: min(100%, 310px);
+    max-height: 388px;
+  }
+}
+/* STUDIO PORTRAIT SIZE V6 - END */

@@ -1,5 +1,15 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
+const roleCategories = [
+  "Architecture & Design",
+  "Planning",
+  "Engineering",
+  "Energy & Sustainability",
+  "Environment & Landscape",
+  "Interiors & Specialist Design",
+  "Other Specialists",
+];
+
 export const collaboratorType = defineType({
   name: "collaborator",
   title: "Collaborative Team",
@@ -24,6 +34,20 @@ export const collaboratorType = defineType({
       group: "profile",
       description: "For example: Structural Engineer or Planning Consultant.",
       validation: (rule) => rule.required().max(100),
+    }),
+    defineField({
+      name: "roleCategory",
+      title: "Role filter category",
+      type: "string",
+      group: "profile",
+      description:
+        "Controls which role filter this person appears under on the Studio page.",
+      options: {
+        list: roleCategories.map((title) => ({ title, value: title })),
+        layout: "dropdown",
+      },
+      initialValue: "Other Specialists",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "relationshipLabel",
@@ -103,7 +127,8 @@ export const collaboratorType = defineType({
       title: "Public contact email",
       type: "email",
       group: "links",
-      description: "Optional. Leave blank when enquiries should come through Hepburn Architects.",
+      description:
+        "Optional. Leave blank when enquiries should come through Hepburn Architects.",
     }),
     defineField({
       name: "displayOrder",
@@ -126,13 +151,14 @@ export const collaboratorType = defineType({
     select: {
       title: "name",
       role: "role",
+      category: "roleCategory",
       company: "company",
       media: "photo",
     },
-    prepare({ title, role, company, media }) {
+    prepare({ title, role, category, company, media }) {
       return {
         title,
-        subtitle: [role, company].filter(Boolean).join(" · "),
+        subtitle: [role, company, category].filter(Boolean).join(" · "),
         media,
       };
     },
@@ -144,6 +170,14 @@ export const collaboratorType = defineType({
       by: [
         { field: "displayOrder", direction: "asc" },
         { field: "name", direction: "asc" },
+      ],
+    },
+    {
+      title: "Role category",
+      name: "roleCategoryAsc",
+      by: [
+        { field: "roleCategory", direction: "asc" },
+        { field: "displayOrder", direction: "asc" },
       ],
     },
     {

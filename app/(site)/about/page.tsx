@@ -9,19 +9,12 @@ import {
   Compass,
   DraftingCompass,
   House,
-  Linkedin,
-  Mail,
   MapPin,
-  UserRound,
   UsersRound,
   Workflow,
 } from "lucide-react";
-import {
-  collaboratorImageUrl,
-  collaboratorInitials,
-  getCollaborators,
-  type Collaborator,
-} from "@/lib/collaborators";
+import { CollaborativeTeamGrid } from "@/components/CollaborativeTeamGrid";
+import { getCollaborators, type Collaborator } from "@/lib/collaborators";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -66,6 +59,7 @@ const practiceStrengths = [
 const placeholderCollaborators: Collaborator[] = [
   {
     _id: "placeholder-structural",
+    roleCategory: "Engineering",
     name: "Profile to be added",
     role: "Structural Engineer",
     relationshipLabel: "Independent collaborator",
@@ -74,6 +68,7 @@ const placeholderCollaborators: Collaborator[] = [
   },
   {
     _id: "placeholder-planning",
+    roleCategory: "Planning",
     name: "Profile to be added",
     role: "Planning Consultant",
     relationshipLabel: "Independent collaborator",
@@ -82,6 +77,7 @@ const placeholderCollaborators: Collaborator[] = [
   },
   {
     _id: "placeholder-energy",
+    roleCategory: "Energy & Sustainability",
     name: "Profile to be added",
     role: "Energy & Sustainability Consultant",
     relationshipLabel: "Independent collaborator",
@@ -90,6 +86,7 @@ const placeholderCollaborators: Collaborator[] = [
   },
   {
     _id: "placeholder-drainage",
+    roleCategory: "Engineering",
     name: "Profile to be added",
     role: "Drainage & Civil Engineer",
     relationshipLabel: "Independent collaborator",
@@ -98,6 +95,7 @@ const placeholderCollaborators: Collaborator[] = [
   },
   {
     _id: "placeholder-ecology",
+    roleCategory: "Environment & Landscape",
     name: "Profile to be added",
     role: "Ecology & Arboricultural Consultant",
     relationshipLabel: "Independent collaborator",
@@ -106,6 +104,7 @@ const placeholderCollaborators: Collaborator[] = [
   },
   {
     _id: "placeholder-interiors",
+    roleCategory: "Interiors & Specialist Design",
     name: "Profile to be added",
     role: "Interior & Specialist Designer",
     relationshipLabel: "Independent collaborator",
@@ -188,9 +187,9 @@ export default async function AboutPage() {
 
   return (
     <>
-      <section className="studio-v3-hero">
-        <div className="shell studio-v3-hero-grid">
-          <div className="studio-v3-hero-copy">
+      <section className="studio-v4-hero">
+        <div className="shell studio-v4-hero-grid">
+          <div className="studio-v4-hero-copy">
             <small className="eyebrow">The studio</small>
             <h1>A residential architecture practice built around direct expertise.</h1>
             <p className="lead">
@@ -204,7 +203,7 @@ export default async function AboutPage() {
               required, a trusted network of independent consultants is assembled
               around the needs of the project.
             </p>
-            <div className="studio-v3-hero-actions">
+            <div className="studio-v4-hero-actions">
               <a
                 className="btn primary"
                 href={site.calendly}
@@ -219,7 +218,7 @@ export default async function AboutPage() {
             </div>
           </div>
 
-          <div className="studio-v3-founder-visual">
+          <div className="studio-v4-founder-visual">
             <Image
               src="https://www.hepburnarchitects.com/wp-content/uploads/2026/06/David-Hepburn.png"
               alt="David Hepburn, founding director of Hepburn Architects"
@@ -227,7 +226,7 @@ export default async function AboutPage() {
               priority
               sizes="(max-width: 950px) 100vw, 380px"
             />
-            <div className="studio-v3-founder-caption">
+            <div className="studio-v4-founder-caption">
               <small>Founding Director</small>
               <strong>David Hepburn</strong>
               <span>Architect · ARB · RIBA</span>
@@ -236,7 +235,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="studio-v3-practice-strip" aria-label="Practice overview">
+      <section className="studio-v4-practice-strip" aria-label="Practice overview">
         <div className="shell">
           <div>
             <strong>Director-led</strong>
@@ -257,13 +256,13 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="section studio-v3-director-section">
-        <div className="shell studio-v3-director-grid">
+      <section className="section studio-v4-director-section">
+        <div className="shell studio-v4-director-grid">
           <div>
             <small className="eyebrow">Meet the founding director</small>
             <h2>Personal architectural guidance without the handovers.</h2>
           </div>
-          <div className="studio-v3-director-copy">
+          <div className="studio-v4-director-copy">
             <p className="lead">
               David Hepburn leads the architectural design, planning and technical
               coordination of every Hepburn Architects commission.
@@ -282,7 +281,7 @@ export default async function AboutPage() {
               of the wider project team rather than replacing that direct
               relationship.
             </p>
-            <div className="studio-v3-director-links">
+            <div className="studio-v4-director-links">
               <a href={site.phoneHref}>Call {site.phone}</a>
               <a href={`mailto:${site.email}`}>{site.email}</a>
             </div>
@@ -290,8 +289,8 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="studio-v3-strengths-section">
-        <div className="shell studio-v3-section-heading">
+      <section className="studio-v4-strengths-section">
+        <div className="shell studio-v4-section-heading">
           <div>
             <small className="eyebrow">Practice expertise</small>
             <h2>Design, approval strategy and technical thinking developed together.</h2>
@@ -302,7 +301,7 @@ export default async function AboutPage() {
             project genuinely requires it.
           </p>
         </div>
-        <div className="shell studio-v3-strengths-grid">
+        <div className="shell studio-v4-strengths-grid">
           {practiceStrengths.map(({ icon: Icon, title, text }, index) => (
             <article key={title}>
               <div>
@@ -316,8 +315,8 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="section studio-v3-collaborators-section">
-        <div className="shell studio-v3-section-heading studio-v3-section-heading-light">
+      <section className="section studio-v4-collaborators-section">
+        <div className="shell studio-v4-section-heading studio-v4-section-heading-light">
           <div>
             <small className="eyebrow">Collaborative team</small>
             <h2>A wider project team assembled around each commission.</h2>
@@ -329,100 +328,12 @@ export default async function AboutPage() {
           </p>
         </div>
 
-        <div className="shell studio-v3-collaborator-grid">
-          {collaborators.map((collaborator) => {
-            const imageUrl = collaboratorImageUrl(collaborator.photo);
-            const name = collaborator.name || collaborator.role;
+        <CollaborativeTeamGrid
+          collaborators={collaborators}
+          usingPlaceholders={usingPlaceholders}
+        />
 
-            return (
-              <article
-                className={`studio-v3-collaborator-card ${
-                  usingPlaceholders ? "is-placeholder" : ""
-                }`}
-                key={collaborator._id || `${collaborator.role}-${name}`}
-              >
-                <div className="studio-v3-collaborator-photo">
-                  {imageUrl ? (
-                    <Image
-                      src={imageUrl}
-                      alt={collaborator.photo?.alt || `${name}, ${collaborator.role}`}
-                      fill
-                      sizes="(max-width: 650px) 100vw, (max-width: 950px) 50vw, 33vw"
-                    />
-                  ) : (
-                    <>
-                      <UserRound aria-hidden="true" />
-                      <span>{collaboratorInitials(collaborator)}</span>
-                    </>
-                  )}
-                </div>
-
-                <div className="studio-v3-collaborator-content">
-                  <small>
-                    {usingPlaceholders
-                      ? "Collaborator profile being added"
-                      : collaborator.relationshipLabel || "Independent collaborator"}
-                  </small>
-                  <h3>{name}</h3>
-                  <strong>{collaborator.role}</strong>
-                  {collaborator.company && (
-                    <span className="studio-v3-collaborator-company">
-                      {collaborator.company}
-                    </span>
-                  )}
-                  <p>{collaborator.bio}</p>
-
-                  {!!collaborator.qualifications?.length && (
-                    <div className="studio-v3-qualification-list">
-                      {collaborator.qualifications.map((qualification) => (
-                        <span key={qualification}>{qualification}</span>
-                      ))}
-                    </div>
-                  )}
-
-                  {(collaborator.website ||
-                    collaborator.linkedin ||
-                    collaborator.email) && (
-                    <div className="studio-v3-collaborator-links">
-                      {collaborator.website && (
-                        <a
-                          href={collaborator.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Company website <ArrowUpRight size={16} />
-                        </a>
-                      )}
-                      {collaborator.linkedin && (
-                        <a
-                          href={collaborator.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${name} on LinkedIn`}
-                        >
-                          <Linkedin size={16} /> LinkedIn
-                        </a>
-                      )}
-                      {collaborator.email && (
-                        <a href={`mailto:${collaborator.email}`}>
-                          <Mail size={16} /> Email
-                        </a>
-                      )}
-                    </div>
-                  )}
-
-                  {usingPlaceholders && (
-                    <span className="studio-v3-placeholder-link">
-                      Name, company and photograph coming soon
-                    </span>
-                  )}
-                </div>
-              </article>
-            );
-          })}
-        </div>
-
-        <div className="shell studio-v3-team-note">
+        <div className="shell studio-v4-team-note">
           <UsersRound />
           <div>
             <strong>A flexible team, not a one-size-fits-all appointment</strong>
@@ -436,9 +347,9 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="section studio-v3-values-section">
-        <div className="shell studio-v3-values-grid">
-          <div className="studio-v3-values-intro">
+      <section className="section studio-v4-values-section">
+        <div className="shell studio-v4-values-grid">
+          <div className="studio-v4-values-intro">
             <small className="eyebrow">How we think</small>
             <h2>Clear thinking before unnecessary complexity.</h2>
             <p>
@@ -447,7 +358,7 @@ export default async function AboutPage() {
               properly and move toward construction.
             </p>
           </div>
-          <div className="studio-v3-value-list">
+          <div className="studio-v4-value-list">
             {values.map((value) => (
               <article key={value.number}>
                 <span>{value.number}</span>
@@ -461,8 +372,8 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="section studio-v3-process-section">
-        <div className="shell studio-v3-section-heading">
+      <section className="section studio-v4-process-section">
+        <div className="shell studio-v4-section-heading">
           <div>
             <small className="eyebrow">How an appointment works</small>
             <h2>A clear route from first conversation to construction preparation.</h2>
@@ -473,7 +384,7 @@ export default async function AboutPage() {
           </p>
         </div>
 
-        <div className="shell studio-v3-process-grid">
+        <div className="shell studio-v4-process-grid">
           {stages.map((stage) => (
             <article key={stage.number}>
               <span>{stage.number}</span>
@@ -485,7 +396,7 @@ export default async function AboutPage() {
           ))}
         </div>
 
-        <div className="shell studio-v3-scope-note">
+        <div className="shell studio-v4-scope-note">
           <Workflow />
           <p>
             Hepburn Architects typically supports projects through survey,
@@ -497,8 +408,8 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="studio-v3-standards-section">
-        <div className="shell studio-v3-standards-grid">
+      <section className="studio-v4-standards-section">
+        <div className="shell studio-v4-standards-grid">
           <div>
             <small className="eyebrow">Professional reassurance</small>
             <h2>Independent advice supported by recognised professional standards.</h2>
@@ -518,8 +429,8 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="section studio-v3-studios-section">
-        <div className="shell studio-v3-section-heading">
+      <section className="section studio-v4-studios-section">
+        <div className="shell studio-v4-section-heading">
           <div>
             <small className="eyebrow">Our studios</small>
             <h2>Regional knowledge with a wider project reach.</h2>
@@ -531,9 +442,9 @@ export default async function AboutPage() {
           </p>
         </div>
 
-        <div className="shell studio-v3-studio-cards">
+        <div className="shell studio-v4-studio-cards">
           <article>
-            <div className="studio-v3-studio-card-icon">
+            <div className="studio-v4-studio-card-icon">
               <Building2 />
             </div>
             <small>West Midlands</small>
@@ -558,7 +469,7 @@ export default async function AboutPage() {
           </article>
 
           <article>
-            <div className="studio-v3-studio-card-icon">
+            <div className="studio-v4-studio-card-icon">
               <MapPin />
             </div>
             <small>Teesside and North East</small>

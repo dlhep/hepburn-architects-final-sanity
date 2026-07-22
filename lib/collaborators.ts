@@ -23,6 +23,7 @@ export type Collaborator = {
   _id?: string;
   name: string;
   role: string;
+  roleCategory?: string;
   relationshipLabel?: string;
   company?: string;
   bio: string;

@@ -104,6 +104,7 @@ export const COLLABORATORS_QUERY = defineQuery(`
     _id,
     name,
     role,
+    roleCategory,
     relationshipLabel,
     company,
     bio,

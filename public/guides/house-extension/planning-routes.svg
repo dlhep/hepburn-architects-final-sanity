@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Typical rear extension planning routes</title><desc id="desc">Comparison of standard permitted development, larger home extension prior approval and householder planning permission.</desc>
+<rect width="1200" height="720" fill="#f7f5f0"/>
+<style>.t{font:600 25px Arial,sans-serif;fill:#1d1d1b}.s{font:18px Arial,sans-serif;fill:#555}.box{fill:#fff;stroke:#1d1d1b;stroke-width:3}.accent{fill:#d96c2c}.line{stroke:#1d1d1b;stroke-width:4;fill:none;stroke-dasharray:10 8}</style>
+<text x="60" y="60" class="t">Typical rear-extension planning routes</text>
+<g transform="translate(60 120)">
+<g><rect class="box" width="330" height="390" rx="18"/><text x="25" y="48" class="t">1. Permitted development</text><rect x="45" y="125" width="120" height="130" fill="#ded9d0" stroke="#1d1d1b" stroke-width="4"/><rect x="165" y="185" width="80" height="70" class="accent" stroke="#1d1d1b" stroke-width="4"/><path class="line" d="M165 285h80"/><text x="25" y="330" class="s">Rules-based route</text><text x="25" y="360" class="s">All limitations must be met</text></g>
+<g transform="translate(375)"><rect class="box" width="330" height="390" rx="18"/><text x="25" y="48" class="t">2. Larger home extension</text><rect x="45" y="125" width="120" height="130" fill="#ded9d0" stroke="#1d1d1b" stroke-width="4"/><rect x="165" y="155" width="125" height="100" class="accent" stroke="#1d1d1b" stroke-width="4"/><path class="line" d="M165 285h125"/><text x="25" y="330" class="s">Prior approval procedure</text><text x="25" y="360" class="s">Neighbour consultation applies</text></g>
+<g transform="translate(750)"><rect class="box" width="330" height="390" rx="18"/><text x="25" y="48" class="t">3. Planning application</text><rect x="45" y="125" width="120" height="130" fill="#ded9d0" stroke="#1d1d1b" stroke-width="4"/><path d="M165 135h135v120H165z" fill="#d96c2c" stroke="#1d1d1b" stroke-width="4"/><text x="25" y="330" class="s">Design assessed against policy</text><text x="25" y="360" class="s">Used where PD does not apply</text></g>
+</g>
+<rect x="60" y="560" width="1080" height="100" rx="16" fill="#fff" stroke="#d4cec4" stroke-width="2"/>
+<text x="90" y="605" class="s">Eligibility depends on the property, previous additions, designations, removed rights and every relevant technical limitation.</text>
+</svg>

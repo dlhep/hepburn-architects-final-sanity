@@ -8,6 +8,7 @@ import {
   Phone,
 } from "lucide-react";
 import { ArticleBody } from "@/components/ArticleBody";
+import { ExtensionGuideDiagrams } from "@/components/ExtensionGuideDiagrams";
 import { articleImageUrl, getArticle } from "@/lib/articles";
 import { guides } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -144,6 +145,10 @@ export default async function GuidePage({
             </div>
 
             <ArticleBody value={sanityPage.body || []} />
+
+            {slug === "complete-house-extension-guide" ? (
+              <ExtensionGuideDiagrams />
+            ) : null}
 
             <div className="content-cta">
               <h2>Get project-specific advice.</h2>

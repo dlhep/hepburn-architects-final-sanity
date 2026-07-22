@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Planning permission versus Building Regulations</title><desc id="desc">A two-column comparison showing typical matters considered by planning and Building Regulations.</desc>
+<rect width="1200" height="720" fill="#f7f5f0"/>
+<style>.t{font:600 28px Arial,sans-serif;fill:#1d1d1b}.s{font:21px Arial,sans-serif;fill:#1d1d1b}.muted{font:18px Arial,sans-serif;fill:#555}.head{fill:#d96c2c}.box{fill:#fff;stroke:#d4cec4;stroke-width:2}.line{stroke:#d4cec4;stroke-width:2}</style>
+<text x="60" y="60" class="t">Planning permission and Building Regulations are separate</text>
+<g transform="translate(60 115)">
+<rect class="box" width="510" height="500" rx="20"/><rect class="head" width="510" height="75" rx="20"/><rect class="head" y="45" width="510" height="30"/><text x="255" y="48" text-anchor="middle" fill="#fff" class="t">Planning</text>
+<text x="35" y="125" class="s">Appearance and design</text><line x1="35" y1="145" x2="475" y2="145" class="line"/>
+<text x="35" y="190" class="s">Neighbour amenity</text><line x1="35" y1="210" x2="475" y2="210" class="line"/>
+<text x="35" y="255" class="s">Street and area character</text><line x1="35" y1="275" x2="475" y2="275" class="line"/>
+<text x="35" y="320" class="s">Heritage and landscape</text><line x1="35" y1="340" x2="475" y2="340" class="line"/>
+<text x="35" y="385" class="s">Scale, massing and land use</text><text x="35" y="455" class="muted">Question: Is the development acceptable here?</text>
+</g>
+<g transform="translate(630 115)">
+<rect class="box" width="510" height="500" rx="20"/><rect x="0" width="510" height="75" rx="20" fill="#1d1d1b"/><rect x="0" y="45" width="510" height="30" fill="#1d1d1b"/><text x="255" y="48" text-anchor="middle" fill="#fff" class="t">Building Regulations</text>
+<text x="35" y="125" class="s">Structure and foundations</text><line x1="35" y1="145" x2="475" y2="145" class="line"/>
+<text x="35" y="190" class="s">Fire and means of escape</text><line x1="35" y1="210" x2="475" y2="210" class="line"/>
+<text x="35" y="255" class="s">Insulation and ventilation</text><line x1="35" y1="275" x2="475" y2="275" class="line"/>
+<text x="35" y="320" class="s">Drainage and sanitation</text><line x1="35" y1="340" x2="475" y2="340" class="line"/>
+<text x="35" y="385" class="s">Safety, access and workmanship</text><text x="35" y="455" class="muted">Question: Is the work technically compliant?</text>
+</g>
+</svg>

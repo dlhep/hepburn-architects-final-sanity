@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">House extension budget allowances</title><desc id="desc">A circular diagram showing the main categories a complete extension budget should consider, without assigning fixed percentages.</desc>
+<rect width="1200" height="760" fill="#f7f5f0"/>
+<style>.t{font:600 27px Arial,sans-serif;fill:#1d1d1b}.s{font:19px Arial,sans-serif;fill:#555}.ring{fill:none;stroke:#1d1d1b;stroke-width:78}.accent{fill:none;stroke:#d96c2c;stroke-width:78;stroke-dasharray:260 900;transform:rotate(-90deg);transform-origin:390px 390px}.box{fill:#fff;stroke:#d4cec4;stroke-width:2}</style>
+<text x="60" y="60" class="t">What a complete extension budget should include</text>
+<circle cx="390" cy="390" r="190" class="ring"/><circle cx="390" cy="390" r="190" class="accent"/><circle cx="390" cy="390" r="115" fill="#f7f5f0"/>
+<text x="390" y="378" text-anchor="middle" class="t">Total project</text><text x="390" y="414" text-anchor="middle" class="t">budget</text>
+<g transform="translate(680 130)">
+<rect width="450" height="500" rx="20" class="box"/>
+<circle cx="38" cy="55" r="10" fill="#d96c2c"/><text x="65" y="62" class="s">Core construction</text>
+<circle cx="38" cy="112" r="10" fill="#1d1d1b"/><text x="65" y="119" class="s">Windows, doors and glazing</text>
+<circle cx="38" cy="169" r="10" fill="#d96c2c"/><text x="65" y="176" class="s">Kitchen, bathrooms and finishes</text>
+<circle cx="38" cy="226" r="10" fill="#1d1d1b"/><text x="65" y="233" class="s">Professional and consultant fees</text>
+<circle cx="38" cy="283" r="10" fill="#d96c2c"/><text x="65" y="290" class="s">Application and approval fees</text>
+<circle cx="38" cy="340" r="10" fill="#1d1d1b"/><text x="65" y="347" class="s">External works and landscaping</text>
+<circle cx="38" cy="397" r="10" fill="#d96c2c"/><text x="65" y="404" class="s">VAT</text>
+<circle cx="38" cy="454" r="10" fill="#1d1d1b"/><text x="65" y="461" class="s">Contingency for unknowns</text>
+</g>
+<text x="60" y="700" class="s">The diagram deliberately avoids fixed percentages: the correct allowance depends on scope, specification, site conditions and design maturity.</text>
+</svg>

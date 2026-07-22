@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
@@ -18,15 +19,27 @@ export function ProjectsFilter({ projects }: { projects: Project[] }) {
     <>
       <div className="project-filters" role="group" aria-label="Filter projects by type">
         {categories.map((item) => (
-          <button key={item} type="button" className={filter === item ? "active" : ""} onClick={() => setFilter(item)}>
+          <button
+            key={item}
+            type="button"
+            className={filter === item ? "active" : ""}
+            aria-pressed={filter === item}
+            onClick={() => setFilter(item)}
+          >
             {item}
           </button>
         ))}
       </div>
-      <div className="projects-grid expanded-projects genuine-projects" style={{ alignItems: "start" }}>
+      <div className="projects-grid expanded-projects genuine-projects" style={{ alignItems: "start" }} aria-live="polite">
         {visible.map((project) => (
           <Link href={`/projects/${project.slug}`} className="project-card" key={project.slug} style={{ alignSelf: "start" }}>
-            <img src={projectImageUrl(project.featuredImage, 1200)} alt={projectImageAlt(project)} loading="lazy" />
+            <Image
+              src={projectImageUrl(project.featuredImage, 1200)}
+              alt={projectImageAlt(project)}
+              width={1200}
+              height={800}
+              sizes="(max-width: 650px) 100vw, 50vw"
+            />
             <div>
               <small>{project.location} · {project.projectType}</small>
               <h2>{project.title}</h2>

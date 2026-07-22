@@ -1,15 +1,14 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 
 export function ContactForm({
   source = "Website contact page",
 }: {
   source?: string;
 }) {
-  const [status, setStatus] = useState<
-    "idle" | "sending" | "sent" | "error"
-  >("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,13 +32,18 @@ export function ContactForm({
       if (!response.ok) throw new Error();
       form.reset();
       setStatus("sent");
+      window.dispatchEvent(
+        new CustomEvent("hepburn:lead", {
+          detail: { lead_source: source, lead_type: "contact_form" },
+        }),
+      );
     } catch {
       setStatus("error");
     }
   }
 
   return (
-    <form className="contact-form" onSubmit={submit}>
+    <form className="contact-form" onSubmit={submit} aria-busy={status === "sending"}>
       <input type="hidden" name="source" value={source} />
 
       <label>
@@ -49,21 +53,12 @@ export function ContactForm({
 
       <label>
         Email
-        <input
-          name="email"
-          type="email"
-          autoComplete="email"
-          required
-        />
+        <input name="email" type="email" autoComplete="email" required />
       </label>
 
       <label>
         Telephone
-        <input
-          name="telephone"
-          type="tel"
-          autoComplete="tel"
-        />
+        <input name="telephone" type="tel" autoComplete="tel" />
       </label>
 
       <label>
@@ -95,18 +90,26 @@ export function ContactForm({
         <textarea name="message" rows={6} required />
       </label>
 
-      <button className="btn primary" disabled={status === "sending"}>
+      <button type="submit" className="btn primary" disabled={status === "sending"}>
         {status === "sending" ? "Sending…" : "Send enquiry"}
       </button>
+      <p className="muted small-copy">
+        We use your details to respond to this enquiry. Read our{" "}
+        <Link href="/privacy">privacy and cookie notice</Link>.
+      </p>
 
-      {status === "sent" && (
-        <p className="success">Thank you. Your enquiry has been received.</p>
-      )}
-      {status === "error" && (
-        <p className="error">
-          The message could not be sent. Please try again.
-        </p>
-      )}
+      <div aria-live="polite" aria-atomic="true">
+        {status === "sent" && (
+          <p className="success" role="status">
+            Thank you. Your enquiry has been received.
+          </p>
+        )}
+        {status === "error" && (
+          <p className="error" role="alert">
+            The message could not be sent. Please try again or call the studio.
+          </p>
+        )}
+      </div>
     </form>
   );
 }

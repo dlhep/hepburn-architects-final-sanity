@@ -1,32 +1,55 @@
 import type { MetadataRoute } from "next";
 import { services, locations, guides } from "@/lib/content";
-import { getProjectSlugs } from "@/lib/projects";
+import { getProjects } from "@/lib/projects";
+import { getBlogPosts, getSanityGuides } from "@/lib/articles";
 import { site } from "@/lib/site";
 
+const STATIC_LAST_MODIFIED = "2026-07-22";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const projectSlugs = await getProjectSlugs();
-  const paths = [
+  const [projects, blogPosts, sanityGuides] = await Promise.all([
+    getProjects(),
+    getBlogPosts(),
+    getSanityGuides(),
+  ]);
+
+  const entries = new Map<string, MetadataRoute.Sitemap[number]>();
+  const add = (path: string, lastModified: string | Date = STATIC_LAST_MODIFIED) => {
+    const url = `${site.url}${path}`;
+    entries.set(url, { url, lastModified });
+  };
+
+  [
     "",
     "/services",
     "/locations",
     "/guides",
+    "/blog",
     "/estimate",
     "/projects",
     "/about",
     "/contact",
     "/privacy",
-  ];
-  const dynamic = [
-    ...services.map((item) => `/services/${item.slug}`),
-    ...locations.map((item) => `/locations/${item.slug}`),
-    ...guides.map((item) => `/guides/${item.slug}`),
-    ...projectSlugs.map((slug) => `/projects/${slug}`),
-  ];
+  ].forEach((path) => add(path));
 
-  return [...paths, ...dynamic].map((path) => ({
-    url: `${site.url}${path}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: path === "" ? 1 : 0.7,
-  }));
+  services.forEach((item) => add(`/services/${item.slug}`));
+  locations.forEach((item) => add(`/locations/${item.slug}`));
+
+  // Sanity-only guides, including the Complete House Extension Guide.
+  sanityGuides.forEach((item) =>
+    add(`/guides/${item.slug}`, item._updatedAt || item.publishedAt || STATIC_LAST_MODIFIED),
+  );
+
+  // Static guides take priority over any legacy Sanity placeholder using the same slug.
+  guides.forEach((item) => add(`/guides/${item.slug}`));
+
+  blogPosts.forEach((item) =>
+    add(`/blog/${item.slug}`, item._updatedAt || item.publishedAt || STATIC_LAST_MODIFIED),
+  );
+
+  projects.forEach((project) =>
+    add(`/projects/${project.slug}`, project._updatedAt || STATIC_LAST_MODIFIED),
+  );
+
+  return Array.from(entries.values());
 }

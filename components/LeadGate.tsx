@@ -4,7 +4,7 @@ import { FormEvent, ReactNode, useState } from "react";
 import { ArrowRight, CalendarDays, CheckCircle2, LockKeyhole, ShieldCheck } from "lucide-react";
 import { site } from "@/lib/site";
 
-type LeadGateProps = {
+ type LeadGateProps = {
   source: "architect-fee" | "build-cost";
   projectSummary: Record<string, string | number | string[]>;
   children: ReactNode;
@@ -40,6 +40,16 @@ export function LeadGate({ source, projectSummary, children }: LeadGateProps) {
       if (!response.ok) throw new Error("Submission failed");
       setRevealed(true);
       setStatus("idle");
+      window.dispatchEvent(
+        new CustomEvent("hepburn:lead", {
+          detail: {
+            lead_source: source,
+            lead_type: "calculator",
+            project_type: projectSummary.projectType || "",
+            indicative_fee: projectSummary.indicativeFee || "",
+          },
+        }),
+      );
     } catch {
       setStatus("error");
     }
@@ -49,12 +59,15 @@ export function LeadGate({ source, projectSummary, children }: LeadGateProps) {
     const firstName = name.trim().split(/\s+/)[0] || "there";
     return (
       <div className="lead-revealed">
-        <div className="lead-confirmation">
+        <div className="lead-confirmation" role="status">
           <CheckCircle2 />
           <div>
             <span>Your estimate is ready</span>
             <strong>Thanks, {firstName}.</strong>
-            <p>Your details have been received. Review the estimate below and book a free 30-minute consultation to discuss the next steps.</p>
+            <p>
+              Your details have been received. Review the estimate below and book a free
+              30-minute consultation to discuss the next steps.
+            </p>
           </div>
         </div>
         {children}
@@ -62,7 +75,7 @@ export function LeadGate({ source, projectSummary, children }: LeadGateProps) {
           <div>
             <small>Recommended next step</small>
             <h3>Book a free 30-minute consultation</h3>
-            <p>Discuss the property, planning route, likely approvals and the most suitable appointment.</p>
+            <p>Discuss the property, planning route, likely approvals and suitable appointment.</p>
           </div>
           <a className="btn primary" href={site.calendly} target="_blank" rel="noopener noreferrer">
             <CalendarDays size={18} /> Book consultation <ArrowRight size={17} />
@@ -73,7 +86,7 @@ export function LeadGate({ source, projectSummary, children }: LeadGateProps) {
   }
 
   return (
-    <form className="lead-gate" onSubmit={submit}>
+    <form className="lead-gate" onSubmit={submit} aria-busy={status === "sending"}>
       <div className="lead-gate-heading">
         <div className="lead-lock"><LockKeyhole size={22} /></div>
         <div>
@@ -90,11 +103,13 @@ export function LeadGate({ source, projectSummary, children }: LeadGateProps) {
         <input checked={consent} onChange={(e) => setConsent(e.target.checked)} type="checkbox" required />
         <span>I agree that Hepburn Architects may contact me about this enquiry. <a href="/privacy" target="_blank">Read the privacy notice.</a></span>
       </label>
-      <button className="btn primary lead-submit" disabled={status === "sending"}>
+      <button type="submit" className="btn primary lead-submit" disabled={status === "sending"}>
         {status === "sending" ? "Preparing your estimate…" : "Show my estimate"} {status !== "sending" && <ArrowRight size={17} />}
       </button>
       <div className="lead-trust"><ShieldCheck size={17} /> No obligation. Your details are used only to respond to this enquiry.</div>
-      {status === "error" && <p className="lead-error">Please complete your name, email and consent, then try again.</p>}
+      <div aria-live="polite">
+        {status === "error" && <p className="lead-error" role="alert">Please complete your name, email and consent, then try again.</p>}
+      </div>
     </form>
   );
 }

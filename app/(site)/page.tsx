@@ -37,7 +37,14 @@ export default async function HomePage() {
             <div className="hero-trust"><span><ShieldCheck />ARB registered</span><span><CheckCircle2 />RIBA Chartered Practice</span></div>
           </div>
           <div className="hero-visual photo-frame">
-            <Image src={photos[0].src} alt={photos[0].alt} width={1200} height={1500} priority sizes="(max-width: 950px) 100vw, 45vw" />
+            <Image
+              src={photos[0].src}
+              alt={photos[0].alt}
+              fill
+              priority
+              sizes="(max-width: 950px) 100vw, 45vw"
+              className="hero-image"
+            />
             <div className="hero-note">Residential design with planning strategy built in</div>
           </div>
         </div>

@@ -1182,3 +1182,89 @@
 .footer-link-group h3{
   margin:0 0 3px;
 }
+
+/* HOMEPAGE HERO SIZE AND ALIGNMENT FIX */
+.hero {
+  padding: 42px 0 78px;
+  overflow: hidden;
+}
+
+.hero-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(400px, .92fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.hero-copy {
+  padding-top: 34px;
+}
+
+.hero-copy h1 {
+  max-width: 8ch;
+}
+
+.hero-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  min-height: 0;
+  max-height: 820px;
+  border-radius: 34px;
+  overflow: hidden;
+}
+
+.hero-visual .hero-image {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+}
+
+.hero-note {
+  left: 0;
+  bottom: 36px;
+  z-index: 2;
+}
+
+@media (max-width: 950px) {
+  .hero {
+    padding: 36px 0 68px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .hero-copy {
+    padding-top: 0;
+  }
+
+  .hero-visual {
+    aspect-ratio: 4 / 3;
+    max-height: none;
+  }
+
+  .hero-visual .hero-image {
+    min-height: 0 !important;
+  }
+
+  .hero-note {
+    left: 14px;
+    bottom: 18px;
+  }
+}
+
+@media (max-width: 650px) {
+  .hero-visual {
+    aspect-ratio: 4 / 5;
+    border-radius: 24px;
+  }
+
+  .hero-copy h1 {
+    max-width: 9ch;
+  }
+}
+

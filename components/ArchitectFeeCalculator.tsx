@@ -56,8 +56,8 @@ export function ArchitectFeeCalculator(){
       <fieldset><legend>Services required</legend>{services.map(([key,label])=><label className="check-row" key={key}><input type="checkbox" checked={selected.includes(key)} onChange={()=>setSelected(c=>c.includes(key)?c.filter(i=>i!==key):[...c,key])}/><span>{label}</span></label>)}</fieldset>
       <p className="muted small-copy">Measured survey is optional. Fees remain indicative because access, planning history, heritage, site constraints and specialist information can affect the final scope.</p>
     </div>
-    <div className="fee-result"><LeadGate source="architect-fee" projectSummary={{projectType:current.label,projectScale:scaleSummary,planningComplexity:route,selectedServices:selected.map(k=>services.find(s=>s[0]===k)?.[1]??k),indicativeFee:total?`£${total.toLocaleString()} + VAT`:"No services selected"}}>
-      <small className="eyebrow">Indicative architectural fee</small><strong className="total">{total?`£${total.toLocaleString()} + VAT`:"Select a service"}</strong>
+    <div className="fee-result"><LeadGate source="architect-fee" projectSummary={{projectType:current.label,projectScale:scaleSummary,planningComplexity:route,selectedServices:selected.map(k=>services.find(s=>s[0]===k)?.[1]??k),indicativeFee:total?`£${total.toLocaleString()}`:"No services selected"}}>
+      <small className="eyebrow">Indicative architectural fee</small><strong className="total">{total?`£${total.toLocaleString()}`:"Select a service"}</strong>
       <p>A useful early guide, not false precision. A tailored fixed-fee proposal follows after review of the property, brief, planning history and constraints.</p>
       <div className="breakdown">{breakdown.map(x=><div key={x.key}><span>{x.label}</span><strong>£{x.adjusted.toLocaleString()}</strong></div>)}</div>
       <div className="include"><h3><CheckCircle2/>Included</h3><ul><li>Architect consultation and project review</li><li>Selected design, planning and technical stages</li><li>Reasonable revisions within the appointed stage</li><li>Planning coordination where selected</li></ul></div>

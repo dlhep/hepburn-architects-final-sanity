@@ -3165,3 +3165,55 @@
   }
 }
 /* END FINAL ABOUT MOBILE FIX */
+
+/* PROJECT IMAGE COVER FRAMES — START */
+.projects-grid img,
+.project-card img,
+.featured-project-grid img {
+  object-fit: cover;
+  object-position: center;
+  background: var(--ink);
+}
+
+.project-gallery figure > img,
+.project-gallery-single figure > img {
+  display: block;
+  width: 100% !important;
+  height: clamp(340px, 36vw, 500px) !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  background: var(--ink) !important;
+  border-radius: 18px;
+}
+
+.project-gallery-single figure > img {
+  height: clamp(440px, 56vw, 720px) !important;
+  aspect-ratio: 4 / 3 !important;
+}
+
+@media (max-width: 700px) {
+  .project-gallery figure > img,
+  .project-gallery-single figure > img {
+    height: 310px !important;
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  .project-gallery-single figure > img {
+    height: clamp(310px, 72vw, 430px) !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .project-detail-hero > img {
+    display: block;
+    width: 100%;
+    height: clamp(300px, 72vw, 420px);
+    max-height: none;
+    object-fit: cover;
+    object-position: center;
+    background: var(--ink);
+  }
+}
+/* PROJECT IMAGE COVER FRAMES — END */

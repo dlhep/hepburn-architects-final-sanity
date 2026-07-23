@@ -3045,3 +3045,22 @@
   }
 }
 /* STUDIO PORTRAIT SIZE V6 - END */
+
+/* STUDIO MOBILE LAYOUT FIX V2 */
+@media (max-width: 767px) {
+  .studio-page { width:100%; max-width:100%; overflow-x:hidden; }
+  .studio-page *, .studio-page *::before, .studio-page *::after { box-sizing:border-box; min-width:0; }
+  .studio-page [class*="grid"] { grid-template-columns:minmax(0,1fr) !important; }
+  .studio-page [class*="columns"] { columns:1 !important; }
+  .studio-page [class*="flex"] { flex-wrap:wrap; }
+  .studio-page p, .studio-page li, .studio-page h1, .studio-page h2, .studio-page h3, .studio-page h4 {
+    width:100% !important; max-width:100% !important; word-break:normal !important; overflow-wrap:break-word !important; white-space:normal !important;
+  }
+  .studio-page [class*="absolute"], .studio-page [class*="sticky"] { position:static !important; inset:auto !important; }
+  .studio-page [class*="translate"], .studio-page [class*="-translate"], .studio-page [style*="transform"] { transform:none !important; }
+  .studio-page img, .studio-page picture, .studio-page figure { display:block; width:100% !important; max-width:100% !important; height:auto; }
+  .studio-page figure { margin-left:0; margin-right:0; }
+  .studio-page section { padding-left:22px; padding-right:22px; }
+  .studio-page h1 { font-size:clamp(2.25rem,10vw,3.4rem); line-height:1; }
+}
+/* END STUDIO MOBILE LAYOUT FIX V2 */

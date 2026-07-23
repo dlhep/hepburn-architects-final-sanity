@@ -8,7 +8,7 @@ export { metadata, viewport } from "next-sanity/studio";
 export default function StudioPage() {
   if (!isSanityConfigured) {
     return (
-      <main className="studio-setup">
+      <main className="studio-page studio-setup">
         <div>
           <small>Hepburn Architects CMS</small>
           <h1>Connect the Sanity project.</h1>

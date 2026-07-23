@@ -5,7 +5,6 @@ import {
   ArrowUpRight,
   Linkedin,
   Mail,
-  UserRound,
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import {
@@ -98,7 +97,15 @@ export function CollaborativeTeamGrid({
                   />
                 ) : (
                   <>
-                    <UserRound aria-hidden="true" />
+                    <svg
+                      className="studio-v4-collaborator-silhouette"
+                      viewBox="0 0 160 160"
+                      role="img"
+                      aria-label="Profile photograph placeholder"
+                    >
+                      <circle cx="80" cy="51" r="30" />
+                      <path d="M24 145c3-35 25-56 56-56s53 21 56 56H24Z" />
+                    </svg>
                     <span>{collaboratorInitials(collaborator)}</span>
                   </>
                 )}

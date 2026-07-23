@@ -268,8 +268,8 @@
 
 /* SANITY CMS */
 .studio-setup{min-height:100vh;display:grid;place-items:center;background:#ece7de;padding:30px}.studio-setup>div{max-width:680px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:38px}.studio-setup small{color:var(--orange);font-weight:900;letter-spacing:.12em;text-transform:uppercase}.studio-setup h1{font-size:52px;margin:12px 0}.studio-setup code{background:#f3efe8;padding:3px 6px;border-radius:5px}
-.project-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.project-gallery figure{margin:0}.project-gallery img{width:100%;height:auto;max-height:700px;object-fit:contain;background:#f3f3f1;border-radius:18px}.project-gallery figcaption{color:var(--muted);font-size:13px;margin-top:8px}
-@media(max-width:700px){.project-gallery{grid-template-columns:1fr}.project-gallery img{height:auto;max-height:560px}.studio-setup h1{font-size:38px}}
+
+@media(max-width:700px){.studio-setup h1{font-size:38px}}
 
 /* SEO location links and project image control */
 .nearby-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.nearby-links a{display:inline-flex;padding:10px 14px;border:1px solid rgba(255,255,255,.25);border-radius:999px}.project-detail-hero{position:relative;overflow:hidden}.project-detail-hero>img{width:100%;height:520px;object-fit:cover}.project-detail-overlay{position:absolute;inset:auto 0 0;color:#fff;padding-bottom:36px;text-shadow:0 2px 18px rgba(0,0,0,.55)}@media(max-width:768px){.project-detail-hero>img{height:340px}}
@@ -1010,75 +1010,6 @@
   }
 }
 
-
-/* CONSISTENT PROJECT GALLERY IMAGE FRAMES */
-.project-gallery{
-  align-items:stretch;
-  grid-auto-rows:1fr;
-}
-
-.project-gallery figure{
-  display:flex;
-  min-width:0;
-  height:100%;
-  margin:0;
-  flex-direction:column;
-}
-
-.project-gallery figure img,
-.project-gallery-single figure img{
-  width:100%;
-  height:auto;
-  aspect-ratio:4 / 3;
-  object-fit:contain;
-  object-position:center;
-  background:#f3f0ea;
-  border-radius:18px;
-}
-
-.project-gallery figcaption{
-  min-height:1.5em;
-  margin-top:10px;
-  line-height:1.45;
-}
-
-@media(max-width:700px){
-  .project-gallery figure img,
-  .project-gallery-single figure img{
-    aspect-ratio:4 / 3;
-    max-height:none;
-  }
-}
-
-/* FINAL EQUAL PROJECT GALLERY HEIGHTS */
-.project-gallery:not(.project-gallery-single) figure{
-  display:grid;
-  grid-template-rows:auto minmax(1.5em,auto);
-  align-content:start;
-}
-
-.project-gallery:not(.project-gallery-single) figure img{
-  display:block;
-  width:100% !important;
-  height:clamp(320px,36vw,500px) !important;
-  max-height:none !important;
-  aspect-ratio:auto !important;
-  object-fit:contain !important;
-  object-position:center !important;
-  background:#fff !important;
-  border-radius:18px;
-}
-
-.project-gallery:not(.project-gallery-single) figcaption{
-  min-height:1.5em;
-  margin-top:10px;
-}
-
-@media(max-width:700px){
-  .project-gallery:not(.project-gallery-single) figure img{
-    height:320px !important;
-  }
-}
 
 /* WEST MIDLANDS INTERNAL LINKING */
 .west-midlands-link-section{
@@ -3166,119 +3097,91 @@
 }
 /* END FINAL ABOUT MOBILE FIX */
 
-/* PROJECT IMAGE COVER FRAMES — START */
-.projects-grid img,
-.project-card img,
-.featured-project-grid img {
-  object-fit: cover;
-  object-position: center;
-  background: var(--ink);
+/* DEFINITIVE PROJECT GALLERY V2 — START */
+body .project-gallery {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  grid-auto-rows: auto !important;
+  gap: 20px;
+  align-items: start !important;
 }
 
-.project-gallery figure > img,
-.project-gallery-single figure > img {
-  display: block;
+body .project-gallery figure,
+body .project-gallery-single figure,
+body .project-gallery:not(.project-gallery-single) figure {
+  display: block !important;
+  grid-template-rows: none !important;
+  align-content: normal !important;
   width: 100% !important;
-  height: clamp(340px, 36vw, 500px) !important;
-  max-height: none !important;
-  aspect-ratio: auto !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  background: var(--ink) !important;
-  border-radius: 18px;
-}
-
-.project-gallery-single figure > img {
-  height: clamp(440px, 56vw, 720px) !important;
-  aspect-ratio: 4 / 3 !important;
-}
-
-@media (max-width: 700px) {
-  .project-gallery figure > img,
-  .project-gallery-single figure > img {
-    height: 310px !important;
-    aspect-ratio: 4 / 3 !important;
-  }
-
-  .project-gallery-single figure > img {
-    height: clamp(310px, 72vw, 430px) !important;
-  }
-}
-
-@media (max-width: 650px) {
-  .project-detail-hero > img {
-    display: block;
-    width: 100%;
-    height: clamp(300px, 72vw, 420px);
-    max-height: none;
-    object-fit: cover;
-    object-position: center;
-    background: var(--ink);
-  }
-}
-/* PROJECT IMAGE COVER FRAMES — END */
-
-/* PROJECT GALLERY TRUE CROP FRAMES — START */
-.project-gallery {
-  align-items: start;
-}
-
-.project-gallery figure,
-.project-gallery-single figure {
-  display: flex !important;
-  flex-direction: column;
-  width: 100%;
+  min-width: 0 !important;
   height: auto !important;
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  overflow: visible;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
   background: transparent !important;
-  border-radius: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
 }
 
-.project-gallery-media {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: 18px;
-  background: var(--ink);
+body .project-gallery .project-gallery-media {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 18px !important;
+  background: var(--ink) !important;
 }
 
-.project-gallery-media > img {
+body .project-gallery .project-gallery-media > img,
+body .project-gallery:not(.project-gallery-single) .project-gallery-media > img,
+body .project-gallery-single .project-gallery-media > img {
   position: absolute !important;
   inset: 0 !important;
-  display: block;
+  display: block !important;
   width: 100% !important;
   height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
   max-width: none !important;
   max-height: none !important;
   margin: 0 !important;
   padding: 0 !important;
+  aspect-ratio: auto !important;
   object-fit: cover !important;
   object-position: center !important;
+  transform: none !important;
   background: transparent !important;
+  border: 0 !important;
   border-radius: 0 !important;
 }
 
-.project-gallery figcaption {
-  min-height: 0;
-  margin: 10px 0 0;
+body .project-gallery figcaption {
+  display: block;
+  min-height: 0 !important;
+  margin: 10px 0 0 !important;
+  line-height: 1.45;
 }
 
-.project-gallery-single {
-  grid-template-columns: minmax(0, 1fr);
+body .project-gallery-single {
+  grid-template-columns: minmax(0, 1fr) !important;
 }
 
-.project-gallery-single figure {
-  width: min(100%, 1100px);
+body .project-gallery-single figure {
+  width: min(100%, 1100px) !important;
 }
 
 @media (max-width: 700px) {
-  .project-gallery-media {
-    aspect-ratio: 4 / 3;
-    border-radius: 14px;
+  body .project-gallery {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body .project-gallery .project-gallery-media {
+    border-radius: 14px !important;
   }
 }
-/* PROJECT GALLERY TRUE CROP FRAMES — END */
+/* DEFINITIVE PROJECT GALLERY V2 — END */

@@ -177,22 +177,21 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {project.gallery && project.gallery.length > 0 && (
         <section className="section project-gallery-section">
           <div className={`shell project-gallery${project.gallery.length === 1 ? " project-gallery-single" : ""}`}>
-            {project.gallery.map((image, index) => {
-              const width = image.asset?.metadata?.dimensions?.width || 1600;
-              const height = image.asset?.metadata?.dimensions?.height || 1000;
-              return (
-                <figure key={image.asset?._id || index}>
+            {project.gallery.map((image, index) => (
+              <figure key={image.asset?._id || index}>
+                <div className="project-gallery-media">
                   <Image
                     src={image.asset ? urlFor(image).width(1600).quality(86).url() : "/images/og.svg"}
                     alt={image.alt || `${project.title} project image ${index + 1}`}
-                    width={width}
-                    height={height}
-                    sizes="(max-width: 950px) 100vw, 50vw"
+                    fill
+                    sizes={(project.gallery?.length ?? 0) === 1
+                      ? "(max-width: 950px) 100vw, 1100px"
+                      : "(max-width: 950px) 100vw, 50vw"}
                   />
-                  {image.caption && <figcaption>{image.caption}</figcaption>}
-                </figure>
-              );
-            })}
+                </div>
+                {image.caption && <figcaption>{image.caption}</figcaption>}
+              </figure>
+            ))}
           </div>
         </section>
       )}

@@ -47,7 +47,7 @@ export function Header() {
             <Link href="/services">Services</Link>
             <Link href="/projects">Projects</Link>
             <Link href="/guides">Guides</Link>
-            <Link href="/blog">Blog</Link>
+            <Link href="/blog">Journal</Link>
             <Link href="/about">Studio</Link>
             <Link href="/estimate">Fee calculator</Link>
             <a className="nav-phone" href={site.phoneHref}><Phone size={16} /> {site.phone}</a>
@@ -75,7 +75,7 @@ export function Header() {
             <Link href="/services" onClick={closeMenu}>Services</Link>
             <Link href="/projects" onClick={closeMenu}>Projects</Link>
             <Link href="/guides" onClick={closeMenu}>Guides</Link>
-            <Link href="/blog" onClick={closeMenu}>Blog</Link>
+            <Link href="/blog" onClick={closeMenu}>Journal</Link>
             <Link href="/about" onClick={closeMenu}>Studio</Link>
             <Link href="/estimate" onClick={closeMenu}>Fee calculator</Link>
             <a className="btn call-btn" href={site.phoneHref}><Phone size={18} /> Call {site.phone}</a>

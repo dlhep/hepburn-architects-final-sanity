@@ -2,6 +2,17 @@ import Link from "next/link";
 import { Facebook, Instagram, MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 
+const footerLocations = [
+  { href: "/locations/birmingham-architects", label: "Birmingham" },
+  { href: "/locations/solihull-architects", label: "Solihull" },
+  { href: "/locations/bournville-architects", label: "Bournville" },
+  { href: "/locations/kings-heath-architects", label: "Kings Heath" },
+  { href: "/locations/wolverhampton-architects", label: "Wolverhampton" },
+  { href: "/locations/walsall-architects", label: "Walsall" },
+  { href: "/locations/leamington-spa-architects", label: "Leamington Spa" },
+  { href: "/locations/aldridge-architects", label: "Aldridge" },
+];
+
 export function Footer() {
   return (
     <footer>
@@ -32,34 +43,91 @@ export function Footer() {
           <a href="https://www.hepburnarchitects.com/architects-middlesbrough" target="_blank" rel="noopener noreferrer">Visit the North East website</a>
         </div>
 
-        <div className="footer-links-column">
-          <div className="footer-link-group">
-            <h3>Explore</h3>
-            <Link href="/services">Services</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/guides">Guides</Link>
-            <Link href="/blog">Journal</Link>
-            <Link href="/estimate">Fee calculator</Link>
-            <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
-            <Link href="/privacy">Privacy & cookies</Link>
-          </div>
-
-          <div className="footer-link-group">
-            <h3>Locations</h3>
-            <Link href="/locations/birmingham-architects">Birmingham</Link>
-            <Link href="/locations/solihull-architects">Solihull</Link>
-            <Link href="/locations/bournville-architects">Bournville</Link>
-            <Link href="/locations/kings-heath-architects">Kings Heath</Link>
-            <Link href="/locations/wolverhampton-architects">Wolverhampton</Link>
-            <Link href="/locations/walsall-architects">Walsall</Link>
-            <Link href="/locations/leamington-spa-architects">Leamington Spa</Link>
-            <Link href="/locations/aldridge-architects">Aldridge</Link>
-            <Link href="/locations">View all locations</Link>
-          </div>
+        <div className="footer-link-group">
+          <h3>Explore</h3>
+          <Link href="/services">Services</Link>
+          <Link href="/projects">Projects</Link>
+          <Link href="/guides">Guides</Link>
+          <Link href="/blog">Journal</Link>
+          <Link href="/estimate">Fee calculator</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
+          <Link href="/privacy">Privacy & cookies</Link>
         </div>
       </div>
+
+      <div className="shell footer-location-band" aria-label="Areas served">
+        <h3>Locations</h3>
+        <nav className="footer-location-links">
+          {footerLocations.map((location) => (
+            <Link key={location.href} href={location.href}>{location.label}</Link>
+          ))}
+          <Link className="footer-location-all" href="/locations">View all locations</Link>
+        </nav>
+      </div>
+
       <div className="shell footer-bottom">© {new Date().getFullYear()} Hepburn Architects Ltd.</div>
+
+      <style>{`
+        .footer-location-band {
+          display: grid;
+          grid-template-columns: 110px minmax(0, 1fr);
+          gap: 28px;
+          align-items: start;
+          margin-top: 34px;
+          padding-top: 22px;
+          border-top: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        .footer-location-band h3 {
+          margin: 2px 0 0;
+          color: var(--orange);
+          font-size: 12px;
+          line-height: 1.2;
+          text-transform: uppercase;
+          letter-spacing: 0.14em;
+        }
+
+        .footer-location-links {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px 26px;
+          align-items: center;
+        }
+
+        .footer-location-links a {
+          color: rgba(255, 255, 255, 0.86);
+          font-size: 14px;
+          line-height: 1.45;
+          white-space: nowrap;
+          transition: color 160ms ease;
+        }
+
+        .footer-location-links a:hover {
+          color: #fff;
+        }
+
+        .footer-location-links .footer-location-all {
+          color: var(--orange);
+          font-weight: 700;
+        }
+
+        footer .footer-bottom {
+          margin-top: 24px;
+        }
+
+        @media (max-width: 650px) {
+          .footer-location-band {
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 30px;
+          }
+
+          .footer-location-links {
+            gap: 10px 20px;
+          }
+        }
+      `}</style>
     </footer>
   );
 }

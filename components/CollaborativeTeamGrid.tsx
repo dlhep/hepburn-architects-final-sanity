@@ -18,6 +18,35 @@ type CollaborativeTeamGridProps = {
   usingPlaceholders: boolean;
 };
 
+const femalePlaceholderNames = new Set([
+  "amy",
+  "anna",
+  "charlotte",
+  "chloe",
+  "emma",
+  "emily",
+  "grace",
+  "hannah",
+  "helen",
+  "joanne",
+  "jodie",
+  "karen",
+  "katie",
+  "laura",
+  "lucy",
+  "maria",
+  "nicola",
+  "rachel",
+  "rebecca",
+  "sarah",
+  "sophie",
+]);
+
+function collaboratorSilhouetteVariant(name: string): "male" | "female" {
+  const firstName = name.trim().split(/\s+/)[0]?.toLowerCase() || "";
+  return femalePlaceholderNames.has(firstName) ? "female" : "male";
+}
+
 export function CollaborativeTeamGrid({
   collaborators,
   usingPlaceholders,
@@ -76,6 +105,7 @@ export function CollaborativeTeamGrid({
         {visibleCollaborators.map((collaborator) => {
           const imageUrl = collaboratorImageUrl(collaborator.photo);
           const name = collaborator.name || collaborator.role;
+          const silhouetteVariant = collaboratorSilhouetteVariant(name);
 
           return (
             <article
@@ -97,15 +127,26 @@ export function CollaborativeTeamGrid({
                   />
                 ) : (
                   <>
-                    <svg
-                      className="studio-v4-collaborator-silhouette"
-                      viewBox="0 0 160 160"
-                      role="img"
-                      aria-label="Profile photograph placeholder"
-                    >
-                      <circle cx="80" cy="51" r="30" />
-                      <path d="M24 145c3-35 25-56 56-56s53 21 56 56H24Z" />
-                    </svg>
+                    {silhouetteVariant === "female" ? (
+                      <svg
+                        className="studio-v4-collaborator-silhouette is-female"
+                        viewBox="0 0 200 190"
+                        role="img"
+                        aria-label="Female profile photograph placeholder"
+                      >
+                        <path d="M51 100c-9-17-11-39-6-58C52 16 72 3 100 3c30 0 51 15 58 42 5 20 2 41-7 58l13 43c19 9 31 24 36 44H0c5-21 18-37 38-46l13-44Zm49-69c-19 0-31 13-31 34v21c0 24 13 43 31 43s31-19 31-43V65c0-21-12-34-31-34Z" />
+                      </svg>
+                    ) : (
+                      <svg
+                        className="studio-v4-collaborator-silhouette is-male"
+                        viewBox="0 0 200 190"
+                        role="img"
+                        aria-label="Male profile photograph placeholder"
+                      >
+                        <path d="M54 69C54 27 74 6 101 6c30 0 48 22 48 63v18c0 22-10 39-26 49v8c31 7 54 24 61 46H16c7-23 30-40 61-47v-7C62 126 54 109 54 87V69Zm19-8c10-2 22-8 31-18 4 10 13 18 25 22v22c0 24-12 42-29 42S73 111 73 87V61Z" />
+                        <path d="M58 60C61 25 77 8 102 8c25 0 41 17 45 50-13-5-23-14-28-25-12 14-32 23-61 27Z" />
+                      </svg>
+                    )}
                     <span>{collaboratorInitials(collaborator)}</span>
                   </>
                 )}

@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default async function ProjectsPage() {
   const projects = await getProjects();
   return (
-    <section className="section">
-      <div className="shell page-intro">
+    <section className="section projects-index-page">
+      <div className="shell page-intro projects-index-intro">
         <small className="eyebrow">Selected residential work</small>
         <h1>Genuine projects designed around place and purpose.</h1>
         <p>Explore extensions, sustainable new homes and whole-house transformations developed by Hepburn Architects.</p>

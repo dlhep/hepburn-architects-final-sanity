@@ -219,7 +219,7 @@ export default async function AboutPage() {
 
           <div className="studio-v4-founder-visual">
             <Image
-              src="https://www.hepburnarchitects.com/wp-content/uploads/2026/06/David-Hepburn.png"
+              src="/images/david-hepburn-studio.jpg"
               alt="David Hepburn, founding director of Hepburn Architects"
               fill
               priority

@@ -66,7 +66,7 @@ export function IdentitySchema() {
       worksFor: { "@id": `${site.url}/#organization` },
       url: `${site.url}/about`,
       image:
-        "https://www.hepburnarchitects.com/wp-content/uploads/2026/06/David-Hepburn.png",
+        `${site.url}/images/david-hepburn-studio.jpg`,
       knowsAbout: [
         "Residential architecture",
         "Planning applications",

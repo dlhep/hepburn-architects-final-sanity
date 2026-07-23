@@ -282,7 +282,7 @@ export default async function HomePage() {
         <div className="shell home-studio-grid">
           <div className="home-studio-photo">
             <Image
-              src="https://www.hepburnarchitects.com/wp-content/uploads/2026/06/David-Hepburn.png"
+              src="/images/david-hepburn-studio.jpg"
               alt="David Hepburn, founding director of Hepburn Architects"
               fill
               sizes="(max-width: 950px) 100vw, 42vw"

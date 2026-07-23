@@ -40,7 +40,6 @@ export function Footer() {
         <div>
           <h3>Nunthorpe Studio</h3>
           <address>1 Church Lane<br />Nunthorpe<br />Middlesbrough<br />TS7 0PD</address>
-          <a href="https://www.hepburnarchitects.com/architects-middlesbrough" target="_blank" rel="noopener noreferrer">Visit the North East website</a>
         </div>
 
         <div className="footer-link-group">

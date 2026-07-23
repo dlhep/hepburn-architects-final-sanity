@@ -49,6 +49,12 @@ export function Footer() {
             <h3>Locations</h3>
             <Link href="/locations/birmingham-architects">Birmingham</Link>
             <Link href="/locations/solihull-architects">Solihull</Link>
+            <Link href="/locations/bournville-architects">Bournville</Link>
+            <Link href="/locations/kings-heath-architects">Kings Heath</Link>
+            <Link href="/locations/wolverhampton-architects">Wolverhampton</Link>
+            <Link href="/locations/walsall-architects">Walsall</Link>
+            <Link href="/locations/leamington-spa-architects">Leamington Spa</Link>
+            <Link href="/locations/aldridge-architects">Aldridge</Link>
             <Link href="/locations">View all locations</Link>
           </div>
         </div>

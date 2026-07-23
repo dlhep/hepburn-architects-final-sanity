@@ -3046,21 +3046,122 @@
 }
 /* STUDIO PORTRAIT SIZE V6 - END */
 
-/* STUDIO MOBILE LAYOUT FIX V2 */
+/* FINAL ABOUT MOBILE FIX */
 @media (max-width: 767px) {
-  .studio-page { width:100%; max-width:100%; overflow-x:hidden; }
-  .studio-page *, .studio-page *::before, .studio-page *::after { box-sizing:border-box; min-width:0; }
-  .studio-page [class*="grid"] { grid-template-columns:minmax(0,1fr) !important; }
-  .studio-page [class*="columns"] { columns:1 !important; }
-  .studio-page [class*="flex"] { flex-wrap:wrap; }
-  .studio-page p, .studio-page li, .studio-page h1, .studio-page h2, .studio-page h3, .studio-page h4 {
-    width:100% !important; max-width:100% !important; word-break:normal !important; overflow-wrap:break-word !important; white-space:normal !important;
+  .studio-v4-hero {
+    overflow: hidden;
+    padding-top: 2rem;
   }
-  .studio-page [class*="absolute"], .studio-page [class*="sticky"] { position:static !important; inset:auto !important; }
-  .studio-page [class*="translate"], .studio-page [class*="-translate"], .studio-page [style*="transform"] { transform:none !important; }
-  .studio-page img, .studio-page picture, .studio-page figure { display:block; width:100% !important; max-width:100% !important; height:auto; }
-  .studio-page figure { margin-left:0; margin-right:0; }
-  .studio-page section { padding-left:22px; padding-right:22px; }
-  .studio-page h1 { font-size:clamp(2.25rem,10vw,3.4rem); line-height:1; }
+
+  .studio-v4-hero > .shell,
+  .studio-v4-director-section > .shell,
+  .studio-v4-strengths-section > .shell,
+  .studio-v4-practice-strip > .shell {
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .studio-v4-hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    align-items: stretch !important;
+  }
+
+  .studio-v4-hero-copy {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    flex: 0 0 auto !important;
+  }
+
+  .studio-v4-founder-visual {
+    order: 2 !important;
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 5 !important;
+    margin: 0 !important;
+    transform: none !important;
+    overflow: hidden !important;
+    border-radius: 24px !important;
+  }
+
+  .studio-v4-founder-visual img {
+    object-fit: cover !important;
+    object-position: center 18% !important;
+  }
+
+  .studio-v4-hero-copy h1,
+  .studio-v4-hero-copy p,
+  .studio-v4-hero-copy .lead {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    white-space: normal !important;
+    writing-mode: horizontal-tb !important;
+  }
+
+  .studio-v4-hero-copy h1 {
+    font-size: clamp(2.4rem, 10.5vw, 3.6rem) !important;
+    line-height: 1 !important;
+  }
+
+  .studio-v4-hero-copy .lead,
+  .studio-v4-hero-copy p {
+    font-size: 1.05rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .studio-v4-hero-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+
+  .studio-v4-hero-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .studio-v4-founder-caption {
+    left: 16px !important;
+    right: 16px !important;
+    bottom: 16px !important;
+    width: auto !important;
+    max-width: none !important;
+  }
+
+  .studio-v4-practice-strip > .shell,
+  .studio-v4-director-grid,
+  .studio-v4-section-heading,
+  .studio-v4-strengths-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  .studio-v4-director-copy,
+  .studio-v4-director-copy p,
+  .studio-v4-section-heading p {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+  }
 }
-/* END STUDIO MOBILE LAYOUT FIX V2 */
+/* END FINAL ABOUT MOBILE FIX */

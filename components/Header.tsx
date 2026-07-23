@@ -40,8 +40,14 @@ export function Header() {
       </div>
       <header className="header">
         <div className="shell nav">
-          <Link className="brand brand-one-line" href="/" onClick={closeMenu}>
-            <strong className="brand-title">HEPBURN ARCHITECTS</strong>
+          <Link className="brand-logo-link" href="/" onClick={closeMenu} aria-label="Hepburn Architects home">
+            <img
+              className="brand-logo"
+              src="/hepburn-logo.svg"
+              alt="Hepburn Architects"
+              width={581}
+              height={155}
+            />
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation">
             <Link href="/services">Services</Link>
@@ -87,6 +93,32 @@ export function Header() {
         <Phone />
         <span>Call now</span>
       </a>
+      <style jsx>{`
+        .brand-logo-link {
+          display: inline-flex;
+          flex: 0 0 auto;
+          align-items: center;
+          line-height: 0;
+        }
+
+        .brand-logo {
+          display: block;
+          width: clamp(180px, 18vw, 225px);
+          height: auto;
+        }
+
+        @media (max-width: 1100px) {
+          .brand-logo {
+            width: 190px;
+          }
+        }
+
+        @media (max-width: 650px) {
+          .brand-logo {
+            width: 164px;
+          }
+        }
+      `}</style>
     </>
   );
 }

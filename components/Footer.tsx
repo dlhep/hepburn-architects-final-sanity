@@ -18,9 +18,15 @@ export function Footer() {
     <footer>
       <div className="shell footer-grid footer-grid-expanded">
         <div>
-          <div className="brand footer-brand brand-one-line">
-            <strong>HEPBURN ARCHITECTS</strong>
-          </div>
+          <Link className="footer-brand-logo-link" href="/" aria-label="Hepburn Architects home">
+            <img
+              className="footer-brand-logo"
+              src="/hepburn-logo-reversed.svg"
+              alt="Hepburn Architects"
+              width={581}
+              height={155}
+            />
+          </Link>
           <p>Residential architecture, planning and technical design across Birmingham, Solihull and the wider West Midlands.</p>
           <a className="footer-phone" href={site.phoneHref}><Phone size={16} /> <strong>{site.phone}</strong></a>
           <a href={`mailto:${site.email}`}>{site.email}</a>
@@ -68,6 +74,19 @@ export function Footer() {
       <div className="shell footer-bottom">© {new Date().getFullYear()} Hepburn Architects Ltd.</div>
 
       <style>{`
+        .footer-brand-logo-link {
+          display: inline-flex;
+          width: min(100%, 220px);
+          margin-bottom: 12px;
+          line-height: 0;
+        }
+
+        .footer-brand-logo {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+
         .footer-location-band {
           display: grid;
           grid-template-columns: 110px minmax(0, 1fr);

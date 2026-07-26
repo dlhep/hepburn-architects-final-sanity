@@ -55,10 +55,10 @@ export default async function ThankYouPage() {
           </div>
           <Image
             className={styles.thankCover}
-            src="/images/house-extension-guide-cover.svg"
-            alt="The Complete House Extension Guide by Hepburn Architects"
-            width={900}
-            height={1200}
+            src="/images/house-extension-guide-cover.png"
+            alt="Planning a House Extension guide by Hepburn Architects"
+            width={920}
+            height={1286}
             priority
             sizes="(max-width: 850px) 65vw, 330px"
           />

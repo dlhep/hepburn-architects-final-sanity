@@ -36,17 +36,17 @@ export const metadata: Metadata = {
     locale: "en_GB",
     type: "website",
     images: [{
-      url: "/images/house-extension-guide-cover.svg",
-      width: 900,
-      height: 1200,
-      alt: "The Complete House Extension Guide by Hepburn Architects",
+      url: "/images/house-extension-guide-cover.png",
+      width: 920,
+      height: 1286,
+      alt: "Planning a House Extension guide by Hepburn Architects",
     }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/images/house-extension-guide-cover.svg"],
+    images: ["/images/house-extension-guide-cover.png"],
   },
 };
 
@@ -111,10 +111,10 @@ export default async function HouseExtensionGuidePage() {
           <div className={styles.capture}>
             <div className={styles.coverWrap}>
               <Image
-                src="/images/house-extension-guide-cover.svg"
-                alt="Cover of The Complete House Extension Guide by Hepburn Architects"
-                width={900}
-                height={1200}
+                src="/images/house-extension-guide-cover.png"
+                alt="Planning a House Extension guide by Hepburn Architects"
+                width={920}
+                height={1286}
                 priority
                 sizes="(max-width: 700px) 70vw, (max-width: 1050px) 38vw, 270px"
               />

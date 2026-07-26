@@ -12,7 +12,7 @@
 .heroTrust svg{width:18px;color:var(--orange)}
 .capture{display:grid;grid-template-columns:minmax(210px,.72fr) minmax(340px,1fr);gap:22px;align-items:center}
 .coverWrap{transform:rotate(-2deg);filter:drop-shadow(0 24px 22px rgba(23,23,21,.18))}
-.coverWrap img{width:100%;height:auto}
+.coverWrap img{width:100%;height:auto;object-fit:contain}
 .formCard{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;display:grid;gap:15px;box-shadow:0 24px 60px rgba(23,23,21,.1)}
 .formHeading{display:grid;grid-template-columns:auto 1fr;gap:13px;align-items:center}
 .formHeading h2{font-size:30px;margin:5px 0 0}
@@ -48,7 +48,7 @@
 .thankHero{padding:90px 0}
 .thankGrid{display:grid;grid-template-columns:1fr .52fr;gap:90px;align-items:center}
 .thankGrid h1{font-size:clamp(52px,7vw,90px);max-width:11ch}
-.thankCover{width:100%;height:auto;max-height:620px;filter:drop-shadow(0 26px 24px rgba(23,23,21,.18))}
+.thankCover{width:100%;height:auto;max-height:620px;object-fit:contain;filter:drop-shadow(0 26px 24px rgba(23,23,21,.18))}
 .contactLinks{display:flex;gap:24px;flex-wrap:wrap;margin-top:34px;padding-top:25px;border-top:1px solid var(--line)}
 .contactLinks a{display:flex;align-items:center;gap:8px;font-weight:800}
 .contactLinks svg{color:var(--orange)}

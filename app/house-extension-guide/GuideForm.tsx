@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { ArrowRight, LockKeyhole } from "lucide-react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
@@ -16,10 +16,14 @@ const projectTypes = [
 
 export function GuideForm() {
   const router = useRouter();
+  const submissionPending = useRef(false);
   const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submissionPending.current) return;
+
+    submissionPending.current = true;
     setStatus("sending");
     const form = new FormData(event.currentTarget);
 
@@ -31,6 +35,7 @@ export function GuideForm() {
           name: String(form.get("firstName") || "").trim(),
           email: String(form.get("email") || "").trim(),
           source: "house-extension-guide",
+          website: String(form.get("website") || ""),
           projectSummary: {
             postcode: String(form.get("postcode") || "").trim(),
             projectType: String(form.get("projectType") || ""),
@@ -50,6 +55,7 @@ export function GuideForm() {
       );
       router.push("/house-extension-guide/thank-you");
     } catch {
+      submissionPending.current = false;
       setStatus("error");
     }
   }
@@ -83,6 +89,13 @@ export function GuideForm() {
           {projectTypes.map((type) => <option key={type}>{type}</option>)}
         </select>
       </label>
+
+      <div aria-hidden="true" style={{ position: "absolute", left: "-9999px" }}>
+        <label>
+          Website
+          <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
 
       <button className="btn primary" type="submit" disabled={status === "sending"}>
         {status === "sending" ? "Preparing your guide…" : "Download My Free Guide"}

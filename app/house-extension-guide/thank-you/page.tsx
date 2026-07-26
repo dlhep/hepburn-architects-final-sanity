@@ -56,9 +56,9 @@ export default async function ThankYouPage() {
           <Image
             className={styles.thankCover}
             src="/images/house-extension-guide-cover.png"
-            alt="Planning a House Extension guide by Hepburn Architects"
-            width={920}
-            height={1286}
+            alt="Planning a House Extension — A Practical Homeowner's Guide by Hepburn Architects"
+            width={1055}
+            height={1491}
             priority
             sizes="(max-width: 850px) 65vw, 330px"
           />

@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [{
       url: "/images/house-extension-guide-cover.png",
-      width: 920,
-      height: 1286,
-      alt: "Planning a House Extension guide by Hepburn Architects",
+      width: 1055,
+      height: 1491,
+      alt: "Planning a House Extension — A Practical Homeowner's Guide by Hepburn Architects",
     }],
   },
   twitter: {
@@ -112,9 +112,9 @@ export default async function HouseExtensionGuidePage() {
             <div className={styles.coverWrap}>
               <Image
                 src="/images/house-extension-guide-cover.png"
-                alt="Planning a House Extension guide by Hepburn Architects"
-                width={920}
-                height={1286}
+                alt="Planning a House Extension — A Practical Homeowner's Guide by Hepburn Architects"
+                width={1055}
+                height={1491}
                 priority
                 sizes="(max-width: 700px) 70vw, (max-width: 1050px) 38vw, 270px"
               />

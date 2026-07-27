@@ -26,6 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/guides",
     "/knowledge-centre",
     "/knowledge-centre/house-extensions",
+    "/knowledge-centre/house-extension-costs",
     "/knowledge-centre/planning-permission",
     "/knowledge-centre/building-regulations",
     "/blog",

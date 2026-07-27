@@ -27,6 +27,8 @@ async function addToMailerLite(name: string, email: string) {
   });
 
   if (!response.ok) {
+    const body = await response.text();
+    console.error("MailerLite error:", response.status, body);
     throw new Error(`MailerLite request failed with status ${response.status}.`);
   }
 }

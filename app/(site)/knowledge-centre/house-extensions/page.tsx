@@ -721,6 +721,9 @@ export default async function HouseExtensionsPage() {
             <Link className={styles.textLink} href="/estimate">
               Use the architectural fee calculator <ArrowRight size={17} />
             </Link>
+            <Link className={styles.textLink} href="/knowledge-centre/house-extension-costs">
+              Read the complete 2026 extension cost guide <ArrowRight size={17} />
+            </Link>
           </section>
 
           <section id="timescales">

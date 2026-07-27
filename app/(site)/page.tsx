@@ -82,24 +82,24 @@ const servicePathways = [
 const featuredGuides = [
   {
     number: "01",
-    title: "The Complete House Extension Guide",
+    title: "Planning a House Extension",
     description:
-      "A detailed route through feasibility, planning, design, costs, Building Regulations and construction preparation.",
-    href: "/guides/complete-house-extension-guide",
+      "A practical homeowner’s guide to planning, design, budgets, Building Regulations and the main project stages.",
+    href: "/house-extension-guide",
   },
   {
     number: "02",
-    title: "Residential Architect Fees",
+    title: "Planning Permission Explained",
     description:
-      "How fees are structured across surveys, planning, technical design and consultant coordination.",
-    href: "/guides/architect-fees-residential-project",
+      "Understand when permission may be needed and how permitted development fits into the process.",
+    href: "/guides/planning-permission-house-extension",
   },
   {
     number: "03",
-    title: "HMO Conversion Planning Guide",
+    title: "Building Regulations Guidance",
     description:
-      "Planning, licensing, space standards and fire-safety considerations for HMO projects.",
-    href: "/guides/hmo-conversion-planning-guide",
+      "A clear introduction to technical drawings, compliance and the path to Building Control approval.",
+    href: "/guides/building-regulations-drawings",
   },
 ];
 
@@ -399,11 +399,11 @@ export default async function HomePage() {
       <section className="section home-knowledge-section">
         <div className="shell home-section-heading home-section-heading-light">
           <div>
-            <small className="eyebrow">Featured knowledge</small>
-            <h2>Practical guidance before you commit to a project.</h2>
+            <small className="eyebrow">Advice before you begin</small>
+            <h2>Practical guidance for a clearer route forward.</h2>
           </div>
-          <Link className="home-text-link home-text-link-light" href="/guides">
-            Browse all guides <ArrowUpRight size={18} />
+          <Link className="home-text-link home-text-link-light" href="/knowledge-centre">
+            Explore the Knowledge Centre <ArrowUpRight size={18} />
           </Link>
         </div>
 
@@ -415,7 +415,7 @@ export default async function HomePage() {
             </div>
             <h3>{featuredGuides[0].title}</h3>
             <p>{featuredGuides[0].description}</p>
-            <strong>Read the complete guide <ArrowRight size={18} /></strong>
+            <strong>Download the free guide <ArrowRight size={18} /></strong>
           </Link>
 
           <div className="home-guide-supporting">

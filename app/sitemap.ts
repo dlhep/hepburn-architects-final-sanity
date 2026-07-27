@@ -24,6 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/services",
     "/locations",
     "/guides",
+    "/knowledge-centre",
     "/blog",
     "/estimate",
     "/projects",

@@ -1,0 +1,662 @@
+.hero {
+  padding: 52px 0 92px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.heroInner {
+  max-width: none;
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 9px;
+  margin-bottom: 52px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.breadcrumb a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hero h1 {
+  width: 100%;
+  max-width: none;
+  font-size: clamp(50px, 6.3vw, 80px);
+}
+
+.heroCopy {
+  max-width: 1010px;
+  margin: 36px 0 28px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+
+.heroCopy p {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.45;
+}
+
+.topicLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  max-width: 1080px;
+  margin: 0 0 34px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.topicLinks a {
+  position: relative;
+  padding: 13px 24px 13px 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.topicLinks a:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: 11px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--orange);
+  content: "";
+}
+
+.topicLinks a:hover {
+  color: var(--ink);
+}
+
+.featuredGuides {
+  padding: 104px 0;
+  background: var(--sand);
+}
+
+.featuredLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(330px, .65fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.leadGuide {
+  display: grid;
+  grid-template-columns: minmax(220px, 360px) 1fr;
+  gap: clamp(32px, 5vw, 70px);
+  align-items: center;
+  padding: 48px 48px 48px 0;
+  border-right: 1px solid var(--line);
+}
+
+.cover {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+.cover img {
+  object-fit: contain;
+}
+
+.leadGuideCopy small {
+  color: var(--orange);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.leadGuideCopy h3 {
+  margin: 18px 0 16px;
+  font-size: clamp(38px, 4.2vw, 62px);
+}
+
+.leadGuideCopy p {
+  max-width: 44ch;
+  font-size: 17px;
+}
+
+.leadGuideCopy strong,
+.featuredList strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.featuredList {
+  display: grid;
+}
+
+.featuredList > a {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 20px;
+  padding: 28px 0 28px 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.featuredList > a:last-child {
+  border-bottom: 0;
+}
+
+.featuredList > a > span {
+  padding-top: 5px;
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.featuredList h3 {
+  margin: 0 0 10px;
+  font-size: clamp(23px, 2.2vw, 31px);
+}
+
+.featuredList p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.featuredList strong {
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.topicsSection,
+.projectsSection,
+.journeySection {
+  padding: 104px 0;
+}
+
+.sectionHeading {
+  max-width: 870px;
+  margin-bottom: 42px;
+}
+
+.sectionHeading h2 {
+  margin-bottom: 0;
+}
+
+.topicGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.topicCard {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 22px;
+  min-height: 210px;
+  padding: 30px 30px 30px 0;
+  border-bottom: 1px solid var(--line);
+  transition: color 180ms ease;
+}
+
+.topicCard:nth-child(odd) {
+  padding-right: 34px;
+  border-right: 1px solid var(--line);
+}
+
+.topicCard:nth-child(even) {
+  padding-left: 34px;
+}
+
+.topicCard > span {
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.topicCard h3 {
+  margin: 0 0 12px;
+  font-size: clamp(26px, 2.5vw, 34px);
+}
+
+.topicCard p {
+  margin: 0;
+}
+
+.topicCard > strong {
+  align-self: end;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.topicCard:hover h3,
+.topicCard:hover strong {
+  color: var(--orange);
+}
+
+.toolCard strong,
+.journalCard a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.toolsSection {
+  padding: 104px 0 0;
+  background: var(--ink);
+  color: #fff;
+}
+
+.toolsSection .sectionHeading h2 {
+  color: #fff;
+}
+
+.toolsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid #ffffff26;
+  border-left: 1px solid #ffffff26;
+}
+
+.toolCard {
+  display: flex;
+  min-height: 350px;
+  flex-direction: column;
+  padding: 28px;
+  border-right: 1px solid #ffffff26;
+  border-bottom: 1px solid #ffffff26;
+}
+
+.toolCard > svg {
+  width: 34px;
+  height: 34px;
+  color: var(--orange);
+}
+
+.toolCard h3 {
+  margin: 55px 0 12px;
+  font-size: 28px;
+}
+
+.toolCard p {
+  color: #ffffff9e;
+}
+
+.consultationRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 60px;
+  padding: 34px 0;
+  border-top: 1px solid #ffffff26;
+}
+
+.consultationRow small {
+  color: var(--orange);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .11em;
+}
+
+.consultationRow p {
+  margin: 6px 0 0;
+  color: #ffffff9e;
+}
+
+.projectsSection {
+  background: var(--cream);
+}
+
+.headingRow {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 36px;
+}
+
+.textLink {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 48px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid currentColor;
+  font-weight: 800;
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.projectCard {
+  grid-column: span 2;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--paper);
+}
+
+.projectCard:nth-child(4),
+.projectCard:nth-child(5) {
+  grid-column: span 3;
+}
+
+.projectImage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.projectImage img,
+.journalImage img {
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.projectCard:hover img {
+  transform: scale(1.025);
+}
+
+.projectCard > div:last-child {
+  padding: 22px;
+}
+
+.projectCard small,
+.journalCard small {
+  color: var(--orange);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.projectCard h3 {
+  margin: 10px 0 0;
+  font-size: 27px;
+}
+
+.journalSection {
+  padding: 104px 0;
+  background: var(--sand);
+}
+
+.journalGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.journalCard {
+  display: flex;
+  min-height: 440px;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--paper);
+}
+
+.journalImage {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--cream);
+}
+
+.journalCard > div:last-child {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.journalCard h3 {
+  margin: 12px 0 28px;
+  font-size: 28px;
+}
+
+.journeySection {
+  background: var(--paper);
+}
+
+.journey {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  list-style: none;
+}
+
+.journey li {
+  display: flex;
+  min-height: 230px;
+  flex-direction: column;
+  padding: 24px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.journey span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.journey svg {
+  width: 30px;
+  height: 30px;
+  margin: 40px 0 20px;
+  color: var(--orange);
+}
+
+.journey strong {
+  max-width: 16ch;
+  font-size: 18px;
+}
+
+.finalCta {
+  padding: 104px 0;
+  background: var(--ink);
+  color: #fff;
+}
+
+.finalCtaInner {
+  max-width: 900px;
+  text-align: center;
+}
+
+.finalCta h2 {
+  color: #fff;
+}
+
+.finalCta p {
+  max-width: 62ch;
+  margin: 0 auto 30px;
+  color: #ffffffa6;
+  font-size: 19px;
+}
+
+@media (max-width: 950px) {
+  .featuredLayout,
+  .leadGuide {
+    grid-template-columns: 1fr;
+  }
+
+  .leadGuide {
+    padding-right: 32px;
+  }
+
+  .cover {
+    width: min(48vw, 340px);
+  }
+
+  .journalGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .toolsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projectCard,
+  .projectCard:nth-child(4),
+  .projectCard:nth-child(5) {
+    grid-column: span 3;
+  }
+
+  .journey {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .featuredLayout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .featuredList > a {
+    padding-left: 26px;
+  }
+
+  .topicCard {
+    grid-template-columns: 34px 1fr;
+  }
+
+  .topicCard > strong {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 650px) {
+  .hero,
+  .featuredGuides,
+  .topicsSection,
+  .projectsSection,
+  .journalSection,
+  .journeySection,
+  .finalCta {
+    padding: 74px 0;
+  }
+
+  .breadcrumb {
+    margin-bottom: 38px;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 11vw, 50px);
+  }
+
+  .heroCopy {
+    margin-top: 26px;
+  }
+
+  .topicLinks {
+    margin-bottom: 28px;
+  }
+
+  .topicLinks a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+  }
+
+  .heroActions {
+    flex-direction: column;
+  }
+
+  .heroActions :global(.btn) {
+    width: 100%;
+  }
+
+  .cover {
+    width: min(76vw, 320px);
+    margin: 0 auto;
+  }
+
+  .featuredLayout,
+  .leadGuide,
+  .topicGrid,
+  .toolsGrid,
+  .journalGrid,
+  .journey {
+    grid-template-columns: 1fr;
+  }
+
+  .leadGuide {
+    gap: 34px;
+    padding: 34px 0 40px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .featuredList > a {
+    padding: 26px 0;
+  }
+
+  .topicCard {
+    grid-template-columns: 30px minmax(0, 1fr);
+    min-height: 0;
+    padding: 26px 0;
+  }
+
+  .topicCard:nth-child(odd),
+  .topicCard:nth-child(even) {
+    padding-right: 0;
+    padding-left: 0;
+    border-right: 0;
+  }
+
+  .topicCard > strong {
+    grid-column: 2;
+  }
+
+  .toolsSection {
+    padding-top: 74px;
+  }
+
+  .toolCard {
+    min-height: 300px;
+  }
+
+  .consultationRow,
+  .headingRow {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .consultationRow .btn {
+    width: 100%;
+  }
+
+  .textLink {
+    margin-top: -20px;
+    margin-bottom: 36px;
+  }
+
+  .projectGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .projectCard,
+  .projectCard:nth-child(4),
+  .projectCard:nth-child(5) {
+    grid-column: auto;
+  }
+
+  .journey li {
+    min-height: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topicCard,
+  .projectImage img,
+  .journalImage img {
+    transition: none;
+  }
+}

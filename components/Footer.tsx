@@ -52,12 +52,19 @@ export function Footer() {
           <h3>Explore</h3>
           <Link href="/services">Services</Link>
           <Link href="/projects">Projects</Link>
-          <Link href="/guides">Guides</Link>
           <Link href="/blog">Journal</Link>
-          <Link href="/estimate">Fee calculator</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/privacy">Privacy & cookies</Link>
+        </div>
+
+        <div className="footer-link-group">
+          <h3>Knowledge Centre</h3>
+          <Link href="/knowledge-centre">Knowledge Centre</Link>
+          <Link href="/house-extension-guide">House Extension Guide</Link>
+          <Link href="/services/planning-applications">Planning Advice</Link>
+          <Link href="/services/building-regulations">Building Regulations</Link>
+          <Link href="/estimate">Calculators</Link>
         </div>
       </div>
 
@@ -74,6 +81,11 @@ export function Footer() {
       <div className="shell footer-bottom">© {new Date().getFullYear()} Hepburn Architects Ltd.</div>
 
       <style>{`
+        .footer-grid-expanded {
+          grid-template-columns: 1.25fr .85fr .85fr .7fr .85fr;
+          gap: 38px;
+        }
+
         .footer-brand-logo-link {
           display: inline-flex;
           width: min(100%, 220px);
@@ -135,6 +147,10 @@ export function Footer() {
         }
 
         @media (max-width: 650px) {
+          .footer-grid-expanded {
+            grid-template-columns: 1fr;
+          }
+
           .footer-location-band {
             grid-template-columns: 1fr;
             gap: 12px;
@@ -143,6 +159,12 @@ export function Footer() {
 
           .footer-location-links {
             gap: 10px 20px;
+          }
+        }
+
+        @media (min-width: 651px) and (max-width: 1100px) {
+          .footer-grid-expanded {
+            grid-template-columns: 1fr 1fr;
           }
         }
       `}</style>

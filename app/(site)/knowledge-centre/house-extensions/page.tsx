@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/images/house-extension-guide-cover.png",
-        alt: "Complete House Extension Guide by Hepburn Architects",
+        url: "/images/architectural-expertise-home.webp",
+        alt: "House extension design by Hepburn Architects",
       },
     ],
   },
@@ -426,7 +426,7 @@ export default async function HouseExtensionsPage() {
             <span aria-hidden="true">/</span>
             <span aria-current="page">The Complete Guide to House Extensions</span>
           </nav>
-          <small className="eyebrow">Knowledge Centre · Home design</small>
+          <small className="eyebrow">House Extensions</small>
           <h1>The Complete Guide to House Extensions</h1>
           <div className={styles.heroIntro}>
             <p>
@@ -446,7 +446,7 @@ export default async function HouseExtensionsPage() {
               <CalendarDays size={18} /> Discuss Your Extension
             </a>
             <Link className="btn secondary" href="/house-extension-guide">
-              Download the House Extension Guide <ArrowRight size={18} />
+              Download the Free Guide <ArrowRight size={18} />
             </Link>
           </div>
         </div>
@@ -811,7 +811,12 @@ export default async function HouseExtensionsPage() {
       <section className={styles.guidePromo}>
         <div className={`shell ${styles.guidePromoInner}`}>
           <div className={styles.guideVisual}>
-            <Image src="/images/house-extension-guide-cover.png" alt="Complete House Extension Guide cover" fill sizes="(max-width: 700px) 75vw, 340px" />
+            <Image
+              src="/images/house-extension-guide-cover.png"
+              alt="Complete House Extension Guide cover"
+              fill
+              sizes="(max-width: 700px) 76vw, 320px"
+            />
           </div>
           <div>
             <small className="eyebrow">Free downloadable guide</small>

@@ -519,8 +519,8 @@ export default async function HouseExtensionsPage() {
               and Article 4 directions.
             </p>
             <p>No property-specific conclusion should be drawn without checking the complete proposal and planning history.</p>
-            <Link className={styles.textLink} href="/knowledge-centre/planning-permission">
-              Read Planning Permission Explained <ArrowRight size={17} />
+            <Link className={styles.textLink} href="/knowledge-centre/extension-planning-permission">
+              Check Whether Your Extension Needs Planning Permission <ArrowRight size={17} />
             </Link>
           </section>
 

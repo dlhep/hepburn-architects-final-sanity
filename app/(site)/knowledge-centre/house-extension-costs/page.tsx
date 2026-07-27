@@ -303,7 +303,7 @@ export default async function HouseExtensionCostsPage() {
           <div className={`shell ${styles.statGrid}`}>
             <div><small className="eyebrow">Separate approval systems</small><h2>Planning Permission and Statutory Costs</h2></div>
             <div>
-              <p>Some extensions require full planning permission; others may fall within permitted development. A Lawful Development Certificate can still provide useful formal evidence. Read the <Link href="/knowledge-centre/planning-permission">Planning Permission guide</Link> before fixing an approval allowance.</p>
+              <p>Some extensions require full planning permission; others may fall within permitted development. A Lawful Development Certificate can still provide useful formal evidence. Read our guide to <Link href="/knowledge-centre/extension-planning-permission">planning permission for extensions</Link> before fixing an approval allowance.</p>
               <p>Planning application charges are indexed and change over time. Planning Portal service charges may apply, local pre-application fees vary, and Building Control charges depend on the body and project. The <Link href="/knowledge-centre/building-regulations">Building Regulations guide</Link> explains the technical approval route.</p>
               <p>Party Wall costs are separate from planning. Community Infrastructure Levy should also be checked where relevant: residential extensions may benefit from exemption, but the correct procedure and timing remain important.</p>
             </div>

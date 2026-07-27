@@ -41,7 +41,7 @@ const topicNavigation = [
 const questions = [
   {
     question: "Do I need planning permission for an extension?",
-    href: "/knowledge-centre/house-extensions#planning-permission",
+    href: "/knowledge-centre/extension-planning-permission",
   },
   {
     question:
@@ -50,7 +50,7 @@ const questions = [
   },
   {
     question: "Can an extension be built under permitted development?",
-    href: "/knowledge-centre/house-extensions#permitted-development",
+    href: "/knowledge-centre/extension-planning-permission",
   },
   {
     question: "Do I need Building Regulations approval?",

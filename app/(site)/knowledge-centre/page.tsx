@@ -62,7 +62,7 @@ const topics = [
     title: "Building Regulations",
     description:
       "Guidance on technical design, structure, insulation, fire safety, ventilation and compliance.",
-    href: "/services/building-regulations",
+    href: "/knowledge-centre/building-regulations",
   },
   {
     title: "New Build Homes",
@@ -107,7 +107,7 @@ const topicLinks = [
   { label: "House Extensions", href: "/services/house-extensions" },
   { label: "New Homes", href: "/services/new-build-homes" },
   { label: "HMOs", href: "/services/hmo-conversions" },
-  { label: "Building Regulations", href: "/services/building-regulations" },
+  { label: "Building Regulations", href: "/knowledge-centre/building-regulations" },
   { label: "Property Development", href: "/services/new-build-homes" },
 ] as const;
 
@@ -120,10 +120,10 @@ const featuredGuides = [
     label: "Read the planning guide",
   },
   {
-    title: "Building Regulations Drawings Explained",
+    title: "Building Regulations Explained",
     description:
-      "What technical drawings include and why they matter before construction begins.",
-    href: "/guides/building-regulations-drawings",
+      "A comprehensive guide to approvals, technical drawings, structure, fire safety, energy, ventilation and drainage.",
+    href: "/knowledge-centre/building-regulations",
     label: "Read the regulations guide",
   },
   {

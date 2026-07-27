@@ -532,6 +532,9 @@ export default async function PlanningPermissionPage() {
                 </article>
               ))}
             </div>
+            <Link className={styles.textLink} href="/knowledge-centre/house-extensions">
+              Read The Complete Guide to House Extensions <ArrowRight size={17} />
+            </Link>
           </section>
 
           <section id="permitted-development">

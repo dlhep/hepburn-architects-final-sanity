@@ -600,6 +600,9 @@ export default async function BuildingRegulationsPage() {
                 </article>
               ))}
             </div>
+            <Link className={styles.textLink} href="/knowledge-centre/house-extensions">
+              Read The Complete Guide to House Extensions <ArrowRight size={17} />
+            </Link>
           </section>
 
           <section id="approval-routes">

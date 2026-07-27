@@ -50,7 +50,7 @@ const topics = [
     title: "House Extensions",
     description:
       "Planning, design, permitted development, costs and the full extension process.",
-    href: "/services/house-extensions",
+    href: "/knowledge-centre/house-extensions",
   },
   {
     title: "Planning Permission",
@@ -104,7 +104,7 @@ const topics = [
 
 const topicLinks = [
   { label: "Planning Permission", href: "/knowledge-centre/planning-permission" },
-  { label: "House Extensions", href: "/services/house-extensions" },
+  { label: "House Extensions", href: "/knowledge-centre/house-extensions" },
   { label: "New Homes", href: "/services/new-build-homes" },
   { label: "HMOs", href: "/services/hmo-conversions" },
   { label: "Building Regulations", href: "/knowledge-centre/building-regulations" },
@@ -316,7 +316,7 @@ export default async function KnowledgeCentrePage() {
             <h2>Featured Guides</h2>
           </div>
           <div className={styles.featuredLayout}>
-            <Link className={styles.leadGuide} href="/house-extension-guide">
+            <Link className={styles.leadGuide} href="/knowledge-centre/house-extensions">
               <div className={styles.cover}>
                 <Image
                   src="/images/house-extension-guide-cover.png"
@@ -326,14 +326,14 @@ export default async function KnowledgeCentrePage() {
                 />
               </div>
               <div className={styles.leadGuideCopy}>
-                <small>Featured guide · Free download</small>
-                <h3>Planning a House Extension</h3>
+                <small>Featured authority guide</small>
+                <h3>The Complete Guide to House Extensions</h3>
                 <p>
-                  A practical homeowner’s guide to planning permission, design,
-                  budgets, Building Regulations and the main stages of an extension.
+                  An in-depth guide to extension types, planning permission, design,
+                  budgets, Building Regulations and the complete project process.
                 </p>
                 <strong>
-                  Download the guide <ArrowRight size={18} />
+                  Read the complete guide <ArrowRight size={18} />
                 </strong>
               </div>
             </Link>

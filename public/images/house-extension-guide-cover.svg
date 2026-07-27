@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">The Complete House Extension Guide</title>
+  <desc id="desc">Hepburn Architects guide to planning, design, costs and construction.</desc>
+  <rect width="900" height="1200" fill="#171715"/>
+  <path d="M0 875 365 635l535 163v402H0Z" fill="#d85f2a"/>
+  <path d="M365 635v355m0-355 535 163M160 770l205-135 250 76v318" fill="none" stroke="#fffdf8" stroke-width="9"/>
+  <path d="M210 820v173h126V738m87-26v290m70-262v285m74-268v291m75-268v292m73-270v293" fill="none" stroke="#fffdf8" stroke-width="5" opacity=".85"/>
+  <text x="74" y="82" fill="#fffdf8" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" letter-spacing="-1">HEPBURN ARCHITECTS</text>
+  <rect x="74" y="119" width="85" height="7" fill="#d85f2a"/>
+  <text x="74" y="270" fill="#fffdf8" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" letter-spacing="4">THE COMPLETE</text>
+  <text x="74" y="368" fill="#fffdf8" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="800" letter-spacing="-4">HOUSE</text>
+  <text x="74" y="449" fill="#fffdf8" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="800" letter-spacing="-4">EXTENSION</text>
+  <text x="74" y="530" fill="#fffdf8" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="800" letter-spacing="-4">GUIDE</text>
+  <text x="74" y="588" fill="#a9a69f" font-family="Arial, Helvetica, sans-serif" font-size="23">Planning · Design · Costs · Construction</text>
+  <text x="74" y="1136" fill="#fffdf8" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">DAVID HEPBURN  ·  ARB  ·  RIBA</text>
+</svg>

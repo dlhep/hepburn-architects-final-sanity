@@ -249,6 +249,36 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <div className="shell">
           <small className="eyebrow">Supporting guidance</small>
           <h2>Read before you commit.</h2>
+          {slug === "house-extensions" ? (
+            <p className="lead">
+              For an in-depth overview of extension types, design decisions,
+              approvals, costs and technical coordination, read{" "}
+              <Link href="/knowledge-centre/house-extensions">
+                The Complete Guide to House Extensions
+              </Link>
+              .
+            </p>
+          ) : null}
+          {slug === "planning-applications" ? (
+            <p className="lead">
+              For a detailed overview of consent routes, permitted development,
+              application requirements and common constraints, read our{" "}
+              <Link href="/knowledge-centre/planning-permission">
+                Planning Permission Explained guide
+              </Link>
+              .
+            </p>
+          ) : null}
+          {slug === "building-regulations" ? (
+            <p className="lead">
+              For a detailed overview of approval routes, technical drawings,
+              Approved Documents, inspections and completion, read our{" "}
+              <Link href="/knowledge-centre/building-regulations">
+                Building Regulations Explained guide
+              </Link>
+              .
+            </p>
+          ) : null}
           <div className="related-guide-grid">
             {service.relatedGuides.map((guide) => (
               <Link href={`/guides/${guide.slug}`} key={guide.slug}>

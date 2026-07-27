@@ -372,6 +372,39 @@
   background: var(--sand);
 }
 
+.guidePromo {
+  padding: 104px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--cream);
+}
+
+.guidePromoInner {
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) minmax(0, 680px);
+  gap: clamp(44px, 8vw, 110px);
+  align-items: center;
+}
+
+.guideVisual {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1055 / 1491;
+  overflow: hidden;
+  box-shadow: 0 22px 55px rgb(31 36 31 / 10%);
+}
+
+.guideVisual img {
+  object-fit: contain;
+}
+
+.guidePromoInner p {
+  max-width: 58ch;
+  margin-bottom: 28px;
+  font-size: 18px;
+}
+
 .sectionHeading {
   max-width: 850px;
   margin-bottom: 44px;
@@ -609,6 +642,10 @@
     grid-template-columns: 1fr;
   }
 
+  .guidePromoInner {
+    grid-template-columns: minmax(200px, 280px) 1fr;
+  }
+
   .projectGrid {
     grid-template-columns: 1fr 1fr;
   }
@@ -632,8 +669,13 @@
   .splitList,
   .columns,
   .sourcesInner,
+  .guidePromoInner,
   .disclaimer > div {
     grid-template-columns: 1fr;
+  }
+
+  .guideVisual {
+    width: min(76vw, 320px);
   }
 
   .heroActions {
@@ -709,6 +751,7 @@
   }
 
   .projects,
+  .guidePromo,
   .related,
   .faqs,
   .sources,

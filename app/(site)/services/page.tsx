@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Building2, DraftingCompass, FileCheck2, Home, Layers3, Ruler } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Building2, DraftingCompass, FileCheck2, HeartHandshake, Home, Layers3, Ruler } from "lucide-react";
 import { serviceDetails } from "@/lib/service-details";
 import { site } from "@/lib/site";
 
@@ -56,6 +57,32 @@ export default function ServicesPage() {
               </Link>
             );
           })}
+          <Link
+            href="/services/c2-planning-applications-childrens-homes"
+            className="service-overview-card"
+          >
+            <div className="service-overview-image">
+              <Image
+                src="/images/selected-work-2.png"
+                alt="Welcoming residential home with a garden"
+                width={1450}
+                height={1088}
+                sizes="(max-width: 700px) 100vw, 45vw"
+              />
+            </div>
+            <div className="service-overview-copy">
+              <span>07</span>
+              <HeartHandshake />
+              <h2>Planning Applications for Children’s Homes</h2>
+              <p>
+                Child-centred planning and architectural support for providers
+                creating safe, welcoming and well-integrated residential homes.
+              </p>
+              <strong>
+                Explore this service <ArrowRight size={16} />
+              </strong>
+            </div>
+          </Link>
         </div>
       </section>
 

@@ -22,6 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   [
     "",
     "/services",
+    "/services/c2-planning-applications-childrens-homes",
     "/locations",
     "/guides",
     "/knowledge-centre",

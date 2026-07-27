@@ -735,6 +735,9 @@ export default async function HouseExtensionsPage() {
               ))}
             </ol>
             <p>Timescales depend on complexity, approval routes, authority responses, consultant information, contractor availability, procurement and changes during the project. Fixed completion dates should not be assumed without a project-specific programme.</p>
+            <Link className={styles.textLink} href="/knowledge-centre/house-extension-timeline">
+              Read the complete house extension timeline <ArrowRight size={17} />
+            </Link>
           </section>
 
           <section id="design-process">

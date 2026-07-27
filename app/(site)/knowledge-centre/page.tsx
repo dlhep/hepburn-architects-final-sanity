@@ -362,6 +362,9 @@ export default async function KnowledgeCentrePage() {
               <Link href="/knowledge-centre/house-extension-costs">
                 House Extension Costs in 2026 <ArrowRight size={16} />
               </Link>
+              <Link href="/knowledge-centre/house-extension-timeline">
+                House Extension Timeline <ArrowRight size={16} />
+              </Link>
               <Link href="/house-extension-guide">
                 Downloadable House Extension Guide <ArrowRight size={16} />
               </Link>

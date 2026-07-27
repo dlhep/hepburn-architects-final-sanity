@@ -56,7 +56,7 @@ const topics = [
     title: "Planning Permission",
     description:
       "Understand planning applications, permitted development, lawful development certificates and common planning constraints.",
-    href: "/services/planning-applications",
+    href: "/knowledge-centre/planning-permission",
   },
   {
     title: "Building Regulations",
@@ -103,7 +103,7 @@ const topics = [
 ] as const;
 
 const topicLinks = [
-  { label: "Planning Permission", href: "/services/planning-applications" },
+  { label: "Planning Permission", href: "/knowledge-centre/planning-permission" },
   { label: "House Extensions", href: "/services/house-extensions" },
   { label: "New Homes", href: "/services/new-build-homes" },
   { label: "HMOs", href: "/services/hmo-conversions" },
@@ -113,10 +113,10 @@ const topicLinks = [
 
 const featuredGuides = [
   {
-    title: "Do I Need Planning Permission for a House Extension?",
+    title: "Planning Permission Explained",
     description:
-      "A practical guide to planning permission and permitted development for single and two-storey house extensions.",
-    href: "/guides/planning-permission-house-extension",
+      "A comprehensive guide to planning applications, permitted development, lawful development certificates and common residential constraints.",
+    href: "/knowledge-centre/planning-permission",
     label: "Read the planning guide",
   },
   {

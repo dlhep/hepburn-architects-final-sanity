@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  BookOpen,
-  Calculator,
-  CalendarDays,
-  Check,
-  FileText,
-  FolderKanban,
-} from "lucide-react";
-import { articleImageUrl, getBlogPosts, type Article } from "@/lib/articles";
+import { ArrowRight, ArrowUpRight, CalendarDays, Download } from "lucide-react";
+import { articleImageUrl, getBlogPosts } from "@/lib/articles";
 import {
   getProjects,
   projectImageAlt,
@@ -22,175 +13,72 @@ import { site } from "@/lib/site";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Residential Architecture Knowledge Centre",
+  title: "Residential Architecture Knowledge Centre | Hepburn Architects",
   description:
-    "Practical guidance on house extensions, planning permission, Building Regulations, new homes, HMOs and residential development from Hepburn Architects.",
+    "Practical residential architecture guidance covering planning permission, Building Regulations, house extensions, design, costs and project advice.",
   alternates: {
     canonical: "https://www.hepburnarchitects.net/knowledge-centre",
   },
   openGraph: {
     title: "Residential Architecture Knowledge Centre | Hepburn Architects",
     description:
-      "Practical guidance on house extensions, planning permission, Building Regulations, new homes, HMOs and residential development from Hepburn Architects.",
+      "Practical residential architecture guidance covering planning permission, Building Regulations, house extensions, design, costs and project advice.",
     url: "/knowledge-centre",
     type: "website",
-    images: [
-      {
-        url: "/images/house-extension-guide-cover.png",
-        width: 1200,
-        height: 1500,
-        alt: "Planning a House Extension practical guide by Hepburn Architects",
-      },
-    ],
+    images: ["/images/og.svg"],
   },
 };
 
-const topics = [
-  {
-    title: "House Extensions",
-    description:
-      "Planning, design, permitted development, costs and the full extension process.",
-    href: "/knowledge-centre/house-extensions",
-  },
-  {
-    title: "Planning Permission",
-    description:
-      "Understand planning applications, permitted development, lawful development certificates and common planning constraints.",
-    href: "/knowledge-centre/planning-permission",
-  },
-  {
-    title: "Building Regulations",
-    description:
-      "Guidance on technical design, structure, insulation, fire safety, ventilation and compliance.",
-    href: "/knowledge-centre/building-regulations",
-  },
-  {
-    title: "New Build Homes",
-    description:
-      "Advice on feasibility, planning, design development and technical delivery for new homes and replacement dwellings.",
-    href: "/services/new-build-homes",
-  },
-  {
-    title: "HMOs and Conversions",
-    description:
-      "Planning, layout, fire safety and technical considerations for HMOs and residential conversions.",
-    href: "/services/hmo-conversions",
-  },
-  {
-    title: "Small Residential Developments",
-    description:
-      "Feasibility, planning strategy and design for backland sites, infill plots and small housing schemes.",
-    href: "/services/new-build-homes",
-  },
-  {
-    title: "Costs, Fees and Calculators",
-    description:
-      "Tools and guidance to help clients understand likely professional fees, project budgets and early-stage costs.",
-    href: "/estimate",
-  },
-  {
-    title: "Loft Conversions",
-    description:
-      "Planning, permitted development, headroom, stairs, structure and Building Regulations for loft projects.",
-    href: "/services/loft-conversions",
-  },
-  {
-    title: "Rural and Barn Conversions",
-    description:
-      "Guidance for barn conversions, rural buildings and countryside development opportunities.",
-    href: "/projects",
-  },
-] as const;
-
-const topicLinks = [
+const topicNavigation = [
   { label: "Planning Permission", href: "/knowledge-centre/planning-permission" },
-  { label: "House Extensions", href: "/knowledge-centre/house-extensions" },
-  { label: "New Homes", href: "/services/new-build-homes" },
-  { label: "HMOs", href: "/services/hmo-conversions" },
   { label: "Building Regulations", href: "/knowledge-centre/building-regulations" },
-  { label: "Property Development", href: "/services/new-build-homes" },
+  { label: "House Extensions", href: "/knowledge-centre/house-extensions" },
+  { label: "Projects", href: "/projects" },
+  { label: "Journal", href: "/blog" },
+  { label: "Fee Calculator", href: "/estimate" },
 ] as const;
 
-const featuredGuides = [
+const questions = [
   {
-    title: "Planning Permission Explained",
-    description:
-      "A comprehensive guide to planning applications, permitted development, lawful development certificates and common residential constraints.",
-    href: "/knowledge-centre/planning-permission",
-    label: "Read the planning guide",
+    question: "Do I need planning permission for an extension?",
+    href: "/knowledge-centre/house-extensions#planning-permission",
   },
   {
-    title: "Building Regulations Explained",
-    description:
-      "A comprehensive guide to approvals, technical drawings, structure, fire safety, energy, ventilation and drainage.",
-    href: "/knowledge-centre/building-regulations",
-    label: "Read the regulations guide",
+    question:
+      "What is the difference between planning permission and Building Regulations?",
+    href: "/knowledge-centre/building-regulations#planning-versus-building-regulations",
   },
   {
-    title: "House Extension Costs and Architect Fees",
-    description:
-      "Understand the factors shaping construction budgets, professional fees and early cost planning.",
-    href: "/guides/house-extension-cost-uk",
-    label: "Read the cost guide",
-  },
-] as const;
-
-const tools = [
-  {
-    icon: Calculator,
-    title: "Architectural fee calculator",
-    description: "Get an early indication of likely professional fees.",
-    href: "/estimate",
-    label: "Use the calculator",
+    question: "Can an extension be built under permitted development?",
+    href: "/knowledge-centre/house-extensions#permitted-development",
   },
   {
-    icon: BookOpen,
-    title: "House extension guide",
-    description: "Plan the main stages of an extension with greater clarity.",
-    href: "/house-extension-guide",
-    label: "Download the guide",
+    question: "Do I need Building Regulations approval?",
+    href: "/knowledge-centre/building-regulations#when-they-apply",
   },
   {
-    icon: FileText,
-    title: "Planning guides",
-    description: "Explore practical guidance on permissions and applications.",
-    href: "/guides",
-    label: "Browse planning guidance",
+    question: "How much does a house extension cost?",
+    href: "/knowledge-centre/house-extensions#costs",
   },
   {
-    icon: FolderKanban,
-    title: "Project library",
-    description: "Filter completed and developing work by residential project type.",
-    href: "/projects",
-    label: "Explore projects",
+    question: "Do I need an architect?",
+    href: "/knowledge-centre/house-extensions#choosing-an-architect",
   },
 ] as const;
 
-const journey = [
-  "Read practical guidance",
-  "Explore relevant projects",
-  "Review the matching service",
-  "Download a guide or use a calculator",
-  "Book a consultation",
+const futureTopics = [
+  "New Build Homes",
+  "HMOs and Conversions",
+  "Loft Conversions",
+  "Small Residential Developments",
 ] as const;
 
 const projectGroups = [
   ["extension"],
-  ["new build", "new-build", "passive", "passivhaus", "replacement"],
-  ["hmo", "conversion", "remodelling"],
+  ["new build", "new-build", "passive", "passivhaus"],
+  ["replacement"],
   ["development", "housing", "infill", "backland"],
-  ["barn", "rural", "countryside"],
-] as const;
-
-const guidanceTerms = [
-  "planning",
-  "extension",
-  "building regulations",
-  "new home",
-  "new build",
-  "hmo",
-  "development",
-  "permission",
+  ["conversion", "hmo", "remodelling"],
 ] as const;
 
 function projectSearchText(project: Project) {
@@ -219,31 +107,46 @@ function selectVariedProjects(projects: Project[]) {
   });
 
   for (const project of projects) {
-    if (selected.length >= 5) break;
+    if (selected.length >= 6) break;
     if (!selected.some((item) => item.slug === project.slug)) selected.push(project);
   }
 
-  return selected;
+  return selected.slice(0, 6);
 }
 
-function articleSearchText(article: Article) {
-  return [article.title, article.excerpt, article.category]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
-}
-
-function selectRelevantPosts(posts: Article[]) {
-  const relevant = posts.filter((post) =>
-    guidanceTerms.some((term) => articleSearchText(post).includes(term)),
+function ProjectImage({
+  project,
+  sizes,
+}: {
+  project: Project;
+  sizes: string;
+}) {
+  return (
+    <Image
+      src={projectImageUrl(project.featuredImage, 1400)}
+      alt={projectImageAlt(project)}
+      fill
+      sizes={sizes}
+    />
   );
-  return (relevant.length >= 3 ? relevant : posts).slice(0, 3);
 }
 
 export default async function KnowledgeCentrePage() {
   const [projects, posts] = await Promise.all([getProjects(), getBlogPosts()]);
   const selectedProjects = selectVariedProjects(projects);
-  const latestGuidance = selectRelevantPosts(posts);
+  const extensionProject =
+    selectedProjects.find((project) =>
+      projectSearchText(project).includes("extension"),
+    ) ?? selectedProjects[0];
+  const secondaryImages = selectedProjects.filter(
+    (project) => project.slug !== extensionProject?.slug,
+  );
+  const latestPosts = [...posts]
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+    )
+    .slice(0, 3);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -278,260 +181,385 @@ export default async function KnowledgeCentrePage() {
             <span aria-hidden="true">/</span>
             <span aria-current="page">Knowledge Centre</span>
           </nav>
-          <small className="eyebrow">Knowledge Centre</small>
+          <small className="eyebrow">Residential Architecture Guidance</small>
           <h1>Residential Architecture Knowledge Centre</h1>
-          <div className={styles.heroCopy}>
+          <div className={styles.heroBottom}>
             <p>
-              Practical guidance on planning permission, house extensions, new
-              homes, HMOs and residential development from Hepburn Architects.
+              Clear, practical guidance for homeowners, property investors and small
+              developers navigating design, planning permission, Building
+              Regulations, house extensions and residential development.
             </p>
-          </div>
-          <nav className={styles.topicLinks} aria-label="Knowledge Centre topics">
-            {topicLinks.map((topic) => (
-              <Link href={topic.href} key={topic.label}>
-                {topic.label}
-              </Link>
-            ))}
-          </nav>
-          <div className={`actions ${styles.heroActions}`}>
-            <a className="btn primary" href="#knowledge-topics">
-              Explore the Knowledge Centre <ArrowRight size={18} />
-            </a>
-            <a
-              className="btn secondary"
-              href={site.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <CalendarDays size={18} /> Book a Free Consultation
-            </a>
+            <div className={`actions ${styles.heroActions}`}>
+              <a className="btn primary" href="#featured-guides">
+                Explore Featured Guides <ArrowRight size={17} />
+              </a>
+              <a
+                className="btn secondary"
+                href={site.calendly}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Discuss Your Project
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className={styles.featuredGuides}>
+      <nav className={styles.topicStrip} aria-label="Knowledge Centre topics">
         <div className="shell">
-          <div className={styles.sectionHeading}>
-            <small className="eyebrow">Editor’s selection</small>
-            <h2>Featured Guides</h2>
-          </div>
-          <div className={styles.featuredLayout}>
-            <Link className={styles.leadGuide} href="/knowledge-centre/house-extensions">
-              <div className={styles.cover}>
-                <Image
-                  src="/images/house-extension-guide-cover.png"
-                  alt="Cover of Planning a House Extension, a practical homeowner’s guide"
-                  fill
-                  sizes="(max-width: 700px) 76vw, (max-width: 1000px) 38vw, 360px"
-                />
-              </div>
-              <div className={styles.leadGuideCopy}>
-                <small>Featured authority guide</small>
-                <h3>The Complete Guide to House Extensions</h3>
-                <p>
-                  An in-depth guide to extension types, planning permission, design,
-                  budgets, Building Regulations and the complete project process.
-                </p>
-                <strong>
-                  Read the complete guide <ArrowRight size={18} />
-                </strong>
-              </div>
+          {topicNavigation.map((topic) => (
+            <Link href={topic.href} key={topic.label}>
+              {topic.label}
             </Link>
-            <div className={styles.featuredList}>
-              {featuredGuides.map((guide, index) => (
-                <Link href={guide.href} key={guide.title}>
-                  <span>{String(index + 2).padStart(2, "0")}</span>
-                  <div>
-                    <h3>{guide.title}</h3>
-                    <p>{guide.description}</p>
-                    <strong>
-                      {guide.label} <ArrowUpRight size={17} />
-                    </strong>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </nav>
 
-      <section id="knowledge-topics" className={styles.topicsSection}>
+      <section id="featured-guides" className={styles.featuredSection}>
         <div className="shell">
-          <div className={styles.sectionHeading}>
-            <small className="eyebrow">Browse by subject</small>
-            <h2>Explore residential architecture guidance</h2>
-          </div>
-          <div className={styles.topicGrid}>
-            {topics.map((topic, index) => (
-              <Link className={styles.topicCard} href={topic.href} key={topic.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <h3>{topic.title}</h3>
-                  <p>{topic.description}</p>
-                </div>
-                <strong aria-hidden="true">
-                  View topic <ArrowUpRight size={18} />
-                </strong>
+          <header className={styles.sectionHeader}>
+            <small className="eyebrow">Start here</small>
+            <h2>Featured Guides</h2>
+          </header>
+
+          <article className={styles.leadFeature}>
+            {extensionProject ? (
+              <Link
+                className={styles.leadImage}
+                href="/knowledge-centre/house-extensions"
+                aria-label="Read The Complete Guide to House Extensions"
+              >
+                <ProjectImage
+                  project={extensionProject}
+                  sizes="(max-width: 800px) 100vw, 62vw"
+                />
               </Link>
+            ) : null}
+            <div className={styles.leadCopy}>
+              <span>01 / Comprehensive homeowner guide</span>
+              <h3>The Complete Guide to House Extensions</h3>
+              <p>
+                A clear route through extension types, design choices, planning,
+                costs, Building Regulations and the complete project process.
+              </p>
+              <Link
+                className={styles.arrowLink}
+                href="/knowledge-centre/house-extensions"
+              >
+                Read the Guide <ArrowRight size={17} />
+              </Link>
+            </div>
+          </article>
+
+          <div className={styles.secondaryGuides}>
+            {[
+              {
+                number: "02",
+                title: "Planning Permission Explained",
+                summary:
+                  "Understand the principal planning routes, permitted development and how residential proposals are assessed.",
+                href: "/knowledge-centre/planning-permission",
+              },
+              {
+                number: "03",
+                title: "Building Regulations Explained",
+                summary:
+                  "An introduction to technical approval, compliant design information and the responsibilities behind a safe build.",
+                href: "/knowledge-centre/building-regulations",
+              },
+            ].map((guide, index) => (
+              <article className={styles.secondaryGuide} key={guide.title}>
+                {secondaryImages[index] ? (
+                  <Link
+                    href={guide.href}
+                    className={styles.secondaryImage}
+                    aria-label={`Read ${guide.title}`}
+                  >
+                    <ProjectImage
+                      project={secondaryImages[index]}
+                      sizes="(max-width: 700px) 100vw, 48vw"
+                    />
+                  </Link>
+                ) : null}
+                <div>
+                  <span>{guide.number} / Essential reading</span>
+                  <h3>{guide.title}</h3>
+                  <p>{guide.summary}</p>
+                  <Link className={styles.arrowLink} href={guide.href}>
+                    Read {guide.title} <ArrowUpRight size={16} />
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.toolsSection}>
-        <div className="shell">
-          <div className={styles.sectionHeading}>
-            <small className="eyebrow">Practical resources</small>
-            <h2>Useful tools before you begin</h2>
+      <section className={styles.guidanceSection}>
+        <div className={`shell ${styles.splitIntro}`}>
+          <header className={styles.sectionHeader}>
+            <small className="eyebrow">Understand the approvals</small>
+            <h2>Planning and Technical Guidance</h2>
+          </header>
+          <p>
+            The guides explain the systems and questions likely to shape a project.
+            The service pages explain how Hepburn Architects can prepare, coordinate
+            and submit the professional work required for a specific property.
+          </p>
+        </div>
+        <div className={`shell ${styles.editorialLinks}`}>
+          <div>
+            <span>Guides</span>
+            <Link href="/knowledge-centre/planning-permission">
+              Planning Permission Explained <ArrowRight size={16} />
+            </Link>
+            <Link href="/knowledge-centre/building-regulations">
+              Building Regulations Explained <ArrowRight size={16} />
+            </Link>
           </div>
-          <div className={styles.toolsGrid}>
-            {tools.map((tool) => {
-              const Icon = tool.icon;
-              return (
-                <Link href={tool.href} className={styles.toolCard} key={tool.title}>
-                  <Icon aria-hidden="true" />
-                  <h3>{tool.title}</h3>
-                  <p>{tool.description}</p>
-                  <strong>
-                    {tool.label} <ArrowRight size={17} />
-                  </strong>
-                </Link>
-              );
-            })}
-          </div>
-          <div className={styles.consultationRow}>
-            <div>
-              <small>Not sure where to start?</small>
-              <p>Discuss the property and the most useful first step with an architect.</p>
-            </div>
-            <a
-              className="btn light-btn"
-              href={site.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Book a Free Consultation
-            </a>
+          <div>
+            <span>Professional services</span>
+            <Link href="/services/planning-applications">
+              Planning application architect <ArrowRight size={16} />
+            </Link>
+            <Link href="/services/building-regulations">
+              Building Regulations drawings <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>
 
-      {selectedProjects.length > 0 && (
+      <section className={styles.improvementSection}>
+        <div className="shell">
+          <header className={styles.sectionHeader}>
+            <small className="eyebrow">From first idea to delivery</small>
+            <h2>Improving and Extending Your Home</h2>
+          </header>
+          <div className={styles.improvementGrid}>
+            {extensionProject ? (
+              <Link
+                href={`/projects/${extensionProject.slug}`}
+                className={styles.improvementImage}
+                aria-label={`View extension project: ${extensionProject.title}`}
+              >
+                <ProjectImage
+                  project={extensionProject}
+                  sizes="(max-width: 850px) 100vw, 66vw"
+                />
+                <span>{extensionProject.title}</span>
+              </Link>
+            ) : null}
+            <div className={styles.improvementCopy}>
+              <p>
+                Use the complete guide for an editorial overview, then move into the
+                practical resource or service that fits the stage your project has
+                reached.
+              </p>
+              <Link href="/knowledge-centre/house-extensions">
+                Complete Guide to House Extensions <ArrowRight size={16} />
+              </Link>
+              <Link href="/house-extension-guide">
+                Downloadable House Extension Guide <ArrowRight size={16} />
+              </Link>
+              <Link href="/services/house-extensions">
+                House extension architectural service <ArrowRight size={16} />
+              </Link>
+              <Link href="/estimate">
+                Estimate architectural fees <ArrowRight size={16} />
+              </Link>
+              <Link href="/projects">
+                Browse extension projects <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.downloadSection}>
+        <div className={`shell ${styles.downloadInner}`}>
+          <div className={styles.guideCover}>
+            <Image
+              src="/images/house-extension-guide-cover.png"
+              alt="Cover of the Hepburn Architects house extension guide"
+              width={1055}
+              height={1491}
+              sizes="(max-width: 700px) 58vw, 330px"
+            />
+          </div>
+          <div className={styles.downloadCopy}>
+            <small className="eyebrow">Free homeowner resource</small>
+            <h2>Download the House Extension Guide</h2>
+            <p>
+              A practical companion covering planning permission, budgeting, design
+              decisions, the extension process and common mistakes to avoid.
+            </p>
+            <Link className="btn primary" href="/house-extension-guide">
+              Get the Free Guide <Download size={17} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {selectedProjects.length > 0 ? (
         <section className={styles.projectsSection}>
           <div className="shell">
             <div className={styles.headingRow}>
-              <div className={styles.sectionHeading}>
-                <small className="eyebrow">Selected work</small>
-                <h2>Residential projects and case studies</h2>
-              </div>
-              <Link href="/projects" className={styles.textLink}>
-                View all projects <ArrowUpRight size={18} />
+              <header className={styles.sectionHeader}>
+                <small className="eyebrow">Selected residential work</small>
+                <h2>Architecture in Practice</h2>
+              </header>
+              <Link className={styles.arrowLink} href="/projects">
+                View All Projects <ArrowRight size={17} />
               </Link>
             </div>
             <div className={styles.projectGrid}>
               {selectedProjects.map((project) => (
                 <Link
-                  href={`/projects/${project.slug}`}
                   className={styles.projectCard}
+                  href={`/projects/${project.slug}`}
                   key={project.slug}
                 >
                   <div className={styles.projectImage}>
-                    <Image
-                      src={projectImageUrl(project.featuredImage, 1200)}
-                      alt={projectImageAlt(project)}
-                      fill
-                      sizes="(max-width: 700px) 100vw, (max-width: 1050px) 50vw, 33vw"
+                    <ProjectImage
+                      project={project}
+                      sizes="(max-width: 700px) 100vw, (max-width: 1050px) 50vw, 34vw"
                     />
                   </div>
                   <div>
-                    <small>
-                      {project.location} · {project.projectType}
-                    </small>
+                    <small>{project.projectType || project.category}</small>
                     <h3>{project.title}</h3>
+                    <p>{project.location}</p>
                   </div>
                 </Link>
               ))}
             </div>
           </div>
         </section>
-      )}
+      ) : null}
 
-      {latestGuidance.length > 0 && (
-        <section className={styles.journalSection}>
-          <div className="shell">
-            <div className={styles.headingRow}>
-              <div className={styles.sectionHeading}>
-                <small className="eyebrow">From the Journal</small>
-                <h2>Latest guidance and practice insights</h2>
-              </div>
-              <Link href="/blog" className={styles.textLink}>
-                View the Journal <ArrowUpRight size={18} />
-              </Link>
-            </div>
+      <section className={styles.journalSection}>
+        <div className="shell">
+          <div className={styles.headingRow}>
+            <header className={styles.sectionHeader}>
+              <small className="eyebrow">Journal</small>
+              <h2>Latest from the Studio</h2>
+            </header>
+            <Link className={styles.arrowLink} href="/blog">
+              View the Journal <ArrowRight size={17} />
+            </Link>
+          </div>
+          {latestPosts.length ? (
             <div className={styles.journalGrid}>
-              {latestGuidance.map((post) => {
+              {latestPosts.map((post) => {
                 const image = articleImageUrl(post.featuredImage, 1000);
                 return (
                   <article className={styles.journalCard} key={post._id}>
-                    {image && (
-                      <div className={styles.journalImage}>
+                    {image ? (
+                      <Link
+                        className={styles.journalImage}
+                        href={`/blog/${post.slug}`}
+                        aria-label={`Read ${post.title}`}
+                      >
                         <Image
                           src={image}
                           alt={post.featuredImage?.alt || post.title}
                           fill
                           sizes="(max-width: 700px) 100vw, 33vw"
                         />
-                      </div>
-                    )}
+                      </Link>
+                    ) : null}
                     <div>
-                      <small>{post.category || "Journal"}</small>
-                      <h3>{post.title}</h3>
-                      <Link href={`/blog/${post.slug}`}>
-                        Read article <ArrowRight size={17} />
+                      <time dateTime={post.publishedAt}>
+                        {new Intl.DateTimeFormat("en-GB", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        }).format(new Date(post.publishedAt))}
+                      </time>
+                      <h3>
+                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                      </h3>
+                      <p>{post.excerpt}</p>
+                      <Link className={styles.arrowLink} href={`/blog/${post.slug}`}>
+                        Read article <ArrowRight size={16} />
                       </Link>
                     </div>
                   </article>
                 );
               })}
             </div>
-          </div>
-        </section>
-      )}
+          ) : (
+            <p className={styles.emptyState}>
+              New studio stories are in preparation. In the meantime, explore the
+              complete guidance library.
+            </p>
+          )}
+        </div>
+      </section>
 
-      <section className={styles.journeySection}>
-        <div className="shell">
-          <div className={styles.sectionHeading}>
-            <small className="eyebrow">A connected route</small>
-            <h2>From early research to a completed design</h2>
-          </div>
-          <ol className={styles.journey}>
-            {journey.map((step, index) => (
-              <li key={step}>
+      <section className={styles.questionsSection}>
+        <div className={`shell ${styles.questionsGrid}`}>
+          <header className={styles.sectionHeader}>
+            <small className="eyebrow">Quick answers</small>
+            <h2>Popular Questions</h2>
+          </header>
+          <ol className={styles.questionList}>
+            {questions.map((item, index) => (
+              <li key={item.question}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <Check aria-hidden="true" />
-                <strong>{step}</strong>
+                <Link href={item.href}>
+                  {item.question} <ArrowUpRight size={17} />
+                </Link>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
+      <section className={styles.topicIndexSection}>
+        <div className="shell">
+          <header className={styles.sectionHeader}>
+            <small className="eyebrow">Browse the library</small>
+            <h2>Explore Residential Architecture Topics</h2>
+          </header>
+          <div className={styles.topicIndex}>
+            {topicNavigation.map((topic) => (
+              <Link href={topic.href} key={topic.label}>
+                {topic.label} <ArrowUpRight size={16} />
+              </Link>
+            ))}
+            {futureTopics.map((topic) => (
+              <div key={topic}>
+                <span>{topic}</span>
+                <small>Coming soon</small>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className={styles.finalCta}>
         <div className={`shell ${styles.finalCtaInner}`}>
-          <small className="eyebrow">Discuss your next step</small>
-          <h2>Need advice about a property or project?</h2>
-          <p>
-            Book a free 30-minute consultation to discuss your property, planning
-            position and the most sensible next steps.
-          </p>
-          <a
-            className="btn primary"
-            href={site.calendly}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <CalendarDays size={18} /> Book a Free Consultation
-          </a>
+          <div>
+            <small className="eyebrow">Project-specific guidance</small>
+            <h2>Need advice for a specific property?</h2>
+          </div>
+          <div>
+            <p>
+              General guidance is useful, but the correct design, planning and
+              technical approach depends on the property, planning history, site
+              constraints and proposed work.
+            </p>
+            <a
+              className="btn primary"
+              href={site.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <CalendarDays size={17} /> Book a Free Consultation
+            </a>
+          </div>
         </div>
       </section>
     </>

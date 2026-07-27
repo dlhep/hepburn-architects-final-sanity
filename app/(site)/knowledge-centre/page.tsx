@@ -33,6 +33,7 @@ const topicNavigation = [
   { label: "Planning Permission", href: "/knowledge-centre/planning-permission" },
   { label: "Building Regulations", href: "/knowledge-centre/building-regulations" },
   { label: "House Extensions", href: "/knowledge-centre/house-extensions" },
+  { label: "Loft Conversions", href: "/knowledge-centre/loft-conversions" },
   { label: "Projects", href: "/projects" },
   { label: "Journal", href: "/blog" },
   { label: "Fee Calculator", href: "/estimate" },
@@ -62,7 +63,7 @@ const questions = [
   },
   {
     question: "Do I need an architect?",
-    href: "/knowledge-centre/house-extensions#choosing-an-architect",
+    href: "/knowledge-centre/loft-conversions",
   },
 ] as const;
 

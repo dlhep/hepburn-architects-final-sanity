@@ -542,6 +542,14 @@ export default async function PlanningPermissionPage() {
                 planning permission for house extensions
               </Link>.
             </p>
+            <p>
+              Planning a roof alteration? Our{" "}
+              <Link href="/knowledge-centre/loft-conversions">
+                complete loft-conversion guide
+              </Link>{" "}
+              explains Class B volume, dormer design and the relationship with
+              Building Regulations.
+            </p>
           </section>
 
           <section id="permitted-development">

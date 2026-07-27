@@ -272,6 +272,11 @@ const technicalSupport = [
 
 const relatedResources = [
   {
+    title: "The Complete Guide to Loft Conversions",
+    description: "Headroom, stairs, fire safety, structure and technical design for habitable loft projects.",
+    href: "/knowledge-centre/loft-conversions",
+  },
+  {
     title: "Planning Permission Explained",
     description: "Understand the planning routes and constraints that precede technical design.",
     href: "/knowledge-centre/planning-permission",

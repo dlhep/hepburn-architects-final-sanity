@@ -259,6 +259,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               .
             </p>
           ) : null}
+          {slug === "loft-conversions" ? (
+            <p className="lead">
+              Assess headroom, stair design, planning, structure and fire safety
+              before committing to a roof form in{" "}
+              <Link href="/knowledge-centre/loft-conversions">
+                The Complete Guide to Loft Conversions
+              </Link>
+              .
+            </p>
+          ) : null}
           {slug === "planning-applications" ? (
             <p className="lead">
               For a detailed overview of consent routes, permitted development,

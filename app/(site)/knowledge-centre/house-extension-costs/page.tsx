@@ -342,7 +342,7 @@ export default async function HouseExtensionCostsPage() {
 
         <section className={styles.processSection}>
           <div className={`shell ${styles.twoColumn}`}>
-            <div className={styles.stickyHeading}><small className="eyebrow">From brief to tender</small><h2>How to Set a Realistic Extension Budget</h2><Link className={styles.textLink} href="/services/house-extensions">Explore our house extension service <ArrowRight size={16} /></Link><Link className={styles.textLink} href="/knowledge-centre/house-extension-timeline">Plan the extension timeline <ArrowRight size={16} /></Link></div>
+            <div className={styles.stickyHeading}><small className="eyebrow">From brief to tender</small><h2>How to Set a Realistic Extension Budget</h2><Link className={styles.textLink} href="/services/house-extensions">Explore our house extension service <ArrowRight size={16} /></Link><Link className={styles.textLink} href="/knowledge-centre/house-extension-timeline">Plan the extension timeline <ArrowRight size={16} /></Link><Link className={styles.textLink} href="/knowledge-centre/house-extension-ideas">Explore practical design ideas <ArrowRight size={16} /></Link></div>
             <ol className={styles.processList}>{budgetProcess.map(([title, body], index) => <li key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{body}</p></div></li>)}</ol>
           </div>
         </section>

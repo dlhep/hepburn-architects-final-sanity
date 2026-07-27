@@ -200,6 +200,11 @@ const support = [
 
 const relatedResources = [
   {
+    title: "House Extension Design Ideas",
+    description: "Explore practical architectural ideas for better daylight, storage, circulation and garden connection.",
+    href: "/knowledge-centre/house-extension-ideas",
+  },
+  {
     title: "Planning Permission Explained",
     description: "Understand consent routes, permitted development and common residential planning constraints.",
     href: "/knowledge-centre/planning-permission",

@@ -190,6 +190,7 @@ export default async function GuidePage({
                 width={1600}
                 height={950}
                 priority
+                sizes="(max-width: 1100px) 100vw, 1100px"
                 style={{
                   width: "100%",
                   height: "min(520px, 55vw)",

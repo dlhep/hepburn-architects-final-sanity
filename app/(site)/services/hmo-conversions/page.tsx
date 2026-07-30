@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -275,9 +276,13 @@ export default function HmoConversionsPage() {
             </div>
           </div>
 
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?auto=format&fit=crop&w=1800&q=88"
             alt="Residential property being assessed for an HMO conversion"
+            width={1800}
+            height={1200}
+            sizes="(max-width: 950px) 100vw, 48vw"
+            priority
           />
         </div>
       </section>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -336,10 +337,12 @@ export default async function SolihullArchitectPage() {
                   }
                   key={project.slug}
                 >
-                  <img
-                    src={projectImageUrl(project.featuredImage, 1400)}
+                  <Image
+                    src={projectImageUrl(project.featuredImage, index === 0 ? 1400 : 900)}
                     alt={projectImageAlt(project)}
-                    loading="lazy"
+                    width={index === 0 ? 1400 : 900}
+                    height={index === 0 ? 900 : 600}
+                    sizes={index === 0 ? "(max-width: 950px) 100vw, 66vw" : "(max-width: 950px) 100vw, 33vw"}
                   />
                   <div className="selected-work-overlay">
                     <span>

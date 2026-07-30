@@ -3526,3 +3526,27 @@ body .project-gallery-single figure {
   }
 }
 /* PROFILE SILHOUETTES AND PROJECTS HERO — END */
+
+.include-heading {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 1em 0;
+  font-size: 1.17em;
+  font-weight: 700;
+}
+.include-heading svg { width: 19px; color: var(--orange); }
+.lead-gate-title {
+  margin: 8px 0;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: -.045em;
+}
+.lead-next-step-title {
+  margin: 5px 0;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: -.045em;
+}

@@ -30,7 +30,7 @@ export default async function ThankYouPage() {
       <header className={styles.header}>
         <div className={`shell ${styles.headerInner}`}>
           <Link href="/" aria-label="Hepburn Architects home">
-            <Image src="/hepburn-logo.svg" alt="Hepburn Architects" width={581} height={155} priority />
+            <Image src="/hepburn-logo.svg" alt="Hepburn Architects" width={581} height={155} sizes="(max-width: 700px) 190px, 240px" />
           </Link>
           <a className="btn primary small-btn" href={site.calendly} target="_blank" rel="noopener noreferrer">
             Book a consultation

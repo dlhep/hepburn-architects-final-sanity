@@ -74,7 +74,7 @@ export function LeadGate({ source, projectSummary, children }: LeadGateProps) {
         <div className="lead-next-step">
           <div>
             <small>Recommended next step</small>
-            <h3>Book a free 30-minute consultation</h3>
+            <div className="lead-next-step-title">Book a free 30-minute consultation</div>
             <p>Discuss the property, planning route, likely approvals and suitable appointment.</p>
           </div>
           <a className="btn primary" href={site.calendly} target="_blank" rel="noopener noreferrer">
@@ -91,7 +91,7 @@ export function LeadGate({ source, projectSummary, children }: LeadGateProps) {
         <div className="lead-lock"><LockKeyhole size={22} /></div>
         <div>
           <small className="eyebrow">Your estimate is ready</small>
-          <h3>Enter your details to reveal it</h3>
+          <div className="lead-gate-title">Enter your details to reveal it</div>
           <p>Your project details will be sent securely to Hepburn Architects and the estimate will appear immediately.</p>
         </div>
       </div>

@@ -808,7 +808,7 @@ export default async function HouseExtensionsPage() {
               {projects.map((project) => (
                 <Link href={`/projects/${project.slug}`} key={project.slug}>
                   <div className={styles.projectImage}>
-                    <Image src={projectImageUrl(project.featuredImage, 1100)} alt={projectImageAlt(project)} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw" />
+                    <Image src={projectImageUrl(project.featuredImage, 900)} alt={projectImageAlt(project)} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw" />
                   </div>
                   <small>{project.location} · {project.projectType}</small>
                   <h3>{project.title}</h3>

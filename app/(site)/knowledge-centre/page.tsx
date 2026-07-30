@@ -118,13 +118,15 @@ function selectVariedProjects(projects: Project[]) {
 function ProjectImage({
   project,
   sizes,
+  width = 900,
 }: {
   project: Project;
   sizes: string;
+  width?: number;
 }) {
   return (
     <Image
-      src={projectImageUrl(project.featuredImage, 1400)}
+      src={projectImageUrl(project.featuredImage, width)}
       alt={projectImageAlt(project)}
       fill
       sizes={sizes}
@@ -234,6 +236,7 @@ export default async function KnowledgeCentrePage() {
                 <ProjectImage
                   project={extensionProject}
                   sizes="(max-width: 800px) 100vw, 62vw"
+                  width={1400}
                 />
               </Link>
             ) : null}
@@ -280,6 +283,7 @@ export default async function KnowledgeCentrePage() {
                     <ProjectImage
                       project={secondaryImages[index]}
                       sizes="(max-width: 700px) 100vw, 48vw"
+                      width={1200}
                     />
                   </Link>
                 ) : null}
@@ -347,6 +351,7 @@ export default async function KnowledgeCentrePage() {
                 <ProjectImage
                   project={extensionProject}
                   sizes="(max-width: 850px) 100vw, 66vw"
+                  width={1400}
                 />
                 <span>{extensionProject.title}</span>
               </Link>

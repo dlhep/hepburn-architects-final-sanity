@@ -108,6 +108,7 @@ export default async function GuidesPage() {
                           alt={guide.featuredImage?.alt || guide.title}
                           width={700}
                           height={420}
+                          sizes="(max-width: 700px) 100vw, 700px"
                           style={{
                             width: "100%",
                             height: "220px",

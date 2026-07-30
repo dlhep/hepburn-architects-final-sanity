@@ -966,7 +966,7 @@ export default async function BuildingRegulationsPage() {
                 <Link href={`/projects/${project.slug}`} key={project.slug}>
                   <div className={styles.projectImage}>
                     <Image
-                      src={projectImageUrl(project.featuredImage, 1100)}
+                      src={projectImageUrl(project.featuredImage, 900)}
                       alt={projectImageAlt(project)}
                       fill
                       sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw"

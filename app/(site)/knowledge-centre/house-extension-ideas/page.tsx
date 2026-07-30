@@ -276,7 +276,7 @@ export default async function HouseExtensionIdeasPage() {
 
         {projects.length ? <section className={styles.projectsSection}><div className="shell">
           <div className={styles.sectionIntro}><div><small className="eyebrow">Designed and delivered</small><h2>House Extension Projects in Practice</h2></div><Link className={styles.textLink} href="/projects">View House Extension Projects<ArrowRight size={16} /></Link></div>
-          <div className={styles.projectGrid}>{projects.map((project) => <Link href={`/projects/${project.slug}`} key={project.slug}><div><Image src={projectImageUrl(project.featuredImage, 1000)} alt={projectImageAlt(project)} fill sizes="(max-width: 700px) 100vw, 33vw" /></div><small>{project.projectType || project.category}</small><h3>{project.title}</h3><p>{project.location}</p></Link>)}</div>
+          <div className={styles.projectGrid}>{projects.map((project) => <Link href={`/projects/${project.slug}`} key={project.slug}><div><Image src={projectImageUrl(project.featuredImage, 900)} alt={projectImageAlt(project)} fill sizes="(max-width: 700px) 100vw, 33vw" /></div><small>{project.projectType || project.category}</small><h3>{project.title}</h3><p>{project.location}</p></Link>)}</div>
         </div></section> : null}
 
         <section className={styles.feasibilitySection}><div className={`shell ${styles.twoColumn}`}>

@@ -170,7 +170,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   key={project.slug}
                 >
                   <Image
-                    src={projectImageUrl(project.featuredImage, 1400)}
+                    src={projectImageUrl(project.featuredImage, index === 0 ? 1400 : 900)}
                     alt={projectImageAlt(project)}
                     width={1400}
                     height={900}

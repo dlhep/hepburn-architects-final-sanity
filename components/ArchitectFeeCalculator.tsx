@@ -60,8 +60,8 @@ export function ArchitectFeeCalculator(){
       <small className="eyebrow">Indicative architectural fee</small><strong className="total">{total?`£${total.toLocaleString()}`:"Select a service"}</strong>
       <p>A useful early guide, not false precision. A tailored fixed-fee proposal follows after review of the property, brief, planning history and constraints.</p>
       <div className="breakdown">{breakdown.map(x=><div key={x.key}><span>{x.label}</span><strong>£{x.adjusted.toLocaleString()}</strong></div>)}</div>
-      <div className="include"><h3><CheckCircle2/>Included</h3><ul><li>Architect consultation and project review</li><li>Selected design, planning and technical stages</li><li>Reasonable revisions within the appointed stage</li><li>Planning coordination where selected</li></ul></div>
-      <div className="include"><h3><XCircle/>Usually excluded</h3><ul><li>Structural engineer and specialist consultant fees</li><li>Authority application charges</li><li>Ecology, trees, drainage and flood-risk reports</li><li>Party Wall, SAP and warranty costs</li></ul></div>
+      <div className="include"><div className="include-heading"><CheckCircle2/>Included</div><ul><li>Architect consultation and project review</li><li>Selected design, planning and technical stages</li><li>Reasonable revisions within the appointed stage</li><li>Planning coordination where selected</li></ul></div>
+      <div className="include"><div className="include-heading"><XCircle/>Usually excluded</div><ul><li>Structural engineer and specialist consultant fees</li><li>Authority application charges</li><li>Ecology, trees, drainage and flood-risk reports</li><li>Party Wall, SAP and warranty costs</li></ul></div>
       <div className="notice">Indicative guide only. This is not a quotation or contractual offer.</div>
     </LeadGate></div>
   </div>

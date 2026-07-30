@@ -34,10 +34,10 @@ export function ProjectsFilter({ projects }: { projects: Project[] }) {
         {visible.map((project) => (
           <Link href={`/projects/${project.slug}`} className="project-card" key={project.slug} style={{ alignSelf: "start" }}>
             <Image
-              src={projectImageUrl(project.featuredImage, 1200)}
+              src={projectImageUrl(project.featuredImage, 900)}
               alt={projectImageAlt(project)}
-              width={1200}
-              height={800}
+              width={900}
+              height={600}
               sizes="(max-width: 650px) 100vw, 50vw"
             />
             <div>

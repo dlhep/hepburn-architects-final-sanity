@@ -528,7 +528,7 @@ export default async function ChildrensHomesPlanningPage() {
                   <Link key={project.slug} href={`/projects/${project.slug}`}>
                     <div className={styles.projectImage}>
                       <Image
-                        src={projectImageUrl(project.featuredImage)}
+                        src={projectImageUrl(project.featuredImage, 900)}
                         alt={projectImageAlt(project)}
                         fill
                         sizes="(max-width: 720px) 100vw, 33vw"

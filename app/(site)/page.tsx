@@ -229,7 +229,7 @@ export default async function HomePage() {
             >
               <div className="home-project-image">
                 <Image
-                  src={projectImageUrl(project.featuredImage, index === 0 ? 1800 : 1200)}
+                  src={projectImageUrl(project.featuredImage, index === 0 ? 1600 : 900)}
                   alt={projectImageAlt(project)}
                   fill
                   sizes={index === 0 ? "(max-width: 950px) 100vw, 66vw" : "(max-width: 950px) 100vw, 33vw"}
@@ -249,7 +249,7 @@ export default async function HomePage() {
           <div className="shell home-case-study-grid">
             <div className="home-case-study-image">
               <Image
-                src={projectImageUrl(signatureProject.featuredImage, 1800)}
+                src={projectImageUrl(signatureProject.featuredImage, 1600)}
                 alt={projectImageAlt(signatureProject)}
                 fill
                 sizes="(max-width: 950px) 100vw, 62vw"

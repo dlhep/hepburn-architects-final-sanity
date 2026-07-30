@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { articleImageUrl, getBlogPosts } from "@/lib/articles";
 import {
+  getFeaturedCaseStudy,
   getFeaturedProjects,
   getProjects,
   projectImageAlt,
@@ -129,18 +130,15 @@ function cleanExcerpt(excerpt?: string) {
 }
 
 export default async function HomePage() {
-  const [posts, featuredProjects, allProjects] = await Promise.all([
+  const [posts, featuredProjects, allProjects, signatureProject] = await Promise.all([
     getBlogPosts(),
     getFeaturedProjects(),
     getProjects(),
+    getFeaturedCaseStudy(),
   ]);
 
   const projectPool = uniqueProjects([...featuredProjects, ...allProjects]);
   const selectedProjects = projectPool.slice(0, 3);
-  const signatureProject =
-    projectPool.find(
-      (project) => !selectedProjects.some((selected) => selected.slug === project.slug),
-    ) || projectPool[0];
   const latestPosts = posts.slice(0, 3);
   const featurePost = latestPosts[0];
   const supportingPosts = latestPosts.slice(1);

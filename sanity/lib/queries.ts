@@ -47,6 +47,13 @@ export const FEATURED_PROJECTS_QUERY = defineQuery(`
   }
 `);
 
+export const FEATURED_CASE_STUDY_QUERY = defineQuery(`
+  *[_type == "project" && defined(slug.current) && featuredCaseStudy == true]
+  | order(_updatedAt desc)[0] {
+    ${PROJECT_FIELDS}
+  }
+`);
+
 export const PROJECT_QUERY = defineQuery(`
   *[_type == "project" && slug.current == $slug][0] {
     ${PROJECT_FIELDS}

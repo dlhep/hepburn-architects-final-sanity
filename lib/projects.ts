@@ -1,7 +1,13 @@
 import fallbackProjects from "@/data/projects.json";
 import { client } from "@/sanity/lib/client";
 import { isSanityConfigured } from "@/sanity/env";
-import { FEATURED_PROJECTS_QUERY, PROJECT_QUERY, PROJECTS_QUERY, PROJECT_SLUGS_QUERY } from "@/sanity/lib/queries";
+import {
+  FEATURED_CASE_STUDY_QUERY,
+  FEATURED_PROJECTS_QUERY,
+  PROJECT_QUERY,
+  PROJECTS_QUERY,
+  PROJECT_SLUGS_QUERY,
+} from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 
 export type SanityProjectImage = {
@@ -30,6 +36,7 @@ export type Project = {
   completion?: string;
   services: string[];
   featured?: boolean;
+  featuredCaseStudy?: boolean;
   featuredImage: string | SanityProjectImage;
   gallery?: SanityProjectImage[];
   alt?: string;
@@ -68,6 +75,11 @@ export async function getFeaturedProjects(): Promise<Project[]> {
   return local.filter((project) => project.featured).slice(0, 3).length
     ? local.filter((project) => project.featured).slice(0, 3)
     : local.slice(0, 3);
+}
+
+export async function getFeaturedCaseStudy(): Promise<Project | undefined> {
+  const result = await fetchSanity<Project | null>(FEATURED_CASE_STUDY_QUERY);
+  return result || undefined;
 }
 
 export async function getProject(slug: string): Promise<Project | undefined> {

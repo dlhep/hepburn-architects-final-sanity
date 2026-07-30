@@ -16,6 +16,7 @@ import { articleImageUrl, getArticle } from "@/lib/articles";
 import { guides } from "@/lib/content";
 import { getGuideArticle } from "@/lib/guides";
 import { site } from "@/lib/site";
+import { createSeoMetadata, guideSeoTitle, seoDescription } from "@/lib/seo";
 
 export function generateStaticParams() {
   return guides.map((item) => ({ slug: item.slug }));
@@ -47,40 +48,20 @@ export async function generateMetadata({
 
   if (sanityPage) {
     const image = articleImageUrl(sanityPage.featuredImage, 1200);
-    const title = sanityPage.seoTitle || sanityPage.title;
-    const description = sanityPage.seoDescription || sanityPage.excerpt;
-
-    return {
-      title,
-      description,
-      authors: [{ name: sanityPage.author || "David Hepburn" }],
-      alternates: { canonical: `/guides/${slug}` },
-      openGraph: {
-        title,
-        description,
-        type: "article",
-        url: `${site.url}/guides/${slug}`,
-        siteName: site.name,
-        publishedTime: sanityPage.publishedAt,
-        modifiedTime: sanityPage._updatedAt || sanityPage.publishedAt,
-        authors: [sanityPage.author || "David Hepburn"],
-        images: image ? [{ url: image, alt: sanityPage.featuredImage?.alt || sanityPage.title }] : undefined,
-      },
-      twitter: {
-        card: "summary_large_image",
-        title,
-        description,
-        images: image ? [image] : undefined,
-      },
-      robots: { index: true, follow: true },
-    };
+    return createSeoMetadata({
+      title: guideSeoTitle(slug, sanityPage.seoTitle || sanityPage.title),
+      description: seoDescription(sanityPage.seoDescription, sanityPage.excerpt),
+      path: `/guides/${slug}`,
+      image,
+      type: "article",
+    });
   }
 
   if (!page || !article) return {};
 
   return {
-    title: article.seoTitle,
-    description: article.metaDescription,
+    title: guideSeoTitle(slug, article.seoTitle),
+    description: seoDescription(article.metaDescription),
     authors: [{ name: "David Hepburn" }],
     alternates: { canonical: `/guides/${slug}` },
     openGraph: {
@@ -384,7 +365,7 @@ export default async function GuidePage({
           <small className="eyebrow">
             <BookOpen size={14} /> {article.category}
           </small>
-          <h1>{page.title}</h1>
+          <h1>{slug === "planning-permission-house-extension" ? "House Extension Planning Permission: A Practical Guide" : page.title}</h1>
           <p className="lead">{page.intro}</p>
 
           <div

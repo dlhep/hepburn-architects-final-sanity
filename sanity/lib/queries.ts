@@ -9,6 +9,8 @@ const PROJECT_FIELDS = `
   category,
   projectType,
   description,
+  seoTitle,
+  seoDescription,
   projectDescription,
   localAuthority,
   applicationType,

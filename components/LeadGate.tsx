@@ -101,7 +101,7 @@ export function LeadGate({ source, projectSummary, children }: LeadGateProps) {
       </div>
       <label className="lead-consent">
         <input checked={consent} onChange={(e) => setConsent(e.target.checked)} type="checkbox" required />
-        <span>I agree that Hepburn Architects may contact me about this enquiry. <a href="/privacy" target="_blank">Read the privacy notice.</a></span>
+        <span>I agree that Hepburn Architects may contact me about this enquiry. <a href="/privacy" target="_blank" rel="noopener noreferrer">Read the privacy notice.</a></span>
       </label>
       <button type="submit" className="btn primary lead-submit" disabled={status === "sending"}>
         {status === "sending" ? "Preparing your estimate…" : "Show my estimate"} {status !== "sending" && <ArrowRight size={17} />}

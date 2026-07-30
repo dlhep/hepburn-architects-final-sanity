@@ -18,7 +18,7 @@ import { site } from "@/lib/site";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Planning Permission Explained | Residential Planning Guide",
+  title: "Planning Permission Explained",
   description:
     "A practical guide to planning permission, permitted development, lawful development certificates, planning applications and common residential planning constraints in England.",
   alternates: {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "/images/selected-work-3.png",
+        url: "/images/selected-work-3.webp",
         alt: "Residential planning and design by Hepburn Architects",
       },
     ],

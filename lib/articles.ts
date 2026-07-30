@@ -73,5 +73,5 @@ export function articleImageUrl(
   width = 1600,
 ): string | undefined {
   if (!image?.asset) return undefined;
-  return urlFor(image).width(width).quality(86).url();
+  return urlFor(image).width(width).quality(76).url();
 }

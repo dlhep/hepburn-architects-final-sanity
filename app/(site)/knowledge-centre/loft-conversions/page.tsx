@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Loft Conversion Guide: Planning, Costs and Design | Hepburn Architects",
+  title: "Loft Conversion Guide",
   description: "A complete UK guide to loft conversions, including suitability, permitted development, planning permission, costs, stairs, structure and Building Regulations.",
   alternates: { canonical: "https://www.hepburnarchitects.net/knowledge-centre/loft-conversions" },
   openGraph: {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: "A practical homeowner guide to loft suitability, design, planning, costs and technical approval.",
     url: "/knowledge-centre/loft-conversions",
     type: "article",
-    images: ["/images/homepage-hero.png"],
+    images: ["/images/social-sharing.jpg"],
   },
 };
 
@@ -229,7 +229,7 @@ export default async function LoftConversionsPage() {
         <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/knowledge-centre">Knowledge Centre</Link><span>/</span><span aria-current="page">Loft Conversions</span></nav>
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}><small className="eyebrow">Loft Conversion Guide</small><h1>The Complete Guide to Loft Conversions</h1><p className={styles.standfirst}>A loft conversion can create valuable additional space without extending the building footprint, but its success depends on headroom, structure, stairs, fire safety, planning constraints and thoughtful design.</p><div className="actions"><a className="btn primary" href={site.calendly} target="_blank" rel="noopener noreferrer"><CalendarDays size={17} />Discuss Your Loft Conversion</a><Link className="btn secondary" href="/estimate">Estimate Professional Fees</Link></div></div>
-          <div className={styles.heroImage}><Image src={heroProject ? projectImageUrl(heroProject.featuredImage, 1500) : "/images/homepage-hero.png"} alt={heroProject ? projectImageAlt(heroProject) : "Contemporary residential architecture by Hepburn Architects"} fill priority sizes="(max-width: 900px) 100vw, 45vw" />{heroProject && <Link href={`/projects/${heroProject.slug}`}>{heroProject.title}<ArrowUpRight size={15} /></Link>}</div>
+          <div className={styles.heroImage}><Image src={heroProject ? projectImageUrl(heroProject.featuredImage, 1500) : "/images/homepage-hero.webp"} alt={heroProject ? projectImageAlt(heroProject) : "Contemporary residential architecture by Hepburn Architects"} fill priority sizes="(max-width: 900px) 100vw, 45vw" />{heroProject && <Link href={`/projects/${heroProject.slug}`}>{heroProject.title}<ArrowUpRight size={15} /></Link>}</div>
         </div>
       </div></header>
 

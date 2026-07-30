@@ -20,12 +20,12 @@ import { site } from "@/lib/site";
 import { GuideForm } from "./GuideForm";
 import styles from "./page.module.css";
 
-const title = "Free House Extension Guide | Planning, Costs & Design";
+const title = "Free House Extension Guide";
 const description =
   "Download Hepburn Architects' free house extension guide covering planning permission, permitted development, budgets, timescales and common design mistakes.";
 
 export const metadata: Metadata = {
-  title: { absolute: title },
+  title,
   description,
   alternates: { canonical: `${site.url}/house-extension-guide` },
   openGraph: {

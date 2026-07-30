@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { locations, services } from "@/lib/content";
 import { getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
+import { createSeoMetadata } from "@/lib/seo";
 
 const birminghamFaqs = [
   { question: "Do I need planning permission for a house extension in Birmingham?", answer: "Some extensions may be permitted development, but the property history, dimensions, location and local restrictions must be checked. A Lawful Development Certificate can provide formal confirmation where permitted development applies." },
@@ -64,13 +65,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const page = locations.find((item) => item.slug === slug);
   if (!page) return {};
-  return {
-    title: page.seoTitle,
+  return createSeoMetadata({
+    title: `Architects in ${page.shortTitle}`,
     description: page.description,
-    alternates: { canonical: `/locations/${slug}` },
-    openGraph: { title: page.seoTitle, description: page.description, url: `/locations/${slug}`, type: "website" as const, images: ["/images/homepage-hero.png"] },
-    twitter: { card: "summary_large_image" as const, title: page.seoTitle, description: page.description, images: ["/images/homepage-hero.png"] },
-  };
+    path: `/locations/${slug}`,
+  });
 }
 
 export default async function LocationPage({ params }: { params: Promise<{ slug: string }> }) {

@@ -6,7 +6,7 @@ import { serviceDetails } from "@/lib/service-details";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Residential Architectural Services | Planning & Building Regulations",
+  title: "Residential Architectural Services",
   description:
     "Residential architectural services for house extensions, loft conversions, new homes, HMOs, planning applications and Building Regulations drawings.",
   alternates: { canonical: "/services" },
@@ -31,9 +31,13 @@ export default function ServicesPage() {
               <a className="btn secondary" href={site.phoneHref}>Call {site.phone}</a>
             </div>
           </div>
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1800&q=88"
             alt="Modern residential extension with large glazing and landscaped garden"
+            width={1800}
+            height={1200}
+            sizes="(max-width: 900px) 100vw, 50vw"
+            priority
           />
         </div>
       </section>
@@ -45,7 +49,13 @@ export default function ServicesPage() {
             return (
               <Link href={`/services/${service.slug}`} className="service-overview-card" key={service.slug}>
                 <div className="service-overview-image">
-                  <img src={service.hero} alt={`${service.title} example residential project`} loading="lazy" />
+                  <Image
+                    src={service.hero}
+                    alt={`${service.title} example residential project`}
+                    fill
+                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                    quality={76}
+                  />
                 </div>
                 <div className="service-overview-copy">
                   <span>0{index + 1}</span>
@@ -63,7 +73,7 @@ export default function ServicesPage() {
           >
             <div className="service-overview-image">
               <Image
-                src="/images/selected-work-2.png"
+                src="/images/selected-work-2.webp"
                 alt="Welcoming residential home with a garden"
                 width={1450}
                 height={1088}

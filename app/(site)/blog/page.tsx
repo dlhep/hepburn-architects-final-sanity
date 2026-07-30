@@ -6,7 +6,7 @@ import { articleImageUrl, getBlogPosts } from "@/lib/articles";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Architecture Blog | Planning, Projects & Residential Design",
+  title: "Architecture Journal",
   description:
     "Planning updates, project news, residential design ideas and practice insights from Hepburn Architects in Birmingham and the West Midlands.",
   alternates: { canonical: "/blog" },
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: "Planning updates, project news and practical residential architecture insights.",
     url: "/blog",
     type: "website",
-    images: ["/images/og.svg"],
+    images: ["/images/social-sharing.jpg"],
   },
 };
 

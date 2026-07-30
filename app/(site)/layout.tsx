@@ -4,11 +4,12 @@ import { Footer } from "@/components/Footer";
 import { IdentitySchema } from "@/components/Schema";
 import { Analytics } from "@/components/Analytics";
 import { site } from "@/lib/site";
+import { ROOT_TITLE, SOCIAL_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Residential Architects Birmingham & West Midlands | Hepburn",
+    default: ROOT_TITLE,
     template: "%s | Hepburn Architects",
   },
   description:
@@ -32,12 +33,12 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: site.url,
     siteName: site.name,
-    title: "Residential Architects Birmingham & West Midlands | Hepburn",
+    title: ROOT_TITLE,
     description:
       "Director-led residential architecture, planning and technical design across Birmingham, Solihull and the West Midlands.",
     images: [
       {
-        url: "/images/og.svg",
+        url: SOCIAL_IMAGE,
         width: 1200,
         height: 630,
         alt: "Hepburn Architects residential architecture practice",
@@ -46,10 +47,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Residential Architects Birmingham & West Midlands | Hepburn",
+    title: ROOT_TITLE,
     description:
       "Director-led residential architecture, planning and technical design across Birmingham, Solihull and the West Midlands.",
-    images: ["/images/og.svg"],
+    images: [SOCIAL_IMAGE],
   },
   category: "architecture",
 };

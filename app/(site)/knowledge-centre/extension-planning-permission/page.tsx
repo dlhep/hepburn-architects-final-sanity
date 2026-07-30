@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Do I Need Planning Permission for an Extension? | Hepburn Architects",
+  title: "Extension Planning Permission",
   description: "Learn when a house extension needs planning permission, when permitted development may apply, and when to obtain a Lawful Development Certificate.",
   alternates: { canonical: "https://www.hepburnarchitects.net/knowledge-centre/extension-planning-permission" },
   openGraph: {
@@ -144,7 +144,7 @@ export default async function ExtensionPlanningPermissionPage() {
       <header className={styles.hero}><div className="shell">
         <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/knowledge-centre">Knowledge Centre</Link><span>/</span><span aria-current="page">Extension Planning Permission</span></nav>
         <div className={styles.heroGrid}>
-          <div className={styles.heroCopy}><small className="eyebrow">Extension Planning Permission</small><h1>Do I Need Planning Permission for a House Extension?</h1><p className={styles.standfirst}>Some domestic extensions can be built under permitted development rights; others require a householder planning application. The correct route depends on the property, previous alterations, dimensions, location and planning history.</p><div className="actions"><a className="btn primary" href={site.calendly} target="_blank" rel="noopener noreferrer"><CalendarDays size={17} />Discuss Your Extension</a><Link className="btn secondary" href="/knowledge-centre/planning-permission">Read the Planning Permission Guide</Link></div></div>
+          <div className={styles.heroCopy}><small className="eyebrow">Extension Planning Permission</small><h1>Do I Need Planning Permission for an Extension?</h1><p className={styles.standfirst}>Some domestic extensions can be built under permitted development rights; others require a householder planning application. The correct route depends on the property, previous alterations, dimensions, location and planning history.</p><div className="actions"><a className="btn primary" href={site.calendly} target="_blank" rel="noopener noreferrer"><CalendarDays size={17} />Discuss Your Extension</a><Link className="btn secondary" href="/knowledge-centre/planning-permission">Read the Planning Permission Guide</Link></div></div>
           <div className={styles.heroImage}><Image src={heroProject ? projectImageUrl(heroProject.featuredImage, 1500) : "/images/architectural-expertise-home.webp"} alt={heroProject ? projectImageAlt(heroProject) : "Contemporary house extension designed by Hepburn Architects"} fill priority sizes="(max-width: 900px) 100vw, 45vw" />{heroProject && <Link href={`/projects/${heroProject.slug}`}>{heroProject.title}<ArrowUpRight size={15} /></Link>}</div>
         </div>
       </div></header>

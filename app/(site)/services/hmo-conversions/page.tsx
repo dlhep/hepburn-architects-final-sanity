@@ -15,7 +15,7 @@ import {
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "HMO Architect | Planning, Licensing & Building Regulations",
+  title: "HMO Conversion Architect",
   description:
     "Specialist HMO architectural advice, feasibility, planning applications, Article 4 reviews, fire-safety coordination and Building Regulations drawings.",
   alternates: {

@@ -506,7 +506,7 @@ export const conversions_development: Record<string, GuideArticle> = {
       },
       {
         "label": "Planning Inspectorate procedural guides",
-        "href": "https://www.gov.uk/government/collections/planning-appeals-guidance"
+        "href": "https://www.gov.uk/appeal-planning-decision"
       }
     ]
   },
@@ -607,7 +607,7 @@ export const conversions_development: Record<string, GuideArticle> = {
       },
       {
         "label": "Planning Portal: new homes",
-        "href": "https://www.planningportal.co.uk/permission/common-projects/new-homes/planning-permission"
+        "href": "https://www.planningportal.co.uk/planning/planning-applications/consent-types/full-planning-consent/"
       }
     ]
   }

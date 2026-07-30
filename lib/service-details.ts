@@ -24,7 +24,7 @@ export const serviceDetails: ServiceDetail[] = [
     title: "House Extension Architect",
     metaTitle: "House Extension Architect | Planning & Building Regulations",
     metaDescription: "Architectural design, planning applications and Building Regulations drawings for single-storey, two-storey, side and wrap-around extensions.",
-    hero: "/images/selected-work-2.png",
+    hero: "/images/selected-work-2.webp",
     intro: "A successful extension should improve more than floor area. We design around daylight, circulation, privacy, garden connection, planning policy and the long-term value of the home.",
     idealFor: ["Single-storey rear extensions", "Two-storey side and rear extensions", "Wrap-around extensions", "Kitchen and family-room extensions", "Period-property additions"],
     process: [
@@ -58,7 +58,7 @@ export const serviceDetails: ServiceDetail[] = [
     title: "Loft Conversion Architect",
     metaTitle: "Loft Conversion Architect | Dormers, Hip-to-Gable & Planning",
     metaDescription: "Design, permitted development checks and Building Regulations drawings for dormer, hip-to-gable, rooflight and mansard loft conversions.",
-    hero: "/images/homepage-hero.png",
+    hero: "/images/homepage-hero.webp",
     intro: "Loft conversions can unlock valuable space, but headroom, stairs, fire safety, roof structure and external appearance all need to work together.",
     idealFor: ["Rear dormer conversions", "Hip-to-gable conversions", "Rooflight conversions", "Mansard proposals", "Loft bedrooms and home offices"],
     process: [
@@ -92,7 +92,7 @@ export const serviceDetails: ServiceDetail[] = [
     title: "New Build Home Architect",
     metaTitle: "New Build Home Architect | One-Off Houses & Small Developments",
     metaDescription: "Feasibility, planning and technical design for one-off houses, replacement dwellings, infill plots and small residential developments.",
-    hero: "/images/selected-work-1.png",
+    hero: "/images/selected-work-1.webp",
     intro: "New homes need a strong response to context, access, amenity, landscape, planning policy and buildability. We develop the design and planning case together.",
     idealFor: ["One-off houses", "Replacement dwellings", "Backland and infill plots", "Small residential developments", "Low-energy homes"],
     process: [
@@ -160,7 +160,7 @@ export const serviceDetails: ServiceDetail[] = [
     title: "Planning Application Architect",
     metaTitle: "Planning Application Architect | Drawings, Statements & Strategy",
     metaDescription: "Residential planning drawings, planning statements, Design and Access Statements and submission support for extensions, conversions and new homes.",
-    hero: "/images/selected-work-3.png",
+    hero: "/images/selected-work-3.webp",
     intro: "Planning success depends on more than drawings. We build the design and supporting case around policy, context, amenity and the likely concerns of the planning authority.",
     idealFor: ["Householder planning applications", "Lawful Development Certificates", "Changes of use", "Flat and HMO conversions", "New dwellings and small sites"],
     process: [

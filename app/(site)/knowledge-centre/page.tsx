@@ -13,7 +13,7 @@ import { site } from "@/lib/site";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Residential Architecture Knowledge Centre | Hepburn Architects",
+  title: "Architecture Knowledge Centre",
   description:
     "Practical residential architecture guidance covering planning permission, Building Regulations, house extensions, design, costs and project advice.",
   alternates: {
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
       "Practical residential architecture guidance covering planning permission, Building Regulations, house extensions, design, costs and project advice.",
     url: "/knowledge-centre",
     type: "website",
-    images: ["/images/og.svg"],
+    images: ["/images/social-sharing.jpg"],
   },
 };
 

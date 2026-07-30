@@ -24,9 +24,9 @@ import { getProjects, projectImageAlt, projectImageUrl } from "@/lib/projects";
 import { site } from "@/lib/site";
 import styles from "./page.module.css";
 
-const title = "C2 Planning Applications for Children's Homes | Hepburn Architects";
+const title = "Children's Home Planning Applications";
 const description =
-  "Child-centred architectural and planning support for C2 children's homes, including property feasibility, change of use, planning drawings, statements and officer liaison.";
+  "Architectural and planning support for C2 children's homes, including feasibility, change of use, drawings, statements and officer liaison.";
 const canonical = `${site.url}/services/c2-planning-applications-childrens-homes`;
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/selected-work-2.png",
+        url: "/images/selected-work-2.webp",
         width: 1450,
         height: 1088,
         alt: "Welcoming residential home with a garden",
@@ -398,7 +398,7 @@ export default async function ChildrensHomesPlanningPage() {
             </div>
             <div className={styles.featureImage}>
               <Image
-                src="/images/selected-work-2.png"
+                src="/images/selected-work-2.webp"
                 alt="Warm residential living space opening onto a landscaped garden"
                 fill
                 sizes="(max-width: 850px) 100vw, 38vw"

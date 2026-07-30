@@ -18,9 +18,9 @@ import { getCollaborators, type Collaborator } from "@/lib/collaborators";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Hepburn Architects | Residential Architecture Studio",
+  title: "About Our Architecture Studio",
   description:
-    "Meet Hepburn Architects, a director-led residential architecture studio supported by trusted independent consultants across planning, engineering and technical design.",
+    "Meet Hepburn Architects, a director-led residential practice supported by trusted specialists in planning, engineering and technical design.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About Hepburn Architects | Residential Architecture Studio",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     url: "/about",
     images: [
       {
-        url: "/images/homepage-hero.png",
+        url: "/images/social-sharing.jpg",
         width: 1200,
         height: 1500,
         alt: "Residential architecture by Hepburn Architects",

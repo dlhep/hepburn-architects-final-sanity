@@ -498,7 +498,7 @@ export const planning_extensions: Record<string, GuideArticle> = {
     "sources": [
       {
         "label": "ARB: using an architect",
-        "href": "https://arb.org.uk/public-information/using-an-architect/"
+        "href": "https://arb.org.uk/public-information/working-with-an-architect/"
       },
       {
         "label": "RIBA: working with an architect",

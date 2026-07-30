@@ -8,7 +8,7 @@ import { getGuideArticle } from "@/lib/guides";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Residential Planning & Architecture Guides | Hepburn Architects",
+  title: "Residential Planning Guides",
   description:
     "Expert residential architecture guides for England covering extensions, permitted development, lofts, HMOs, planning applications, costs and Building Regulations.",
   alternates: { canonical: "/guides" },

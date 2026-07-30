@@ -105,7 +105,7 @@ export function GuideForm() {
       <p className={styles.consent}>
         By requesting the guide you agree to receive the guide together with occasional
         architectural advice from Hepburn Architects. You can unsubscribe at any time.{" "}
-        <a href="/privacy" target="_blank">View our Privacy Policy.</a>
+        <a href="/privacy" target="_blank" rel="noopener noreferrer">View our Privacy Policy.</a>
       </p>
       <div aria-live="polite">
         {status === "error" && (

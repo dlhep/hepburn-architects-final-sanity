@@ -5,6 +5,7 @@ import { ArrowRight, Newspaper } from "lucide-react";
 import { ArticleBody } from "@/components/ArticleBody";
 import { articleImageUrl, getArticle, getBlogPosts } from "@/lib/articles";
 import { site } from "@/lib/site";
+import { createSeoMetadata, seoDescription } from "@/lib/seo";
 
 const topics = [
   { terms: ["extension", "rear extension", "two-storey", "single-storey"], service: { href: "/services/house-extensions", label: "House extension architect" }, guide: { href: "/guides/complete-house-extension-guide", label: "Complete House Extension Guide" } },
@@ -25,27 +26,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const page = await getArticle(slug, "blog");
   if (!page) return {};
   const image = articleImageUrl(page.featuredImage, 1200);
-  return {
+  return createSeoMetadata({
     title: page.seoTitle || page.title,
-    description: page.seoDescription || page.excerpt,
-    alternates: { canonical: `/blog/${slug}` },
-    openGraph: {
-      title: page.seoTitle || page.title,
-      description: page.seoDescription || page.excerpt,
-      type: "article" as const,
-      url: `/blog/${slug}`,
-      publishedTime: page.publishedAt,
-      modifiedTime: page._updatedAt || page.publishedAt,
-      authors: [`${site.url}/about`],
-      images: image ? [image] : ["/images/og.svg"],
-    },
-    twitter: {
-      card: "summary_large_image" as const,
-      title: page.seoTitle || page.title,
-      description: page.seoDescription || page.excerpt,
-      images: image ? [image] : ["/images/og.svg"],
-    },
-  };
+    description: seoDescription(page.seoDescription, page.excerpt),
+    path: `/blog/${slug}`,
+    image,
+    type: "article",
+  });
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {

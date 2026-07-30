@@ -18,7 +18,7 @@ import { site } from "@/lib/site";
 import styles from "../planning-permission/page.module.css";
 
 export const metadata: Metadata = {
-  title: "House Extensions Explained | Complete Home Extension Guide",
+  title: "House Extensions Explained",
   description:
     "A practical guide to house extensions in England, including design options, planning permission, permitted development, Building Regulations, costs, timescales and common mistakes.",
   alternates: {

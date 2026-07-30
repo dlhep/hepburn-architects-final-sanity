@@ -21,6 +21,8 @@ export type Project = {
   category: string;
   projectType: string;
   description: string;
+  seoTitle?: string;
+  seoDescription?: string;
   projectDescription?: any[];
   localAuthority?: string;
   applicationType?: string;
@@ -80,11 +82,11 @@ export async function getProjectSlugs(): Promise<string[]> {
 
 export function projectImageUrl(image: Project["featuredImage"], width = 1600): string {
   if (typeof image === "string") return image;
-  if (!image?.asset) return "/images/og.svg";
-  return urlFor(image).width(width).quality(86).url();
+  if (!image?.asset) return "/images/social-sharing.jpg";
+  return urlFor(image).width(width).quality(76).url();
 }
 
 export function projectImageAlt(project: Project): string {
   if (typeof project.featuredImage !== "string" && project.featuredImage?.alt) return project.featuredImage.alt;
-  return project.alt || `${project.title} in ${project.location} by Hepburn Architects`;
+  return project.alt || project.title;
 }

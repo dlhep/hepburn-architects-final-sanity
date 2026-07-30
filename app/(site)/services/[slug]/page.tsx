@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle2, ExternalLink, Phone, Quote } from "lucide-rea
 import { getServiceDetail, serviceDetails } from "@/lib/service-details";
 import { getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
+import { createSeoMetadata } from "@/lib/seo";
 
 const reviews = [
   {
@@ -50,24 +51,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const service = getServiceDetail(slug);
   if (!service) return {};
-  return {
-    title: service.metaTitle,
+  return createSeoMetadata({
+    title: service.title,
     description: service.metaDescription,
-    alternates: { canonical: `/services/${slug}` },
-    openGraph: {
-      title: service.metaTitle,
-      description: service.metaDescription,
-      url: `/services/${slug}`,
-      type: "website",
-      images: [{ url: service.hero, alt: `${service.title} residential architecture` }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: service.metaTitle,
-      description: service.metaDescription,
-      images: [service.hero],
-    },
-  };
+    path: `/services/${slug}`,
+    image: service.hero,
+  });
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {

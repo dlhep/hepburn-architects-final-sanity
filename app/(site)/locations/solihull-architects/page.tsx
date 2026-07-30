@@ -18,7 +18,7 @@ import {
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Residential Architect Solihull | Extensions & New Homes",
+  title: "Architects in Solihull",
   description:
     "RIBA Chartered residential architect in Solihull for house extensions, loft conversions, new homes, planning applications and Building Regulations.",
   alternates: { canonical: "/locations/solihull-architects" },

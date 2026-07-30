@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle2, MapPin } from "lucide-react";
 import { getProject, getProjectSlugs, projectImageAlt, projectImageUrl } from "@/lib/projects";
 import { site } from "@/lib/site";
 import { urlFor } from "@/sanity/lib/image";
+import { createSeoMetadata, PROJECT_DESCRIPTIONS, PROJECT_TITLES, projectSeoTitle, seoDescription } from "@/lib/seo";
 
 type PortableTextBlock = {
   children?: Array<{ text?: string }>;
@@ -60,28 +61,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = await getProject(slug);
   if (!project) return {};
 
-  const title = `${project.title}, ${project.location}`;
+  const title = PROJECT_TITLES[slug] || projectSeoTitle(project.seoTitle || project.title, project.location);
   const image = projectImageUrl(project.featuredImage, 1600);
-
-  return {
+  return createSeoMetadata({
     title,
-    description: project.description,
-    alternates: { canonical: `/projects/${slug}` },
-    openGraph: {
-      title: `${title} | Hepburn Architects`,
-      description: project.description,
-      type: "article" as const,
-      url: `/projects/${slug}`,
-      modifiedTime: project._updatedAt,
-      images: [{ url: image, alt: projectImageAlt(project) }],
-    },
-    twitter: {
-      card: "summary_large_image" as const,
-      title,
-      description: project.description,
-      images: [image],
-    },
-  };
+    description: PROJECT_DESCRIPTIONS[slug] || seoDescription(project.seoDescription, project.description),
+    path: `/projects/${slug}`,
+    image,
+    type: "article",
+  });
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -89,7 +77,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const project = await getProject(slug);
   if (!project) notFound();
 
-  const heroImage = projectImageUrl(project.featuredImage, 2000);
+  const heroImage = projectImageUrl(project.featuredImage, 1920);
   const hasProjectDescription = Boolean(project.projectDescription?.length);
   const useDescriptionColumns = portableTextCharacterCount(project.projectDescription as PortableTextBlock[] | undefined) >= 360;
   const localLocationPage = getProjectLocationPage(project.location);
@@ -127,8 +115,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <Image
           src={heroImage}
           alt={projectImageAlt(project)}
-          width={2000}
-          height={1250}
+          width={1920}
+          height={1200}
           priority
           sizes="100vw"
         />
@@ -149,9 +137,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <small className="eyebrow">Project overview</small>
               <h2>{project.projectType}</h2>
               <p className="lead">{project.description}</p>
-              {!hasProjectDescription && (
-                <p>The design was developed around the client brief, site context, planning route, spatial priorities and long-term performance of the home.</p>
-              )}
             </div>
 
             <dl className="project-facts">
@@ -181,7 +166,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <figure key={image.asset?._id || index}>
                 <div className="project-gallery-media">
                   <Image
-                    src={image.asset ? urlFor(image).width(1600).quality(86).url() : "/images/og.svg"}
+                    src={image.asset ? urlFor(image).width(1400).quality(76).url() : "/images/social-sharing.jpg"}
                     alt={image.alt || `${project.title} project image ${index + 1}`}
                     fill
                     sizes={(project.gallery?.length ?? 0) === 1

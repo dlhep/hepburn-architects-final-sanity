@@ -94,7 +94,7 @@ export const planning_heritage: Record<string, GuideArticle> = {
     "sources": [
       {
         "label": "ARB: using an architect",
-        "href": "https://arb.org.uk/public-information/using-an-architect/"
+        "href": "https://arb.org.uk/public-information/working-with-an-architect/"
       },
       {
         "label": "Planning Portal: application process",
@@ -603,7 +603,7 @@ export const planning_heritage: Record<string, GuideArticle> = {
       },
       {
         "label": "GOV.UK: listed buildings",
-        "href": "https://www.gov.uk/government/publications/listed-buildings-and-conservation-areas-planning-practice-guidance"
+        "href": "https://www.gov.uk/guidance/conserving-and-enhancing-the-historic-environment"
       }
     ]
   }

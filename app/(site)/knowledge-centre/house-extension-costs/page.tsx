@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "House Extension Costs 2026: A Complete UK Guide | Hepburn Architects",
+  title: "House Extension Costs 2026",
   description: "Understand typical house extension costs in 2026, including construction, professional fees, planning, Building Regulations, kitchens, glazing and contingency.",
   alternates: { canonical: "https://www.hepburnarchitects.net/knowledge-centre/house-extension-costs" },
   openGraph: {

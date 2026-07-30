@@ -4,7 +4,7 @@ import { ArrowRight, MapPin } from "lucide-react";
 import { locations } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Residential Architect Locations | Birmingham & West Midlands",
+  title: "Architects Across the West Midlands",
   description:
     "Explore Hepburn Architects location pages for Birmingham, Solihull, Bournville, Kings Heath, Wolverhampton, Walsall, Aldridge and Leamington Spa.",
   alternates: { canonical: "/locations" },

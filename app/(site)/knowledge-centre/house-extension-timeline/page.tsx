@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "How Long Does a House Extension Take? UK Timeline | Hepburn Architects",
+  title: "House Extension Timeline",
   description: "Understand how long a house extension takes, from surveys and design through planning, Building Regulations, tendering and construction.",
   alternates: { canonical: "https://www.hepburnarchitects.net/knowledge-centre/house-extension-timeline" },
   openGraph: {

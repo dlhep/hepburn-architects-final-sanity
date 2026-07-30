@@ -18,7 +18,7 @@ import { site } from "@/lib/site";
 import styles from "../planning-permission/page.module.css";
 
 export const metadata: Metadata = {
-  title: "Building Regulations Explained | Residential Technical Design Guide",
+  title: "Building Regulations Explained",
   description:
     "A practical guide to Building Regulations in England, including approvals, drawings, structure, fire safety, insulation, ventilation, drainage and technical design.",
   alternates: {

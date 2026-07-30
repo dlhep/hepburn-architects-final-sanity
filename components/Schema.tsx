@@ -36,7 +36,7 @@ export function IdentitySchema() {
       telephone: "+44 7720 813035",
       email: site.email,
       logo: `${site.url}/images/og.svg`,
-      image: `${site.url}/images/homepage-hero.png`,
+      image: `${site.url}/images/social-sharing.jpg`,
       priceRange: "££",
       hasMap: site.offices.birmingham.mapUrl,
       address: {

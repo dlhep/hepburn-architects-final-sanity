@@ -21,11 +21,12 @@ import {
   type Project,
 } from "@/lib/projects";
 import { site } from "@/lib/site";
+import { ROOT_TITLE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Residential Architects Birmingham & West Midlands",
+  title: { absolute: ROOT_TITLE },
   description:
-    "Director-led residential architects for extensions, loft conversions, new homes, HMOs, planning and Building Regulations across Birmingham, Solihull and the West Midlands.",
+    "Director-led residential architects for extensions, lofts, new homes, HMOs, planning and Building Regulations across Birmingham and Solihull.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Residential Architects Birmingham & West Midlands | Hepburn Architects",
@@ -34,9 +35,9 @@ export const metadata: Metadata = {
     url: "/",
     images: [
       {
-        url: "/images/homepage-hero.png",
+        url: "/images/social-sharing.jpg",
         width: 1200,
-        height: 1500,
+        height: 630,
         alt: "Contemporary residential design by Hepburn Architects",
       },
     ],
@@ -175,7 +176,7 @@ export default async function HomePage() {
 
           <div className="hero-visual photo-frame">
             <Image
-              src="/images/homepage-hero.png"
+              src="/images/homepage-hero.webp"
               alt="Contemporary residential home designed by Hepburn Architects"
               fill
               priority

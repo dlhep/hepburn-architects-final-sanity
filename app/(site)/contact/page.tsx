@@ -4,9 +4,9 @@ import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact Residential Architects | Birmingham & Nunthorpe",
+  title: "Contact Our Architecture Studio",
   description:
-    "Contact Hepburn Architects in Birmingham or Nunthorpe about extensions, loft conversions, new homes, HMOs, planning and Building Regulations.",
+    "Contact Hepburn Architects about house extensions, loft conversions, new homes, HMOs, planning applications and Building Regulations.",
   alternates: { canonical: "/contact" },
 };
 
@@ -68,6 +68,15 @@ export default function ContactPage() {
             </a>
           </div>
           <ContactForm />
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="shell page-intro">
+          <h2>Start a conversation about your project</h2>
+          <p>Tell us the property address, the type of work you are considering and any timescale or planning concerns. We review each enquiry directly and explain the likely approval route, the information needed and the most suitable next step.</p>
+          <p>Hepburn Architects supports house extensions, loft conversions, new homes, HMOs, changes of use, planning applications and Building Regulations packages. We work from Birmingham and Nunthorpe and advise on projects across the West Midlands, Teesside and wider England.</p>
+          <p>An initial conversation is intended to clarify scope and suitability. Formal advice, drawings and submissions are provided only under an agreed written appointment.</p>
         </div>
       </section>
 

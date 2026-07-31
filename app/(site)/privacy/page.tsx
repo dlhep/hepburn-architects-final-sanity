@@ -19,7 +19,7 @@ export default function PrivacyPage() {
           This notice explains how Hepburn Architects Ltd handles personal information
           submitted through this website and how optional analytics are controlled.
         </p>
-        <p>Last updated: 22 July 2026.</p>
+        <p>Last updated: 31 July 2026.</p>
 
         <section>
           <h2>Who is responsible for your information</h2>
@@ -38,11 +38,36 @@ export default function PrivacyPage() {
             <li>Project address, postcode, property type and project description.</li>
             <li>Calculator selections, indicative fee information and enquiry source.</li>
             <li>Messages, attachments and correspondence you choose to send us.</li>
+            <li>Questions you choose to send through the Ask Hepburn project assistant.</li>
             <li>
               Limited website usage information through Google Analytics, but only after you
               accept optional analytics.
             </li>
           </ul>
+        </section>
+
+        <section>
+          <h2>Ask Hepburn project assistant</h2>
+          <p>
+            Ask Hepburn provides general initial information, not formal architectural,
+            planning, legal or Building Regulations advice. Project-specific advice requires
+            review of the property, planning history and proposed design.
+          </p>
+          <p>
+            When the optional AI response service is configured, chatbot messages may be sent
+            to OpenAI to generate a response and for automated safety moderation. The website
+            requests that generated responses are not stored as retrievable response objects
+            by setting <code>store: false</code>; OpenAI may still process and temporarily
+            retain API data in accordance with its service terms, safety requirements and
+            applicable law.
+          </p>
+          <p>
+            Please do not submit confidential, financial, medical or highly sensitive personal
+            information in the chat. Contact details are collected only when you choose to
+            complete and submit the project enquiry form. The full chat transcript is not
+            included with that enquiry; the form sends the contact and project details you
+            approve, the current page and selected project category.
+          </p>
         </section>
 
         <section>
@@ -97,6 +122,7 @@ export default function PrivacyPage() {
             <li>Vercel for website hosting and delivery.</li>
             <li>Sanity for website content management.</li>
             <li>Formspree for website enquiry processing.</li>
+            <li>OpenAI for optional chatbot responses and message safety moderation.</li>
             <li>Calendly when you choose to book a consultation.</li>
             <li>Google Analytics only where optional analytics consent has been given.</li>
             <li>Professional advisers and consultants where necessary for a project.</li>

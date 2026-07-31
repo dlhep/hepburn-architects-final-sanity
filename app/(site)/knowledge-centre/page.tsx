@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   description:
     "Practical residential architecture guidance covering planning permission, Building Regulations, house extensions, design, costs and project advice.",
   alternates: {
-    canonical: "https://www.hepburnarchitects.net/knowledge-centre",
+    canonical: "https://hepburnarchitects.co.uk/knowledge-centre",
   },
   openGraph: {
     title: "Residential Architecture Knowledge Centre | Hepburn Architects",

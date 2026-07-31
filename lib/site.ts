@@ -1,7 +1,7 @@
 export const site = {
   name: "Hepburn Architects",
   legalName: "Hepburn Architects Ltd",
-  url: "https://www.hepburnarchitects.net",
+  url: "https://hepburnarchitects.co.uk",
   email: "info@hepburnarchitects.com",
   phone: "07720 813035",
   phoneHref: "tel:+447720813035",

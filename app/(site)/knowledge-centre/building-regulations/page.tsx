@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "A practical guide to Building Regulations in England, including approvals, drawings, structure, fire safety, insulation, ventilation, drainage and technical design.",
   alternates: {
     canonical:
-      "https://www.hepburnarchitects.net/knowledge-centre/building-regulations",
+      "https://hepburnarchitects.co.uk/knowledge-centre/building-regulations",
   },
   openGraph: {
     title:

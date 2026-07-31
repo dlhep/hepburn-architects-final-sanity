@@ -7,7 +7,7 @@ export function SeoPreview(_props: StringInputProps) {
   const slugValue = useFormValue(["slug"]) as { current?: string } | undefined;
   const seoTitle = `${title}${location ? `, ${location}` : ""} | Hepburn Architects`;
   const seoDescription = description.length > 158 ? `${description.slice(0, 155).trim()}…` : description;
-  const canonical = `https://www.hepburnarchitects.net/projects/${slugValue?.current || "project-url"}`;
+  const canonical = `https://hepburnarchitects.co.uk/projects/${slugValue?.current || "project-url"}`;
 
   return (
     <div style={{border: "1px solid #d8d2c8", borderRadius: 12, padding: 18, background: "#fff"}}>

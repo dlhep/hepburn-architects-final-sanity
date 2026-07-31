@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "Loft Conversion Guide",
   description: "A complete UK guide to loft conversions, including suitability, permitted development, planning permission, costs, stairs, structure and Building Regulations.",
-  alternates: { canonical: "https://www.hepburnarchitects.net/knowledge-centre/loft-conversions" },
+  alternates: { canonical: "https://hepburnarchitects.co.uk/knowledge-centre/loft-conversions" },
   openGraph: {
     title: "The Complete Guide to Loft Conversions",
     description: "A practical homeowner guide to loft suitability, design, planning, costs and technical approval.",

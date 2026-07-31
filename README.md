@@ -1,6 +1,6 @@
 # Hepburn Architects Website — Next.js + Sanity
 
-Complete GitHub-ready website for `www.hepburnarchitects.net`.
+Complete GitHub-ready website for `hepburnarchitects.co.uk`.
 
 ## Included
 
@@ -40,4 +40,4 @@ There are fewer than 100 files, so the extracted project can be uploaded in one 
 Project ID: `5xwjrn3e`  
 Dataset: `production`
 
-Your existing CORS origin for `https://www.hepburnarchitects.net` is already configured. Add the temporary Vercel preview domain later if you need to access Studio before the live domain is moved.
+Your CORS origin for `https://hepburnarchitects.co.uk` must be configured. Add the temporary Vercel preview domain later if you need to access Studio before the live domain is moved.

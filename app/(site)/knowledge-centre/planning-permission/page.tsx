@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "A practical guide to planning permission, permitted development, lawful development certificates, planning applications and common residential planning constraints in England.",
   alternates: {
     canonical:
-      "https://www.hepburnarchitects.net/knowledge-centre/planning-permission",
+      "https://hepburnarchitects.co.uk/knowledge-centre/planning-permission",
   },
   openGraph: {
     title: "Planning Permission Explained | Residential Planning Guide",

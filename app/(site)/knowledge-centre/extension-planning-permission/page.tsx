@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "Extension Planning Permission",
   description: "Learn when a house extension needs planning permission, when permitted development may apply, and when to obtain a Lawful Development Certificate.",
-  alternates: { canonical: "https://www.hepburnarchitects.net/knowledge-centre/extension-planning-permission" },
+  alternates: { canonical: "https://hepburnarchitects.co.uk/knowledge-centre/extension-planning-permission" },
   openGraph: {
     title: "Do I Need Planning Permission for a House Extension?",
     description: "A practical guide to planning permission, permitted development and Lawful Development Certificates for extensions in England.",

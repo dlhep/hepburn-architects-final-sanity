@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "House Extension Timeline",
   description: "Understand how long a house extension takes, from surveys and design through planning, Building Regulations, tendering and construction.",
-  alternates: { canonical: "https://www.hepburnarchitects.net/knowledge-centre/house-extension-timeline" },
+  alternates: { canonical: "https://hepburnarchitects.co.uk/knowledge-centre/house-extension-timeline" },
   openGraph: {
     title: "How Long Does a House Extension Take? A Complete UK Timeline",
     description: "A practical guide to surveys, design, approvals, contractor selection and house-extension construction.",

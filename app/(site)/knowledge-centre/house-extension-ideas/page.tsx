@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "House Extension Design Ideas",
   description: "Explore practical house extension ideas for better light, space, storage and garden connection, with design advice from residential architects.",
-  alternates: { canonical: "https://www.hepburnarchitects.net/knowledge-centre/house-extension-ideas" },
+  alternates: { canonical: "https://hepburnarchitects.co.uk/knowledge-centre/house-extension-ideas" },
   openGraph: {
     title: "House Extension Ideas for Better Light, Space and Everyday Living",
     description: "Practical architectural ideas for light, circulation, storage, flexibility and garden connection.",

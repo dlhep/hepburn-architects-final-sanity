@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   description:
     "A practical guide to house extensions in England, including design options, planning permission, permitted development, Building Regulations, costs, timescales and common mistakes.",
   alternates: {
-    canonical: "https://www.hepburnarchitects.net/knowledge-centre/house-extensions",
+    canonical: "https://hepburnarchitects.co.uk/knowledge-centre/house-extensions",
   },
   openGraph: {
     title: "House Extensions Explained | Complete Home Extension Guide",

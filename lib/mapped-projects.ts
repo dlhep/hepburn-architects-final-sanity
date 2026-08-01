@@ -14,3 +14,21 @@ export type PublicMappedProject = {
   projectUrl?: string;
   sourceType: "full-project" | "map-project";
 };
+
+export type PublicProjectDirectoryItem = Pick<
+  PublicMappedProject,
+  "id" | "title" | "projectType" | "townOrCity" | "description" | "projectUrl"
+>;
+
+export function toPublicProjectDirectoryItem(
+  project: PublicMappedProject
+): PublicProjectDirectoryItem {
+  return {
+    id: project.id,
+    title: project.title,
+    projectType: project.projectType,
+    townOrCity: project.townOrCity,
+    description: project.description,
+    projectUrl: project.projectUrl,
+  };
+}

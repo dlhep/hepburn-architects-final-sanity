@@ -1,10 +1,8 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { ArrowUpRight, Search, X } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Search, X } from "lucide-react";
 import type { PublicMappedProject } from "@/lib/mapped-projects";
 import { trackEvent } from "@/lib/analytics";
 import styles from "./ProjectMapSection.module.css";
@@ -62,7 +60,6 @@ export function ProjectMapSection({
 }) {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All Projects");
   const [query, setQuery] = useState("");
-  const [visibleLimit, setVisibleLimit] = useState(6);
   const normalisedQuery = query.trim().toLocaleLowerCase("en-GB");
 
   const filtered = useMemo(
@@ -74,8 +71,6 @@ export function ProjectMapSection({
   const filterCounts = useMemo(() => Object.fromEntries(
     FILTERS.map((item) => [item, projects.filter((project) => matchesFilter(project, item)).length])
   ), [projects]);
-
-  useEffect(() => setVisibleLimit(6), [filter, normalisedQuery]);
 
   function reset() {
     setFilter("All Projects");
@@ -143,37 +138,7 @@ export function ProjectMapSection({
             </p>
 
             {filtered.length ? (
-              <>
-                <GoogleProjectMap projects={filtered} apiKey={apiKey} mapId={mapId} />
-                <ul className={styles.projectList} aria-label="Mapped projects">
-                  {filtered.slice(0, visibleLimit).map((project) => (
-                    <li key={project.id}>
-                      <article className={styles.projectCard}>
-                        {project.imageUrl ? (
-                          <div className={styles.imageWrap}>
-                            <Image src={project.imageUrl} alt={project.imageAlt || project.title} fill sizes="(max-width: 700px) 100vw, 33vw" />
-                          </div>
-                        ) : <div className={styles.imageFallback} aria-hidden="true">HA</div>}
-                        <div className={styles.cardCopy}>
-                          <small>{project.locationLabel} · {project.projectType}</small>
-                          <h3>{project.title}</h3>
-                          {project.description && <p>{project.description}</p>}
-                          {project.projectUrl && (
-                            <Link href={project.projectUrl} onClick={() => trackEvent("project_map_view_project", { map_item_id: project.id })}>
-                              View Project <ArrowUpRight size={16} />
-                            </Link>
-                          )}
-                        </div>
-                      </article>
-                    </li>
-                  ))}
-                </ul>
-                {visibleLimit < filtered.length && (
-                  <button type="button" className={`btn secondary ${styles.showMore}`} onClick={() => setVisibleLimit((limit) => limit + 6)}>
-                    Show More Projects
-                  </button>
-                )}
-              </>
+              <GoogleProjectMap projects={filtered} apiKey={apiKey} mapId={mapId} />
             ) : (
               <div className={styles.emptyPanel} role="status">
                 <span>No mapped projects match this search.</span>

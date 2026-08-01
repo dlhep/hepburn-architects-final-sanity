@@ -12,7 +12,7 @@ export const mapProjectType = defineType({
       name: "projectName",
       title: "Project Name",
       type: "string",
-      description: "A concise public name, for example Rear Extension or New Build Home.",
+      description: "Use a natural public name that includes the general area where helpful, for example Rear and Side Extension in Garretts Green, Birmingham. Never include a full address.",
       validation: (rule) => rule.required().max(80),
     }),
     defineField({
@@ -42,6 +42,7 @@ export const mapProjectType = defineType({
       name: "townOrCity",
       title: "Town / City",
       type: "string",
+      description: "Enter the public-facing area and city where useful, for example Garretts Green, Birmingham.",
       validation: (rule) => rule.required().max(80),
     }),
     defineField({
@@ -56,7 +57,7 @@ export const mapProjectType = defineType({
       title: "Optional Short Description",
       type: "text",
       rows: 4,
-      description: "A concise public summary for the map popup and project list.",
+      description: "Write a natural one- or two-sentence summary covering what the project is, its general area, and the client benefit or design outcome. Do not include full addresses, repeat postcodes, add keyword lists, or write phrases only for search engines.",
       validation: (rule) => rule.max(320),
     }),
     defineField({

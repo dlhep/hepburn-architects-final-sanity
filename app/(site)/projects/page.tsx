@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { ProjectsFilter } from "@/components/ProjectsFilter";
 import { ProjectMapSection } from "@/components/ProjectMapSection";
+import { ProjectLocationDirectory } from "@/components/ProjectLocationDirectory";
 import { getProjects } from "@/lib/projects";
 import { getMappedProjects } from "@/lib/mapped-projects.server";
+import { toPublicProjectDirectoryItem } from "@/lib/mapped-projects";
 
 export const metadata: Metadata = {
   title: "Residential Architecture Projects",
@@ -12,6 +14,7 @@ export const metadata: Metadata = {
 
 export default async function ProjectsPage() {
   const [projects, mappedProjects] = await Promise.all([getProjects(), getMappedProjects()]);
+  const projectDirectory = mappedProjects.map(toPublicProjectDirectoryItem);
   return (
     <>
       <section className="section projects-index-page">
@@ -27,6 +30,7 @@ export default async function ProjectsPage() {
         apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
         mapId={process.env.NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID}
       />
+      <ProjectLocationDirectory projects={projectDirectory} />
     </>
   );
 }

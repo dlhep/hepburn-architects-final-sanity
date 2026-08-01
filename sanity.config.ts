@@ -14,6 +14,16 @@ export default defineConfig({
   projectId,
   dataset,
   basePath: "/studio",
-  plugins: [structureTool(), visionTool()],
+  plugins: [
+    structureTool({
+      structure: (S) => S.list().title("Content").items([
+        S.documentTypeListItem("project").title("Projects"),
+        S.documentTypeListItem("mapProject").title("Map Projects"),
+        S.documentTypeListItem("article").title("Journal & Guides"),
+        S.documentTypeListItem("collaborator").title("Collaborative Team"),
+      ]),
+    }),
+    visionTool(),
+  ],
   schema: { types: schemaTypes },
 });

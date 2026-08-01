@@ -12,6 +12,7 @@
     "sanity:import-projects": "node scripts/import-projects.mjs"
   },
   "dependencies": {
+    "@googlemaps/markerclusterer": "^2.6.2",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^6.5.0",
     "lucide-react": "^0.468.0",
@@ -26,6 +27,7 @@
     "openai": "^7.2.0"
   },
   "devDependencies": {
+    "@types/google.maps": "^3.65.4",
     "@types/node": "^22.20.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",

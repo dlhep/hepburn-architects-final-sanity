@@ -17,7 +17,7 @@ export type PublicMappedProject = {
 
 export type PublicProjectDirectoryItem = Pick<
   PublicMappedProject,
-  "id" | "title" | "projectType" | "townOrCity" | "description" | "projectUrl"
+  "id" | "streetName" | "townOrCity" | "postcodeDistrict"
 >;
 
 export function toPublicProjectDirectoryItem(
@@ -25,10 +25,8 @@ export function toPublicProjectDirectoryItem(
 ): PublicProjectDirectoryItem {
   return {
     id: project.id,
-    title: project.title,
-    projectType: project.projectType,
+    streetName: project.streetName,
     townOrCity: project.townOrCity,
-    description: project.description,
-    projectUrl: project.projectUrl,
+    postcodeDistrict: project.postcodeDistrict,
   };
 }

@@ -32,20 +32,15 @@
 .infoCard a { display: inline-block; margin-top: 8px; color: var(--orange); font-weight: 800; }
 .emptyPanel { padding: 42px; border: 1px solid var(--line); border-radius: 22px; background: var(--paper); text-align: center; }
 .emptyPanel button { margin-top: 18px; }
-.directorySection { padding: 104px 0; border-top: 1px solid var(--line); background: var(--paper); }
-.directoryIntro { max-width: 900px; margin-bottom: 42px; }
-.directoryIntro h2 { margin: 16px 0 24px; }
-.directoryIntro p { max-width: 78ch; margin: 0; font-size: 18px; }
-.directoryGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.directoryCard { min-width: 0; padding: 26px; border: 1px solid var(--line); border-radius: 20px; background: var(--sand); }
-.directoryCard small { color: var(--orange); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
-.directoryCard h3 { margin: 9px 0 8px; font-size: 25px; }
-.directoryCard p { margin: 12px 0 0; color: var(--muted); }
-.directoryCard .directoryLocation { margin-top: 0; color: var(--ink); font-size: 13px; font-weight: 800; }
-.directoryCard a { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; color: var(--orange); font-weight: 800; }
-.directoryCard a:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
+.directorySection { padding: 58px 0 70px; border-top: 1px solid var(--line); background: var(--paper); }
+.directoryHeading { margin: 0 0 24px; font-size: clamp(28px, 3vw, 40px); }
+.directoryGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 24px; margin: 0; padding: 0; list-style: none; }
+.directoryGrid li { min-width: 0; padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; line-height: 1.4; }
+.directoryGrid li::before { content: ""; display: inline-block; width: 6px; height: 6px; margin: 0 9px 2px 1px; border-radius: 50%; background: var(--orange); }
+.directoryGrid li span:first-child { color: var(--ink); font-weight: 800; }
 
-@media (max-width: 950px) { .directoryGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1280px) { .directoryGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .directoryGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 650px) {
   .section { margin-top: 74px; padding: 74px 0; }
   .intro { margin-bottom: 32px; }
@@ -55,11 +50,11 @@
   .searchRow { align-items: center; }
   .searchField { width: 100%; }
   .mapFrame, .mapFallback, .mapLoading { height: 390px; border-radius: 18px; }
-  .directorySection { padding: 74px 0; }
-  .directoryIntro { margin-bottom: 32px; }
-  .directoryIntro p { font-size: 16px; }
-  .directoryGrid { grid-template-columns: 1fr; }
-  .directoryCard { padding: 22px; border-radius: 18px; }
+  .directorySection { padding: 46px 0 56px; }
+  .directoryHeading { margin-bottom: 18px; }
+  .directoryGrid { gap: 0 18px; }
+  .directoryGrid li { font-size: 13px; }
   .emptyPanel { padding: 30px 20px; }
 }
+@media (max-width: 390px) { .directoryGrid { grid-template-columns: 1fr; } }
 @media (max-width: 350px) { .mapFrame, .mapFallback, .mapLoading { height: 340px; } }

@@ -21,7 +21,7 @@ export default function ServicesPage() {
         <div className="shell services-hero-grid">
           <div>
             <small className="eyebrow">Residential architectural services</small>
-            <h1>A clear route from first idea to technical approval.</h1>
+            <h1>Residential Architectural Services</h1>
             <p className="lead">
               Appoint Hepburn Architects for the full residential design process or
               select only the stages your project needs.
@@ -48,15 +48,6 @@ export default function ServicesPage() {
             const Icon = icons[index % icons.length];
             return (
               <Link href={`/services/${service.slug}`} className="service-overview-card" key={service.slug}>
-                <div className="service-overview-image">
-                  <Image
-                    src={service.hero}
-                    alt={`${service.title} example residential project`}
-                    fill
-                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
-                    quality={76}
-                  />
-                </div>
                 <div className="service-overview-copy">
                   <span>0{index + 1}</span>
                   <Icon />
@@ -71,15 +62,6 @@ export default function ServicesPage() {
             href="/services/c2-planning-applications-childrens-homes"
             className="service-overview-card"
           >
-            <div className="service-overview-image">
-              <Image
-                src="/images/selected-work-2.webp"
-                alt="Welcoming residential home with a garden"
-                width={1450}
-                height={1088}
-                sizes="(max-width: 700px) 100vw, 45vw"
-              />
-            </div>
             <div className="service-overview-copy">
               <span>07</span>
               <HeartHandshake />

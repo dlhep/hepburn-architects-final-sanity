@@ -109,8 +109,11 @@
 
 /* SERVICE DETAIL PAGES */
 .service-detail-hero{padding:70px 0 92px;background:#fff}
-.service-detail-grid{display:grid;grid-template-columns:1fr .95fr;gap:68px;align-items:center}
-.service-detail-grid img{width:100%;height:650px;object-fit:cover;border-radius:30px}
+.service-detail-grid{display:grid;grid-template-columns:1fr .95fr;grid-template-areas:"copy image" "actions image";column-gap:68px;row-gap:26px;align-items:center}
+.service-detail-copy{grid-area:copy;align-self:end}
+.service-detail-actions{grid-area:actions;align-self:start}
+.service-detail-image{position:relative;grid-area:image;width:100%;height:650px;overflow:hidden;border-radius:30px;background:var(--sand)}
+.service-detail-image img{object-fit:cover;object-position:center}
 .service-detail-columns{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
 .large-check-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .large-check-list li{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;gap:10px;align-items:center;font-weight:800}
@@ -134,19 +137,31 @@
 }
 @media(max-width:950px){
   .services-hero-grid,.service-detail-grid,.service-detail-columns,.service-deliverables,.faq-layout{grid-template-columns:1fr}
+  .service-detail-grid{grid-template-areas:"copy" "image" "actions";gap:28px}
   .services-overview-grid{grid-template-columns:1fr}
   .process-card-grid{grid-template-columns:1fr 1fr}
-  .service-detail-grid img,.services-hero-grid img{height:500px}
+  .service-detail-image,.services-hero-grid img{height:500px}
 }
 @media(max-width:650px){
-  body{padding-bottom:74px}
-  .mobile-call-float{position:fixed;display:flex;left:14px;right:78px;bottom:12px;z-index:60;min-height:54px;background:var(--orange);color:#fff;border-radius:999px;align-items:center;justify-content:center;gap:10px;font-weight:900;box-shadow:0 14px 34px rgba(0,0,0,.26)}
-  .mobile-call-float svg{width:20px}
+  body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}
+  .topbar-inner{min-height:28px}
+  .nav{min-height:64px}
+  .menu-btn{display:grid;place-items:center;width:42px;height:42px;padding:0;color:var(--ink)}
+  .mobile-call-float{position:fixed;display:flex;left:14px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:60;min-height:46px;padding:0 18px;background:var(--orange);color:#fff;border-radius:999px;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:900;box-shadow:0 10px 28px rgba(0,0,0,.24)}
+  .mobile-call-float svg{width:18px}
   .topbar-phone{font-size:12px}
   .services-overview-card{grid-template-columns:1fr}
   .service-overview-image img{height:270px}
   .large-check-list,.deliverables-grid,.process-card-grid{grid-template-columns:1fr}
-  .service-detail-grid img,.services-hero-grid img{height:350px}
+  .service-detail-hero{padding:32px 0 56px}
+  .service-detail-grid{gap:22px}
+  .service-detail-copy h1{margin:14px 0 16px;font-size:clamp(39px,11.5vw,50px)}
+  .service-detail-copy .lead{margin-bottom:0;font-size:17px;line-height:1.5}
+  .service-detail-image{height:clamp(300px,55svh,420px);border-radius:20px}
+  .service-detail-image img{object-position:var(--mobile-object-position,center)}
+  .service-detail-image-hmo img{object-position:50% 52%}
+  .service-detail-actions{width:100%}
+  .services-hero-grid img{height:clamp(300px,55svh,420px)}
 }
 
 /* GROWTH, SEO AND CONVERSION UPDATE */

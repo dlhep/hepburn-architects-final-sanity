@@ -115,7 +115,7 @@ export function Header() {
 
         @media (max-width: 650px) {
           .brand-logo {
-            width: 164px;
+            width: 158px;
           }
         }
       `}</style>

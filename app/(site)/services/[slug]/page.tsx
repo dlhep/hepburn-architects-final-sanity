@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -104,23 +105,27 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       <section className="service-detail-hero">
         <div className="shell service-detail-grid">
-          <div>
+          <div className="service-detail-copy">
             <small className="eyebrow">Residential architecture service</small>
             <h1>{service.title}</h1>
             <p className="lead">{service.intro}</p>
-            <div className="actions">
-              <Link className="btn primary" href="/estimate">Get an indicative fee <ArrowRight size={17} /></Link>
-              <a className="btn secondary" href={site.phoneHref}><Phone size={17} /> Call {site.phone}</a>
-            </div>
           </div>
-          <Image
-            src={service.hero}
-            alt={`${service.title} example by Hepburn Architects`}
-            width={1400}
-            height={1000}
-            priority
-            sizes="(max-width: 950px) 100vw, 48vw"
-          />
+          <div
+            className="service-detail-image"
+            style={{ "--mobile-object-position": service.mobileObjectPosition } as CSSProperties}
+          >
+            <Image
+              src={service.hero}
+              alt={`${service.title} example by Hepburn Architects`}
+              fill
+              priority
+              sizes="(max-width: 650px) calc(100vw - 28px), (max-width: 950px) calc(100vw - 40px), 48vw"
+            />
+          </div>
+          <div className="actions service-detail-actions">
+            <Link className="btn primary" href="/estimate">Get an indicative fee <ArrowRight size={17} /></Link>
+            <a className="btn secondary" href={site.phoneHref}><Phone size={17} /> Call {site.phone}</a>
+          </div>
         </div>
       </section>
 

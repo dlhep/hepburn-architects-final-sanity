@@ -41,11 +41,16 @@ export default function AskHepburn() {
 
   useEffect(() => {
     if (window.sessionStorage.getItem(GREETING_KEY)) return;
-    const timer = window.setTimeout(() => {
+    let collapseTimer: number | undefined;
+    const showTimer = window.setTimeout(() => {
       setGreeting(true);
       window.sessionStorage.setItem(GREETING_KEY, "shown");
+      collapseTimer = window.setTimeout(() => setGreeting(false), 6_000);
     }, 10_000);
-    return () => window.clearTimeout(timer);
+    return () => {
+      window.clearTimeout(showTimer);
+      if (collapseTimer) window.clearTimeout(collapseTimer);
+    };
   }, []);
 
   useEffect(() => {

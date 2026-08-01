@@ -4,6 +4,7 @@ export type ServiceDetail = {
   metaTitle: string;
   metaDescription: string;
   hero: string;
+  mobileObjectPosition: string;
   intro: string;
   idealFor: string[];
   process: { title: string; text: string }[];
@@ -25,6 +26,7 @@ export const serviceDetails: ServiceDetail[] = [
     metaTitle: "House Extension Architect | Planning & Building Regulations",
     metaDescription: "Architectural design, planning applications and Building Regulations drawings for single-storey, two-storey, side and wrap-around extensions.",
     hero: "/images/selected-work-2.webp",
+    mobileObjectPosition: "48% 48%",
     intro: "A successful extension should improve more than floor area. We design around daylight, circulation, privacy, garden connection, planning policy and the long-term value of the home.",
     idealFor: ["Single-storey rear extensions", "Two-storey side and rear extensions", "Wrap-around extensions", "Kitchen and family-room extensions", "Period-property additions"],
     process: [
@@ -59,6 +61,7 @@ export const serviceDetails: ServiceDetail[] = [
     metaTitle: "Loft Conversion Architect | Dormers, Hip-to-Gable & Planning",
     metaDescription: "Design, permitted development checks and Building Regulations drawings for dormer, hip-to-gable, rooflight and mansard loft conversions.",
     hero: "/images/homepage-hero.webp",
+    mobileObjectPosition: "47% 43%",
     intro: "Loft conversions can unlock valuable space, but headroom, stairs, fire safety, roof structure and external appearance all need to work together.",
     idealFor: ["Rear dormer conversions", "Hip-to-gable conversions", "Rooflight conversions", "Mansard proposals", "Loft bedrooms and home offices"],
     process: [
@@ -93,6 +96,7 @@ export const serviceDetails: ServiceDetail[] = [
     metaTitle: "New Build Home Architect | One-Off Houses & Small Developments",
     metaDescription: "Feasibility, planning and technical design for one-off houses, replacement dwellings, infill plots and small residential developments.",
     hero: "/images/selected-work-1.webp",
+    mobileObjectPosition: "42% 47%",
     intro: "New homes need a strong response to context, access, amenity, landscape, planning policy and buildability. We develop the design and planning case together.",
     idealFor: ["One-off houses", "Replacement dwellings", "Backland and infill plots", "Small residential developments", "Low-energy homes"],
     process: [
@@ -127,6 +131,7 @@ export const serviceDetails: ServiceDetail[] = [
     metaTitle: "HMO Architect | Planning, Licensing & Building Regulations",
     metaDescription: "HMO planning applications, layout reviews, fire-safety coordination and Building Regulations drawings for C4 and sui generis HMOs.",
     hero: "/images/architectural-expertise-home.webp",
+    mobileObjectPosition: "54% 42%",
     intro: "HMO projects must balance planning use, Article 4 controls, room standards, communal amenity, licensing and fire safety from the outset.",
     idealFor: ["C3 to C4 conversions", "Sui generis HMOs", "Existing HMO regularisation", "HMO extensions", "Investor feasibility studies"],
     process: [
@@ -161,6 +166,7 @@ export const serviceDetails: ServiceDetail[] = [
     metaTitle: "Planning Application Architect | Drawings, Statements & Strategy",
     metaDescription: "Residential planning drawings, planning statements, Design and Access Statements and submission support for extensions, conversions and new homes.",
     hero: "/images/selected-work-3.webp",
+    mobileObjectPosition: "54% 47%",
     intro: "Planning success depends on more than drawings. We build the design and supporting case around policy, context, amenity and the likely concerns of the planning authority.",
     idealFor: ["Householder planning applications", "Lawful Development Certificates", "Changes of use", "Flat and HMO conversions", "New dwellings and small sites"],
     process: [
@@ -195,6 +201,7 @@ export const serviceDetails: ServiceDetail[] = [
     metaTitle: "Building Regulations Drawings | Residential Technical Design",
     metaDescription: "Detailed Building Regulations drawings for extensions, loft conversions, new homes, HMOs and residential conversions.",
     hero: "/images/architectural-expertise-home.webp",
+    mobileObjectPosition: "54% 42%",
     intro: "Technical drawings turn an approved design into coordinated information for Building Control, consultants and contractors.",
     idealFor: ["House extensions", "Loft conversions", "New-build homes", "HMOs and flat conversions", "Residential remodelling"],
     process: [

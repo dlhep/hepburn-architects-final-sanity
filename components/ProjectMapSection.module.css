@@ -32,19 +32,24 @@
 .infoCard a { display: inline-block; margin-top: 8px; color: var(--orange); font-weight: 800; }
 .emptyPanel { padding: 42px; border: 1px solid var(--line); border-radius: 22px; background: var(--paper); text-align: center; }
 .emptyPanel button { margin-top: 18px; }
-.directorySection { padding: 58px 0 70px; border-top: 1px solid var(--line); background: var(--paper); }
-.directoryHeading { margin: 0 0 28px; font-size: clamp(28px, 3vw, 40px); }
-.directoryGroups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 28px; }
-.directoryGroup { min-width: 0; }
-.directoryGroup h3 { margin: 0; padding: 0 0 10px; border-bottom: 1px solid var(--line); font-size: 18px; }
-.directoryList { margin: 0; padding: 0; list-style: none; }
-.directoryList li { min-width: 0; padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; line-height: 1.45; }
-.directoryList li::before { content: ""; display: inline-block; width: 6px; height: 6px; margin: 0 9px 2px 1px; border-radius: 50%; background: var(--orange); }
-.directoryProjectType { color: var(--ink); font-weight: 800; }
-.directoryStreet { color: var(--ink); }
 
-@media (min-width: 1280px) { .directoryGroups { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-@media (max-width: 900px) { .directoryGroups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.directorySection { padding: 64px 0 76px; border-top: 1px solid var(--line); background: var(--paper); }
+.directoryHeading { margin: 0 0 38px; font-size: clamp(28px, 3vw, 40px); }
+.directoryRegions { display: grid; gap: 50px; }
+.directoryRegion h3 { margin: 0 0 6px; padding-bottom: 13px; border-bottom: 2px solid var(--ink); font-size: clamp(21px, 2vw, 27px); }
+.directoryTownColumns { column-count: 3; column-gap: clamp(30px, 4vw, 52px); }
+.directoryTown { break-inside: avoid; padding: 17px 0 18px; border-bottom: 1px solid var(--line); }
+.directoryTown h4 { margin: 0 0 8px; color: var(--ink); font-size: 15px; font-weight: 800; }
+.directoryList { margin: 0; padding: 0; list-style: none; }
+.directoryList li { min-width: 0; padding: 4px 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.directoryProjectType { color: var(--ink); font-weight: 800; }
+.directorySeparator { margin: 0 .2em; color: var(--muted); }
+.directoryStreet { color: var(--ink); }
+.directoryPostcode { white-space: nowrap; }
+
+@media (max-width: 960px) {
+  .directoryTownColumns { column-count: 2; }
+}
 @media (max-width: 650px) {
   .section { margin-top: 74px; padding: 74px 0; }
   .intro { margin-bottom: 32px; }
@@ -54,11 +59,12 @@
   .searchRow { align-items: center; }
   .searchField { width: 100%; }
   .mapFrame, .mapFallback, .mapLoading { height: 390px; border-radius: 18px; }
-  .directorySection { padding: 46px 0 56px; }
-  .directoryHeading { margin-bottom: 22px; }
-  .directoryGroups { gap: 26px 18px; }
+  .directorySection { padding: 48px 0 58px; }
+  .directoryHeading { margin-bottom: 30px; }
+  .directoryRegions { gap: 38px; }
+  .directoryTownColumns { column-count: 1; }
+  .directoryTown { padding: 14px 0 15px; }
   .directoryList li { font-size: 13px; }
   .emptyPanel { padding: 30px 20px; }
 }
-@media (max-width: 430px) { .directoryGroups { grid-template-columns: 1fr; } }
 @media (max-width: 350px) { .mapFrame, .mapFallback, .mapLoading { height: 340px; } }

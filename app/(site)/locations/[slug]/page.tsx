@@ -279,6 +279,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
         <section className="section dark-section birmingham-planning-section">
           <div className="shell">
             <div className="page-intro"><small className="eyebrow">Planning in {page.shortTitle}</small><h2>Local planning knowledge built into the design.</h2><p className="lead">{planningIntro}</p></div>
+            {isBirmingham ? <p className="lead">For a detailed explanation of householder applications, permitted development, prior approval and Lawful Development Certificates, read our <Link href="/journal/house-extension-planning-permission-birmingham-2026-guide">2026 Birmingham extension planning guide</Link>.</p> : null}
             <div className="authority-grid">
               {planningTopics.map((topic, index) => <article key={topic.title}><span>0{index + 1}</span><h3>{topic.title}</h3><p>{topic.body}</p><a href={topic.href} target="_blank" rel="noopener noreferrer">{topic.linkLabel} <ExternalLink size={15} /></a></article>)}
             </div>

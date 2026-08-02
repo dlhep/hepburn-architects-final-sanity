@@ -250,6 +250,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <Link href="/knowledge-centre/house-extensions">
                 The Complete Guide to House Extensions
               </Link>
+              . Birmingham homeowners can also read our detailed guide to{" "}
+              <Link href="/journal/house-extension-planning-permission-birmingham-2026-guide">
+                house-extension planning permission in Birmingham
+              </Link>
               .
             </p>
           ) : null}

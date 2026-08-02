@@ -5,13 +5,24 @@ import { ArrowRight, Newspaper } from "lucide-react";
 import { articleImageUrl, getBlogPosts } from "@/lib/articles";
 import { site } from "@/lib/site";
 
-const birminghamAuthorityArticle = {
-  title: "How to Choose the Best Architect in Birmingham",
-  excerpt: "A practical guide to comparing Birmingham architects, checking credentials, reviewing relevant projects and appointing the right practice.",
-  href: "/journal/how-to-choose-the-best-architect-in-birmingham",
-  image: "/images/birmingham-residential-project.jpg",
-  publishedAt: "2026-08-02",
-};
+const birminghamAuthorityArticles = [
+  {
+    title: "House Extension Planning Permission in Birmingham: 2026 Guide",
+    excerpt: "A practical guide to planning permission, permitted development, prior approval and Lawful Development Certificates for Birmingham extensions.",
+    href: "/journal/house-extension-planning-permission-birmingham-2026-guide",
+    image: "/images/birmingham-residential-project.jpg",
+    category: "Planning guidance",
+    publishedAt: "2026-08-02",
+  },
+  {
+    title: "How to Choose the Best Architect in Birmingham",
+    excerpt: "A practical guide to comparing Birmingham architects, checking credentials, reviewing relevant projects and appointing the right practice.",
+    href: "/journal/how-to-choose-the-best-architect-in-birmingham",
+    image: "/images/birmingham-residential-project.jpg",
+    category: "Advice",
+    publishedAt: "2026-08-02",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Architecture Journal",
@@ -38,8 +49,8 @@ export default async function BlogPage() {
     mainEntity: {
       "@type": "ItemList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, url: `${site.url}${birminghamAuthorityArticle.href}`, name: birminghamAuthorityArticle.title },
-        ...posts.map((post, index) => ({ "@type": "ListItem", position: index + 2, url: `${site.url}/blog/${post.slug}`, name: post.title })),
+        ...birminghamAuthorityArticles.map((article, index) => ({ "@type": "ListItem", position: index + 1, url: `${site.url}${article.href}`, name: article.title })),
+        ...posts.map((post, index) => ({ "@type": "ListItem", position: index + birminghamAuthorityArticles.length + 1, url: `${site.url}/blog/${post.slug}`, name: post.title })),
       ],
     },
   };
@@ -55,22 +66,17 @@ export default async function BlogPage() {
         </div>
 
         <div className="shell guides-index">
-          <Link href={birminghamAuthorityArticle.href} className="guide-index-card">
-            <span>01</span>
-            <div>
-              <Image src={birminghamAuthorityArticle.image} alt="Architect-designed residential project in Birmingham by Hepburn Architects" width={1024} height={485} sizes="(max-width: 950px) 100vw, 760px" style={{ width: "100%", height: "240px", objectFit: "cover", borderRadius: "14px", marginBottom: "1rem" }} />
-              <small>Advice</small>
-              <h2>{birminghamAuthorityArticle.title}</h2>
-              <p>{birminghamAuthorityArticle.excerpt}</p>
-              <p className="muted small-copy">2 Aug 2026</p>
-            </div>
-            <ArrowRight />
-          </Link>
+          {birminghamAuthorityArticles.map((article, index) => <Link href={article.href} className="guide-index-card" key={article.href}>
+            <span>{String(index + 1).padStart(2, "0")}</span><div>
+              <Image src={article.image} alt={article.title} width={1024} height={485} sizes="(max-width: 950px) 100vw, 760px" style={{ width: "100%", height: "240px", objectFit: "cover", borderRadius: "14px", marginBottom: "1rem" }} />
+              <small>{article.category}</small><h2>{article.title}</h2><p>{article.excerpt}</p><p className="muted small-copy">2 Aug 2026</p>
+            </div><ArrowRight />
+          </Link>)}
           {posts.map((post, index) => {
             const image = articleImageUrl(post.featuredImage, 900);
             return (
               <Link href={`/blog/${post.slug}`} className="guide-index-card" key={post._id}>
-                <span>{String(index + 2).padStart(2, "0")}</span>
+                <span>{String(index + birminghamAuthorityArticles.length + 1).padStart(2, "0")}</span>
                 <div>
                   {image ? (
                     <Image

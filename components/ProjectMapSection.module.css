@@ -33,14 +33,18 @@
 .emptyPanel { padding: 42px; border: 1px solid var(--line); border-radius: 22px; background: var(--paper); text-align: center; }
 .emptyPanel button { margin-top: 18px; }
 .directorySection { padding: 58px 0 70px; border-top: 1px solid var(--line); background: var(--paper); }
-.directoryHeading { margin: 0 0 24px; font-size: clamp(28px, 3vw, 40px); }
-.directoryGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 24px; margin: 0; padding: 0; list-style: none; }
-.directoryGrid li { min-width: 0; padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; line-height: 1.4; }
-.directoryGrid li::before { content: ""; display: inline-block; width: 6px; height: 6px; margin: 0 9px 2px 1px; border-radius: 50%; background: var(--orange); }
-.directoryGrid li span:first-child { color: var(--ink); font-weight: 800; }
+.directoryHeading { margin: 0 0 28px; font-size: clamp(28px, 3vw, 40px); }
+.directoryGroups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 28px; }
+.directoryGroup { min-width: 0; }
+.directoryGroup h3 { margin: 0; padding: 0 0 10px; border-bottom: 1px solid var(--line); font-size: 18px; }
+.directoryList { margin: 0; padding: 0; list-style: none; }
+.directoryList li { min-width: 0; padding: 10px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; line-height: 1.45; }
+.directoryList li::before { content: ""; display: inline-block; width: 6px; height: 6px; margin: 0 9px 2px 1px; border-radius: 50%; background: var(--orange); }
+.directoryProjectType { color: var(--ink); font-weight: 800; }
+.directoryStreet { color: var(--ink); }
 
-@media (min-width: 1280px) { .directoryGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-@media (max-width: 900px) { .directoryGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1280px) { .directoryGroups { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .directoryGroups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 650px) {
   .section { margin-top: 74px; padding: 74px 0; }
   .intro { margin-bottom: 32px; }
@@ -51,10 +55,10 @@
   .searchField { width: 100%; }
   .mapFrame, .mapFallback, .mapLoading { height: 390px; border-radius: 18px; }
   .directorySection { padding: 46px 0 56px; }
-  .directoryHeading { margin-bottom: 18px; }
-  .directoryGrid { gap: 0 18px; }
-  .directoryGrid li { font-size: 13px; }
+  .directoryHeading { margin-bottom: 22px; }
+  .directoryGroups { gap: 26px 18px; }
+  .directoryList li { font-size: 13px; }
   .emptyPanel { padding: 30px 20px; }
 }
-@media (max-width: 390px) { .directoryGrid { grid-template-columns: 1fr; } }
+@media (max-width: 430px) { .directoryGroups { grid-template-columns: 1fr; } }
 @media (max-width: 350px) { .mapFrame, .mapFallback, .mapLoading { height: 340px; } }

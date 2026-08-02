@@ -7,8 +7,8 @@ import { getMappedProjects } from "@/lib/mapped-projects.server";
 import { toPublicProjectDirectoryItem } from "@/lib/mapped-projects";
 
 export const metadata: Metadata = {
-  title: "Residential Architecture Projects",
-  description: "Explore genuine Hepburn Architects projects including house extensions, barn conversions, Passivhaus homes, new-build houses and whole-home remodelling.",
+  title: "Residential Architecture Projects in Birmingham & the West Midlands",
+  description: "Explore residential architecture projects across Birmingham and the West Midlands, including house extensions, loft conversions, HMOs, new homes and planning work.",
   alternates: { canonical: "/projects" },
 };
 
@@ -20,7 +20,7 @@ export default async function ProjectsPage() {
       <section className="section projects-index-page">
         <div className="shell page-intro projects-index-intro">
           <small className="eyebrow">Selected residential work</small>
-          <h1>Genuine projects designed around place and purpose.</h1>
+          <h1>Residential Architecture Projects Across Birmingham and the West Midlands</h1>
           <p>Explore extensions, sustainable new homes and whole-house transformations developed by Hepburn Architects.</p>
         </div>
         <div className="shell"><ProjectsFilter projects={projects} /></div>

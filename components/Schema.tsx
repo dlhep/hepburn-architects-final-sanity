@@ -4,6 +4,15 @@ export function IdentitySchema() {
   const schemas = [
     {
       "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      publisher: { "@id": `${site.url}/#organization` },
+      inLanguage: "en-GB",
+    },
+    {
+      "@context": "https://schema.org",
       "@type": "Organization",
       "@id": `${site.url}/#organization`,
       name: site.legalName,

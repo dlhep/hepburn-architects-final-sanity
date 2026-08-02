@@ -41,6 +41,32 @@ export const PROJECTS_QUERY = defineQuery(`
   }
 `);
 
+export const BIRMINGHAM_PROJECTS_QUERY = defineQuery(`
+  *[
+    _type == "project" &&
+    defined(slug.current) &&
+    defined(featuredImage.asset) &&
+    defined(projectType) &&
+    defined(description) &&
+    (
+      lower(location) match "*birmingham*" ||
+      lower(location) match "*harborne*" ||
+      lower(location) match "*edgbaston*" ||
+      lower(location) match "*moseley*" ||
+      lower(location) match "*kings heath*" ||
+      lower(location) match "*bournville*" ||
+      lower(location) match "*selly oak*" ||
+      lower(location) match "*sutton coldfield*" ||
+      lower(location) match "*handsworth wood*" ||
+      lower(location) match "*hall green*" ||
+      lower(location) match "*yardley*" ||
+      lower(location) match "*erdington*"
+    )
+  ] | order(featuredCaseStudy desc, featured desc, _updatedAt desc)[0...3] {
+    ${PROJECT_FIELDS}
+  }
+`);
+
 export const FEATURED_PROJECTS_QUERY = defineQuery(`
   *[_type == "project" && defined(slug.current) && featured == true && featuredCaseStudy != true] | order(_updatedAt desc)[0...3] {
     ${PROJECT_FIELDS}

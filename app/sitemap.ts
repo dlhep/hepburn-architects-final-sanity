@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { services, locations, guides } from "@/lib/content";
+import { services, locations, guides } from "@/lib/content-extended";
 import { getProjects } from "@/lib/projects";
 import { getBlogPosts, getSanityGuides } from "@/lib/articles";
 import { site } from "@/lib/site";

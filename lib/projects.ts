@@ -2,6 +2,7 @@ import fallbackProjects from "@/data/projects.json";
 import { client } from "@/sanity/lib/client";
 import { isSanityConfigured } from "@/sanity/env";
 import {
+  BIRMINGHAM_PROJECTS_QUERY,
   FEATURED_CASE_STUDY_QUERY,
   FEATURED_PROJECTS_QUERY,
   PROJECT_QUERY,
@@ -66,6 +67,11 @@ async function fetchSanity<T>(query: string, params: Record<string, unknown> = {
 export async function getProjects(): Promise<Project[]> {
   const result = await fetchSanity<Project[]>(PROJECTS_QUERY);
   return result && result.length ? result : fallback();
+}
+
+export async function getBirminghamProjects(): Promise<Project[]> {
+  const result = await fetchSanity<Project[]>(BIRMINGHAM_PROJECTS_QUERY);
+  return result || [];
 }
 
 export async function getFeaturedProjects(): Promise<Project[]> {

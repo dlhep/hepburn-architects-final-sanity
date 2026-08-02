@@ -102,6 +102,10 @@ export function canonical(path: string): string {
   return new URL(normalised, site.url).toString();
 }
 
+export function serializeJsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
+}
+
 type SeoMetadataOptions = {
   title: string;
   description: string;

@@ -1,19 +1,39 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, ExternalLink, MapPin, Phone, Quote } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
-import { locations, services } from "@/lib/content";
-import { getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
+import { locations, services } from "@/lib/content-extended";
+import { getBirminghamProjects, getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
-import { createSeoMetadata } from "@/lib/seo";
+import { createSeoMetadata, serializeJsonLd, SOCIAL_IMAGE } from "@/lib/seo";
 
 const birminghamFaqs = [
-  { question: "Do I need planning permission for a house extension in Birmingham?", answer: "Some extensions may be permitted development, but the property history, dimensions, location and local restrictions must be checked. A Lawful Development Certificate can provide formal confirmation where permitted development applies." },
-  { question: "Does Birmingham's Article 4 Direction affect HMO conversions?", answer: "Yes. Birmingham's city-wide Article 4 Direction means planning permission is required to change a family dwelling into a small HMO occupied by three to six unrelated people." },
-  { question: "Can Hepburn Architects prepare Building Regulations drawings?", answer: "Yes. We prepare coordinated Building Regulations drawings and technical information for extensions, loft conversions, new homes, HMOs and residential conversions." },
-  { question: "Which parts of Birmingham do you cover?", answer: "We support projects across Birmingham, including Harborne, Edgbaston, Moseley, Sutton Coldfield, Handsworth Wood and nearby Solihull and the wider West Midlands." },
+  { question: "What type of projects does Hepburn Architects undertake in Birmingham?", answer: "Hepburn Architects supports house extensions, loft conversions, new-build homes, HMOs, flat conversions, planning applications, Building Regulations packages and small residential developments. The suitability and scope of each appointment are reviewed before work begins." },
+  { question: "Do I need an architect for a Birmingham planning application?", answer: "An architect is not legally required for most planning applications, but architectural input can improve the design, accuracy and presentation of the proposal. More constrained properties may also require planning, heritage, transport, ecology, drainage or tree advice." },
+  { question: "Can you handle both planning and Building Regulations?", answer: "Yes. Hepburn Architects can provide a coordinated appointment covering feasibility, planning drawings and Building Regulations information. Structural engineering and other specialist services are identified separately where required." },
+  { question: "Do you work throughout Birmingham?", answer: "Yes. The Birmingham studio supports projects throughout Birmingham and the wider West Midlands, including Harborne, Edgbaston, Moseley, Kings Heath, Bournville, Sutton Coldfield and surrounding areas." },
+  { question: "How much does an architect cost in Birmingham?", answer: "Architectural fees depend on the property, project type, floor area, planning risk and services required. Hepburn Architects provides written stage-based fee proposals, and the website fee calculator can provide an early indicative figure." },
+  { question: "Can you guarantee planning permission?", answer: "No architect or planning consultant can guarantee planning permission. The role of the architect is to identify constraints, develop the strongest reasonable proposal and prepare a clear and properly coordinated submission." },
 ];
+
+const birminghamIntro = "Hepburn Architects is an ARB-registered and RIBA Chartered architectural practice providing director-led residential design, planning and Building Regulations services across Birmingham and the West Midlands. We help homeowners, developers and property investors with house extensions, loft conversions, new homes, HMOs, residential conversions and small development sites.";
+
+const birminghamAreas = [
+  ["Harborne", "/locations/harborne-architects"],
+  ["Edgbaston", "/locations/edgbaston-architects"],
+  ["Moseley", "/locations/moseley-architects"],
+  ["Kings Heath", "/locations/kings-heath-architects"],
+  ["Bournville", "/locations/bournville-architects"],
+] as const;
+
+const birminghamProcess = [
+  ["01", "Property and brief review", "We review the address, planning history, existing property, proposed work and likely approval route."],
+  ["02", "Survey and feasibility", "The existing building is recorded and the strongest design options are tested before a full application is prepared."],
+  ["03", "Planning and approvals", "Coordinated drawings and supporting information are prepared for planning permission, permitted development or a lawful development certificate as appropriate."],
+  ["04", "Building Regulations", "The approved design is developed into technical drawings, with structural and specialist information coordinated where required."],
+] as const;
 
 const solihullFaqs = [
   { question: "Do I need planning permission for an extension in Solihull?", answer: "Some house extensions may use permitted development rights, but the proposal dimensions, earlier additions, conservation status, Article 4 controls and planning history must be checked before relying on that route." },
@@ -61,10 +81,23 @@ export function generateStaticParams() {
   return locations.map((item) => ({ slug: item.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const page = locations.find((item) => item.slug === slug);
   if (!page) return {};
+  if (slug === "birmingham-architects") {
+    const description = "RIBA Chartered residential architects in Birmingham providing house extension design, planning applications, new homes, HMO conversions and Building Regulations drawings. Speak directly with architect David Hepburn.";
+    const socialTitle = "Residential Architects in Birmingham | Hepburn Architects";
+    const socialDescription = "Director-led architectural design, planning and Building Regulations services for homeowners, developers and property investors across Birmingham.";
+    const url = `${site.url}/locations/birmingham-architects`;
+    return {
+      title: "Residential Architects Birmingham | Planning & Extensions",
+      description,
+      alternates: { canonical: url },
+      openGraph: { title: socialTitle, description: socialDescription, url, siteName: site.name, type: "website", images: [{ url: SOCIAL_IMAGE }] },
+      twitter: { card: "summary_large_image", title: socialTitle, description: socialDescription, images: [SOCIAL_IMAGE] },
+    };
+  }
   return createSeoMetadata({
     title: `Architects in ${page.shortTitle}`,
     description: page.description,
@@ -83,8 +116,8 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
   const relatedServices = services.filter((service) => page.serviceSlugs.includes(service.slug));
   const relatedLocations = locations.filter((location) => page.nearbyAreas.includes(location.shortTitle)).slice(0, 5);
   const projectTerms = isBirmingham ? birminghamProjectTerms : isSolihull ? ["solihull", "knowle", "dorridge", "shirley", "olton", "balsall common", "warwickshire"] : page.projectTerms ?? [];
-  const allProjects = isEnhanced ? await getProjects() : [];
-  const regionalProjects = isEnhanced ? selectProjects(allProjects, projectTerms) : [];
+  const allProjects = isEnhanced && !isBirmingham ? await getProjects() : [];
+  const regionalProjects = isBirmingham ? await getBirminghamProjects() : isEnhanced ? selectProjects(allProjects, projectTerms) : [];
   const faqs = isBirmingham ? birminghamFaqs : isSolihull ? solihullFaqs : page.faqs ?? [];
   const planningTopics = isBirmingham ? birminghamPlanningTopics : isSolihull ? solihullPlanningTopics : page.planningTopics ?? [];
   const planningIntro = isBirmingham
@@ -93,7 +126,55 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
       ? "Solihull projects often need to respond to mature suburban character, conservation areas, Green Belt edges, trees and made neighbourhood plans as well as the national planning framework."
       : page.planningIntro;
 
-  const schemas: Array<Record<string, unknown>> = [
+  const schemas: Array<Record<string, unknown>> = isBirmingham ? [{
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${site.url}/locations/birmingham-architects#webpage`,
+        url: `${site.url}/locations/birmingham-architects`,
+        name: "Residential Architects in Birmingham",
+        description: "Director-led residential architectural design, planning and Building Regulations services across Birmingham.",
+        isPartOf: { "@id": `${site.url}/#website` },
+        about: { "@id": `${site.url}/#birmingham-studio` },
+        mainEntity: { "@id": `${site.url}/#birmingham-studio` },
+        breadcrumb: { "@id": `${site.url}/locations/birmingham-architects#breadcrumb` },
+        inLanguage: "en-GB",
+      },
+      {
+        "@type": ["ProfessionalService", "ArchitecturalService"],
+        "@id": `${site.url}/#birmingham-studio`,
+        name: "Hepburn Architects Birmingham",
+        legalName: site.legalName,
+        url: `${site.url}/locations/birmingham-architects`,
+        telephone: "+447720813035",
+        email: site.email,
+        parentOrganization: { "@id": `${site.url}/#organization` },
+        address: { "@type": "PostalAddress", streetAddress: site.offices.birmingham.streetAddress, addressLocality: site.offices.birmingham.addressLocality, postalCode: site.offices.birmingham.postalCode, addressCountry: "GB" },
+        areaServed: [
+          { "@type": "City", name: "Birmingham" },
+          { "@type": "AdministrativeArea", name: "West Midlands" },
+          ...["Harborne", "Edgbaston", "Moseley", "Kings Heath", "Bournville", "Sutton Coldfield"].map((name) => ({ "@type": "Place", name })),
+        ],
+        knowsAbout: ["Residential architecture", "House extensions", "Loft conversions", "New-build homes", "Planning applications", "Building Regulations", "HMO conversions", "Residential development"],
+        sameAs: [site.instagram, site.facebook, site.googleBusiness],
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${site.url}/locations/birmingham-architects#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
+          { "@type": "ListItem", position: 2, name: "Locations", item: `${site.url}/locations` },
+          { "@type": "ListItem", position: 3, name: "Birmingham Architects", item: `${site.url}/locations/birmingham-architects` },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${site.url}/locations/birmingham-architects#faq`,
+        mainEntity: birminghamFaqs.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })),
+      },
+    ],
+  }] : [
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -127,7 +208,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
         },
   ];
 
-  if (faqs.length) {
+  if (faqs.length && !isBirmingham) {
     schemas.push({
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -137,26 +218,37 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
-      {schemas.map((schema, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />)}
+      {schemas.map((schema, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />)}
 
       <section className="section location-hero">
         <div className="shell content-page">
           <small className="eyebrow"><MapPin size={14} /> Local residential architecture</small>
           <h1>{page.title}</h1>
-          <p className="lead">{page.intro}</p>
+          <p className="lead">{isBirmingham ? birminghamIntro : page.intro}</p>
           <div className="actions">
             <a className="btn primary" href={site.phoneHref}><Phone size={17} /> Call {site.phone}</a>
             <a className="btn secondary" href="#project-enquiry">Discuss your project <ArrowRight size={17} /></a>
           </div>
+          {isBirmingham && <div className="hero-trust location-hero-trust" aria-label="Practice credentials"><span><CheckCircle2 /> ARB-registered architect</span><span><CheckCircle2 /> RIBA Chartered Practice</span><span><CheckCircle2 /> Birmingham studio</span><span><CheckCircle2 /> Director-led service</span></div>}
         </div>
       </section>
 
       <section className="section">
         <div className="shell service-detail-columns">
           <div><small className="eyebrow">Local knowledge</small><h2>Residential architecture shaped by {page.shortTitle}.</h2></div>
-          <div><p className="lead">{page.localContext}</p><p>Hepburn Architects can support the project from early feasibility and planning strategy through to Building Regulations drawings and consultant coordination. The appointment is tailored to the property, approval route and information already available.</p></div>
+          <div>{isBirmingham ? <><p className="lead">Birmingham contains a broad mix of Victorian and Edwardian terraces, inter-war suburbs, post-war housing, conservation areas and contemporary residential development. A successful proposal must respond to the individual property as well as neighbouring daylight, privacy, parking, trees, drainage, street character and Birmingham City Council planning policy.</p><p>Hepburn Architects combines architectural design with planning strategy and technical coordination. We can support a project from measured survey and feasibility through <Link className="text-link" href="/services/planning-applications">planning permission</Link> and <Link className="text-link" href="/services/building-regulations">Building Regulations drawings</Link>, with structural engineers, planning consultants and other specialists coordinated where required.</p><p className="location-area-copy">Areas regularly served include Harborne, Edgbaston, Moseley, Kings Heath, Bournville, Selly Oak, Sutton Coldfield, Handsworth Wood, Hall Green, Yardley, Erdington and surrounding West Midlands districts.</p></> : <><p className="lead">{page.localContext}</p><p>Hepburn Architects can support the project from early feasibility and planning strategy through to Building Regulations drawings and consultant coordination. The appointment is tailored to the property, approval route and information already available.</p></>}</div>
         </div>
       </section>
+
+      {isBirmingham && (
+        <section className="section selected-work-section birmingham-projects-section">
+          <div className="shell">
+            <div className="selected-work-heading"><small className="eyebrow">Birmingham project experience</small><h2>Residential projects across Birmingham and the surrounding area.</h2><p>Our Birmingham work includes house extensions, internal remodelling, residential conversions, HMOs, new homes and small development opportunities. Each project is reviewed against its property type, planning history, local character and technical constraints.</p></div>
+            {regionalProjects.length > 0 ? <div className="birmingham-project-grid">{regionalProjects.map((project) => <article className="birmingham-project-card" key={project.slug}><Link href={`/projects/${project.slug}`}><Image src={projectImageUrl(project.featuredImage, 900)} alt={projectImageAlt(project)} width={900} height={600} sizes="(max-width: 850px) 100vw, 33vw" /></Link><div><small>{project.location.toLowerCase().includes("birmingham") ? project.location : `${project.location}, Birmingham`}</small><span>{project.projectType}</span><h3><Link href={`/projects/${project.slug}`}>{project.title}</Link></h3><p>{project.description}</p><Link className="project-case-study-link" href={`/projects/${project.slug}`}>View full case study <ArrowRight size={16} /></Link></div></article>)}</div> : <p className="project-empty-state">Birmingham project case studies are being prepared for publication. Explore the full project archive in the meantime.</p>}
+            <div className="selected-work-action"><Link className="btn secondary" href="/projects">View all Birmingham-area projects <ArrowRight size={17} /></Link></div>
+          </div>
+        </section>
+      )}
 
       <section className="section sand-section">
         <div className="shell content-grid">
@@ -173,6 +265,16 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
+      {isBirmingham && (
+        <section className="section sand-section birmingham-process-section">
+          <div className="shell editorial-grid">
+            <div><small className="eyebrow">Appointment process</small><h2>A clear route from initial idea to technical design.</h2><p>Explore practical guidance in the <Link className="text-link" href="/knowledge-centre">knowledge centre</Link>, use the <Link className="text-link" href="/estimate">fee calculator</Link> for an early indication, or <Link className="text-link" href="/contact">contact the studio</Link> to discuss your property.</p></div>
+            <div className="birmingham-process-list">{birminghamProcess.map(([number, title, body]) => <article key={number}><span>{number}</span><div><h3>{title}</h3><p>{body}</p></div></article>)}</div>
+          </div>
+          <div className="shell process-qualification"><p>Project scope is confirmed through a written fee proposal. Planning permission cannot be guaranteed.</p></div>
+        </section>
+      )}
+
       {isEnhanced && planningTopics.length > 0 && (
         <section className="section dark-section birmingham-planning-section">
           <div className="shell">
@@ -184,7 +286,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
         </section>
       )}
 
-      {regionalProjects.length > 0 && (
+      {!isBirmingham && regionalProjects.length > 0 && (
         <section className="section selected-work-section">
           <div className="shell">
             <div className="selected-work-heading"><small className="eyebrow">{page.shortTitle} and regional projects</small><h2>Relevant residential work.</h2><p>{isSolihull ? "Extensions, new homes and residential projects from Solihull and the surrounding West Midlands." : page.projectIntro || "A selection of extensions, new homes and residential transformations from the wider region."}</p></div>
@@ -209,7 +311,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
 
       {faqs.length > 0 && (
         <section className="section">
-          <div className="shell service-detail-columns"><div><small className="eyebrow">Common questions</small><h2>Planning and architectural services in {page.shortTitle}.</h2></div><div className="faq-list">{faqs.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></div>
+          <div className="shell service-detail-columns"><div><small className="eyebrow">{isBirmingham ? "Birmingham FAQs" : "Common questions"}</small><h2>{isBirmingham ? "Questions about appointing an architect in Birmingham." : `Planning and architectural services in ${page.shortTitle}.`}</h2></div><div className="faq-list">{faqs.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></div>
         </section>
       )}
 
@@ -221,7 +323,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
       </section>
 
       <section className="section dark-section">
-        <div className="shell studio-process"><div><small className="eyebrow">Areas nearby</small><h2>Residential architect serving {page.shortTitle} and surrounding areas.</h2></div><div><p>We also support projects across {page.nearbyAreas.join(", ")}.</p><div className="nearby-links">{relatedLocations.map((location) => <Link href={`/locations/${location.slug}`} key={location.slug}>{location.shortTitle}</Link>)}</div></div></div>
+        <div className="shell studio-process"><div><small className="eyebrow">Areas nearby</small><h2>Residential architect serving {page.shortTitle} and surrounding areas.</h2></div><div>{isBirmingham ? <><p>Residential architectural services are available across Birmingham and the wider West Midlands. These links describe local planning and property context; they do not imply a completed project in every district.</p><div className="nearby-links">{birminghamAreas.map(([name, href]) => <Link href={href} key={href}>{name}</Link>)}</div></> : <><p>We also support projects across {page.nearbyAreas.join(", ")}.</p><div className="nearby-links">{relatedLocations.map((location) => <Link href={`/locations/${location.slug}`} key={location.slug}>{location.shortTitle}</Link>)}</div></>}</div></div>
       </section>
 
       <section className="section sand-section">

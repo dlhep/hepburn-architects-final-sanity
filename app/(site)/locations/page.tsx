@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
-import { locations } from "@/lib/content";
+import { locations } from "@/lib/content-extended";
 
 export const metadata: Metadata = {
   title: "Architects Across the West Midlands",

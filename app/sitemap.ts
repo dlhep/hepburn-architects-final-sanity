@@ -35,6 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/knowledge-centre/planning-permission",
     "/knowledge-centre/building-regulations",
     "/blog",
+    "/journal/how-to-choose-the-best-architect-in-birmingham",
     "/estimate",
     "/projects",
     "/about",

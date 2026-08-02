@@ -5,6 +5,14 @@ import { ArrowRight, Newspaper } from "lucide-react";
 import { articleImageUrl, getBlogPosts } from "@/lib/articles";
 import { site } from "@/lib/site";
 
+const birminghamAuthorityArticle = {
+  title: "How to Choose the Best Architect in Birmingham",
+  excerpt: "A practical guide to comparing Birmingham architects, checking credentials, reviewing relevant projects and appointing the right practice.",
+  href: "/journal/how-to-choose-the-best-architect-in-birmingham",
+  image: "/images/birmingham-residential-project.jpg",
+  publishedAt: "2026-08-02",
+};
+
 export const metadata: Metadata = {
   title: "Architecture Journal",
   description:
@@ -29,12 +37,10 @@ export default async function BlogPage() {
     description: "Planning updates, project news and residential architecture insights.",
     mainEntity: {
       "@type": "ItemList",
-      itemListElement: posts.map((post, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        url: `${site.url}/blog/${post.slug}`,
-        name: post.title,
-      })),
+      itemListElement: [
+        { "@type": "ListItem", position: 1, url: `${site.url}${birminghamAuthorityArticle.href}`, name: birminghamAuthorityArticle.title },
+        ...posts.map((post, index) => ({ "@type": "ListItem", position: index + 2, url: `${site.url}/blog/${post.slug}`, name: post.title })),
+      ],
     },
   };
 
@@ -49,11 +55,22 @@ export default async function BlogPage() {
         </div>
 
         <div className="shell guides-index">
+          <Link href={birminghamAuthorityArticle.href} className="guide-index-card">
+            <span>01</span>
+            <div>
+              <Image src={birminghamAuthorityArticle.image} alt="Architect-designed residential project in Birmingham by Hepburn Architects" width={1024} height={485} sizes="(max-width: 950px) 100vw, 760px" style={{ width: "100%", height: "240px", objectFit: "cover", borderRadius: "14px", marginBottom: "1rem" }} />
+              <small>Advice</small>
+              <h2>{birminghamAuthorityArticle.title}</h2>
+              <p>{birminghamAuthorityArticle.excerpt}</p>
+              <p className="muted small-copy">2 Aug 2026</p>
+            </div>
+            <ArrowRight />
+          </Link>
           {posts.map((post, index) => {
             const image = articleImageUrl(post.featuredImage, 900);
             return (
               <Link href={`/blog/${post.slug}`} className="guide-index-card" key={post._id}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
+                <span>{String(index + 2).padStart(2, "0")}</span>
                 <div>
                   {image ? (
                     <Image
@@ -77,12 +94,6 @@ export default async function BlogPage() {
             );
           })}
 
-          {!posts.length ? (
-            <div>
-              <h2>No journal posts published yet.</h2>
-              <p>Add and publish an article in Sanity Studio.</p>
-            </div>
-          ) : null}
         </div>
       </section>
     </>

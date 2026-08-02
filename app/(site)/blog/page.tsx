@@ -7,6 +7,14 @@ import { site } from "@/lib/site";
 
 const birminghamAuthorityArticles = [
   {
+    title: "Loft Conversion Planning Rules in Birmingham: 2026 Guide",
+    excerpt: "A practical guide to planning permission, permitted development, dormers, hip-to-gable extensions and Lawful Development Certificates for Birmingham loft conversions.",
+    href: "/journal/loft-conversion-planning-rules-birmingham",
+    image: "/images/birmingham-residential-project.jpg",
+    category: "Planning guidance",
+    publishedAt: "2026-08-02",
+  },
+  {
     title: "House Extension Planning Permission in Birmingham: 2026 Guide",
     excerpt: "A practical guide to planning permission, permitted development, prior approval and Lawful Development Certificates for Birmingham extensions.",
     href: "/journal/house-extension-planning-permission-birmingham-2026-guide",

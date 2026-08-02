@@ -264,6 +264,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <Link href="/knowledge-centre/loft-conversions">
                 The Complete Guide to Loft Conversions
               </Link>
+              . Birmingham homeowners can also review our detailed guide to{" "}
+              <Link href="/journal/loft-conversion-planning-rules-birmingham">
+                loft-conversion planning rules in Birmingham
+              </Link>
               .
             </p>
           ) : null}

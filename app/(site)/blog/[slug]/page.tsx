@@ -79,7 +79,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <article className="section">
         <div className="shell article-page">
           <nav aria-label="Breadcrumb" className="muted small-copy">
-            <Link href="/">Home</Link> · <Link href="/blog">Journal</Link>
+            <Link href="/">Home</Link> · <Link href="/blog">Journal</Link> · <span>{page.title}</span>
           </nav>
           <small className="eyebrow"><Newspaper size={14} /> {page.category || "Architecture journal"}</small>
           <h1>{page.title}</h1>

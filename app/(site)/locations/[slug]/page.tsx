@@ -8,6 +8,7 @@ import { locations, services } from "@/lib/content-extended";
 import { getBirminghamProjects, getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
 import { RelatedGuides } from "@/components/internal-links/RelatedGuides";
+import { Breadcrumbs } from "@/components/internal-links/Breadcrumbs";
 import { createSeoMetadata, serializeJsonLd, SOCIAL_IMAGE } from "@/lib/seo";
 
 const birminghamFaqs = [
@@ -233,6 +234,8 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
           {isBirmingham && <div className="hero-trust location-hero-trust" aria-label="Practice credentials"><span><CheckCircle2 /> ARB-registered architect</span><span><CheckCircle2 /> RIBA Chartered Practice</span><span><CheckCircle2 /> Birmingham studio</span><span><CheckCircle2 /> Director-led service</span></div>}
         </div>
       </section>
+
+      <div className="shell" style={{ paddingTop: "1.25rem" }}><Breadcrumbs items={[{ label: "Locations", href: "/locations" }, { label: page.shortTitle }]} /></div>
 
       <section className="section">
         <div className="shell service-detail-columns">

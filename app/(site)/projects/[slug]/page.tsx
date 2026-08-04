@@ -132,7 +132,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <section className="section project-content-section">
         <div className="shell">
           <nav aria-label="Breadcrumb" className="muted small-copy">
-            <Link href="/">Home</Link> · <Link href="/projects">Projects</Link>
+            <Link href="/">Home</Link> · <Link href="/projects">Projects</Link> · <span>{project.title}</span>
           </nav>
           <div className="project-detail-grid">
             <div>

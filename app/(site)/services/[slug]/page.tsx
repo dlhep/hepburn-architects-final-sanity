@@ -8,6 +8,7 @@ import { getServiceDetail, serviceDetails } from "@/lib/service-details";
 import { getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
 import { RelatedServices } from "@/components/internal-links/RelatedServices";
+import { Breadcrumbs } from "@/components/internal-links/Breadcrumbs";
 import { createSeoMetadata } from "@/lib/seo";
 
 const reviews = [
@@ -129,6 +130,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </section>
+
+      <div className="shell" style={{ paddingTop: "1.25rem" }}><Breadcrumbs items={[{ label: "Services", href: "/services" }, { label: service.title }]} /></div>
 
       <section className="section">
         <div className="shell service-detail-columns">

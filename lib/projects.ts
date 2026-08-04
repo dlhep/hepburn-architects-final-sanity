@@ -19,6 +19,14 @@ export type SanityProjectImage = {
   crop?: unknown;
 };
 
+export type ProjectPortableText = any[];
+export type ProjectChallenge = { challenge: string; response: string; result?: string };
+export type ProjectHighlight = { label: string; value: string };
+export type ProjectTestimonial = { quote: string; clientName?: string; clientDescriptor?: string; reviewSource?: string; reviewUrl?: string };
+export type ProjectDrawing = SanityProjectImage & { drawingType?: string };
+export type ProjectTeamMember = { role: string; organisation?: string; website?: string };
+export type ProjectStage = { stage: string; title: string; description: string; status: "Complete" | "Current" | "Future" | "Not applicable" };
+
 export type Project = {
   _id?: string;
   _updatedAt?: string;
@@ -35,6 +43,12 @@ export type Project = {
   applicationType?: string;
   contractValue?: string;
   completion?: string;
+  projectStatus?: string;
+  propertyType?: string;
+  projectYear?: number;
+  floorArea?: string;
+  planningReference?: string;
+  constructionRoute?: string;
   services: string[];
   relatedServices?: string[];
   relatedLocations?: string[];
@@ -44,8 +58,42 @@ export type Project = {
   featuredCaseStudy?: boolean;
   featuredImage: string | SanityProjectImage;
   gallery?: SanityProjectImage[];
+  clientBrief?: ProjectPortableText;
+  existingConditions?: ProjectPortableText;
+  designResponse?: ProjectPortableText;
+  planningStrategy?: ProjectPortableText;
+  technicalDesign?: ProjectPortableText;
+  materialsAndDetailing?: ProjectPortableText;
+  sustainabilityApproach?: ProjectPortableText;
+  projectOutcome?: ProjectPortableText;
+  lessonsAndInsights?: ProjectPortableText;
+  keyChallenges?: ProjectChallenge[];
+  projectHighlights?: ProjectHighlight[];
+  clientTestimonial?: ProjectTestimonial;
+  beforeAfterIntro?: string;
+  beforeImages?: SanityProjectImage[];
+  afterImages?: SanityProjectImage[];
+  designDrawings?: ProjectDrawing[];
+  projectTeam?: ProjectTeamMember[];
+  projectStages?: ProjectStage[];
   alt?: string;
 };
+
+const CASE_STUDY_FIELDS = [
+  "clientBrief", "existingConditions", "designResponse", "planningStrategy",
+  "technicalDesign", "materialsAndDetailing", "sustainabilityApproach",
+  "projectOutcome", "lessonsAndInsights",
+] as const;
+
+export type ProjectCaseStudyLevel = "basic" | "developing" | "detailed";
+
+export function getProjectCaseStudyLevel(project: Pick<Project, "projectDescription" | "clientBrief" | "existingConditions" | "designResponse" | "planningStrategy" | "technicalDesign" | "materialsAndDetailing" | "sustainabilityApproach" | "projectOutcome" | "lessonsAndInsights" | "keyChallenges" | "projectStages" | "designDrawings" | "clientTestimonial" | "beforeImages" | "afterImages">): ProjectCaseStudyLevel {
+  const sectionCount = CASE_STUDY_FIELDS.filter((field) => Boolean(project[field]?.length)).length;
+  const evidence = Boolean(project.designDrawings?.length || project.keyChallenges?.length || project.clientTestimonial?.quote || project.projectOutcome?.length || (project.beforeImages?.length && project.afterImages?.length) || project.projectStages?.length);
+  if (sectionCount >= 4 && evidence) return "detailed";
+  if (sectionCount >= 2 || Boolean(project.projectDescription?.length)) return "developing";
+  return "basic";
+}
 
 function fallback(): Project[] {
   return (fallbackProjects as Array<Record<string, unknown>>).map((project) => ({

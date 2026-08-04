@@ -58,6 +58,14 @@ function serviceLink(slug: string): ServiceLink | undefined {
   return service ? { href: `/services/${slug}`, label: service.shortTitle, description: service.description, destinationType: "service" } : undefined;
 }
 
+export function getServiceLinksForSlugs(slugs: string[] = []): ServiceLink[] {
+  return slugs.map((slug) => serviceLink(slug)).filter((item): item is ServiceLink => Boolean(item));
+}
+
+export function getLocationLinksForSlugs(slugs: string[] = []): LocationLink[] {
+  return slugs.map((slug) => locations.find((item) => item.slug === slug)).filter((item): item is (typeof locations)[number] => Boolean(item)).map((item) => ({ href: `/locations/${item.slug}`, label: item.title, description: item.description, destinationType: "location" as const }));
+}
+
 function linkForHref(href: string): InternalLink {
   const service = services.find((item) => href === `/services/${item.slug}`);
   if (service) return { href, label: service.shortTitle, description: service.description, destinationType: "service" };

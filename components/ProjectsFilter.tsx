@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/lib/projects";
-import { projectImageAlt, projectImageUrl } from "@/lib/projects";
+import { getProjectCaseStudyLevel, projectImageAlt, projectImageUrl } from "@/lib/projects";
 
 export function ProjectsFilter({ projects }: { projects: Project[] }) {
   const categories = useMemo(() => ["All", ...Array.from(new Set(projects.map((project) => project.category)))], [projects]);
@@ -43,6 +43,7 @@ export function ProjectsFilter({ projects }: { projects: Project[] }) {
             <div>
               <small>{project.location} · {project.projectType}</small>
               <h2>{project.title}</h2>
+              {getProjectCaseStudyLevel(project) !== "basic" ? <small className="project-case-study-label">Case study</small> : null}
               <p style={{ display: "-webkit-box", WebkitLineClamp: 5, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                 {project.description}
               </p>

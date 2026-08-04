@@ -120,9 +120,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     <ProjectServices services={project.services} />
     <ProjectTeam team={project.projectTeam} />
     <ProjectStages stages={project.projectStages} />
-    <ProjectContextLinks project={project} allProjects={allProjects} />
-
     {localLocationPage ? <section className="section"><div className="shell content-cta"><small className="eyebrow">Local architectural services</small><h2>Planning another residential project in {localLocationPage.name}?</h2><p>Explore local design, planning and Building Regulations services, nearby project experience and area-specific planning guidance.</p><Link className="btn light-btn" href={`/locations/${localLocationPage.slug}`}>View {localLocationPage.name} architects <ArrowRight size={17} /></Link></div></section> : null}
+    <ProjectContextLinks project={project} allProjects={allProjects} compact />
     <section className="section"><div className="shell final-cta" data-track-section="project_enquiry"><small className="eyebrow">Start your project</small><h2>Planning a similar residential project?</h2><p>Discuss the property, approval route and next steps directly with Hepburn Architects.</p><div className="actions centered-actions"><Link className="btn primary" href="/contact" data-track-event="project_enquiry_click" data-track-project-slug={project.slug} data-track-project-category={project.category} data-track-project-location={project.location}>Discuss Your Project <ArrowRight size={17} /></Link><Link className="btn secondary" href="/estimate" data-track-event="project_enquiry_click" data-track-project-slug={project.slug} data-track-project-category={project.category} data-track-project-location={project.location}>Get an Indicative Fee <ArrowRight size={17} /></Link><a className="btn secondary" href={site.phoneHref} data-track-event="project_enquiry_click" data-track-project-slug={project.slug} data-track-project-category={project.category} data-track-project-location={project.location}>Call {site.phone}</a></div></div></section>
   </>;
 }

@@ -17,6 +17,7 @@ import { guides } from "@/lib/content";
 import { getGuideArticle } from "@/lib/guides";
 import { site } from "@/lib/site";
 import { createSeoMetadata, guideSeoTitle, seoDescription } from "@/lib/seo";
+import { CommercialNextStep } from "@/components/internal-links/CommercialNextStep";
 
 export function generateStaticParams() {
   return guides.map((item) => ({ slug: item.slug }));
@@ -223,6 +224,8 @@ export default async function GuidePage({
 
             <ArticleBody value={sanityPage.body || []} />
 
+            <CommercialNextStep slug={slug} title={sanityPage.title} />
+
             <aside
               aria-label="Author information"
               style={{
@@ -238,22 +241,6 @@ export default async function GuidePage({
                 and developers on residential design, planning and Building Regulations.
               </p>
             </aside>
-
-            <div className="content-cta">
-              <h2>Get project-specific advice.</h2>
-              <p>
-                Use the calculator for an early fee indication, or speak directly
-                with Hepburn Architects.
-              </p>
-              <div className="actions">
-                <Link className="btn primary" href="/estimate">
-                  Use fee calculator <ArrowRight size={17} />
-                </Link>
-                <Link className="btn light-btn" href="/services">
-                  View services
-                </Link>
-              </div>
-            </div>
 
             <section className="related-guides">
               <small className="eyebrow">Related guides</small>
@@ -537,21 +524,7 @@ export default async function GuidePage({
             </ul>
           </section>
 
-          <div className="content-cta">
-            <h2>Get project-specific advice.</h2>
-            <p>
-              Every property has a different planning history, physical context and
-              technical risk. Start with a focused review before committing to work.
-            </p>
-            <div className="actions">
-              <Link className="btn primary" href={article.serviceHref}>
-                {article.serviceLabel} <ArrowRight size={17} />
-              </Link>
-              <Link className="btn light-btn" href="/estimate">
-                Use fee calculator
-              </Link>
-            </div>
-          </div>
+          <CommercialNextStep slug={slug} title={page.title} serviceHref={article.serviceHref} serviceLabel={article.serviceLabel} />
 
           <section className="related-guides">
             <small className="eyebrow">Related guides</small>

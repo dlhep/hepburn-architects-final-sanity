@@ -221,6 +221,10 @@ export const projectType = defineType({
       readOnly: true,
     }),
     defineField({ name: "services", title: "Architectural services", type: "array", group: "content", of: [defineArrayMember({ type: "string" })], options: { layout: "tags" }, validation: (rule) => rule.min(1) }),
+    defineField({ name: "relatedServices", title: "Related service page slugs (optional)", type: "array", group: "content", description: "Optional overrides, for example house-extensions or planning-applications. Automatic project-type matching is used when empty.", of: [defineArrayMember({ type: "string" })], options: { layout: "tags" } }),
+    defineField({ name: "relatedLocations", title: "Related location page slugs (optional)", type: "array", group: "content", description: "Optional overrides, for example birmingham-architects or harborne-architects.", of: [defineArrayMember({ type: "string" })], options: { layout: "tags" } }),
+    defineField({ name: "relatedGuides", title: "Related guide URLs (optional)", type: "array", group: "content", of: [defineArrayMember({ type: "string" })], options: { layout: "tags" } }),
+    defineField({ name: "relatedProjects", title: "Related project slugs (optional)", type: "array", group: "content", of: [defineArrayMember({ type: "string" })], options: { layout: "tags" } }),
     defineField({
       name: "featured",
       title: "Feature in homepage project grid",

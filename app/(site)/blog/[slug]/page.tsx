@@ -6,14 +6,15 @@ import { ArticleBody } from "@/components/ArticleBody";
 import { articleImageUrl, getArticle, getBlogPosts } from "@/lib/articles";
 import { site } from "@/lib/site";
 import { createSeoMetadata, seoDescription } from "@/lib/seo";
+import { CommercialNextStep } from "@/components/internal-links/CommercialNextStep";
 
 const topics = [
-  { terms: ["extension", "rear extension", "two-storey", "single-storey"], service: { href: "/services/house-extensions", label: "House extension architect" }, guide: { href: "/guides/complete-house-extension-guide", label: "Complete House Extension Guide" } },
-  { terms: ["loft", "dormer", "roof"], service: { href: "/services/loft-conversions", label: "Loft conversion architect" }, guide: { href: "/guides/loft-conversion-planning-permission", label: "Loft conversion planning guide" } },
-  { terms: ["hmo", "house in multiple occupation"], service: { href: "/services/hmo-conversions", label: "HMO architect" }, guide: { href: "/guides/hmo-conversion-planning-guide", label: "HMO conversion planning guide" } },
-  { terms: ["building regulations", "technical", "construction drawings"], service: { href: "/services/building-regulations", label: "Building Regulations drawings" }, guide: { href: "/guides/building-regulations-drawings", label: "Building Regulations drawings guide" } },
-  { terms: ["new home", "new-build", "new build", "development", "masterplan", "apartments"], service: { href: "/services/new-build-homes", label: "New-build home architect" }, guide: { href: "/guides/replacement-dwelling-planning", label: "Replacement dwelling planning guide" } },
-  { terms: ["planning", "permission", "refusal", "condition"], service: { href: "/services/planning-applications", label: "Planning application architect" }, guide: { href: "/guides/planning-refusal-next-steps", label: "Planning refusal next steps" } },
+  { terms: ["extension", "rear extension", "two-storey", "single-storey"], service: { href: "/services/house-extensions", label: "House extension architect" }, guide: { href: "/knowledge-centre/house-extensions", label: "Complete House Extension Guide" } },
+  { terms: ["loft", "dormer", "roof"], service: { href: "/services/loft-conversions", label: "Loft conversion architect" }, guide: { href: "/knowledge-centre/loft-conversions", label: "Loft conversion planning guide" } },
+  { terms: ["hmo", "house in multiple occupation"], service: { href: "/services/hmo-conversions", label: "HMO architect" }, guide: { href: "/knowledge-centre/planning-permission", label: "HMO planning guidance" } },
+  { terms: ["building regulations", "technical", "construction drawings"], service: { href: "/services/building-regulations", label: "Building Regulations drawings" }, guide: { href: "/knowledge-centre/building-regulations", label: "Building Regulations guide" } },
+  { terms: ["new home", "new-build", "new build", "development", "masterplan", "apartments"], service: { href: "/services/new-build-homes", label: "New-build home architect" }, guide: { href: "/knowledge-centre/planning-permission", label: "Planning and development guidance" } },
+  { terms: ["planning", "permission", "refusal", "condition"], service: { href: "/services/planning-applications", label: "Planning application architect" }, guide: { href: "/knowledge-centre/planning-permission", label: "Planning permission explained" } },
 ];
 
 function topicLinks(text: string) {
@@ -112,14 +113,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           </section>
 
-          <div className="content-cta">
-            <h2>Planning a residential project?</h2>
-            <p>Speak directly with Hepburn Architects about the site, design and likely next step.</p>
-            <div className="actions">
-              <Link className="btn primary" href="/contact">Start a conversation <ArrowRight size={17} /></Link>
-              <Link className="btn light-btn" href="/projects">View projects</Link>
-            </div>
-          </div>
+          <CommercialNextStep slug={slug} title={page.title} serviceHref={links.service.href} serviceLabel={links.service.label} />
 
           {related.length ? (
             <section className="related-guides">

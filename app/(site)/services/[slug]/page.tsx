@@ -7,6 +7,7 @@ import { ArrowRight, CheckCircle2, ExternalLink, Phone, Quote } from "lucide-rea
 import { getServiceDetail, serviceDetails } from "@/lib/service-details";
 import { getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
+import { RelatedServices } from "@/components/internal-links/RelatedServices";
 import { createSeoMetadata } from "@/lib/seo";
 
 const reviews = [
@@ -301,6 +302,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </section>
+
+      <RelatedServices serviceSlug={slug} />
 
       <section className="section">
         <div className="shell">

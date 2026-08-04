@@ -17,6 +17,10 @@ const PROJECT_FIELDS = `
   contractValue,
   completion,
   services,
+  relatedServices,
+  relatedLocations,
+  relatedGuides,
+  relatedProjects,
   featured,
   featuredCaseStudy,
   featuredImage {

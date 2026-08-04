@@ -51,6 +51,12 @@ export function Footer() {
         <div className="footer-link-group">
           <h3>Explore</h3>
           <Link href="/services">Services</Link>
+          <Link href="/services/house-extensions">House Extensions</Link>
+          <Link href="/services/planning-applications">Planning Applications</Link>
+          <Link href="/services/building-regulations">Building Regulations</Link>
+          <Link href="/services/new-build-homes">New-Build Homes</Link>
+          <Link href="/services/loft-conversions">Loft Conversions</Link>
+          <Link href="/services/hmo-conversions">HMO Conversions</Link>
           <Link href="/projects">Projects</Link>
           <Link href="/blog">Journal</Link>
           <Link href="/about">About</Link>
@@ -62,9 +68,9 @@ export function Footer() {
           <h3>Knowledge Centre</h3>
           <Link href="/knowledge-centre">Knowledge Centre</Link>
           <Link href="/house-extension-guide">House Extension Guide</Link>
-          <Link href="/services/planning-applications">Planning Advice</Link>
-          <Link href="/services/building-regulations">Building Regulations</Link>
-          <Link href="/estimate">Calculators</Link>
+          <Link href="/estimate">Fee Calculator</Link>
+          <Link href="/blog">Journal</Link>
+          <Link href="/contact">Contact</Link>
         </div>
       </div>
 

@@ -17,6 +17,7 @@ import {
   type Project,
 } from "@/lib/projects";
 import { site } from "@/lib/site";
+import { RelatedGuides } from "@/components/internal-links/RelatedGuides";
 
 export const metadata: Metadata = {
   title: "Architects in Solihull",
@@ -405,6 +406,8 @@ export default async function SolihullArchitectPage() {
           </div>
         </div>
       </section>
+
+      <RelatedGuides serviceSlug="house-extensions" heading="Helpful guides for Solihull projects" />
 
       <section
         className="section dark-section birmingham-enquiry-section"

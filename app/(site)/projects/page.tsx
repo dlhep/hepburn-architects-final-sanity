@@ -5,6 +5,8 @@ import { ProjectLocationDirectory } from "@/components/ProjectLocationDirectory"
 import { getProjects } from "@/lib/projects";
 import { getMappedProjects } from "@/lib/mapped-projects.server";
 import { toPublicProjectDirectoryItem } from "@/lib/mapped-projects";
+import { RelatedLinks } from "@/components/internal-links/RelatedLinks";
+import { getRelatedServices } from "@/lib/internal-links";
 
 export const metadata: Metadata = {
   title: "Residential Architecture Projects in Birmingham & the West Midlands",
@@ -23,6 +25,7 @@ export default async function ProjectsPage() {
           <h1>Residential Architecture Projects Across Birmingham and the West Midlands</h1>
           <p>Explore extensions, sustainable new homes and whole-house transformations developed by Hepburn Architects.</p>
         </div>
+        <div className="shell"><RelatedLinks heading="Explore projects by service" links={getRelatedServices()} group="projects-service-hub" /></div>
         <div className="shell"><ProjectsFilter projects={projects} /></div>
       </section>
       <ProjectMapSection

@@ -488,11 +488,9 @@ export default async function AboutPage() {
                 View map <ArrowUpRight size={17} />
               </a>
               <a
-                href="https://www.hepburnarchitects.com/architects-middlesbrough"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/contact"
               >
-                Visit North East website <ArrowUpRight size={17} />
+                Discuss a project <ArrowUpRight size={17} />
               </a>
             </div>
           </article>

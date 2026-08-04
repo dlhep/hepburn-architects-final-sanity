@@ -36,6 +36,10 @@ export type Project = {
   contractValue?: string;
   completion?: string;
   services: string[];
+  relatedServices?: string[];
+  relatedLocations?: string[];
+  relatedGuides?: string[];
+  relatedProjects?: string[];
   featured?: boolean;
   featuredCaseStudy?: boolean;
   featuredImage: string | SanityProjectImage;

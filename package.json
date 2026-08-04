@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
+    "links:audit": "node scripts/audit-internal-links.mjs",
     "images:optimise": "node scripts/optimise-images.mjs",
     "sanity:manage": "sanity manage",
     "sanity:import-projects": "node scripts/import-projects.mjs"

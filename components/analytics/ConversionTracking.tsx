@@ -90,6 +90,8 @@ export function ConversionTracking() {
       const label = textOf(element);
       const location = getConversionLocation(element);
       const base = { page_path: window.location.pathname, conversion_location: location };
+      const internalGroup = element.closest<HTMLElement>("[data-track-internal]")?.dataset.trackGroup;
+      if (internalGroup && rawHref.startsWith("/")) trackEvent("internal_link_click", { ...base, link_url: rawHref, link_text: label, source_page: window.location.pathname, destination_type: rawHref.split("/")[1] || "home", link_group: internalGroup });
       if (rawHref.startsWith("tel:")) {
         trackEvent("phone_click", { ...base, link_url: rawHref, phone_number: rawHref.replace(/^tel:/, ""), link_text: label });
         return;

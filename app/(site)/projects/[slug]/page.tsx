@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, MapPin } from "lucide-react";
-import { getProject, getProjectSlugs, projectImageAlt, projectImageUrl } from "@/lib/projects";
+import { getProject, getProjectSlugs, getProjects, projectImageAlt, projectImageUrl } from "@/lib/projects";
+import { ProjectContextLinks } from "@/components/internal-links/ProjectContextLinks";
 import { site } from "@/lib/site";
 import { urlFor } from "@/sanity/lib/image";
 import { createSeoMetadata, PROJECT_DESCRIPTIONS, PROJECT_TITLES, projectSeoTitle, seoDescription } from "@/lib/seo";
@@ -81,6 +82,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const hasProjectDescription = Boolean(project.projectDescription?.length);
   const useDescriptionColumns = portableTextCharacterCount(project.projectDescription as PortableTextBlock[] | undefined) >= 360;
   const localLocationPage = getProjectLocationPage(project.location);
+  const allProjects = await getProjects();
 
   const schemas = [
     {
@@ -189,6 +191,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </section>
+
+      <ProjectContextLinks project={project} allProjects={allProjects} />
 
       {localLocationPage && (
         <section className="section">

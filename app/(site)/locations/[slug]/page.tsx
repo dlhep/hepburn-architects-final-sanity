@@ -7,6 +7,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { locations, services } from "@/lib/content-extended";
 import { getBirminghamProjects, getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
+import { RelatedGuides } from "@/components/internal-links/RelatedGuides";
 import { createSeoMetadata, serializeJsonLd, SOCIAL_IMAGE } from "@/lib/seo";
 
 const birminghamFaqs = [
@@ -315,6 +316,8 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
           <div className="shell service-detail-columns"><div><small className="eyebrow">{isBirmingham ? "Birmingham FAQs" : "Common questions"}</small><h2>{isBirmingham ? "Questions about appointing an architect in Birmingham." : `Planning and architectural services in ${page.shortTitle}.`}</h2></div><div className="faq-list">{faqs.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></div>
         </section>
       )}
+
+      <RelatedGuides serviceSlug={page.serviceSlugs[0]} heading={`Helpful guides for ${page.shortTitle}`} />
 
       <section className="section dark-section birmingham-enquiry-section" id="project-enquiry">
         <div className="shell contact-grid">

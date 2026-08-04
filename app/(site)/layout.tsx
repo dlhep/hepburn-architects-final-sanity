@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { IdentitySchema } from "@/components/Schema";
-import { Analytics } from "@/components/Analytics";
 import { AskHepburnLoader } from "@/components/chat/AskHepburnLoader";
 import { site } from "@/lib/site";
 import { ROOT_TITLE, SOCIAL_IMAGE } from "@/lib/seo";
@@ -60,7 +59,6 @@ export default function SiteLayout({ children }: Readonly<{ children: React.Reac
   return (
     <>
       <IdentitySchema />
-      <Analytics />
       <Header />
       <main>{children}</main>
       <Footer />

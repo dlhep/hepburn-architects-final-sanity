@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
+import { postcodeDistrict, trackLead, trackSuccessfulFormSubmission } from "@/lib/analytics";
 
 export function ContactForm({
   source = "Website contact page",
@@ -32,18 +33,15 @@ export function ContactForm({
       if (!response.ok) throw new Error();
       form.reset();
       setStatus("sent");
-      window.dispatchEvent(
-        new CustomEvent("hepburn:lead", {
-          detail: { lead_source: source, lead_type: "contact_form" },
-        }),
-      );
+      trackSuccessfulFormSubmission(form, { form_location: "contact_form", project_type: String(data.projectType || ""), postcode_district: postcodeDistrict(data.location) });
+      trackLead({ lead_type: "general_enquiry", form_id: form.id || "contact-form", project_type: String(data.projectType || ""), postcode_district: postcodeDistrict(data.location), conversion_location: "contact_form" });
     } catch {
       setStatus("error");
     }
   }
 
   return (
-    <form className="contact-form" onSubmit={submit} aria-busy={status === "sending"}>
+    <form id="contact-form" name="contact-form" data-track-location="contact_form" data-track-manual-submit="true" className="contact-form" onSubmit={submit} aria-busy={status === "sending"}>
       <input type="hidden" name="source" value={source} />
 
       <label>

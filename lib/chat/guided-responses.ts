@@ -10,81 +10,72 @@ export const guidedTopics: GuidedTopic[] = [
     id: "planning",
     label: "Do I need planning permission?",
     response:
-      "The approval route depends on the property, its planning history, local constraints and the proposed work. Some projects may fall within permitted development, but this should be checked before relying on it.",
+      "Whether you need planning permission depends on the type, size and location of the proposed work. Some house extensions, loft conversions and alterations may fall under permitted development, although restrictions can apply to listed buildings, conservation areas and properties where permitted development rights have been removed. Hepburn Architects can review your property and proposed works before you commit to a full application.",
     links: [
-      { label: "Planning applications", href: "/services/planning-applications" },
-      { label: "Planning permission guidance", href: "/knowledge-centre/planning-permission" },
+      { label: "Read our planning permission guidance →", href: "/knowledge-centre/planning-permission" },
     ],
   },
   {
     id: "extension",
-    label: "House extension",
+    label: "Can you help with a house extension?",
     response:
-      "Hepburn Architects can help from early feasibility and planning strategy through to design, planning drawings and Building Regulations information for single-storey, two-storey and wrap-around extensions.",
+      "Yes. Hepburn Architects can help with single-storey, two-storey and wrap-around extensions, from early feasibility and planning strategy through to design, planning drawings and Building Regulations information. An initial review can identify the likely approval route and the main design constraints before detailed work begins.",
     links: [
-      { label: "House extension service", href: "/services/house-extensions" },
-      { label: "House extension Knowledge Centre", href: "/knowledge-centre/house-extensions" },
-      { label: "Free house extension guide", href: "/house-extension-guide" },
+      { label: "Read our house extension guidance →", href: "/knowledge-centre/house-extensions" },
     ],
   },
   {
     id: "loft",
-    label: "Loft conversion",
+    label: "Is my loft suitable for conversion?",
     response:
-      "A loft conversion needs early checks of roof space, stair position, planning constraints, structure and fire safety. Hepburn can review the likely route and prepare planning and technical drawings where appropriate.",
+      "Suitability depends on the available roof height and shape, where a safe staircase can go, structural requirements and planning constraints. Fire safety and insulation also need to be considered early. Hepburn Architects can review these points, advise on the likely approval route and prepare planning and technical drawings where appropriate.",
     links: [
-      { label: "Loft conversion service", href: "/services/loft-conversions" },
-      { label: "Loft conversion guidance", href: "/knowledge-centre/loft-conversions" },
+      { label: "Read our loft conversion guidance →", href: "/knowledge-centre/loft-conversions" },
     ],
   },
   {
     id: "hmo",
-    label: "HMO or change of use",
+    label: "Do I need permission for an HMO?",
     response:
-      "The route can depend on proposed occupancy, the existing use, local Article 4 controls, space standards, licensing and fire-safety requirements. A property-specific review is important before a layout or planning route is confirmed.",
+      "Possibly. The correct route depends on the property's existing use, the proposed number of occupants and whether local Article 4 controls remove normal permitted development rights. Space standards, licensing and fire-safety requirements may also affect the layout, so a property-specific review is important before you proceed.",
     links: [
-      { label: "HMO conversion service", href: "/services/hmo-conversions" },
-      { label: "HMO planning guide", href: "/guides/hmo-conversion-planning-guide" },
+      { label: "Read our HMO planning guide →", href: "/guides/hmo-conversion-planning-guide" },
     ],
   },
   {
     id: "new-build",
-    label: "New-build home",
+    label: "Can you design a new-build home?",
     response:
-      "For a new home, Hepburn can assess site potential, planning context, access, amenity and design constraints before developing the planning and technical packages.",
+      "Yes. Hepburn Architects can assess a site's potential, planning context, access, neighbouring amenity and design constraints before developing the design. The service can then continue through the planning and technical drawing stages, depending on what your project needs.",
     links: [
-      { label: "New-build homes service", href: "/services/new-build-homes" },
-      { label: "Explore completed projects", href: "/projects" },
+      { label: "See our new-build homes service →", href: "/services/new-build-homes" },
     ],
   },
   {
     id: "building-regulations",
-    label: "Building Regulations",
+    label: "What are Building Regulations drawings?",
     response:
       "Building Regulations are separate from planning and cover technical matters such as structure, fire safety, ventilation, drainage and energy performance. Hepburn prepares coordinated technical drawing packages, with specialist input where required.",
     links: [
-      { label: "Building Regulations service", href: "/services/building-regulations" },
-      { label: "Building Regulations guidance", href: "/knowledge-centre/building-regulations" },
+      { label: "Read our Building Regulations guidance →", href: "/knowledge-centre/building-regulations" },
     ],
   },
   {
     id: "fees",
-    label: "Architectural fees",
+    label: "How much are architectural fees?",
     response:
       "Fees depend on the property, project complexity, approval route and stages required. The online calculator gives an initial indication; a binding fee is provided only after the brief and available information have been reviewed.",
     links: [
-      { label: "Use the fee calculator", href: "/estimate" },
-      { label: "How residential fees work", href: "/guides/architect-fees-residential-project" },
+      { label: "Use our fee calculator →", href: "/estimate" },
     ],
   },
   {
     id: "contact",
-    label: "Speak to the practice",
+    label: "How can I speak to the practice?",
     response:
       "You can contact the practice directly, book a free 30-minute consultation or send a project enquiry. A member of the practice will review the information you provide.",
     links: [
-      { label: "Contact Hepburn Architects", href: "/contact" },
-      { label: "Book a consultation", href: "https://calendly.com/david-hepburnarchitects/30min" },
+      { label: "Contact Hepburn Architects →", href: "/contact" },
     ],
   },
 ];

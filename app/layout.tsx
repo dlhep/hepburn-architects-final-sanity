@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { ROOT_TITLE, SOCIAL_IMAGE } from "@/lib/seo";
+import { ConversionTracking } from "@/components/analytics/ConversionTracking";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB">
-      <body>{children}</body>
+      <body><ConversionTracking />{children}</body>
     </html>
   );
 }

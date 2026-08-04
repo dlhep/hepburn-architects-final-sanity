@@ -2,6 +2,8 @@
 import { useMemo, useState } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { LeadGate } from "@/components/LeadGate";
+import { feeBand, trackEvent } from "@/lib/analytics";
+import { useEffect, useRef } from "react";
 
 const services = [
   ["survey","Measured survey",450],
@@ -25,6 +27,7 @@ const projectTypes = [
 ] as const;
 
 export function ArchitectFeeCalculator(){
+  const started = useRef(false);
   const [type,setType]=useState("single-storey-extension");
   const [area,setArea]=useState(30);
   const [units,setUnits]=useState(2);
@@ -46,7 +49,10 @@ export function ArchitectFeeCalculator(){
   const total=breakdown.reduce((s,x)=>s+x.adjusted,0);
   const scaleSummary=current.metric==="units"?`${units} residential unit${units===1?"":"s"}`:current.metric==="bedrooms"?`${bedrooms} HMO bedrooms`:`${area} m²`;
 
-  return <div className="fee-tool">
+  useEffect(() => { if (started.current) return; started.current = true; trackEvent("fee_calculator_start", { project_type: current.value, step_number: 1, page_path: window.location.pathname }); }, [current.value]);
+  useEffect(() => { if (started.current) trackEvent("fee_calculator_step", { project_type: current.value, selected_services: selected.join(","), step_number: 1, page_path: window.location.pathname }); }, [current.value, selected]);
+
+  return <div className="fee-tool" data-track-location="calculator">
     <div className="fee-form">
       <label>Project type<select value={type} onChange={e=>setType(e.target.value)}>{projectTypes.map(x=><option key={x.value} value={x.value}>{x.label}</option>)}</select></label>
       {current.metric==="area" && <label>Approximate project floor area<div className="area-value" aria-hidden="true">{area} m²</div><input aria-label="Approximate project floor area" aria-valuetext={`${area} square metres`} type="range" min="10" max="300" step="5" value={area} onChange={e=>setArea(Number(e.target.value))}/></label>}
@@ -56,7 +62,7 @@ export function ArchitectFeeCalculator(){
       <fieldset><legend>Services required</legend>{services.map(([key,label])=><label className="check-row" key={key}><input type="checkbox" checked={selected.includes(key)} onChange={()=>setSelected(c=>c.includes(key)?c.filter(i=>i!==key):[...c,key])}/><span>{label}</span></label>)}</fieldset>
       <p className="muted small-copy">Measured survey is optional. Fees remain indicative because access, planning history, heritage, site constraints and specialist information can affect the final scope.</p>
     </div>
-    <div className="fee-result"><LeadGate source="architect-fee" projectSummary={{projectType:current.label,projectScale:scaleSummary,planningComplexity:route,selectedServices:selected.map(k=>services.find(s=>s[0]===k)?.[1]??k),indicativeFee:total?`£${total.toLocaleString()}`:"No services selected"}}>
+    <div className="fee-result"><LeadGate onSuccess={() => trackEvent("fee_calculator_complete", { project_type: current.value, selected_services: selected.join(","), estimated_fee_band: feeBand(total), step_number: 1, page_path: window.location.pathname })} source="architect-fee" projectSummary={{projectType:current.label,projectScale:scaleSummary,planningComplexity:route,selectedServices:selected.map(k=>services.find(s=>s[0]===k)?.[1]??k),indicativeFee:total?`£${total.toLocaleString()}`:"No services selected"}}>
       <small className="eyebrow">Indicative architectural fee</small><strong className="total">{total?`£${total.toLocaleString()}`:"Select a service"}</strong>
       <p>A useful early guide, not false precision. A tailored fixed-fee proposal follows after review of the property, brief, planning history and constraints.</p>
       <div className="breakdown">{breakdown.map(x=><div key={x.key}><span>{x.label}</span><strong>£{x.adjusted.toLocaleString()}</strong></div>)}</div>

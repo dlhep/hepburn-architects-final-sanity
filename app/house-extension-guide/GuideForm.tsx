@@ -4,6 +4,7 @@ import { FormEvent, useRef, useState } from "react";
 import { ArrowRight, LockKeyhole } from "lucide-react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
+import { postcodeDistrict, trackEvent, trackLead, trackSuccessfulFormSubmission } from "@/lib/analytics";
 
 const projectTypes = [
   "Rear extension",
@@ -44,15 +45,11 @@ export function GuideForm() {
       });
 
       if (!response.ok) throw new Error("Submission failed");
-      window.dispatchEvent(
-        new CustomEvent("hepburn:lead", {
-          detail: {
-            lead_source: "house-extension-guide",
-            lead_type: "guide",
-            project_type: String(form.get("projectType") || ""),
-          },
-        }),
-      );
+      const htmlForm = event.currentTarget;
+      const projectType = String(form.get("projectType") || "");
+      trackSuccessfulFormSubmission(htmlForm, { form_location: "guide_form", project_type: projectType, postcode_district: postcodeDistrict(form.get("postcode")) });
+      trackEvent("guide_form_submit", { form_id: htmlForm.id || "house-extension-guide-form", form_location: "guide_form", project_type: projectType, postcode_district: postcodeDistrict(form.get("postcode")) });
+      trackLead({ lead_type: "house_extension_guide", form_id: htmlForm.id || "house-extension-guide-form", project_type: projectType, postcode_district: postcodeDistrict(form.get("postcode")), conversion_location: "guide_form" });
       router.push("/house-extension-guide/thank-you");
     } catch {
       submissionPending.current = false;
@@ -61,7 +58,7 @@ export function GuideForm() {
   }
 
   return (
-    <form className={styles.formCard} onSubmit={submit} aria-busy={status === "sending"}>
+    <form id="house-extension-guide-form" name="house-extension-guide-form" data-track-location="guide_form" data-track-manual-submit="true" className={styles.formCard} onSubmit={submit} aria-busy={status === "sending"}>
       <div className={styles.formHeading}>
         <span className={styles.formIcon}><LockKeyhole aria-hidden="true" /></span>
         <div>

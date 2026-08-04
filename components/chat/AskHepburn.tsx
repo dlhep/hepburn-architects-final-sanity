@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUp, Check, MessageCircle, Phone, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { ArrowLeft, ArrowUp, Check, MessageCircle, Phone, X } from "lucide-react";
 import { type FormEvent, useEffect, useId, useRef, useState } from "react";
 import { guidedTopics, matchGuidedTopic, type GuidedTopic } from "@/lib/chat/guided-responses";
 import { site } from "@/lib/site";
-import { trackEvent } from "@/lib/analytics";
+import { postcodeDistrict, trackEvent, trackLead, trackSuccessfulFormSubmission } from "@/lib/analytics";
 import styles from "./AskHepburn.module.css";
 
 type Message = {
@@ -21,7 +22,9 @@ const GREETING_KEY = "ask-hepburn-greeting-v1";
 const makeId = () => `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
 export default function AskHepburn() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [viewingTopics, setViewingTopics] = useState(true);
   const [greeting, setGreeting] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { id: "intro", role: "assistant", content: INTRO },
@@ -37,6 +40,7 @@ export default function AskHepburn() {
   const inputRef = useRef<HTMLInputElement>(null);
   const messagesRef = useRef<HTMLDivElement>(null);
   const leadSubmittingRef = useRef(false);
+  const previousPathnameRef = useRef(pathname);
   const titleId = useId();
 
   useEffect(() => {
@@ -91,10 +95,22 @@ export default function AskHepburn() {
     messagesRef.current?.scrollTo({ top: messagesRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, pending, offerLead, leadExpanded]);
 
+  useEffect(() => {
+    if (viewingTopics) messagesRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  }, [viewingTopics]);
+
+  useEffect(() => {
+    if (previousPathnameRef.current === pathname) return;
+    previousPathnameRef.current = pathname;
+    setOpen(false);
+    setGreeting(false);
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
+  }, [pathname]);
+
   function openChat() {
     setGreeting(false);
     setOpen(true);
-    trackEvent("chat_open");
+    trackEvent("chatbot_open", { page_path: window.location.pathname });
   }
 
   function closeChat() {
@@ -103,15 +119,39 @@ export default function AskHepburn() {
     window.setTimeout(() => launcherRef.current?.focus(), 0);
   }
 
+  function closeChatForNavigation() {
+    setOpen(false);
+    setGreeting(false);
+    trackEvent("chatbot_link_click", { destination_url: "/contact", page_path: window.location.pathname });
+  }
+
   function selectTopic(topic: GuidedTopic) {
     setCategory(topic.label);
+    setViewingTopics(false);
     setMessages((current) => [
       ...current,
       { id: makeId(), role: "user", content: topic.label },
       { id: makeId(), role: "assistant", content: topic.response, links: topic.links },
     ]);
     setOfferLead(true);
-    trackEvent("chat_quick_action", { action_id: topic.id });
+    trackEvent("chatbot_option_selected", { option_name: topic.label, page_path: window.location.pathname });
+  }
+
+  function showTopics() {
+    setViewingTopics(true);
+    setLeadExpanded(false);
+    trackEvent("chat_topics_viewed");
+  }
+
+  function startNewChat() {
+    setMessages([{ id: "intro", role: "assistant", content: INTRO }]);
+    setViewingTopics(true);
+    setQuestion("");
+    setCategory("");
+    setOfferLead(false);
+    setLeadExpanded(false);
+    setLeadStatus("idle");
+    trackEvent("chat_restarted");
   }
 
   async function askQuestion(event: FormEvent) {
@@ -120,6 +160,7 @@ export default function AskHepburn() {
     if (!value || pending) return;
     const match = matchGuidedTopic(value);
     const next = [...messages, { id: makeId(), role: "user" as const, content: value }];
+    setViewingTopics(false);
     setMessages(next);
     setQuestion("");
     setPending(true);
@@ -207,12 +248,9 @@ export default function AskHepburn() {
       if (!response.ok) throw new Error(`Submission failed with status ${response.status}.`);
       form.reset();
       setLeadStatus("sent");
-      trackEvent("chat_lead_submitted");
-      window.dispatchEvent(
-        new CustomEvent("hepburn:lead", {
-          detail: { lead_source: "Ask Hepburn", lead_type: "chatbot" },
-        }),
-      );
+      trackSuccessfulFormSubmission(form, { form_location: "floating_chat", project_type: String(data.projectType || ""), postcode_district: postcodeDistrict(data.postcode) });
+      trackEvent("chatbot_enquiry_submit", { option_name: category || "chatbot_enquiry", page_path: window.location.pathname });
+      trackLead({ lead_type: "chatbot_enquiry", form_id: "chatbot-lead-form", project_type: String(data.projectType || ""), postcode_district: postcodeDistrict(data.postcode), conversion_location: "floating_chat" });
     } catch {
       setLeadStatus("error");
     } finally {
@@ -243,43 +281,65 @@ export default function AskHepburn() {
               <button type="button" onClick={closeChat} aria-label="Close Ask Hepburn"><X aria-hidden="true" /></button>
             </header>
 
-            <div className={styles.messages} ref={messagesRef}>
-              <div className={styles.log} aria-live="polite" aria-relevant="additions">
-                {messages.map((message) => (
-                  <div className={`${styles.message} ${styles[message.role]}`} key={message.id}>
-                    <p>{message.content}</p>
-                    {message.links ? (
-                      <div className={styles.messageLinks}>
-                        {message.links.map((link) => (
-                          <Link
-                            href={link.href}
-                            key={link.href}
-                            target={link.href.startsWith("http") ? "_blank" : undefined}
-                            rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          >
-                            {link.label}
-                          </Link>
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
-                ))}
-                {pending ? (
-                  <div className={`${styles.message} ${styles.assistant}`} aria-label="Ask Hepburn is preparing a response">
-                    <span className={styles.typing} aria-hidden="true"><i /><i /><i /></span>
-                  </div>
-                ) : null}
-              </div>
-
-              {messages.length === 1 ? (
-                <div className={styles.quickActions} aria-label="Project topics">
-                  {guidedTopics.map((topic) => (
-                    <button type="button" key={topic.id} onClick={() => selectTopic(topic)}>{topic.label}</button>
-                  ))}
-                </div>
+            <nav className={styles.chatNavigation} aria-label="Chat navigation">
+              {!viewingTopics ? (
+                <button type="button" className={styles.backToTopics} onClick={showTopics}>
+                  <ArrowLeft aria-hidden="true" /> Back to topics
+                </button>
+              ) : <span />}
+              {messages.some((message) => message.role === "user") ? (
+                <button type="button" className={styles.newChat} onClick={startNewChat} disabled={pending}>
+                  Start new chat
+                </button>
               ) : null}
+            </nav>
 
-              {offerLead ? (
+            <div className={styles.messages} ref={messagesRef}>
+              {viewingTopics ? (
+                <section className={styles.topicsView} aria-labelledby={`${titleId}-topics`}>
+                  <div className={`${styles.message} ${styles.assistant}`}>
+                    <p>{INTRO}</p>
+                  </div>
+                  <h2 id={`${titleId}-topics`}>What would you like help with?</h2>
+                  <div className={styles.quickActions}>
+                  {guidedTopics.map((topic) => (
+                    <button type="button" key={topic.id} onClick={() => selectTopic(topic)} disabled={pending}>
+                      {topic.label}
+                    </button>
+                  ))}
+                  </div>
+                </section>
+              ) : (
+                <div className={styles.log} aria-live="polite" aria-relevant="additions">
+                  {messages.map((message) => (
+                    <div className={`${styles.message} ${styles[message.role]}`} key={message.id}>
+                      <p>{message.content}</p>
+                      {message.links ? (
+                        <div className={styles.messageLinks}>
+                          {message.links.map((link) => (
+                            <Link
+                              href={link.href}
+                              key={link.href}
+                              target={link.href.startsWith("http") ? "_blank" : undefined}
+                              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                              onClick={link.href.startsWith("http") ? undefined : closeChatForNavigation}
+                            >
+                              {link.label}
+                            </Link>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  ))}
+                  {pending ? (
+                    <div className={`${styles.message} ${styles.assistant}`} aria-label="Ask Hepburn is preparing a response">
+                      <span className={styles.typing} aria-hidden="true"><i /><i /><i /></span>
+                    </div>
+                  ) : null}
+                </div>
+              )}
+
+              {!viewingTopics && offerLead ? (
                 <section className={styles.conversion} aria-label="Project enquiry">
                   <p className={styles.conversionTitle}>Would you like Hepburn Architects to review your project?</p>
                   {!leadExpanded && leadStatus !== "sent" ? (
@@ -288,14 +348,14 @@ export default function AskHepburn() {
                       className={styles.leadToggle}
                       onClick={() => {
                         setLeadExpanded(true);
-                        trackEvent("chat_lead_started");
+                        trackEvent("chatbot_enquiry_start", { option_name: category || "guided_topic", page_path: window.location.pathname });
                       }}
                     >
                       Send project details
                     </button>
                   ) : null}
                   {leadExpanded && leadStatus !== "sent" ? (
-                    <form
+                    <form id="chatbot-lead-form" name="chatbot-lead-form" data-track-location="floating_chat" data-track-manual-submit="true"
                       onSubmit={submitLead}
                       className={styles.leadForm}
                       aria-busy={leadStatus === "sending"}
@@ -361,7 +421,7 @@ export default function AskHepburn() {
               </form>
               <p>General initial guidance only. Project-specific advice requires review of the property, planning history and proposed design.</p>
               <div className={styles.human}>
-                <Link href="/contact">Contact the practice</Link>
+                <Link href="/contact" onClick={closeChatForNavigation}>Contact the practice</Link>
                 <a href={site.phoneHref}><Phone aria-hidden="true" /> {site.phone}</a>
               </div>
             </div>

@@ -3,14 +3,16 @@
 import { FormEvent, ReactNode, useState } from "react";
 import { ArrowRight, CalendarDays, CheckCircle2, LockKeyhole, ShieldCheck } from "lucide-react";
 import { site } from "@/lib/site";
+import { feeBand, trackEvent, trackLead, trackSuccessfulFormSubmission } from "@/lib/analytics";
 
  type LeadGateProps = {
   source: "architect-fee" | "build-cost";
   projectSummary: Record<string, string | number | string[]>;
   children: ReactNode;
+  onSuccess?: () => void;
 };
 
-export function LeadGate({ source, projectSummary, children }: LeadGateProps) {
+export function LeadGate({ source, projectSummary, children, onSuccess }: LeadGateProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [consent, setConsent] = useState(false);
@@ -40,16 +42,10 @@ export function LeadGate({ source, projectSummary, children }: LeadGateProps) {
       if (!response.ok) throw new Error("Submission failed");
       setRevealed(true);
       setStatus("idle");
-      window.dispatchEvent(
-        new CustomEvent("hepburn:lead", {
-          detail: {
-            lead_source: source,
-            lead_type: "calculator",
-            project_type: projectSummary.projectType || "",
-            indicative_fee: projectSummary.indicativeFee || "",
-          },
-        }),
-      );
+      trackSuccessfulFormSubmission(event.currentTarget, { form_location: "calculator", project_type: String(projectSummary.projectType || "") });
+      trackEvent("fee_calculator_enquiry", { project_type: String(projectSummary.projectType || ""), selected_services: Array.isArray(projectSummary.selectedServices) ? projectSummary.selectedServices.join(",") : undefined, estimated_fee_band: feeBand(projectSummary.indicativeFee), step_number: 1, page_path: window.location.pathname });
+      trackLead({ lead_type: "fee_calculator", form_id: "fee-calculator-lead", project_type: String(projectSummary.projectType || ""), estimated_fee_band: feeBand(projectSummary.indicativeFee), conversion_location: "calculator" });
+      onSuccess?.();
     } catch {
       setStatus("error");
     }
@@ -86,7 +82,7 @@ export function LeadGate({ source, projectSummary, children }: LeadGateProps) {
   }
 
   return (
-    <form className="lead-gate" onSubmit={submit} aria-busy={status === "sending"}>
+    <form id="fee-calculator-lead" name="fee-calculator-lead" data-track-location="calculator" data-track-manual-submit="true" className="lead-gate" onSubmit={submit} aria-busy={status === "sending"}>
       <div className="lead-gate-heading">
         <div className="lead-lock"><LockKeyhole size={22} /></div>
         <div>

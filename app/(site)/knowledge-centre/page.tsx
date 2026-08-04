@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 const topicNavigation = [
   { label: "Planning Permission", href: "/knowledge-centre/planning-permission" },
   { label: "Building Regulations", href: "/knowledge-centre/building-regulations" },
-  { label: "House Extensions", href: "/knowledge-centre/house-extensions" },
+  { label: "House Extension Services", href: "/services/house-extensions" },
   { label: "Loft Conversions", href: "/knowledge-centre/loft-conversions" },
   { label: "Projects", href: "/projects" },
   { label: "Journal", href: "/blog" },
@@ -59,7 +59,7 @@ const questions = [
   },
   {
     question: "How much does a house extension cost?",
-    href: "/knowledge-centre/house-extensions#costs",
+    href: "/services/house-extensions#costs",
   },
   {
     question: "Do I need an architect?",
@@ -230,8 +230,8 @@ export default async function KnowledgeCentrePage() {
             {extensionProject ? (
               <Link
                 className={styles.leadImage}
-                href="/knowledge-centre/house-extensions"
-                aria-label="Read The Complete Guide to House Extensions"
+                href="/services/house-extensions"
+                aria-label="Explore House Extension Architectural Services"
               >
                 <ProjectImage
                   project={extensionProject}
@@ -241,17 +241,17 @@ export default async function KnowledgeCentrePage() {
               </Link>
             ) : null}
             <div className={styles.leadCopy}>
-              <span>01 / Comprehensive homeowner guide</span>
-              <h3>The Complete Guide to House Extensions</h3>
+              <span>01 / House extension architectural services</span>
+              <h3>House Extension Design and Planning Services</h3>
               <p>
-                A clear route through extension types, design choices, planning,
-                costs, Building Regulations and the complete project process.
+                A clear route from feasibility and concept design through planning,
+                Building Regulations and the complete project process.
               </p>
               <Link
                 className={styles.arrowLink}
-                href="/knowledge-centre/house-extensions"
+                href="/services/house-extensions"
               >
-                Read the Guide <ArrowRight size={17} />
+                Explore House Extension Services <ArrowRight size={17} />
               </Link>
             </div>
           </article>
@@ -362,8 +362,8 @@ export default async function KnowledgeCentrePage() {
                 practical resource or service that fits the stage your project has
                 reached.
               </p>
-              <Link href="/knowledge-centre/house-extensions">
-                Complete Guide to House Extensions <ArrowRight size={16} />
+              <Link href="/services/house-extensions">
+                House Extension Architectural Services <ArrowRight size={16} />
               </Link>
               <Link href="/knowledge-centre/house-extension-costs">
                 House Extension Costs in 2026 <ArrowRight size={16} />
@@ -376,9 +376,6 @@ export default async function KnowledgeCentrePage() {
               </Link>
               <Link href="/house-extension-guide">
                 Downloadable House Extension Guide <ArrowRight size={16} />
-              </Link>
-              <Link href="/services/house-extensions">
-                House extension architectural service <ArrowRight size={16} />
               </Link>
               <Link href="/estimate">
                 Estimate architectural fees <ArrowRight size={16} />

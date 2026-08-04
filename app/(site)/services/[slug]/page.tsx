@@ -47,7 +47,9 @@ function selectProjects(projects: Project[], terms: string[]) {
 }
 
 export function generateStaticParams() {
-  return serviceDetails.map((service) => ({ slug: service.slug }));
+  // The flagship house-extension service has its own static route so it can
+  // own the commercial URL and metadata without competing with this template.
+  return serviceDetails.filter((service) => service.slug !== "house-extensions").map((service) => ({ slug: service.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -250,9 +252,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           {slug === "house-extensions" ? (
             <p className="lead">
               For an in-depth overview of extension types, design decisions,
-              approvals, costs and technical coordination, read{" "}
-              <Link href="/knowledge-centre/house-extensions">
-                The Complete Guide to House Extensions
+              approvals, costs and technical coordination, explore{" "}
+              <Link href="/services/house-extensions">
+                our house extension architectural services
               </Link>
               . Birmingham homeowners can also read our detailed guide to{" "}
               <Link href="/journal/house-extension-planning-permission-birmingham-2026-guide">

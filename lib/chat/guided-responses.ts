@@ -21,7 +21,7 @@ export const guidedTopics: GuidedTopic[] = [
     response:
       "Yes. Hepburn Architects can help with single-storey, two-storey and wrap-around extensions, from early feasibility and planning strategy through to design, planning drawings and Building Regulations information. An initial review can identify the likely approval route and the main design constraints before detailed work begins.",
     links: [
-      { label: "Read our house extension guidance →", href: "/knowledge-centre/house-extensions" },
+      { label: "Explore house extension architectural services →", href: "/services/house-extensions" },
     ],
   },
   {

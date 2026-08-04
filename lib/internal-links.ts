@@ -30,16 +30,15 @@ const serviceRelationships: Record<string, string[]> = {
 };
 
 const guideRelationships: Record<string, string[]> = {
-  "house-extensions": ["/knowledge-centre/house-extensions", "/knowledge-centre/extension-planning-permission", "/knowledge-centre/house-extension-costs", "/knowledge-centre/house-extension-timeline", "/knowledge-centre/house-extension-ideas", "/house-extension-guide"],
+  "house-extensions": ["/knowledge-centre/extension-planning-permission", "/knowledge-centre/house-extension-costs", "/knowledge-centre/house-extension-timeline", "/knowledge-centre/house-extension-ideas", "/house-extension-guide"],
   "planning-applications": ["/knowledge-centre/planning-permission", "/knowledge-centre/extension-planning-permission", "/journal/house-extension-planning-permission-birmingham-2026-guide"],
-  "building-regulations": ["/knowledge-centre/building-regulations", "/knowledge-centre/house-extensions", "/knowledge-centre/loft-conversions"],
+  "building-regulations": ["/knowledge-centre/building-regulations", "/knowledge-centre/loft-conversions"],
   "loft-conversions": ["/knowledge-centre/loft-conversions", "/knowledge-centre/extension-planning-permission"],
   "hmo-conversions": ["/knowledge-centre/planning-permission", "/knowledge-centre/building-regulations"],
   "new-build-homes": ["/knowledge-centre/planning-permission", "/knowledge-centre/building-regulations"],
 };
 
 const guideLabels: Record<string, string> = {
-  "/knowledge-centre/house-extensions": "Complete house extension guide",
   "/knowledge-centre/extension-planning-permission": "Extension planning permission guidance",
   "/knowledge-centre/house-extension-costs": "House extension cost guidance",
   "/knowledge-centre/house-extension-timeline": "House extension timescale guidance",

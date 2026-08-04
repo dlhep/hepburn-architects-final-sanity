@@ -227,7 +227,7 @@ export default async function HouseExtensionCostsPage() {
               <p>This guide separates construction cost from the professional fees, statutory charges, fit-out, VAT and contingency frequently omitted from an early budget.</p>
               <div className="actions">
                 <Link className="btn primary" href="/estimate">Estimate Your Project <ArrowRight size={17} /></Link>
-                <Link className="btn secondary" href="/knowledge-centre/house-extensions">Read the Complete Extension Guide</Link>
+                <Link className="btn secondary" href="/services/house-extensions">Explore House Extension Services</Link>
               </div>
             </div>
             <div className={styles.heroImage}>

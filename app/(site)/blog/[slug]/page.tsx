@@ -9,7 +9,7 @@ import { createSeoMetadata, seoDescription } from "@/lib/seo";
 import { CommercialNextStep } from "@/components/internal-links/CommercialNextStep";
 
 const topics = [
-  { terms: ["extension", "rear extension", "two-storey", "single-storey"], service: { href: "/services/house-extensions", label: "House extension architect" }, guide: { href: "/knowledge-centre/house-extensions", label: "Complete House Extension Guide" } },
+  { terms: ["extension", "rear extension", "two-storey", "single-storey"], service: { href: "/services/house-extensions", label: "House extension architect" }, guide: { href: "/house-extension-guide", label: "House Extension Guide" } },
   { terms: ["loft", "dormer", "roof"], service: { href: "/services/loft-conversions", label: "Loft conversion architect" }, guide: { href: "/knowledge-centre/loft-conversions", label: "Loft conversion planning guide" } },
   { terms: ["hmo", "house in multiple occupation"], service: { href: "/services/hmo-conversions", label: "HMO architect" }, guide: { href: "/knowledge-centre/planning-permission", label: "HMO planning guidance" } },
   { terms: ["building regulations", "technical", "construction drawings"], service: { href: "/services/building-regulations", label: "Building Regulations drawings" }, guide: { href: "/knowledge-centre/building-regulations", label: "Building Regulations guide" } },

@@ -532,8 +532,8 @@ export default async function PlanningPermissionPage() {
                 </article>
               ))}
             </div>
-            <Link className={styles.textLink} href="/knowledge-centre/house-extensions">
-              Read The Complete Guide to House Extensions <ArrowRight size={17} />
+            <Link className={styles.textLink} href="/services/house-extensions">
+              Explore House Extension Architectural Services <ArrowRight size={17} />
             </Link>
             <p>
               For the detailed Class A tests, larger-home-extension procedure and

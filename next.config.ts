@@ -24,6 +24,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/knowledge-centre/house-extensions",
+        destination: "/services/house-extensions",
+        permanent: true,
+      },
+      {
         source: "/locations/birmingham",
         destination: "/locations/birmingham-architects",
         permanent: true,

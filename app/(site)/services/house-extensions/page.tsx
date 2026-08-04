@@ -14,20 +14,20 @@ import {
   type Project,
 } from "@/lib/projects";
 import { site } from "@/lib/site";
-import styles from "../planning-permission/page.module.css";
+import styles from "../../knowledge-centre/planning-permission/page.module.css";
 
 export const metadata: Metadata = {
-  title: "House Extension Architects Birmingham | Design, Planning & Technical Detail",
+  title: "House Extension Architects Birmingham & West Midlands",
   description:
-    "Bespoke house extension design, planning applications and Building Regulations drawings across Birmingham and the West Midlands, from feasibility through technical detail.",
+    "Architect-led house extension design, planning applications and Building Regulations drawings across Birmingham and the West Midlands. Discuss your project with Hepburn Architects.",
   alternates: {
-    canonical: "https://hepburnarchitects.co.uk/knowledge-centre/house-extensions",
+    canonical: "https://hepburnarchitects.co.uk/services/house-extensions",
   },
   openGraph: {
-    title: "House Extension Architects Birmingham | Design, Planning & Technical Detail",
+    title: "House Extension Architects Birmingham & West Midlands",
     description:
-      "Bespoke house extension design, planning applications and Building Regulations drawings across Birmingham and the West Midlands.",
-    url: "/knowledge-centre/house-extensions",
+      "Architect-led house extension design, planning applications and Building Regulations drawings across Birmingham and the West Midlands.",
+    url: "/services/house-extensions",
     type: "website",
     images: [
       {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "House Extension Architects Birmingham | Hepburn Architects",
+    title: "House Extension Architects Birmingham & West Midlands | Hepburn Architects",
     description: "Planning-led house extension design and technical support across Birmingham and the West Midlands.",
     images: ["/images/architectural-expertise-home.webp"],
   },
@@ -429,14 +429,14 @@ export default async function HouseExtensionsPage() {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Knowledge Centre",
-        item: `${site.url}/knowledge-centre`,
+        name: "Services",
+        item: `${site.url}/services`,
       },
       {
         "@type": "ListItem",
         position: 3,
-        name: "The Complete Guide to House Extensions",
-        item: `${site.url}/knowledge-centre/house-extensions`,
+        name: "House Extensions",
+        item: `${site.url}/services/house-extensions`,
       },
     ],
   };
@@ -457,6 +457,15 @@ export default async function HouseExtensionsPage() {
     description: "Planning-led house extension design and technical support for homes across Birmingham and the West Midlands.",
     provider: { "@type": "Organization", name: site.legalName, url: site.url },
     areaServed: ["Birmingham", "Solihull", "Sutton Coldfield", "Wolverhampton", "Walsall", "Leamington Spa", "West Midlands"],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "House extension architectural services",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Feasibility and concept design" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Planning applications" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Building Regulations drawings" } },
+      ],
+    },
     url: `${site.url}/services/house-extensions`,
   };
 
@@ -475,12 +484,12 @@ export default async function HouseExtensionsPage() {
           <nav className={styles.breadcrumb} aria-label="Breadcrumb">
             <Link href="/">Home</Link>
             <span aria-hidden="true">/</span>
-            <Link href="/knowledge-centre">Knowledge Centre</Link>
+            <Link href="/services">Services</Link>
             <span aria-hidden="true">/</span>
-            <span aria-current="page">The Complete Guide to House Extensions</span>
+            <span aria-current="page">House Extensions</span>
           </nav>
-          <small className="eyebrow">House Extensions</small>
-          <h1>The Complete Guide to House Extensions</h1>
+          <small className="eyebrow">House extension architectural services</small>
+          <h1>House Extension Architects in Birmingham and the West Midlands</h1>
           <div className={styles.heroIntro}>
             <p>
               A well-designed house extension can transform how a home works, create

@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
-  CalendarDays,
   Check,
   ExternalLink,
 } from "lucide-react";
@@ -18,18 +17,18 @@ import { site } from "@/lib/site";
 import styles from "../planning-permission/page.module.css";
 
 export const metadata: Metadata = {
-  title: "House Extensions Explained",
+  title: "House Extension Architects Birmingham | Design, Planning & Technical Detail",
   description:
-    "A practical guide to house extensions in England, including design options, planning permission, permitted development, Building Regulations, costs, timescales and common mistakes.",
+    "Bespoke house extension design, planning applications and Building Regulations drawings across Birmingham and the West Midlands, from feasibility through technical detail.",
   alternates: {
     canonical: "https://hepburnarchitects.co.uk/knowledge-centre/house-extensions",
   },
   openGraph: {
-    title: "House Extensions Explained | Complete Home Extension Guide",
+    title: "House Extension Architects Birmingham | Design, Planning & Technical Detail",
     description:
-      "A practical guide to designing, approving and preparing a house extension in England.",
+      "Bespoke house extension design, planning applications and Building Regulations drawings across Birmingham and the West Midlands.",
     url: "/knowledge-centre/house-extensions",
-    type: "article",
+    type: "website",
     images: [
       {
         url: "/images/architectural-expertise-home.webp",
@@ -37,10 +36,17 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "House Extension Architects Birmingham | Hepburn Architects",
+    description: "Planning-led house extension design and technical support across Birmingham and the West Midlands.",
+    images: ["/images/architectural-expertise-home.webp"],
+  },
 };
 
 const contents = [
   ["planning-an-extension", "Planning an extension"],
+  ["why-hepburn", "Why Hepburn Architects"],
   ["extension-types", "Types of house extension"],
   ["planning-permission", "Planning permission"],
   ["permitted-development", "Permitted development"],
@@ -57,6 +63,7 @@ const contents = [
   ["party-wall", "Party Wall matters"],
   ["costs", "Extension costs"],
   ["timescales", "Extension timescales"],
+  ["our-process", "Our process"],
   ["design-process", "The design process"],
   ["choosing-an-architect", "Choosing an architect"],
   ["mistakes", "Common mistakes"],
@@ -75,29 +82,60 @@ const extensionTypes = [
     body: "A side addition can enlarge a kitchen, create utility space or reorganise circulation. Boundary relationships, side access, drainage, street views and roof form can constrain the design.",
   },
   {
-    title: "Side-return extensions",
-    body: "Common on terraced and semi-detached homes, these use the narrow strip beside an existing rear projection. Their value often comes from improving the whole ground-floor plan rather than adding a large area.",
-  },
-  {
     title: "Wraparound extensions",
     body: "Combining rear and side development can enable substantial internal reorganisation. The larger footprint and structural openings can bring greater planning, drainage, daylight and cost implications.",
   },
   {
-    title: "Two-storey extensions",
-    body: "These can add bedrooms or bathrooms as well as ground-floor space. Massing, roof integration, overlooking, separation and effects on neighbouring light and outlook are particularly important.",
+    title: "Double-storey extensions",
+    body: "A carefully proportioned addition can create bedrooms or bathrooms above a more generous ground-floor plan. Massing, roof integration, overlooking and neighbouring outlook need particular care.",
   },
   {
-    title: "Front extensions",
-    body: "Development at the front is often more sensitive because it affects the streetscape, entrance and architectural character. Local precedent does not remove the need for a property-specific assessment.",
+    title: "Kitchen extensions",
+    body: "A kitchen extension should improve the way the whole home works, not simply add floor area. Daylight, garden connection, storage, servicing and the relationship to dining and family space all matter.",
   },
   {
-    title: "Porches",
-    body: "A small porch may be permitted development in some circumstances, subject to the detailed limitations and conditions. Its position, dimensions, relationship to a highway and any local restrictions still matter.",
+    title: "Open-plan extensions",
+    body: "Open-plan living can bring light and flexibility, but successful layouts still need considered zoning, acoustic separation, structure, ventilation and places for everyday storage.",
   },
   {
-    title: "Conservatories, orangeries and solid-roof extensions",
-    body: "The marketing label does not determine the approval position. Planning and Building Regulations depend on what is built, how it connects to the house and whether any exemption conditions are genuinely met.",
+    title: "Contemporary extensions",
+    body: "A contemporary addition can sit confidently beside an older home through proportion, material quality and a clear architectural relationship rather than novelty for its own sake.",
   },
+  {
+    title: "Traditional extensions",
+    body: "A traditional approach can use established forms, materials and details to make an addition feel settled within its street and the character of the existing house.",
+  },
+] as const;
+
+const extensionTypeLinks: Record<string, { guide?: { href: string; label: string }; project?: { href: string; label: string } }> = {
+  "Rear extensions": { guide: { href: "/knowledge-centre/house-extension-ideas", label: "Extension design ideas" }, project: { href: "/projects", label: "View extension projects" } },
+  "Side extensions": { guide: { href: "/knowledge-centre/extension-planning-permission", label: "Extension planning guidance" }, project: { href: "/projects", label: "View residential projects" } },
+  "Wraparound extensions": { guide: { href: "/knowledge-centre/house-extension-costs", label: "Extension cost guidance" }, project: { href: "/projects", label: "View extension projects" } },
+  "Double-storey extensions": { guide: { href: "/knowledge-centre/extension-planning-permission", label: "Planning permission guidance" }, project: { href: "/projects", label: "View extension projects" } },
+  "Kitchen extensions": { guide: { href: "/knowledge-centre/house-extension-ideas", label: "Extension design ideas" }, project: { href: "/projects", label: "View extension projects" } },
+  "Open-plan extensions": { guide: { href: "/knowledge-centre/house-extension-ideas", label: "Open-plan design ideas" }, project: { href: "/projects", label: "View extension projects" } },
+  "Contemporary extensions": { guide: { href: "/knowledge-centre/house-extension-ideas", label: "Extension design ideas" }, project: { href: "/projects", label: "View extension projects" } },
+  "Traditional extensions": { guide: { href: "/knowledge-centre/planning-permission", label: "Planning permission explained" }, project: { href: "/projects", label: "View residential projects" } },
+};
+
+const whyHepburn = [
+  ["Director-led practice", "Direct involvement from David Hepburn through the early design and approval decisions."],
+  ["RIBA Chartered Practice", "Professional standards and a clear, proportionate appointment for residential work."],
+  ["ARB registered", "Architectural advice grounded in regulated professional practice."],
+  ["Planning expertise", "Design and planning strategy developed together, with local constraints considered early."],
+  ["Building Regulations expertise", "Technical information coordinated with structure, fire, thermal, drainage and ventilation requirements."],
+  ["Clear communication", "Defined stages, written scopes and straightforward explanations of decisions and exclusions."],
+  ["Local knowledge", "Experience of Birmingham, Solihull and the wider West Midlands context."],
+  ["Tailored design", "Every extension starts with the existing home, the brief and the way the household lives."],
+] as const;
+
+const flagshipProcess = [
+  ["Measured survey", "Understand the existing house, levels, openings, services and constraints."],
+  ["Concept design", "Test layout, light, massing, materials and garden relationship."],
+  ["Planning", "Confirm the appropriate route and prepare a clear, coordinated submission."],
+  ["Building Regulations", "Develop the approved design into coordinated technical information."],
+  ["Construction information", "Coordinate structure, details, specifications and the information needed to price the work."],
+  ["Completed home", "Support the agreed process through construction queries, inspections and completion records."],
 ] as const;
 
 const designChecklist = [
@@ -411,10 +449,20 @@ export default async function HouseExtensionsPage() {
       acceptedAnswer: { "@type": "Answer", text: faq.answer },
     })),
   };
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "House extension architectural services",
+    serviceType: "House extension architecture, planning and Building Regulations",
+    description: "Planning-led house extension design and technical support for homes across Birmingham and the West Midlands.",
+    provider: { "@type": "Organization", name: site.legalName, url: site.url },
+    areaServed: ["Birmingham", "Solihull", "Sutton Coldfield", "Wolverhampton", "Walsall", "Leamington Spa", "West Midlands"],
+    url: `${site.url}/services/house-extensions`,
+  };
 
   return (
     <>
-      {[breadcrumbSchema, faqSchema].map((schema, index) => (
+      {[breadcrumbSchema, faqSchema, serviceSchema].map((schema, index) => (
         <script
           key={index}
           type="application/ld+json"
@@ -447,11 +495,10 @@ export default async function HouseExtensionsPage() {
             </div>
           </div>
           <div className={`actions ${styles.heroActions}`}>
-            <a className="btn primary" href={site.calendly} target="_blank" rel="noopener noreferrer">
-              <CalendarDays size={18} /> Discuss Your Extension
-            </a>
+            <Link className="btn primary" href="/contact">Discuss Your Project <ArrowRight size={18} /></Link>
+            <Link className="btn secondary" href="/estimate">Get an Indicative Fee <ArrowRight size={18} /></Link>
             <Link className="btn secondary" href="/house-extension-guide">
-              Download the Free Guide <ArrowRight size={18} />
+              Download Extension Guide <ArrowRight size={18} />
             </Link>
           </div>
         </div>
@@ -489,13 +536,21 @@ export default async function HouseExtensionsPage() {
             </p>
           </section>
 
+          <section id="why-hepburn">
+            <small className="eyebrow">The practice</small>
+            <h2>Why work with Hepburn Architects?</h2>
+            <p className={styles.lead}>A house extension is both an architectural project and a sequence of practical decisions. Our role is to bring design quality, planning judgement and technical clarity together around the existing home.</p>
+            <div className={styles.whyGrid}>{whyHepburn.map(([title, body]) => <article key={title}><h3>{title}</h3><p>{body}</p></article>)}</div>
+          </section>
+
           <section id="extension-types">
             <small className="eyebrow">Choosing the form</small>
             <h2>What type of house extension is right for your home?</h2>
             <div className={styles.projectTypeList}>
-              {extensionTypes.map((item) => (
-                <article key={item.title}><h3>{item.title}</h3><p>{item.body}</p></article>
-              ))}
+              {extensionTypes.map((item) => {
+                const links = extensionTypeLinks[item.title];
+                return <article key={item.title}><h3>{item.title}</h3><p>{item.body}</p><div className={styles.typeLinks}>{links?.guide ? <Link href={links.guide.href}>{links.guide.label} <ArrowRight size={14} /></Link> : null}{links?.project ? <Link href={links.project.href}>{links.project.label} <ArrowRight size={14} /></Link> : null}</div></article>;
+              })}
             </div>
             <h3>Single-storey versus two-storey extension</h3>
             <div className={styles.projectTypeList}>
@@ -526,6 +581,9 @@ export default async function HouseExtensionsPage() {
             <p>No property-specific conclusion should be drawn without checking the complete proposal and planning history.</p>
             <Link className={styles.textLink} href="/knowledge-centre/extension-planning-permission">
               Check Whether Your Extension Needs Planning Permission <ArrowRight size={17} />
+            </Link>
+            <Link className={styles.textLink} href="/services/planning-applications">
+              Explore planning application services <ArrowRight size={17} />
             </Link>
           </section>
 
@@ -678,6 +736,9 @@ export default async function HouseExtensionsPage() {
             <Link className={styles.textLink} href="/knowledge-centre/building-regulations">
               Read Building Regulations Explained <ArrowRight size={17} />
             </Link>
+            <Link className={styles.textLink} href="/services/building-regulations">
+              Explore Building Regulations drawings <ArrowRight size={17} />
+            </Link>
           </section>
 
           <section id="drainage-services">
@@ -743,6 +804,12 @@ export default async function HouseExtensionsPage() {
             <Link className={styles.textLink} href="/knowledge-centre/house-extension-timeline">
               Read the complete house extension timeline <ArrowRight size={17} />
             </Link>
+          </section>
+
+          <section id="our-process">
+            <small className="eyebrow">A clear sequence</small>
+            <h2>Our process from first survey to completed home.</h2>
+            <div className={styles.flagshipProcess}>{flagshipProcess.map(([title, body], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{body}</p></div></article>)}</div>
           </section>
 
           <section id="design-process">
@@ -818,6 +885,15 @@ export default async function HouseExtensionsPage() {
           </div>
         </section>
       )}
+
+      <section className={styles.coverage}>
+        <div className="shell">
+          <div className={styles.sectionHeading}><small className="eyebrow">Areas we cover</small><h2>House extension design across Birmingham and the West Midlands.</h2><p>Explore local planning and architectural context for extension projects in the areas where the practice is already publishing location guidance.</p></div>
+          <div className={styles.coverageGrid}>{[
+            ["Birmingham", "/locations/birmingham-architects"], ["Harborne", "/locations/harborne-architects"], ["Edgbaston", "/locations/edgbaston-architects"], ["Moseley", "/locations/moseley-architects"], ["Kings Heath", "/locations/kings-heath-architects"], ["Solihull", "/locations/solihull-architects"], ["Sutton Coldfield", "/locations/sutton-coldfield-architects"], ["Wolverhampton", "/locations/wolverhampton-architects"], ["Walsall", "/locations/walsall-architects"], ["Leamington Spa", "/locations/leamington-spa-architects"],
+          ].map(([label, href]) => <Link href={href} key={href}>{label}<ArrowRight size={16} /></Link>)}</div>
+        </div>
+      </section>
 
       <section className={styles.guidePromo}>
         <div className={`shell ${styles.guidePromoInner}`}>
@@ -902,10 +978,12 @@ export default async function HouseExtensionsPage() {
         <div className={`shell ${styles.finalCtaInner}`}>
           <small className="eyebrow">Discuss your home</small>
           <h2>Planning a house extension?</h2>
-          <p>Book a free 30-minute consultation to discuss your home, ideas, likely approvals and the most sensible next steps.</p>
-          <a className="btn primary" href={site.calendly} target="_blank" rel="noopener noreferrer">
-            <CalendarDays size={18} /> Book a Free Consultation
-          </a>
+          <p>Start with the property, the brief and the likely approval route. We can help establish the most sensible next step.</p>
+          <div className="actions centered-actions">
+            <Link className="btn primary" href="/contact">Discuss Your Project <ArrowRight size={18} /></Link>
+            <Link className="btn secondary light-btn" href="/estimate">Get an Indicative Fee <ArrowRight size={18} /></Link>
+            <Link className="btn secondary light-btn" href="/house-extension-guide">Download Extension Guide <ArrowRight size={18} /></Link>
+          </div>
         </div>
       </section>
     </>

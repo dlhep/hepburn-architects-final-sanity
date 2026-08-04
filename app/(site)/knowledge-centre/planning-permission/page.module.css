@@ -210,6 +210,26 @@
   margin: 0 0 12px;
 }
 
+.typeLinks { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 18px; }
+.typeLinks a { display: inline-flex; align-items: center; gap: 6px; color: var(--ink); font-size: 13px; font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
+.typeLinks svg { color: var(--orange); }
+.whyGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 38px; border-top: 1px solid var(--line); }
+.whyGrid article { padding: 24px 28px 24px 0; border-bottom: 1px solid var(--line); }
+.whyGrid article:nth-child(odd) { border-right: 1px solid var(--line); }
+.whyGrid article:nth-child(even) { padding-left: 28px; }
+.whyGrid h3, .whyGrid p { margin: 0; }
+.whyGrid p { margin-top: 8px; font-size: 15px; }
+.flagshipProcess { margin-top: 38px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
+.flagshipProcess article { padding: 24px 24px 24px 0; border-bottom: 1px solid var(--line); }
+.flagshipProcess article:nth-child(3n + 2), .flagshipProcess article:nth-child(3n + 3) { padding-left: 24px; border-left: 1px solid var(--line); }
+.flagshipProcess span { color: var(--orange); font-size: 11px; font-weight: 800; }
+.flagshipProcess h3 { margin: 10px 0 7px; }
+.flagshipProcess p { margin: 0; font-size: 15px; }
+.coverage { padding: 104px 0; background: var(--paper); border-top: 1px solid var(--line); }
+.coverageGrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.coverageGrid a { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 58px; padding: 14px 16px; border: 1px solid var(--line); background: var(--cream); font-weight: 800; }
+.coverageGrid a svg { flex: none; color: var(--orange); }
+
 .projectTypeList p {
   margin: 0;
   font-size: 15px;
@@ -718,7 +738,10 @@
   .checklist,
   .definitionList,
   .serviceList,
-  .projectGrid {
+  .projectGrid,
+  .whyGrid,
+  .flagshipProcess,
+  .coverageGrid {
     grid-template-columns: 1fr;
   }
 
@@ -732,6 +755,8 @@
     padding-left: 0;
     border-right: 0;
   }
+
+  .whyGrid article:nth-child(odd), .whyGrid article:nth-child(even), .flagshipProcess article:nth-child(3n + 2), .flagshipProcess article:nth-child(3n + 3) { padding-right: 0; padding-left: 0; border-left: 0; border-right: 0; }
 
   .process li {
     grid-template-columns: 40px 1fr;

@@ -1,23 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { getProject, getProjectSlugs, getProjects, projectImageAlt, projectImageUrl } from "@/lib/projects";
 import { ProjectContextLinks } from "@/components/internal-links/ProjectContextLinks";
 import {
   ProjectBeforeAfter,
-  ProjectCaseStudySection,
-  ProjectChallenges,
+  ProjectCaseStudyDetails,
   ProjectDescription,
   ProjectDrawings,
   ProjectGallery,
-  ProjectHighlights,
-  ProjectOutcome,
   ProjectOverview,
   ProjectServices,
-  ProjectStages,
-  ProjectTeam,
-  ProjectTestimonial,
 } from "@/components/projects/ProjectCaseStudySections";
 import { site } from "@/lib/site";
 import { createSeoMetadata, PROJECT_DESCRIPTIONS, PROJECT_TITLES, projectSeoTitle, seoDescription } from "@/lib/seo";
@@ -81,31 +75,16 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
     <section className="project-detail-hero">
       <Image src={heroImage} alt={projectImageAlt(project)} width={1920} height={1200} priority sizes="100vw" />
-      <div className="shell project-detail-overlay"><small>{project.category}</small><h1>{project.title}</h1><p><MapPin size={16} /> {project.location}</p><Link className="project-hero-back" href="/projects">View all projects <ArrowRight size={15} /></Link></div>
     </section>
-
-    <div className="shell project-breadcrumb-wrap"><nav aria-label="Breadcrumb" className="muted small-copy"><Link href="/">Home</Link> · <Link href="/projects">Projects</Link> · <span aria-current="page">{project.title}</span></nav></div>
+    <section className="project-heading-section"><div className="shell"><nav aria-label="Breadcrumb" className="muted small-copy project-heading-breadcrumb"><Link href="/">Home</Link> · <Link href="/projects">Projects</Link> · <span aria-current="page">{project.title}</span></nav><small className="eyebrow project-location-label">{project.location}</small><h1>{project.title}</h1><Link className="project-hero-back project-heading-link" href="/projects">View All Projects <ArrowRight size={15} /></Link></div></section>
     <ProjectOverview project={project} />
     <ProjectDescription value={project.projectDescription} />
     <ProjectGallery gallery={project.gallery} projectTitle={project.title} />
-    <ProjectCaseStudySection title="Client brief" value={project.clientBrief} sectionName="client_brief" />
-    <ProjectCaseStudySection title="Existing property and constraints" value={project.existingConditions} sectionName="existing_conditions" />
-    <ProjectChallenges challenges={project.keyChallenges} />
-    <ProjectCaseStudySection title="Design response" value={project.designResponse} sectionName="design_response" />
-    <ProjectCaseStudySection title="Planning strategy" value={project.planningStrategy} sectionName="planning_strategy" />
-    <ProjectCaseStudySection title="Technical design" value={project.technicalDesign} sectionName="technical_design" />
+    <ProjectCaseStudyDetails project={project} />
     <ProjectDrawings drawings={project.designDrawings} projectTitle={project.title} />
-    <ProjectCaseStudySection title="Materials and detailing" value={project.materialsAndDetailing} sectionName="materials_and_detailing" />
-    <ProjectCaseStudySection title="Sustainability and energy approach" value={project.sustainabilityApproach} sectionName="sustainability" />
     <ProjectBeforeAfter intro={project.beforeAfterIntro} beforeImages={project.beforeImages} afterImages={project.afterImages} projectTitle={project.title} />
-    <ProjectOutcome value={project.projectOutcome} />
-    <ProjectCaseStudySection title="Project insights" value={project.lessonsAndInsights} sectionName="project_insights" />
-    <ProjectHighlights highlights={project.projectHighlights} />
-    <ProjectTestimonial testimonial={project.clientTestimonial} />
     <ProjectServices services={project.services} />
-    <ProjectTeam team={project.projectTeam} />
-    <ProjectStages stages={project.projectStages} />
     <ProjectContextLinks project={project} allProjects={allProjects} compact />
-    <section className="section"><div className="shell final-cta" data-track-section="project_enquiry"><small className="eyebrow">Start your project</small><h2>Planning a similar residential project?</h2><p>Discuss the property, approval route and next steps directly with Hepburn Architects.</p><div className="actions centered-actions"><Link className="btn primary" href="/contact" data-track-event="project_enquiry_click" data-track-project-slug={project.slug} data-track-project-category={project.category} data-track-project-location={project.location}>Discuss Your Project <ArrowRight size={17} /></Link><Link className="btn secondary" href="/estimate" data-track-event="project_enquiry_click" data-track-project-slug={project.slug} data-track-project-category={project.category} data-track-project-location={project.location}>Get an Indicative Fee <ArrowRight size={17} /></Link><a className="btn secondary" href={site.phoneHref} data-track-event="project_enquiry_click" data-track-project-slug={project.slug} data-track-project-category={project.category} data-track-project-location={project.location}>Call {site.phone}</a></div></div></section>
+    <section className="section"><div className="shell final-cta" data-track-section="project_enquiry"><small className="eyebrow">Start your project</small><h2>Planning a similar project?</h2><p>Discuss your property, ideas and likely next steps with Hepburn Architects.</p><div className="actions centered-actions"><Link className="btn primary" href="/contact" data-track-event="project_enquiry_click" data-track-project-slug={project.slug} data-track-project-category={project.category} data-track-project-location={project.location}>Discuss Your Project <ArrowRight size={17} /></Link><Link className="btn secondary" href="/estimate" data-track-event="project_enquiry_click" data-track-project-slug={project.slug} data-track-project-category={project.category} data-track-project-location={project.location}>Get an Indicative Fee <ArrowRight size={17} /></Link></div></div></section>
   </>;
 }

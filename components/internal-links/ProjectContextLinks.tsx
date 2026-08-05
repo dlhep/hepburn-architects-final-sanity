@@ -22,12 +22,12 @@ export function ProjectContextLinks({ project, allProjects = [], compact = true 
       .map((slug) => allProjects.find((item) => item.slug === slug))
       .filter((item): item is Project => Boolean(item))
       .filter((item, index, list) => list.findIndex((candidate) => candidate.slug === item.slug) === index)
-      .slice(0, 2)
-      .map((item) => ({ href: `/projects/${item.slug}`, label: item.title, description: `${item.projectType} in ${item.location}`, destinationType: "project" as const, image: { src: projectImageUrl(item.featuredImage, 220), alt: projectImageAlt(item) } }))
-    : getProjectLinks(project, allProjects).slice(0, 2).map((link) => {
+      .slice(0, 3)
+      .map((item) => ({ href: `/projects/${item.slug}`, label: item.title, description: item.location, destinationType: "project" as const, image: { src: projectImageUrl(item.featuredImage, 220), alt: projectImageAlt(item) } }))
+    : getProjectLinks(project, allProjects).slice(0, 3).map((link) => {
       const related = allProjects.find((item) => `/projects/${item.slug}` === link.href);
-      return related ? { ...link, image: { src: projectImageUrl(related.featuredImage, 220), alt: projectImageAlt(related) } } : link;
-    });
+      return related ? { ...link, description: related.location, image: { src: projectImageUrl(related.featuredImage, 220), alt: projectImageAlt(related) } } : null;
+    }).filter(Boolean) as CompactProject[];
   if (!relatedProjects.length) return null;
   if (!compact) return <ProjectContextLinks project={project} allProjects={allProjects} compact />;
   return <section className={styles.compactSection} aria-labelledby={`more-projects-${project.slug}`}>

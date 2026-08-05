@@ -71,19 +71,12 @@ export function ProjectServices({ services }: { services?: string[] }) {
 
 export function ProjectGallery({ gallery, projectTitle }: { gallery?: SanityProjectImage[]; projectTitle: string }) {
   if (!gallery?.length) return null;
-  const compatiblePair = gallery.length > 3 && [gallery[2], gallery[3]].every((image) => image.asset?.metadata?.dimensions?.width && image.asset?.metadata?.dimensions?.height)
-    ? Math.abs((gallery[2].asset!.metadata!.dimensions!.width! / gallery[2].asset!.metadata!.dimensions!.height!) - (gallery[3].asset!.metadata!.dimensions!.width! / gallery[3].asset!.metadata!.dimensions!.height!)) < 0.28
-    : false;
   const renderImage = (image: SanityProjectImage, index: number) => {
     const width = image.asset?.metadata?.dimensions?.width || 3;
     const height = image.asset?.metadata?.dimensions?.height || 2;
     const ratio = width / height;
     return <figure key={image.asset?._id || index}><div className="project-portfolio-gallery-media" style={{ aspectRatio: `${width} / ${height}` }}><Image src={imageSrc(image, 1800)} alt={image.alt || `${projectTitle} project image ${index + 1}`} fill sizes="(max-width: 900px) 100vw, 90vw" style={{ objectFit: ratio < 0.85 ? "contain" : "cover" }} /></div>{image.caption ? <figcaption>{image.caption}</figcaption> : null}</figure>;
   };
-  const rows: Array<{ images: SanityProjectImage[]; paired: boolean; start: number }> = [];
-  if (gallery[0]) rows.push({ images: [gallery[0]], paired: false, start: 0 });
-  if (gallery[1]) rows.push({ images: [gallery[1]], paired: false, start: 1 });
-  if (compatiblePair) rows.push({ images: [gallery[2], gallery[3]], paired: true, start: 2 });
-  gallery.slice(compatiblePair ? 4 : 2).forEach((image, index) => rows.push({ images: [image], paired: false, start: (compatiblePair ? 4 : 2) + index }));
+  const rows = gallery.map((image, index) => ({ images: [image], paired: false, start: index }));
   return <section className="section project-gallery-section"><div className="shell project-portfolio-gallery">{rows.map((row) => <div className={`project-portfolio-gallery-row${row.paired ? " is-paired" : ""}`} key={row.start}>{row.images.map((image, index) => renderImage(image, row.start + index))}</div>)}</div></section>;
 }

@@ -471,6 +471,11 @@ export default async function HouseExtensionsPage() {
 
   return (
     <>
+      <div className="shell" style={{ paddingTop: "1rem" }}>
+        <Link className={styles.textLink} href="/locations/birmingham-architects">
+          Residential architects in Birmingham <ArrowRight size={15} />
+        </Link>
+      </div>
       {[breadcrumbSchema, faqSchema, serviceSchema].map((schema, index) => (
         <script
           key={index}

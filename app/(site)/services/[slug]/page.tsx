@@ -107,6 +107,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       ))}
 
+      <div className="shell" style={{ paddingTop: "1rem" }}>
+        <Link className="text-link" href="/locations/birmingham-architects">
+          Residential architects in Birmingham <ArrowRight size={15} />
+        </Link>
+      </div>
+
       <section className="service-detail-hero">
         <div className="shell service-detail-grid">
           <div className="service-detail-copy">

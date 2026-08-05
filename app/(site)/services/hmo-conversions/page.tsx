@@ -234,6 +234,11 @@ export default function HmoConversionsPage() {
 
   return (
     <>
+      <div className="shell" style={{ paddingTop: "1rem" }}>
+        <Link className="text-link" href="/locations/birmingham-architects">
+          Residential architects in Birmingham <ArrowRight size={15} />
+        </Link>
+      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

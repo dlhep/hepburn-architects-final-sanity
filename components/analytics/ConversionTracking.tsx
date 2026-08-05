@@ -97,7 +97,13 @@ export function ConversionTracking() {
         project_location: element.dataset.trackProjectLocation,
         section_name: element.dataset.trackSection || element.closest<HTMLElement>("[data-track-section]")?.dataset.trackSection,
       };
-      if (element.dataset.trackEvent) trackEvent(element.dataset.trackEvent, { ...base, ...projectContext, link_url: href, link_text: label });
+      const reviewContext = {
+        review_id: element.dataset.trackReviewId,
+        project_type: element.dataset.trackProjectType,
+        broad_location: element.dataset.trackBroadLocation,
+        source: element.dataset.trackReviewSource,
+      };
+      if (element.dataset.trackEvent) trackEvent(element.dataset.trackEvent, { ...base, ...projectContext, ...reviewContext, link_url: href, link_text: label });
       if (internalGroup && rawHref.startsWith("/")) {
         trackEvent("internal_link_click", { ...base, link_url: rawHref, link_text: label, source_page: window.location.pathname, destination_type: rawHref.split("/")[1] || "home", link_group: internalGroup });
         const relatedEvent = internalGroup === "project-services" ? "project_related_service_click" : internalGroup === "project-locations" ? "project_related_location_click" : internalGroup === "project-guides" ? "project_related_guide_click" : internalGroup === "related-projects" ? "project_related_project_click" : undefined;

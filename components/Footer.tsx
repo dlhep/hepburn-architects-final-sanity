@@ -58,6 +58,7 @@ export function Footer() {
           <Link href="/services/loft-conversions">Loft Conversions</Link>
           <Link href="/services/hmo-conversions">HMO Conversions</Link>
           <Link href="/projects">Projects</Link>
+          <Link href="/reviews">Client Reviews</Link>
           <Link href="/blog">Journal</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>

@@ -212,3 +212,21 @@ export const COLLABORATORS_QUERY = defineQuery(`
     }
   }
 `);
+
+export const PUBLISHED_REVIEWS_QUERY = defineQuery(`
+  *[_type == "review" && published == true && verified == true && permissionToPublish == true && showOnReviewsPage != false]
+  | order(coalesce(displayOrder, 999) asc, reviewDate desc, _updatedAt desc) {
+    _id, _updatedAt, quote, shortQuote, clientName, clientDescriptor, publicAttribution, reviewDate, rating,
+    projectType, location, services, source, sourceUrl, featured, relatedService, relatedLocation,
+    "relatedProject": relatedProject->{title, "slug": slug.current, location, featuredImage {alt, asset->{_id, url, metadata{dimensions}}}}
+  }
+`);
+
+export const FEATURED_REVIEWS_QUERY = defineQuery(`
+  *[_type == "review" && published == true && verified == true && permissionToPublish == true && showOnReviewsPage != false && featured == true]
+  | order(coalesce(displayOrder, 999) asc, reviewDate desc, _updatedAt desc)[0...3] {
+    _id, _updatedAt, quote, shortQuote, clientName, clientDescriptor, publicAttribution, reviewDate, rating,
+    projectType, location, services, source, sourceUrl, featured, relatedService, relatedLocation,
+    "relatedProject": relatedProject->{title, "slug": slug.current, location, featuredImage {alt, asset->{_id, url, metadata{dimensions}}}}
+  }
+`);

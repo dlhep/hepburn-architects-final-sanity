@@ -2,15 +2,17 @@ import type { MetadataRoute } from "next";
 import { services, locations, guides } from "@/lib/content-extended";
 import { getProjects } from "@/lib/projects";
 import { getBlogPosts, getSanityGuides } from "@/lib/articles";
+import { getPublishedReviews } from "@/lib/reviews";
 import { site } from "@/lib/site";
 
 const STATIC_LAST_MODIFIED = "2026-07-23";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [projects, blogPosts, sanityGuides] = await Promise.all([
+  const [projects, blogPosts, sanityGuides, reviews] = await Promise.all([
     getProjects(),
     getBlogPosts(),
     getSanityGuides(),
+    getPublishedReviews(),
   ]);
 
   const entries = new Map<string, MetadataRoute.Sitemap[number]>();
@@ -63,6 +65,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   projects.forEach((project) =>
     add(`/projects/${project.slug}`, project._updatedAt || STATIC_LAST_MODIFIED),
   );
+
+  if (reviews.length > 0) add("/reviews");
 
   return Array.from(entries.values());
 }

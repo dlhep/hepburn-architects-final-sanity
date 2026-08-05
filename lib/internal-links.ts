@@ -15,6 +15,7 @@ export const cornerstonePages: InternalLink[] = [
   { href: "/locations/birmingham-architects", label: "Residential architects across Birmingham", destinationType: "location" },
   { href: "/locations", label: "Areas we serve", destinationType: "location" },
   { href: "/projects", label: "Residential architecture projects", destinationType: "project" },
+  { href: "/reviews", label: "Client reviews", destinationType: "resource" },
   { href: "/knowledge-centre", label: "Knowledge Centre", destinationType: "guide" },
   { href: "/estimate", label: "Indicative fee calculator", destinationType: "calculator" },
   { href: "/house-extension-guide", label: "House Extension Guide", destinationType: "guide" },

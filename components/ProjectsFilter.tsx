@@ -8,7 +8,10 @@ import type { Project } from "@/lib/projects";
 import { getProjectCaseStudyLevel, projectImageAlt, projectImageUrl } from "@/lib/projects";
 
 export function ProjectsFilter({ projects }: { projects: Project[] }) {
-  const categories = useMemo(() => ["All", ...Array.from(new Set(projects.map((project) => project.category)))], [projects]);
+  const categories = useMemo(() => {
+    const publishedCategories = new Set(projects.map((project) => project.category));
+    return ["All", "Developments", "Extensions", "Loft Conversions", "Conversions", "Remodelling", "New Homes"].filter((category) => category === "All" || publishedCategories.has(category));
+  }, [projects]);
   const [filter, setFilter] = useState("All");
   const visible = useMemo(
     () => filter === "All" ? projects : projects.filter((project) => project.category === filter),
@@ -41,12 +44,9 @@ export function ProjectsFilter({ projects }: { projects: Project[] }) {
               sizes="(max-width: 650px) 100vw, 50vw"
             />
             <div>
-              <small>{project.location} · {project.projectType}</small>
+              <small>{project.location}</small>
               <h2>{project.title}</h2>
               {getProjectCaseStudyLevel(project) !== "basic" ? <small className="project-case-study-label">Case study</small> : null}
-              <p style={{ display: "-webkit-box", WebkitLineClamp: 5, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
-                {project.description}
-              </p>
               <span>View case study <ArrowUpRight size={16} /></span>
             </div>
           </Link>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import type { Project, ProjectChallenge, ProjectDrawing, ProjectHighlight, ProjectStage, ProjectTeamMember, ProjectTestimonial, SanityProjectImage } from "@/lib/projects";
 import { projectImageUrl } from "@/lib/projects";
@@ -23,12 +23,12 @@ const portableTextComponents: PortableTextComponents = {
 function hasBlocks(value?: TextBlock[]) { return Boolean(value?.length); }
 
 export function ProjectOverview({ project }: { project: Project }) {
-  return <section className={`section ${styles.overview}`}><div className="shell"><div className={styles.overviewGrid}><div><small className="eyebrow">Project overview</small><h2>{project.projectType}</h2><p className="lead">{project.description}</p></div><ProjectFacts project={project} /></div></div></section>;
+  return <section className={`section project-overview ${styles.overview}`}><div className="shell"><div className={styles.overviewGrid}><div><small className="eyebrow">Project</small><h2>Project Description</h2><p className="lead">{project.description}</p></div><ProjectFacts project={project} /></div></div></section>;
 }
 
 export function ProjectFacts({ project }: { project: Project }) {
   const facts: Array<[string, string | number | undefined]> = [
-    ["Location", project.location], ["Project type", project.projectType], ["Property type", project.propertyType],
+    ["Project", project.title], ["Location", project.location], ["Project type", project.projectType], ["Property type", project.propertyType],
     ["Local authority", project.localAuthority], ["Application", project.applicationType], ["Planning reference", project.planningReference],
     ["Project status", project.projectStatus], ["Completion", project.completion], ["Project year", project.projectYear], ["Approximate floor area", project.floorArea], ["Indicative value", project.contractValue],
   ];
@@ -86,7 +86,7 @@ export function ProjectStages({ stages }: { stages?: ProjectStage[] }) {
 
 export function ProjectServices({ services }: { services?: string[] }) {
   if (!services?.length) return null;
-  return <section className={`section sand-section ${styles.services}`}><div className="shell"><small className="eyebrow">Architectural services</small><h2>Support provided by Hepburn Architects.</h2><div className={styles.serviceList}>{services.map((service) => <div key={service}><CheckCircle2 size={18} /> {service}</div>)}</div></div></section>;
+  return <section className={`section ${styles.services}`}><div className="shell"><small className="eyebrow">Services</small><h2>Architectural services provided.</h2><ul className="project-services-list">{services.map((service) => <li key={service}>{service}</li>)}</ul></div></section>;
 }
 
 export function ProjectGallery({ gallery, projectTitle }: { gallery?: SanityProjectImage[]; projectTitle: string }) {

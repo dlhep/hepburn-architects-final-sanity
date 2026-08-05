@@ -22,20 +22,6 @@ import {
 import { site } from "@/lib/site";
 import { createSeoMetadata, PROJECT_DESCRIPTIONS, PROJECT_TITLES, projectSeoTitle, seoDescription } from "@/lib/seo";
 
-const localLocationPages = [
-  { terms: ["moseley", "kings heath", "balsall heath", "hall green"], slug: "moseley-architects", name: "Moseley" },
-  { terms: ["harborne", "selly oak", "quinton", "bartley green", "moor pool"], slug: "harborne-architects", name: "Harborne" },
-  { terms: ["edgbaston", "calthorpe", "ladywood"], slug: "edgbaston-architects", name: "Edgbaston" },
-  { terms: ["sutton coldfield", "four oaks", "boldmere", "wylde green", "streetly", "mere green"], slug: "sutton-coldfield-architects", name: "Sutton Coldfield" },
-  { terms: ["solihull", "knowle", "dorridge", "shirley", "olton", "balsall common", "dickens heath"], slug: "solihull-architects", name: "Solihull" },
-  { terms: ["birmingham", "west midlands"], slug: "birmingham-architects", name: "Birmingham" },
-];
-
-function getProjectLocationPage(location: string) {
-  const normalised = location.toLowerCase();
-  return localLocationPages.find((page) => page.terms.some((term) => normalised.includes(term)));
-}
-
 function projectTitle(project: { title: string; location: string; projectType: string; seoTitle?: string }) {
   if (project.seoTitle) return project.seoTitle;
   const base = projectSeoTitle(project.title, project.location);
@@ -65,7 +51,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const project = await getProject(slug);
   if (!project) notFound();
   const allProjects = await getProjects();
-  const localLocationPage = getProjectLocationPage(project.location);
   const heroImage = projectImageUrl(project.featuredImage, 1920);
   const schemas = {
     "@context": "https://schema.org",
@@ -96,17 +81,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
     <section className="project-detail-hero">
       <Image src={heroImage} alt={projectImageAlt(project)} width={1920} height={1200} priority sizes="100vw" />
-      <div className="shell project-detail-overlay"><small>{project.category}</small><h1>{project.title}</h1><p><MapPin size={16} /> {project.location}</p></div>
+      <div className="shell project-detail-overlay"><small>{project.category}</small><h1>{project.title}</h1><p><MapPin size={16} /> {project.location}</p><Link className="project-hero-back" href="/projects">View all projects <ArrowRight size={15} /></Link></div>
     </section>
 
     <div className="shell project-breadcrumb-wrap"><nav aria-label="Breadcrumb" className="muted small-copy"><Link href="/">Home</Link> · <Link href="/projects">Projects</Link> · <span aria-current="page">{project.title}</span></nav></div>
     <ProjectOverview project={project} />
     <ProjectDescription value={project.projectDescription} />
+    <ProjectGallery gallery={project.gallery} projectTitle={project.title} />
     <ProjectCaseStudySection title="Client brief" value={project.clientBrief} sectionName="client_brief" />
     <ProjectCaseStudySection title="Existing property and constraints" value={project.existingConditions} sectionName="existing_conditions" />
     <ProjectChallenges challenges={project.keyChallenges} />
     <ProjectCaseStudySection title="Design response" value={project.designResponse} sectionName="design_response" />
-    <ProjectGallery gallery={project.gallery} projectTitle={project.title} />
     <ProjectCaseStudySection title="Planning strategy" value={project.planningStrategy} sectionName="planning_strategy" />
     <ProjectCaseStudySection title="Technical design" value={project.technicalDesign} sectionName="technical_design" />
     <ProjectDrawings drawings={project.designDrawings} projectTitle={project.title} />
@@ -120,7 +105,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     <ProjectServices services={project.services} />
     <ProjectTeam team={project.projectTeam} />
     <ProjectStages stages={project.projectStages} />
-    {localLocationPage ? <section className="section"><div className="shell content-cta"><small className="eyebrow">Local architectural services</small><h2>Planning another residential project in {localLocationPage.name}?</h2><p>Explore local design, planning and Building Regulations services, nearby project experience and area-specific planning guidance.</p><Link className="btn light-btn" href={`/locations/${localLocationPage.slug}`}>View {localLocationPage.name} architects <ArrowRight size={17} /></Link></div></section> : null}
     <ProjectContextLinks project={project} allProjects={allProjects} compact />
     <section className="section"><div className="shell final-cta" data-track-section="project_enquiry"><small className="eyebrow">Start your project</small><h2>Planning a similar residential project?</h2><p>Discuss the property, approval route and next steps directly with Hepburn Architects.</p><div className="actions centered-actions"><Link className="btn primary" href="/contact" data-track-event="project_enquiry_click" data-track-project-slug={project.slug} data-track-project-category={project.category} data-track-project-location={project.location}>Discuss Your Project <ArrowRight size={17} /></Link><Link className="btn secondary" href="/estimate" data-track-event="project_enquiry_click" data-track-project-slug={project.slug} data-track-project-category={project.category} data-track-project-location={project.location}>Get an Indicative Fee <ArrowRight size={17} /></Link><a className="btn secondary" href={site.phoneHref} data-track-event="project_enquiry_click" data-track-project-slug={project.slug} data-track-project-category={project.category} data-track-project-location={project.location}>Call {site.phone}</a></div></div></section>
   </>;

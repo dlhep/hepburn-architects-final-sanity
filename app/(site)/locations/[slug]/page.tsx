@@ -10,6 +10,8 @@ import { site } from "@/lib/site";
 import { RelatedGuides } from "@/components/internal-links/RelatedGuides";
 import { Breadcrumbs } from "@/components/internal-links/Breadcrumbs";
 import { createSeoMetadata, serializeJsonLd, SOCIAL_IMAGE } from "@/lib/seo";
+import { getReviewForLocation } from "@/lib/reviews";
+import { ReviewQuote } from "@/components/reviews/RelevantReview";
 
 const birminghamFaqs = [
   { question: "What type of projects does Hepburn Architects undertake in Birmingham?", answer: "Hepburn Architects supports house extensions, loft conversions, new-build homes, HMOs, flat conversions, planning applications, Building Regulations packages and small residential developments. The suitability and scope of each appointment are reviewed before work begins." },
@@ -118,8 +120,12 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
   const relatedServices = services.filter((service) => page.serviceSlugs.includes(service.slug));
   const relatedLocations = locations.filter((location) => page.nearbyAreas.includes(location.shortTitle)).slice(0, 5);
   const projectTerms = isBirmingham ? birminghamProjectTerms : isSolihull ? ["solihull", "knowle", "dorridge", "shirley", "olton", "balsall common", "warwickshire"] : page.projectTerms ?? [];
-  const allProjects = isEnhanced && !isBirmingham ? await getProjects() : [];
-  const regionalProjects = isBirmingham ? await getBirminghamProjects() : isEnhanced ? selectProjects(allProjects, projectTerms) : [];
+  const [allProjects, birminghamProjects, locationReview] = await Promise.all([
+    isEnhanced && !isBirmingham ? getProjects() : Promise.resolve([]),
+    isBirmingham ? getBirminghamProjects() : Promise.resolve([]),
+    getReviewForLocation(slug),
+  ]);
+  const regionalProjects = isBirmingham ? birminghamProjects : isEnhanced ? selectProjects(allProjects, projectTerms) : [];
   const faqs = isBirmingham ? birminghamFaqs : isSolihull ? solihullFaqs : page.faqs ?? [];
   const planningTopics = isBirmingham ? birminghamPlanningTopics : isSolihull ? solihullPlanningTopics : page.planningTopics ?? [];
   const planningIntro = isBirmingham
@@ -319,6 +325,8 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
           <div className="shell service-detail-columns"><div><small className="eyebrow">{isBirmingham ? "Birmingham FAQs" : "Common questions"}</small><h2>{isBirmingham ? "Questions about appointing an architect in Birmingham." : `Planning and architectural services in ${page.shortTitle}.`}</h2></div><div className="faq-list">{faqs.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div></div>
         </section>
       )}
+
+      {locationReview ? <ReviewQuote review={locationReview} /> : null}
 
       <RelatedGuides serviceSlug={page.serviceSlugs[0]} heading={`Helpful guides for ${page.shortTitle}`} />
 

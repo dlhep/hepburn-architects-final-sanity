@@ -4,6 +4,10 @@
     {
       "path": "/api/cron/refresh-project-geocodes",
       "schedule": "17 3 * * *"
+    },
+    {
+      "path": "/api/reviews/sync",
+      "schedule": "30 5 * * *"
     }
   ]
 }

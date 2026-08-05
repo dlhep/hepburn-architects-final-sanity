@@ -8,6 +8,7 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "links:audit": "node scripts/audit-internal-links.mjs",
+    "reviews:test": "node --experimental-strip-types --test tests/google-business-reviews.test.mjs",
     "images:optimise": "node scripts/optimise-images.mjs",
     "sanity:manage": "sanity manage",
     "sanity:import-projects": "node scripts/import-projects.mjs"

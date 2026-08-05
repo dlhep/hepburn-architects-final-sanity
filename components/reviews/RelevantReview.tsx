@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { ArrowRight, Quote, Star } from "lucide-react";
-import { getReviewAttribution, getReviewForService, type Review } from "@/lib/reviews";
+import { getReviewAttribution, getReviewDisplayDate, getReviewForService, getReviewRegion, getReviewSourceLabel, getReviewSourceUrl, type Review } from "@/lib/reviews";
 import { ReviewImpression } from "./ReviewImpression";
 
 export function ReviewQuote({ review, serviceSlug, compact = false }: { review: Review; serviceSlug?: string; compact?: boolean }) {
-  const context = [review.projectType, review.location].filter(Boolean).join(" · ");
+  const context = [review.projectType, getReviewRegion(review), getReviewDisplayDate(review), getReviewSourceLabel(review)].filter(Boolean).join(" · ");
+  const sourceUrl = getReviewSourceUrl(review);
   return <section className={`relevant-review${compact ? " relevant-review-compact" : ""}`} aria-label="Client experience">
     <ReviewImpression review={review} serviceSlug={serviceSlug} />
     <div className="shell relevant-review-inner">
@@ -15,6 +16,7 @@ export function ReviewQuote({ review, serviceSlug, compact = false }: { review: 
       <p className="relevant-review-attribution"><strong>{getReviewAttribution(review)}</strong>{context ? <span>{context}</span> : null}</p>
       <div className="relevant-review-links">
         {review.relatedProject?.slug ? <Link href={`/projects/${review.relatedProject.slug}`} data-track-event={serviceSlug ? "service_review_project_click" : "review_project_click"} data-track-review-id={review._id} data-track-service-slug={serviceSlug} data-track-project-type={review.projectType} data-track-broad-location={review.location} data-track-review-source={review.source}>View related project <ArrowRight size={15}/></Link> : null}
+        {sourceUrl ? <a href={sourceUrl} target="_blank" rel="noopener noreferrer" data-track-event="review_source_click" data-track-review-id={review._id} data-track-review-source={review.source}>Read on {getReviewSourceLabel(review)} <ArrowRight size={15}/></a> : null}
         <Link href="/reviews" data-track-event="review_service_click" data-track-review-id={review._id} data-track-service-slug={serviceSlug}>Read client reviews <ArrowRight size={15}/></Link>
       </div>
     </div>

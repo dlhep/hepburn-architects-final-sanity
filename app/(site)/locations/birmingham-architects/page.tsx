@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, MapPin, Quote } from "lucide-react";
+import { ArrowRight, CheckCircle2, ExternalLink, MapPin, Quote } from "lucide-react";
 import { Breadcrumbs } from "@/components/internal-links/Breadcrumbs";
 import { locations } from "@/lib/content-extended";
 import { getBirminghamProjects, projectImageAlt, projectImageUrl } from "@/lib/projects";
-import { getPublishedReviews, getReviewAttribution } from "@/lib/reviews";
+import { getPublishedReviews, getReviewAttribution, getReviewDisplayDate, getReviewRegion, getReviewSourceLabel, getReviewSourceUrl } from "@/lib/reviews";
+import { BIRMINGHAM_REGION } from "@/lib/google-business/model";
 import { serializeJsonLd, SOCIAL_IMAGE } from "@/lib/seo";
 import { site } from "@/lib/site";
 import styles from "./page.module.css";
@@ -92,7 +93,7 @@ const guideLinks = [
 
 export default async function BirminghamArchitectsPage() {
   const [projects, reviews] = await Promise.all([getBirminghamProjects(), getPublishedReviews()]);
-  const localReviews = reviews.filter((review) => [review.location, review.relatedLocation, review.relatedProject?.location].some((value) => value?.toLowerCase().includes("birmingham"))).slice(0, 3);
+  const localReviews = reviews.filter((review) => getReviewRegion(review) === BIRMINGHAM_REGION || review.relatedLocation === "birmingham-architects").slice(0, 3);
   const requestedAreas = ["Harborne", "Edgbaston", "Moseley", "Kings Heath", "Sutton Coldfield", "Solihull", "Bournville", "Bearwood", "Quinton", "Northfield", "Erdington", "Selly Oak", "Shirley", "Hall Green", "Acocks Green", "Handsworth", "Jewellery Quarter", "Digbeth"];
   const areaLinks = requestedAreas.map((name) => locations.find((location) => location.shortTitle.toLowerCase() === name.toLowerCase())).filter((location): location is NonNullable<typeof location> => Boolean(location));
   const schema = { "@context": "https://schema.org", "@graph": [
@@ -128,7 +129,7 @@ export default async function BirminghamArchitectsPage() {
 
     <section className="section dark-section"><div className="shell"><div className="page-intro"><small className="eyebrow">Related guides</small><h2>Make informed decisions before your project gathers cost.</h2><p className="lead">These practical guides cover the questions that most often shape a Birmingham residential brief.</p></div><div className={styles.guideGrid}>{guideLinks.map(([name,href])=><Link href={href} key={name}><strong>{name}</strong><span>Read guide <ArrowRight size={15}/></span></Link>)}</div><div className="actions" style={{marginTop:"30px"}}><Link className="btn light-btn" href="/knowledge-centre">Knowledge Centre</Link><Link className="btn light-btn" href="/about">Studio</Link></div></div></section>
 
-    {localReviews.length>0&&<section className="section sand-section"><div className="shell"><div className="page-intro"><small className="eyebrow">Client reviews</small><h2>Verified feedback from Birmingham clients.</h2></div><div className={styles.reviews}>{localReviews.map(review=><article className={styles.review} key={review._id}><Quote aria-hidden="true"/><blockquote>{review.shortQuote||review.quote}</blockquote><strong>{getReviewAttribution(review)}</strong><small>{[review.projectType,review.location,review.source].filter(Boolean).join(" · ")}</small></article>)}</div><div className="actions" style={{marginTop:"28px"}}><Link className="btn secondary" href="/reviews">All reviews</Link></div></div></section>}
+    {localReviews.length>0&&<section className="section sand-section"><div className="shell"><div className="page-intro"><small className="eyebrow">Client reviews</small><h2>Verified feedback from the Birmingham profile.</h2></div><div className={styles.reviews}>{localReviews.map(review=>{const sourceUrl=getReviewSourceUrl(review);return <article className={styles.review} key={review._id}><Quote aria-hidden="true"/><blockquote>{review.shortQuote||review.quote}</blockquote><strong>{getReviewAttribution(review)}</strong><small>{[review.projectType,getReviewRegion(review),getReviewDisplayDate(review),getReviewSourceLabel(review)].filter(Boolean).join(" · ")}</small>{sourceUrl?<a href={sourceUrl} target="_blank" rel="noopener noreferrer">Read on {getReviewSourceLabel(review)} <ExternalLink size={14}/></a>:null}</article>})}</div><div className="actions" style={{marginTop:"28px"}}><Link className="btn secondary" href="/reviews">All reviews</Link></div></div></section>}
 
     <section className="section" id="faqs"><div className={`shell ${styles.faqGrid}`}><div><small className="eyebrow">Frequently asked questions</small><h2>Working with an architect in Birmingham.</h2><p>These answers are general guidance. Property history, location and the exact proposal can change the position.</p></div><div className={styles.faqList}>{faqs.map(([question,answer])=><details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></div></section>
 

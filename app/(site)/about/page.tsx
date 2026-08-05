@@ -517,6 +517,9 @@ export default async function AboutPage() {
             <Link className="btn light-btn" href="/contact">
               Send an enquiry
             </Link>
+            <Link className="btn light-btn" href="/reviews">
+              Client reviews
+            </Link>
           </div>
         </div>
       </section>

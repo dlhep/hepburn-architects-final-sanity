@@ -33,7 +33,7 @@ export function Footer() {
           <div className="social-links">
             <a href={site.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram /></a>
             <a href={site.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook /></a>
-            <a href={site.googleBusiness} target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile"><MapPin /></a>
+            <a href={site.googleBusinessBirmingham} target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile Birmingham"><MapPin /></a>
           </div>
         </div>
 

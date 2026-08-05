@@ -23,6 +23,8 @@ import {
 } from "@/lib/projects";
 import { site } from "@/lib/site";
 import { ROOT_TITLE } from "@/lib/seo";
+import { getHomepageReviews } from "@/lib/reviews";
+import { ReviewQuote } from "@/components/reviews/RelevantReview";
 
 export const metadata: Metadata = {
   title: { absolute: ROOT_TITLE },
@@ -130,11 +132,12 @@ function cleanExcerpt(excerpt?: string) {
 }
 
 export default async function HomePage() {
-  const [posts, featuredProjects, allProjects, signatureProject] = await Promise.all([
+  const [posts, featuredProjects, allProjects, signatureProject, homepageReviews] = await Promise.all([
     getBlogPosts(),
     getFeaturedProjects(),
     getProjects(),
     getFeaturedCaseStudy(),
+    getHomepageReviews(),
   ]);
 
   const projectPool = uniqueProjects([...featuredProjects, ...allProjects]);
@@ -202,10 +205,10 @@ export default async function HomePage() {
             <strong>Director-led</strong>
             <span>Speak directly with David</span>
           </div>
-          <a href={site.googleBusiness} target="_blank" rel="noopener noreferrer">
+          <Link href="/reviews">
             <strong>Client reviews</strong>
-            <span>Read independent feedback</span>
-          </a>
+            <span>Read verified client experiences</span>
+          </Link>
         </div>
       </section>
 
@@ -502,6 +505,8 @@ export default async function HomePage() {
           </nav>
         </div>
       </section>
+
+      {homepageReviews[0] ? <ReviewQuote review={homepageReviews[0]} compact /> : null}
 
       <section className="section dark-section">
         <div className="shell final-cta">

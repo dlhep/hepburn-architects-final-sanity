@@ -7,6 +7,8 @@ import { getProject, getProjectSlugs, projectImageAlt, projectImageUrl } from "@
 import { site } from "@/lib/site";
 import { urlFor } from "@/sanity/lib/image";
 import { createSeoMetadata, PROJECT_DESCRIPTIONS, PROJECT_TITLES, projectSeoTitle, seoDescription } from "@/lib/seo";
+import { getReviewForProject } from "@/lib/reviews";
+import { ReviewQuote } from "@/components/reviews/RelevantReview";
 
 type PortableTextBlock = { children?: Array<{ text?: string }> };
 
@@ -55,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const project = await getProject(slug);
+  const [project, projectReview] = await Promise.all([getProject(slug), getReviewForProject(slug)]);
   if (!project) notFound();
 
   const heroImage = projectImageUrl(project.featuredImage, 1920);
@@ -85,6 +87,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     </div></section>
     {project.gallery && project.gallery.length > 0 && <section className="section project-gallery-section"><div className={`shell project-gallery${project.gallery.length === 1 ? " project-gallery-single" : ""}`}>{project.gallery.map((image, index) => <figure key={image.asset?._id || index}><div className="project-gallery-media"><Image src={image.asset ? urlFor(image).width(1400).quality(76).url() : "/images/social-sharing.jpg"} alt={image.alt || `${project.title} project image ${index + 1}`} fill sizes={(project.gallery?.length ?? 0) === 1 ? "(max-width: 950px) 100vw, 1100px" : "(max-width: 950px) 100vw, 50vw"} /></div>{image.caption && <figcaption>{image.caption}</figcaption>}</figure>)}</div></section>}
     <section className="section sand-section"><div className="shell service-deliverables"><div><small className="eyebrow">Architectural services</small><h2>Support provided by Hepburn Architects.</h2></div><div className="deliverables-grid">{(project.services ?? []).map((service) => <div key={service}><CheckCircle2 /> {service}</div>)}</div></div></section>
+    {projectReview ? <ReviewQuote review={projectReview} compact /> : null}
     {localLocationPage && <section className="section"><div className="shell content-cta"><small className="eyebrow">Local architectural services</small><h2>Planning another residential project in {localLocationPage.name}?</h2><p>Explore local design, planning and Building Regulations services, nearby project experience and area-specific planning guidance.</p><Link className="btn light-btn" href={`/locations/${localLocationPage.slug}`} data-track-event="project_location_cta_click">View {localLocationPage.name} architects <ArrowRight size={17} /></Link></div></section>}
     <section className="section"><div className="shell final-cta" data-track-section="project_enquiry"><small className="eyebrow">Start your project</small><h2>Planning a similar residential project?</h2><p>Discuss the property, approval route and next steps directly with Hepburn Architects.</p><div className="actions centered-actions"><Link className="btn primary" href="/estimate" data-track-event="project_enquiry_click">Get an indicative fee <ArrowRight size={17} /></Link><a className="btn secondary" href={site.phoneHref} data-track-event="project_enquiry_click">Call {site.phone}</a></div></div></section>
   </>;

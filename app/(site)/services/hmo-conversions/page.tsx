@@ -14,6 +14,7 @@ import {
   Users,
 } from "lucide-react";
 import { site } from "@/lib/site";
+import { RelevantReview } from "@/components/reviews/RelevantReview";
 
 export const metadata: Metadata = {
   title: "HMO Conversion Architect",
@@ -197,7 +198,7 @@ const faqs = [
   },
 ];
 
-export default function HmoConversionsPage() {
+export default async function HmoConversionsPage() {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -440,6 +441,8 @@ export default function HmoConversionsPage() {
           </div>
         </div>
       </section>
+
+      <RelevantReview serviceSlug="hmo-conversions" />
 
       <section className="section">
         <div className="shell service-deliverables">

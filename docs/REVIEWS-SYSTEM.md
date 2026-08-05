@@ -1,36 +1,76 @@
 # Reviews system
 
-The `/reviews` page publishes only genuine client experiences entered in Sanity. A review must have `published`, `verified` and `permissionToPublish` set to true before it is returned by the public GROQ queries. Drafts, unverified reviews, unpublished reviews and internal source notes never reach the website.
+The website has one review system: Sanity `review` documents, queried through `lib/reviews.ts`. Do not add hard-coded testimonials to page templates.
 
-## Adding a review
+## Public safety rule
 
-1. Locate the original review.
-2. Confirm the wording.
-3. Confirm the public attribution (or use an anonymous descriptor).
-4. Confirm permission or the documented lawful republication basis.
-5. Enter the source and source URL where available.
-6. Link the broad project context, service or project where useful.
+A review is public only when every condition below passes:
+
+```text
+published == true
+verified == true
+permissionToPublish == true
+showOnReviewsPage != false
+```
+
+The GROQ projection deliberately excludes `internalSourceNote`, verification administration and any private contact data. Never enter an exact residential address, full postcode, email address or telephone number in a public field. A review copied from Google, Facebook, Houzz or another public platform still requires manual verification and approval before republication.
+
+## Entering a genuine review
+
+1. Copy the exact original review into `quote`.
+2. Confirm the source and add the original URL for an online review.
+3. Confirm a safe public attribution. Use `publicAttribution` where the client name should not appear.
+4. Confirm permission or the documented republication basis.
+5. Add only a broad location and useful project type.
+6. Link the relevant service or project.
 7. Mark `verified`.
 8. Mark `permissionToPublish`.
-9. Mark `published` and optionally `featured`.
-10. Preview before deployment.
+9. Select display placement and enable only the intended surfaces.
+10. Preview the result.
+11. Mark `published` when ready.
 
-Do not enter private addresses, full postcodes, contact details or confidential client information. `internalSourceNote` is for Studio administration only.
+Studio warnings are advisory so drafts can always be saved. A document marked Published but missing verification or permission remains blocked by the website query.
 
-## Fields and display
+## Attribution and anonymity
 
-Quotes are entered verbatim; `shortQuote` is an optional approved extract and is never generated automatically. Attribution can use `publicAttribution` instead of a name. Ratings are optional and statistics are calculated only from published, verified, permission-cleared reviews with a genuine 1–5 rating. No rating or aggregate rating is output when there are no rated reviews.
+`publicAttribution` takes precedence, followed by `clientName`, then `clientDescriptor`. For anonymity, use wording such as “Homeowner, Harborne” or “Residential developer, Birmingham”; do not use an invented name. If all three are empty the website falls back to “Verified client”, but editors should add an intentional public attribution before publication.
 
-Featured reviews appear once near the top of the page. The remaining collection supports understated project-type filters and is server-rendered before filtering. Related projects, services and original source links are optional.
+## Ratings and quotations
 
-## Structured data decision
+`rating` is optional and must reproduce a genuine 1–5 rating. Reviews without a rating display normally. `shortQuote` is an optional client-approved extract; it must not change the meaning of the original. The website does not publish an overall score, fake review count or organisation AggregateRating.
 
-The page emits `CollectionPage` and `BreadcrumbList` schema only. It does not emit `Review` or `AggregateRating` schema because self-serving organisation reviews may not qualify for Google review rich results, and the site should not imply eligibility without a formal policy review. Visible review content remains useful without making a rich-result claim.
+## Featured and page placement
 
-## Publication and sitemap
+- `featured` selects up to three large reviews on `/reviews`.
+- `showOnHomepage` or the Homepage featured placement makes a review eligible for the compact homepage block; at most two are fetched and one is currently displayed.
+- `showOnServicePages` makes a review eligible for a single commercial service placement.
+- `showOnLocationPages` enables future location placement. It does not automatically add reviews to thin pages.
+- `showOnReviewsPage` defaults true. Setting it false prevents all public-query output under the current safety policy.
 
-`/reviews` is added to the sitemap only when at least one qualifying published review exists. The route itself remains safe with zero reviews: it retains the introduction, process, pathways and enquiry CTA without placeholder testimonials or fake statistics.
+`featuredPlacement` is optional. Manual placement wins over automatic matching. Supported placements are General, Homepage, House Extensions, Planning Applications, Building Regulations, New-Build Homes, Loft Conversions, HMO Conversions, Change of Use, Birmingham, Solihull and Other. Service matching then falls back to `relatedService`, followed by `projectType`.
 
-## Future platform links
+## Linking services, locations and projects
 
-Independent profile links are configured centrally in `lib/site.ts` and rendered with `target="_blank"` and `rel="noopener noreferrer"`. Add only genuine profiles. Review page source and platform clicks use the existing consent-aware analytics helper; no client PII is sent.
+Use the exact service or location slug in `relatedService` or `relatedLocation`. A directly referenced `relatedProject` can show the approved review near the end of that project case study and supplies the optional View related project link elsewhere. Only a review directly referencing that project is eligible for the project page.
+
+`getReviewForLocation(locationSlug)` supports a future restrained rollout to strong location pages. Birmingham retains its dedicated verified-review handling. Do not add a generic review to a location page simply to fill space.
+
+## Reviews page and filtering
+
+Featured reviews are removed from the main collection. Filters appear only with at least six public reviews and at least two populated categories containing two or more reviews each. Filtering is client-side and creates no indexable URLs. The manually approved What clients value wording is qualitative and makes no quantitative claim.
+
+## Sitemap
+
+`/reviews` is added by `app/sitemap.ts` only when `getPublishedReviews()` returns at least one qualifying review. With zero reviews, the route still provides useful process and contact information but is not submitted as a populated review asset. No fake placeholder is shown.
+
+## Structured data
+
+The page emits `CollectionPage` and `BreadcrumbList` only. Individual Review and organisation AggregateRating schema are intentionally omitted: self-serving business reviews may not qualify for Google review rich results, and the practice should not imply eligibility. Reconsider only after a formal policy review and only for visibly rendered, accurately attributed and genuinely rated content.
+
+## External review profiles
+
+Profiles are configured in `lib/site.ts` as named fields. `googleBusinessBirmingham` is configured separately from the optional `googleBusinessNorthEast`; never point both labels to one profile. Facebook is shown only while its URL is configured. Add future Houzz or regional links as separate named configuration values and render them only when present, always with `target="_blank"` and `rel="noopener noreferrer"`.
+
+## Analytics privacy
+
+Review events use the existing consent-aware tracker. Allowed context includes review ID, service slug, project type, broad location, source, link URL/text and conversion location. Client names and full quotations are never sent.

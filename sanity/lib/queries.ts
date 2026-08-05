@@ -218,6 +218,7 @@ export const PUBLISHED_REVIEWS_QUERY = defineQuery(`
   | order(coalesce(displayOrder, 999) asc, reviewDate desc, _updatedAt desc) {
     _id, _updatedAt, quote, shortQuote, clientName, clientDescriptor, publicAttribution, reviewDate, rating,
     projectType, location, services, source, sourceUrl, featured, relatedService, relatedLocation,
+    showOnHomepage, showOnReviewsPage, showOnServicePages, showOnLocationPages, featuredPlacement,
     "relatedProject": relatedProject->{title, "slug": slug.current, location, featuredImage {alt, asset->{_id, url, metadata{dimensions}}}}
   }
 `);
@@ -227,6 +228,7 @@ export const FEATURED_REVIEWS_QUERY = defineQuery(`
   | order(coalesce(displayOrder, 999) asc, reviewDate desc, _updatedAt desc)[0...3] {
     _id, _updatedAt, quote, shortQuote, clientName, clientDescriptor, publicAttribution, reviewDate, rating,
     projectType, location, services, source, sourceUrl, featured, relatedService, relatedLocation,
+    showOnHomepage, showOnReviewsPage, showOnServicePages, showOnLocationPages, featuredPlacement,
     "relatedProject": relatedProject->{title, "slug": slug.current, location, featuredImage {alt, asset->{_id, url, metadata{dimensions}}}}
   }
 `);

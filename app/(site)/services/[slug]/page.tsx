@@ -3,30 +3,14 @@ import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ExternalLink, Phone, Quote } from "lucide-react";
+import { ArrowRight, CheckCircle2, ExternalLink, Phone } from "lucide-react";
 import { getServiceDetail, serviceDetails } from "@/lib/service-details";
 import { getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
 import { RelatedServices } from "@/components/internal-links/RelatedServices";
 import { Breadcrumbs } from "@/components/internal-links/Breadcrumbs";
 import { createSeoMetadata } from "@/lib/seo";
-
-const reviews = [
-  {
-    quote:
-      "Great service! David was on time with the plans, and his advice has been invaluable throughout the process.",
-    attribution: "Avtar, Birmingham",
-    source: "MyBuilder",
-    href: "https://www.mybuilder.com/profile/hepburn_architects/reviews",
-  },
-  {
-    quote:
-      "David was a pleasure to deal with throughout. He was easy to talk to and nothing was too much.",
-    attribution: "Verified homeowner",
-    source: "Checkatrade",
-    href: "https://www.checkatrade.com/trades/hepburndaoudiarchitects",
-  },
-];
+import { RelevantReview } from "@/components/reviews/RelevantReview";
 
 function selectProjects(projects: Project[], terms: string[]) {
   return projects
@@ -316,26 +300,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       <RelatedServices serviceSlug={slug} />
 
-      <section className="section">
-        <div className="shell">
-          <div className="page-intro">
-            <small className="eyebrow">Independent client feedback</small>
-            <h2>Clear advice and dependable communication.</h2>
-          </div>
-          <div className="review-grid">
-            {reviews.map((review) => (
-              <article className="review-card" key={review.source}>
-                <Quote aria-hidden="true" />
-                <blockquote>{review.quote}</blockquote>
-                <strong>{review.attribution}</strong>
-                <a href={review.href} target="_blank" rel="noopener noreferrer">
-                  View on {review.source} <ExternalLink size={14} />
-                </a>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <RelevantReview serviceSlug={slug} />
 
       <section className="section dark-section">
         <div className="shell faq-layout">

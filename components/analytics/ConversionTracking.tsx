@@ -57,6 +57,9 @@ export function ConversionTracking() {
     const path = window.location.pathname;
     const match = path.match(/^\/(projects|services|locations)\/([^/]+)/);
     if (match) trackEvent(match[1] === "projects" ? "project_view" : match[1] === "services" ? "service_view" : "location_page_view", { content_slug: match[2], content_type: match[1].slice(0, -1) });
+    if (path === "/reviews" && document.querySelector("[data-review-page-view]")) trackEvent("review_page_view", { conversion_location: "body" });
+    const review = document.querySelector<HTMLElement>("[data-review-impression][data-track-service-slug]");
+    if (review) trackEvent("service_review_view", { review_id: review.dataset.trackReviewId, service_slug: review.dataset.trackServiceSlug, project_type: review.dataset.trackProjectType, broad_location: review.dataset.trackBroadLocation, source: review.dataset.trackReviewSource, conversion_location: "body" });
   }, [consent, pathname, scriptLoaded]);
 
   useEffect(() => {
@@ -99,6 +102,7 @@ export function ConversionTracking() {
       };
       const reviewContext = {
         review_id: element.dataset.trackReviewId,
+        service_slug: element.dataset.trackServiceSlug,
         project_type: element.dataset.trackProjectType,
         broad_location: element.dataset.trackBroadLocation,
         source: element.dataset.trackReviewSource,

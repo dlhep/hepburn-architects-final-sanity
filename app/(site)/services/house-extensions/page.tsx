@@ -15,6 +15,7 @@ import {
 } from "@/lib/projects";
 import { site } from "@/lib/site";
 import styles from "../../knowledge-centre/planning-permission/page.module.css";
+import { RelevantReview } from "@/components/reviews/RelevantReview";
 
 export const metadata: Metadata = {
   title: "House Extension Architects Birmingham & West Midlands",
@@ -987,6 +988,8 @@ export default async function HouseExtensionsPage() {
           <p>This page provides general guidance for house extension projects in England and is not a substitute for advice based on a specific property, proposal, planning history, construction method or local authority area. Planning rules, Building Regulations and official guidance can change.</p>
         </div>
       </aside>
+
+      <RelevantReview serviceSlug="house-extensions" />
 
       <section className={styles.finalCta}>
         <div className={`shell ${styles.finalCtaInner}`}>

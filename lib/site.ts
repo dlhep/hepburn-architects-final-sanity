@@ -9,6 +9,8 @@ export const site = {
   instagram: "https://www.instagram.com/hepburn.architects?igsh=MXMxNWpnbmRkcGMwbg==",
   facebook: "https://www.facebook.com/HepburnArchitects",
   googleBusiness: "https://share.google/Y9FBnkeA0VU3bqqJa",
+  googleBusinessBirmingham: "https://share.google/Y9FBnkeA0VU3bqqJa",
+  googleBusinessNorthEast: undefined as string | undefined,
   description:
     "Residential architects for extensions, loft conversions, new homes, HMOs and planning across Birmingham, Solihull and the West Midlands.",
   offices: {

@@ -13,9 +13,10 @@ export const metadata: Metadata = {
 export default function LocationsPage() {
   const published = new Map(locations.map((location) => [location.slug, location]));
   const regions = [
-    ["Birmingham and neighbourhoods", ["birmingham-architects", "harborne-architects", "edgbaston-architects", "moseley-architects", "kings-heath-architects", "bournville-architects", "sutton-coldfield-architects", "selly-oak-architects", "hall-green-architects"]],
+    ["Birmingham and Sutton Coldfield area", ["birmingham-architects", "harborne-architects", "edgbaston-architects", "moseley-architects", "kings-heath-architects", "bournville-architects", "sutton-coldfield-architects", "four-oaks-architects", "selly-oak-architects", "hall-green-architects"]],
+    ["Staffordshire border and adjoining areas", ["little-aston-architects", "aldridge-architects"]],
     ["Solihull and Warwickshire", ["solihull-architects", "leamington-spa-architects", "warwick-architects", "kenilworth-architects"]],
-    ["Black Country and wider West Midlands", ["wolverhampton-architects", "walsall-architects", "aldridge-architects"]],
+    ["Black Country and wider West Midlands", ["wolverhampton-architects", "walsall-architects"]],
   ].map(([name, slugs]) => ({ name: name as string, locations: (slugs as string[]).map((slug) => published.get(slug)).filter((item): item is (typeof locations)[number] => Boolean(item)) }));
   return (
     <section className="section">

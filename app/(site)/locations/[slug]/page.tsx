@@ -118,7 +118,10 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
   const isSolihull = slug === "solihull-architects";
   const isEnhanced = isBirmingham || isSolihull || Boolean(page.authorityPage);
   const relatedServices = services.filter((service) => page.serviceSlugs.includes(service.slug));
-  const relatedLocations = locations.filter((location) => page.nearbyAreas.includes(location.shortTitle)).slice(0, 5);
+  const nearbyAreaNames = slug === "sutton-coldfield-architects"
+    ? ["Four Oaks", "Little Aston", ...page.nearbyAreas]
+    : page.nearbyAreas;
+  const relatedLocations = locations.filter((location) => nearbyAreaNames.includes(location.shortTitle)).slice(0, 6);
   const projectTerms = isBirmingham ? birminghamProjectTerms : isSolihull ? ["solihull", "knowle", "dorridge", "shirley", "olton", "balsall common", "warwickshire"] : page.projectTerms ?? [];
   const [allProjects, birminghamProjects, locationReview] = await Promise.all([
     isEnhanced && !isBirmingham ? getProjects() : Promise.resolve([]),
@@ -338,7 +341,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
       </section>
 
       <section className="section dark-section">
-        <div className="shell studio-process"><div><small className="eyebrow">Areas nearby</small><h2>Residential architect serving {page.shortTitle} and surrounding areas.</h2></div><div>{isBirmingham ? <><p>Residential architectural services are available across Birmingham and the wider West Midlands. These links describe local planning and property context; they do not imply a completed project in every district.</p><div className="nearby-links">{birminghamAreas.map(([name, href]) => <Link href={href} key={href}>{name}</Link>)}</div></> : <><p>We also support projects across {page.nearbyAreas.join(", ")}.</p><div className="nearby-links">{relatedLocations.map((location) => <Link href={`/locations/${location.slug}`} key={location.slug}>{location.shortTitle}</Link>)}</div></>}</div></div>
+        <div className="shell studio-process"><div><small className="eyebrow">Areas nearby</small><h2>Residential architect serving {page.shortTitle} and surrounding areas.</h2></div><div>{isBirmingham ? <><p>Residential architectural services are available across Birmingham and the wider West Midlands. These links describe local planning and property context; they do not imply a completed project in every district.</p><div className="nearby-links">{birminghamAreas.map(([name, href]) => <Link href={href} key={href}>{name}</Link>)}</div></> : <><p>We also support projects across {page.nearbyAreas.join(", ")}.</p><div className="nearby-links">{slug === "sutton-coldfield-architects" ? <><Link href="/locations/four-oaks-architects">Four Oaks</Link><Link href="/locations/little-aston-architects">Little Aston</Link></> : null}{relatedLocations.filter((location) => slug !== "sutton-coldfield-architects" || !["Four Oaks", "Little Aston"].includes(location.shortTitle)).map((location) => <Link href={`/locations/${location.slug}`} key={location.slug}>{location.shortTitle}</Link>)}</div></>}</div></div>
       </section>
 
       <section className="section sand-section">

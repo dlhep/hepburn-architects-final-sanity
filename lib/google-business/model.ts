@@ -141,7 +141,7 @@ export async function collectGoogleReviewPages(
 
 export function regionForLocationSlug(locationSlug: string): ReviewRegion | undefined {
   const slug = locationSlug.toLowerCase();
-  if (["birmingham", "harborne", "edgbaston", "moseley", "kings-heath", "bournville", "west-midlands", "solihull"].some((value) => slug.includes(value))) return BIRMINGHAM_REGION;
+  if (["birmingham", "harborne", "edgbaston", "moseley", "kings-heath", "bournville", "west-midlands", "solihull", "four-oaks", "little-aston", "sutton-coldfield", "aldridge"].some((value) => slug.includes(value))) return BIRMINGHAM_REGION;
   if (["nunthorpe", "middlesbrough", "redcar", "saltburn", "teesside", "north-east"].some((value) => slug.includes(value))) return NORTH_EAST_REGION;
   return undefined;
 }

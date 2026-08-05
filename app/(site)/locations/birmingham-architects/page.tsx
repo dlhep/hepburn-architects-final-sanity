@@ -94,7 +94,7 @@ const guideLinks = [
 export default async function BirminghamArchitectsPage() {
   const [projects, reviews] = await Promise.all([getBirminghamProjects(), getPublishedReviews()]);
   const localReviews = reviews.filter((review) => getReviewRegion(review) === BIRMINGHAM_REGION || review.relatedLocation === "birmingham-architects").slice(0, 3);
-  const requestedAreas = ["Harborne", "Edgbaston", "Moseley", "Kings Heath", "Sutton Coldfield", "Solihull", "Bournville", "Bearwood", "Quinton", "Northfield", "Erdington", "Selly Oak", "Shirley", "Hall Green", "Acocks Green", "Handsworth", "Jewellery Quarter", "Digbeth"];
+  const requestedAreas = ["Harborne", "Edgbaston", "Moseley", "Kings Heath", "Sutton Coldfield", "Four Oaks", "Solihull", "Bournville", "Bearwood", "Quinton", "Northfield", "Erdington", "Selly Oak", "Shirley", "Hall Green", "Acocks Green", "Handsworth", "Jewellery Quarter", "Digbeth"];
   const areaLinks = requestedAreas.map((name) => locations.find((location) => location.shortTitle.toLowerCase() === name.toLowerCase())).filter((location): location is NonNullable<typeof location> => Boolean(location));
   const schema = { "@context": "https://schema.org", "@graph": [
     { "@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: "Residential Architects in Birmingham", description, breadcrumb: { "@id": `${canonical}#breadcrumb` }, mainEntity: { "@id": `${canonical}#service` }, inLanguage: "en-GB" },

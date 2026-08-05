@@ -30,10 +30,12 @@ const projectDescriptionComponents: PortableTextComponents = {
 };
 
 const localLocationPages = [
+  { terms: ["four oaks"], slug: "four-oaks-architects", name: "Four Oaks" },
+  { terms: ["little aston"], slug: "little-aston-architects", name: "Little Aston" },
   { terms: ["moseley", "kings heath", "balsall heath", "hall green"], slug: "moseley-architects", name: "Moseley" },
   { terms: ["harborne", "selly oak", "quinton", "bartley green", "moor pool"], slug: "harborne-architects", name: "Harborne" },
   { terms: ["edgbaston", "calthorpe", "ladywood"], slug: "edgbaston-architects", name: "Edgbaston" },
-  { terms: ["sutton coldfield", "four oaks", "boldmere", "wylde green", "streetly", "mere green"], slug: "sutton-coldfield-architects", name: "Sutton Coldfield" },
+  { terms: ["sutton coldfield", "boldmere", "wylde green", "streetly", "mere green"], slug: "sutton-coldfield-architects", name: "Sutton Coldfield" },
   { terms: ["solihull", "knowle", "dorridge", "shirley", "olton", "balsall common", "dickens heath"], slug: "solihull-architects", name: "Solihull" },
   { terms: ["birmingham", "west midlands"], slug: "birmingham-architects", name: "Birmingham" },
 ];

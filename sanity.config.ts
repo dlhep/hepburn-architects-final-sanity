@@ -21,6 +21,7 @@ export default defineConfig({
         S.documentTypeListItem("mapProject").title("Map Projects"),
         S.documentTypeListItem("article").title("Journal & Guides"),
         S.documentTypeListItem("collaborator").title("Collaborative Team"),
+        S.documentTypeListItem("review").title("Reviews"),
       ]),
     }),
     visionTool(),

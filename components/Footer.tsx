@@ -17,7 +17,7 @@ export function Footer() {
   return (
     <footer>
       <div className="shell footer-grid footer-grid-expanded">
-        <div>
+        <div className="footer-practice-column">
           <Link className="footer-brand-logo-link" href="/" aria-label="Hepburn Architects home">
             <img
               className="footer-brand-logo"
@@ -35,42 +35,43 @@ export function Footer() {
             <a href={site.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook /></a>
             <a href={site.googleBusinessBirmingham} target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile Birmingham"><MapPin /></a>
           </div>
-        </div>
-
-        <div>
-          <h3>Birmingham Studio</h3>
-          <address>Izabella House<br />24-26 Regent Place<br />Birmingham<br />B1 3NJ</address>
-          <a href={site.offices.birmingham.mapUrl} target="_blank" rel="noopener noreferrer">View map</a>
-        </div>
-
-        <div>
-          <h3>Nunthorpe Studio</h3>
-          <address>1 Church Lane<br />Nunthorpe<br />Middlesbrough<br />TS7 0PD</address>
+          <div className="footer-studios">
+            <div>
+              <h3>Birmingham Studio</h3>
+              <address>Izabella House<br />24-26 Regent Place<br />Birmingham<br />B1 3NJ</address>
+              <a href={site.offices.birmingham.mapUrl} target="_blank" rel="noopener noreferrer">View map</a>
+            </div>
+            <div>
+              <h3>Nunthorpe Studio</h3>
+              <address>1 Church Lane<br />Nunthorpe<br />Middlesbrough<br />TS7 0PD</address>
+            </div>
+          </div>
         </div>
 
         <div className="footer-link-group">
           <h3>Explore</h3>
+          <Link href="/projects">Projects</Link>
           <Link href="/services">Services</Link>
+          <Link href="/locations">Locations</Link>
+          <Link href="/knowledge-centre">Knowledge Centre</Link>
+          <Link href="/blog">Journal</Link>
+          <Link href="/reviews">Client Reviews</Link>
+        </div>
+
+        <div className="footer-link-group">
+          <h3>Services</h3>
           <Link href="/services/house-extensions">House Extensions</Link>
           <Link href="/services/planning-applications">Planning Applications</Link>
           <Link href="/services/building-regulations">Building Regulations</Link>
           <Link href="/services/new-build-homes">New-Build Homes</Link>
           <Link href="/services/loft-conversions">Loft Conversions</Link>
           <Link href="/services/hmo-conversions">HMO Conversions</Link>
-          <Link href="/projects">Projects</Link>
-          <Link href="/reviews">Client Reviews</Link>
-          <Link href="/blog">Journal</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/privacy">Privacy & cookies</Link>
         </div>
 
         <div className="footer-link-group">
-          <h3>Knowledge Centre</h3>
-          <Link href="/knowledge-centre">Knowledge Centre</Link>
+          <h3>Resources</h3>
           <Link href="/house-extension-guide">House Extension Guide</Link>
           <Link href="/estimate">Fee Calculator</Link>
-          <Link href="/blog">Journal</Link>
           <Link href="/contact">Contact</Link>
         </div>
       </div>
@@ -85,12 +86,32 @@ export function Footer() {
         </nav>
       </div>
 
-      <div className="shell footer-bottom">© {new Date().getFullYear()} Hepburn Architects Ltd.</div>
+      <div className="shell footer-bottom">
+        <span>© {new Date().getFullYear()} Hepburn Architects Ltd.</span>
+        <Link href="/privacy">Privacy &amp; cookies</Link>
+      </div>
 
       <style>{`
         .footer-grid-expanded {
-          grid-template-columns: 1.25fr .85fr .85fr .7fr .85fr;
-          gap: 38px;
+          grid-template-columns: minmax(0, 1.7fr) repeat(3, minmax(150px, .75fr));
+          gap: 44px;
+        }
+
+        .footer-studios {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 24px;
+          margin-top: 20px;
+        }
+
+        .footer-studios > div {
+          display: grid;
+          align-content: start;
+          gap: 7px;
+        }
+
+        .footer-studios h3 {
+          margin-bottom: 2px;
         }
 
         .footer-brand-logo-link {
@@ -150,12 +171,34 @@ export function Footer() {
         }
 
         footer .footer-bottom {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 20px;
           margin-top: 24px;
+        }
+
+        footer .footer-bottom a {
+          color: rgba(255, 255, 255, 0.72);
+        }
+
+        footer .footer-bottom a:hover {
+          color: #fff;
         }
 
         @media (max-width: 650px) {
           .footer-grid-expanded {
             grid-template-columns: 1fr;
+          }
+
+          .footer-studios {
+            grid-template-columns: 1fr;
+          }
+
+          footer .footer-bottom {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 8px;
           }
 
           .footer-location-band {

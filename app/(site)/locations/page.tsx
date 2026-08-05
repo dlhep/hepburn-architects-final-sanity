@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import { locations } from "@/lib/content-extended";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, buildItemListSchema, breadcrumbId } from "@/lib/structured-data";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Architects Across the West Midlands",
@@ -18,7 +21,10 @@ export default function LocationsPage() {
     ["Solihull and Warwickshire", ["solihull-architects", "leamington-spa-architects", "warwick-architects", "kenilworth-architects"]],
     ["Black Country and wider West Midlands", ["wolverhampton-architects", "walsall-architects"]],
   ].map(([name, slugs]) => ({ name: name as string, locations: (slugs as string[]).map((slug) => published.get(slug)).filter((item): item is (typeof locations)[number] => Boolean(item)) }));
-  return (
+  const url = `${site.url}/locations`;
+  const items = regions.flatMap((region) => region.locations).map((location) => ({ name: location.title, url: `${url}/${location.slug}` }));
+  return (<>
+    <StructuredData data={buildGraph(buildCollectionPageSchema({ url, name: "Locations", description: metadata.description as string, breadcrumb: breadcrumbId(url) }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Locations", url }]), buildItemListSchema(url, "Published location pages", items))} />
     <section className="section">
       <div className="shell page-intro">
         <small className="eyebrow"><MapPin size={14} />Areas we serve</small>
@@ -30,6 +36,6 @@ export default function LocationsPage() {
           {region.locations.map((location, index) => <Link href={`/locations/${location.slug}`} className="guide-index-card" key={location.slug}><span>{String(index + 1).padStart(2, "0")}</span><div><h2>{location.title}</h2><p>{location.description}</p></div><ArrowRight /></Link>)}
         </div></div>
       </section> : null)}
-    </section>
+    </section></>
   );
 }

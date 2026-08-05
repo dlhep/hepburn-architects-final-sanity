@@ -25,6 +25,8 @@ import { site } from "@/lib/site";
 import { ROOT_TITLE } from "@/lib/seo";
 import { getHomepageReviews } from "@/lib/reviews";
 import { ReviewQuote } from "@/components/reviews/RelevantReview";
+import { StructuredData } from "@/components/StructuredData";
+import { buildArchitectSchema, buildBusinessLocationSchema, buildGraph, buildOrganisationSchema, buildWebPageSchema, buildWebSiteSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: { absolute: ROOT_TITLE },
@@ -148,6 +150,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <StructuredData data={buildGraph(buildWebSiteSchema(), buildWebPageSchema({ url: `${site.url}/`, name: "Hepburn Architects", description: site.description }), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildBusinessLocationSchema("nunthorpe"), buildArchitectSchema())} />
       <section className="hero home-hero">
         <div className="shell hero-grid">
           <div className="hero-copy">

@@ -9,6 +9,8 @@ import { urlFor } from "@/sanity/lib/image";
 import { createSeoMetadata, PROJECT_DESCRIPTIONS, PROJECT_TITLES, projectSeoTitle, seoDescription } from "@/lib/seo";
 import { getReviewForProject } from "@/lib/reviews";
 import { ReviewQuote } from "@/components/reviews/RelevantReview";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildGraph, buildProjectSchema, buildWebPageSchema, breadcrumbId } from "@/lib/structured-data";
 
 type PortableTextBlock = { children?: Array<{ text?: string }> };
 
@@ -66,16 +68,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const hasProjectDescription = Boolean(project.projectDescription?.length);
   const useDescriptionColumns = portableTextCharacterCount(project.projectDescription as PortableTextBlock[] | undefined) >= 360;
   const localLocationPage = getProjectLocationPage(project.location);
-  const schemas = {
-    "@context": "https://schema.org",
-    "@graph": [
-      { "@type": "CreativeWork", "@id": `${site.url}/projects/${project.slug}#case-study`, name: project.title, description: project.description, image: [heroImage, ...(project.gallery || []).map((image) => projectImageUrl(image, 1400))], creator: { "@type": "Organization", "@id": `${site.url}/#organization`, name: site.legalName }, locationCreated: { "@type": "Place", name: project.location }, dateModified: project._updatedAt, url: `${site.url}/projects/${project.slug}`, about: [project.projectType, project.category].filter(Boolean), keywords: [project.projectType, project.category, project.location, ...(project.services || [])].filter(Boolean), mainEntityOfPage: `${site.url}/projects/${project.slug}` },
-      { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: site.url }, { "@type": "ListItem", position: 2, name: "Projects", item: `${site.url}/projects` }, { "@type": "ListItem", position: 3, name: project.title, item: `${site.url}/projects/${project.slug}` }] },
-    ],
-  };
+  const url = `${site.url}/projects/${project.slug}`;
+  const schemas = buildGraph(
+    buildWebPageSchema({ url, name: project.title, description: project.description, breadcrumb: breadcrumbId(url), mainEntity: `${url}#project`, primaryImage: heroImage }),
+    buildProjectSchema({ url, name: project.title, description: project.description, images: [heroImage, ...(project.gallery || []).map((image) => projectImageUrl(image, 1400))], location: project.location, dateModified: project._updatedAt, keywords: [project.projectType, project.category, project.location, ...(project.services || [])].filter((item): item is string => Boolean(item)) }),
+    buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Projects", url: `${site.url}/projects` }, { name: project.title, url }]),
+  );
 
   return <>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
+    <StructuredData data={schemas} />
     <section className="project-detail-hero">
       <Image src={heroImage} alt={projectImageAlt(project)} width={1920} height={1200} priority sizes="100vw" />
       <div className="shell project-detail-overlay"><small>{project.category}</small><h1>{project.title}</h1><p><MapPin size={16} /> {project.location}</p></div>

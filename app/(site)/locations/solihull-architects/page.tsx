@@ -18,6 +18,8 @@ import {
 } from "@/lib/projects";
 import { site } from "@/lib/site";
 import { RelatedGuides } from "@/components/internal-links/RelatedGuides";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildFaqSchema, buildGraph, buildServiceSchema, buildWebPageSchema, breadcrumbId, serviceId } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Architects in Solihull",
@@ -95,66 +97,12 @@ export default async function SolihullArchitectPage() {
   const regionalProjects = selectSolihullProjects(await getProjects());
   const office = site.offices.birmingham;
 
-  const schemas = [
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: site.url },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Locations",
-          item: `${site.url}/locations`,
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: "Solihull",
-          item: `${site.url}/locations/solihull-architects`,
-        },
-      ],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      name: "Residential architectural services in Solihull",
-      serviceType: "Residential architectural services",
-      url: `${site.url}/locations/solihull-architects`,
-      areaServed: [
-        "Solihull",
-        "Knowle",
-        "Dorridge",
-        "Shirley",
-        "Olton",
-        "Dickens Heath",
-        "Balsall Common",
-      ],
-      provider: { "@id": `${site.url}/#organization` },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: solihullFaqs.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: item.answer,
-        },
-      })),
-    },
-  ];
+  const url = `${site.url}/locations/solihull-architects`;
+  const schemas = buildGraph(buildWebPageSchema({ url, name: "Residential Architects in Solihull", description: metadata.description as string, breadcrumb: breadcrumbId(url), mainEntity: serviceId(url) }), buildServiceSchema({ url, name: "Residential architectural services in Solihull", description: metadata.description as string, areas: ["Solihull", "Knowle", "Dorridge", "Shirley", "Olton", "Dickens Heath", "Balsall Common"].map((name) => ({ name })), studio: "birmingham" }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Locations", url: `${site.url}/locations` }, { name: "Solihull", url }]), buildFaqSchema(url, solihullFaqs));
 
   return (
     <>
-      {schemas.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
+      <StructuredData data={schemas} />
 
       <section className="section location-hero">
         <div className="shell content-page">

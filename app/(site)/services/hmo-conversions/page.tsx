@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import { site } from "@/lib/site";
 import { RelevantReview } from "@/components/reviews/RelevantReview";
+import { StructuredData } from "@/components/StructuredData";
+import { buildGraph } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "HMO Conversion Architect",
@@ -240,15 +242,7 @@ export default async function HmoConversionsPage() {
           Residential architects in Birmingham <ArrowRight size={15} />
         </Link>
       </div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
+      <StructuredData data={buildGraph(faqSchema, serviceSchema)} />
 
       <section className="service-detail-hero">
         <div className="shell service-detail-grid">

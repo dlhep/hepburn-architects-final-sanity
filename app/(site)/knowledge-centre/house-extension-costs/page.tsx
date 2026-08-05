@@ -5,6 +5,8 @@ import { ArrowRight, ArrowUpRight, CalendarDays, Check, ExternalLink } from "luc
 import { getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
 import styles from "./page.module.css";
+import { StructuredData } from "@/components/StructuredData";
+import { buildGraph } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "House Extension Costs 2026",
@@ -208,9 +210,7 @@ export default async function HouseExtensionCostsPage() {
 
   return (
     <>
-      {[breadcrumbSchema, articleSchema, faqSchema].map((schema, index) => (
-        <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      ))}
+      <StructuredData data={buildGraph(breadcrumbSchema, articleSchema, faqSchema)} />
 
       <header className={styles.hero}>
         <div className="shell">

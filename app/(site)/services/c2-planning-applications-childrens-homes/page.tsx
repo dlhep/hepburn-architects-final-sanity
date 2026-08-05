@@ -23,6 +23,8 @@ import {
 import { getProjects, projectImageAlt, projectImageUrl } from "@/lib/projects";
 import { site } from "@/lib/site";
 import styles from "./page.module.css";
+import { StructuredData } from "@/components/StructuredData";
+import { buildGraph } from "@/lib/structured-data";
 
 const title = "Children's Home Planning Applications";
 const description =
@@ -291,13 +293,7 @@ export default async function ChildrensHomesPlanningPage() {
 
   return (
     <>
-      {schemas.map((schema) => (
-        <script
-          key={schema["@type"]}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
+      <StructuredData data={buildGraph(...schemas)} />
 
       <section className={styles.hero}>
         <div className="shell">

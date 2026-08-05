@@ -5,8 +5,9 @@ import { Breadcrumbs } from "@/components/internal-links/Breadcrumbs";
 import { ReviewQuote } from "@/components/reviews/RelevantReview";
 import { getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { getReviewForLocation } from "@/lib/reviews";
-import { serializeJsonLd } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildFaqSchema, buildGraph, buildPlaceSchema, buildServiceSchema, buildWebPageSchema, breadcrumbId, serviceId } from "@/lib/structured-data";
 import styles from "./premium-location.module.css";
 
 export type PremiumLocationContent = {
@@ -66,18 +67,16 @@ export async function PremiumLocationPage({ content }: { content: PremiumLocatio
   const canonical = `${site.url}/locations/${content.slug}`;
   const [allProjects, review] = await Promise.all([getProjects(), getReviewForLocation(content.slug)]);
   const projects = selectProjects(allProjects, content);
-  const schema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      { "@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: content.h1, description: content.description, breadcrumb: { "@id": `${canonical}#breadcrumb` }, mainEntity: { "@id": `${canonical}#service` }, inLanguage: "en-GB" },
-      { "@type": "BreadcrumbList", "@id": `${canonical}#breadcrumb`, itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: site.url }, { "@type": "ListItem", position: 2, name: "Locations", item: `${site.url}/locations` }, { "@type": "ListItem", position: 3, name: content.name, item: canonical }] },
-      { "@type": "Service", "@id": `${canonical}#service`, name: `Residential architectural services in ${content.name}`, serviceType: content.services.map((service) => service.title), areaServed: content.areaServed.map((name) => ({ "@type": "Place", name })), provider: { "@id": `${site.url}/#organization` }, url: canonical },
-      { "@type": "FAQPage", "@id": `${canonical}#faq`, mainEntity: content.faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) },
-    ],
-  };
+  const schema = buildGraph(
+    buildWebPageSchema({ url: canonical, name: content.h1, description: content.description, breadcrumb: breadcrumbId(canonical), mainEntity: serviceId(canonical) }),
+    buildServiceSchema({ url: canonical, name: `Residential architectural services in ${content.name}`, description: content.description, serviceType: content.services.map((service) => service.title).join(", "), areas: content.areaServed.map((name) => ({ name })), studio: "birmingham" }),
+    buildPlaceSchema(canonical, content.name),
+    buildBreadcrumbSchema(canonical, [{ name: "Home", url: `${site.url}/` }, { name: "Locations", url: `${site.url}/locations` }, { name: content.name, url: canonical }]),
+    buildFaqSchema(canonical, content.faqs),
+  );
 
   return <>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
+    <StructuredData data={schema} />
     <section className={styles.hero}>
       <div className="shell">
         <small className="eyebrow"><MapPin size={14} /> {content.eyebrow}</small>

@@ -7,8 +7,10 @@ import { locations } from "@/lib/content-extended";
 import { getBirminghamProjects, projectImageAlt, projectImageUrl } from "@/lib/projects";
 import { getPublishedReviews, getReviewAttribution, getReviewDisplayDate, getReviewRegion, getReviewSourceLabel, getReviewSourceUrl } from "@/lib/reviews";
 import { BIRMINGHAM_REGION } from "@/lib/google-business/model";
-import { serializeJsonLd, SOCIAL_IMAGE } from "@/lib/seo";
+import { SOCIAL_IMAGE } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildBusinessLocationSchema, buildFaqSchema, buildGraph, buildServiceSchema, buildWebPageSchema, breadcrumbId, serviceId } from "@/lib/structured-data";
 import styles from "./page.module.css";
 
 const path = "/locations/birmingham-architects";
@@ -96,16 +98,10 @@ export default async function BirminghamArchitectsPage() {
   const localReviews = reviews.filter((review) => getReviewRegion(review) === BIRMINGHAM_REGION || review.relatedLocation === "birmingham-architects").slice(0, 3);
   const requestedAreas = ["Harborne", "Edgbaston", "Moseley", "Kings Heath", "Sutton Coldfield", "Four Oaks", "Solihull", "Bournville", "Bearwood", "Quinton", "Northfield", "Erdington", "Selly Oak", "Shirley", "Hall Green", "Acocks Green", "Handsworth", "Jewellery Quarter", "Digbeth"];
   const areaLinks = requestedAreas.map((name) => locations.find((location) => location.shortTitle.toLowerCase() === name.toLowerCase())).filter((location): location is NonNullable<typeof location> => Boolean(location));
-  const schema = { "@context": "https://schema.org", "@graph": [
-    { "@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: "Residential Architects in Birmingham", description, breadcrumb: { "@id": `${canonical}#breadcrumb` }, mainEntity: { "@id": `${canonical}#service` }, inLanguage: "en-GB" },
-    { "@type": "BreadcrumbList", "@id": `${canonical}#breadcrumb`, itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: site.url }, { "@type": "ListItem", position: 2, name: "Locations", item: `${site.url}/locations` }, { "@type": "ListItem", position: 3, name: "Birmingham Architects", item: canonical }] },
-    { "@type": ["Architect", "LocalBusiness", "ProfessionalService"], "@id": `${site.url}/#birmingham-studio`, name: "Hepburn Architects Birmingham", legalName: site.legalName, url: canonical, telephone: site.phone, email: site.email, address: { "@type": "PostalAddress", ...site.offices.birmingham }, areaServed: [{ "@type": "City", name: "Birmingham" }, { "@type": "AdministrativeArea", name: "West Midlands" }], sameAs: [site.instagram, site.facebook, site.googleBusiness] },
-    { "@type": "Service", "@id": `${canonical}#service`, name: "Residential architectural services in Birmingham", serviceType: services.map(([name]) => name), areaServed: { "@type": "City", name: "Birmingham" }, provider: { "@id": `${site.url}/#birmingham-studio` }, url: canonical },
-    { "@type": "FAQPage", "@id": `${canonical}#faq`, mainEntity: faqs.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) },
-  ] };
+  const schema = buildGraph(buildWebPageSchema({ url: canonical, name: "Residential Architects in Birmingham", description, breadcrumb: breadcrumbId(canonical), mainEntity: serviceId(canonical) }), buildServiceSchema({ url: canonical, name: "Residential architectural services in Birmingham", description, serviceType: services.map(([name]) => name).join(", "), areas: [{ type: "City", name: "Birmingham" }, { type: "AdministrativeArea", name: "West Midlands" }], studio: "birmingham" }), buildBusinessLocationSchema("birmingham"), buildBreadcrumbSchema(canonical, [{ name: "Home", url: `${site.url}/` }, { name: "Locations", url: `${site.url}/locations` }, { name: "Birmingham", url: canonical }]), buildFaqSchema(canonical, faqs.map(([question, answer]) => ({ question, answer }))));
 
   return <>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
+    <StructuredData data={schema} />
     <section className={styles.hero}><div className="shell"><div className={styles.heroGrid}><div><small className="eyebrow"><MapPin size={14}/> Birmingham residential architecture</small><h1>Residential Architects in Birmingham</h1><p className="lead">Hepburn Architects is a director-led, RIBA Chartered practice specialising in homes, residential conversions and small developments across Birmingham.</p><div className="actions"><Link className="btn primary" href="/contact">Discuss your project <ArrowRight size={17}/></Link><Link className="btn secondary" href="/estimate">Fee calculator</Link></div></div><aside className={styles.heroAside}><strong>Design, planning and technical clarity—from the first property review to construction information.</strong><p>We work with homeowners, developers and property investors on extensions, loft conversions, new-build homes, HMO conversions and changes of use, combining planning judgment with careful Building Regulations coordination.</p></aside></div><nav className={styles.subnav} aria-label="On this page"><a href="#why-us">Why us</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#planning">Planning</a><a href="#building-regulations">Building Regulations</a><a href="#faqs">FAQs</a></nav><div className={styles.trust}>{principles.slice(0,4).map(([title],i)=><div key={title}><span>0{i+1}</span><strong>{title}</strong></div>)}</div></div></section>
     <div className="shell" style={{paddingTop:"1.25rem"}}><Breadcrumbs items={[{label:"Locations",href:"/locations"},{label:"Birmingham Architects"}]}/></div>
 

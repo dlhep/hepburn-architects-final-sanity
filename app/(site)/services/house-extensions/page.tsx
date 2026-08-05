@@ -16,6 +16,8 @@ import {
 import { site } from "@/lib/site";
 import styles from "../../knowledge-centre/planning-permission/page.module.css";
 import { RelevantReview } from "@/components/reviews/RelevantReview";
+import { StructuredData } from "@/components/StructuredData";
+import { buildGraph } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "House Extension Architects Birmingham & West Midlands",
@@ -456,17 +458,8 @@ export default async function HouseExtensionsPage() {
     name: "House extension architectural services",
     serviceType: "House extension architecture, planning and Building Regulations",
     description: "Planning-led house extension design and technical support for homes across Birmingham and the West Midlands.",
-    provider: { "@type": "Organization", name: site.legalName, url: site.url },
+    provider: { "@id": `${site.url}/#organisation` },
     areaServed: ["Birmingham", "Solihull", "Sutton Coldfield", "Wolverhampton", "Walsall", "Leamington Spa", "West Midlands"],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "House extension architectural services",
-      itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Feasibility and concept design" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Planning applications" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Building Regulations drawings" } },
-      ],
-    },
     url: `${site.url}/services/house-extensions`,
   };
 
@@ -477,13 +470,7 @@ export default async function HouseExtensionsPage() {
           Residential architects in Birmingham <ArrowRight size={15} />
         </Link>
       </div>
-      {[breadcrumbSchema, faqSchema, serviceSchema].map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
+      <StructuredData data={buildGraph(breadcrumbSchema, faqSchema, serviceSchema)} />
 
       <header className={styles.hero}>
         <div className="shell">

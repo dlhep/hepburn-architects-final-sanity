@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ExternalLink, Newspaper } from "lucide-react";
-import { serializeJsonLd } from "@/lib/seo";
+import { StructuredData } from "@/components/StructuredData";
+import { buildGraph } from "@/lib/structured-data";
 import { site } from "@/lib/site";
 import styles from "../house-extension-planning-permission-birmingham-2026-guide/page.module.css";
 
@@ -45,7 +46,7 @@ export default function BirminghamLoftPlanningGuidePage() {
     { "@type": "BreadcrumbList", "@id": `${url}#breadcrumb`, itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` }, { "@type": "ListItem", position: 2, name: "Journal", item: `${site.url}/blog` }, { "@type": "ListItem", position: 3, name: title, item: url }] },
     { "@type": "FAQPage", "@id": `${url}#faq`, mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) },
   ] };
-  return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}/><article className={`section ${styles.article}`}><div className="shell article-page">
+  return <><StructuredData data={buildGraph(schema)} /><article className={`section ${styles.article}`}><div className="shell article-page">
     <nav aria-label="Breadcrumb" className="muted small-copy"><Link href="/">Home</Link> · <Link href="/blog">Journal</Link></nav><small className="eyebrow"><Newspaper size={14}/> Planning guidance</small><h1>{title}</h1>
     <p className="lead">Many Birmingham loft conversions can potentially proceed under permitted development, but dormers, hip-to-gable extensions, rooflights and conservation-area properties are subject to detailed restrictions. This guide explains the main approval routes and the checks to make before starting work.</p><p className={styles.byline}>Published 2 August 2026 · 10 minutes read · By <Link href="/about">David Hepburn</Link></p>
     <figure className={styles.hero}><Image src="/images/birmingham-residential-project.jpg" alt="Residential extension project in Sutton Coldfield, Birmingham" width={1024} height={485} priority sizes="(max-width: 1100px) 100vw, 1100px"/><figcaption>Genuine Hepburn Architects residential project in Sutton Coldfield, Birmingham. This image is not presented as a loft-conversion case study.</figcaption></figure>

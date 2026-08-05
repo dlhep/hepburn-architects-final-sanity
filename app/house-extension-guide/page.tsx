@@ -19,6 +19,8 @@ import { getProjects, projectImageAlt, projectImageUrl } from "@/lib/projects";
 import { site } from "@/lib/site";
 import { GuideForm } from "./GuideForm";
 import styles from "./page.module.css";
+import { StructuredData } from "@/components/StructuredData";
+import { buildArticleSchema, buildBreadcrumbSchema, buildGraph, buildWebPageSchema, breadcrumbId } from "@/lib/structured-data";
 
 const title = "Free House Extension Guide";
 const description =
@@ -77,9 +79,11 @@ const reviews = [
 export default async function HouseExtensionGuidePage() {
   const projects = await getProjects();
   const project = projects.find((item) => item.category.toLowerCase().includes("extension")) ?? projects[0];
+  const url = `${site.url}/house-extension-guide`;
 
   return (
     <main className={styles.page}>
+      <StructuredData data={buildGraph(buildWebPageSchema({ url, name: title, description, breadcrumb: breadcrumbId(url), mainEntity: `${url}#article`, primaryImage: `${site.url}/images/house-extension-guide-cover.png` }), buildArticleSchema({ url, headline: "Planning a House Extension — A Practical Homeowner's Guide", description, image: `${site.url}/images/house-extension-guide-cover.png`, section: "House extensions" }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "House Extension Guide", url }]))} />
       <header className={styles.header}>
         <div className={`shell ${styles.headerInner}`}>
           <Link href="/" aria-label="Hepburn Architects home">

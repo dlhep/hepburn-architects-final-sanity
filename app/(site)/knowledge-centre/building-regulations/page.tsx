@@ -16,6 +16,8 @@ import {
 } from "@/lib/projects";
 import { site } from "@/lib/site";
 import styles from "../planning-permission/page.module.css";
+import { StructuredData } from "@/components/StructuredData";
+import { buildArticleSchema, buildGraph, buildWebPageSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Building Regulations Explained",
@@ -481,13 +483,7 @@ export default async function BuildingRegulationsPage() {
 
   return (
     <>
-      {[breadcrumbSchema, faqSchema].map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
+      <StructuredData data={buildGraph(buildWebPageSchema({ url: `${site.url}/knowledge-centre/building-regulations`, name: "Building Regulations Explained", description: metadata.description as string, breadcrumb: `${site.url}/knowledge-centre/building-regulations#breadcrumb`, mainEntity: `${site.url}/knowledge-centre/building-regulations#article` }), buildArticleSchema({ url: `${site.url}/knowledge-centre/building-regulations`, headline: "Building Regulations Explained", description: metadata.description as string, section: "Building Regulations" }), breadcrumbSchema, faqSchema)} />
 
       <header className={styles.hero}>
         <div className="shell">

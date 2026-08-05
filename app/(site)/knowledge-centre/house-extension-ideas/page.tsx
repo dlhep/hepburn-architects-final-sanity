@@ -5,6 +5,8 @@ import { ArrowRight, ArrowUpRight, CalendarDays, Check } from "lucide-react";
 import { getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
 import styles from "./page.module.css";
+import { StructuredData } from "@/components/StructuredData";
+import { buildGraph } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "House Extension Design Ideas",
@@ -233,7 +235,7 @@ export default async function HouseExtensionIdeasPage() {
 
   return (
     <>
-      {schemas.map((schema, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />)}
+      <StructuredData data={buildGraph(...schemas)} />
       <header className={styles.hero}><div className="shell">
         <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/knowledge-centre">Knowledge Centre</Link><span aria-hidden="true">/</span><span aria-current="page">House Extension Ideas</span></nav>
         <div className={styles.heroGrid}>

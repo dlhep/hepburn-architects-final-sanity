@@ -9,9 +9,12 @@ import { getBirminghamProjects, getProjects, projectImageAlt, projectImageUrl, t
 import { site } from "@/lib/site";
 import { RelatedGuides } from "@/components/internal-links/RelatedGuides";
 import { Breadcrumbs } from "@/components/internal-links/Breadcrumbs";
-import { createSeoMetadata, serializeJsonLd, SOCIAL_IMAGE } from "@/lib/seo";
+import { createSeoMetadata, SOCIAL_IMAGE } from "@/lib/seo";
 import { getReviewForLocation } from "@/lib/reviews";
 import { ReviewQuote } from "@/components/reviews/RelevantReview";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildFaqSchema, buildGraph, buildServiceSchema, buildWebPageSchema, breadcrumbId, serviceId } from "@/lib/structured-data";
+import { regionForLocationSlug, NORTH_EAST_REGION } from "@/lib/google-business/model";
 
 const birminghamFaqs = [
   { question: "What type of projects does Hepburn Architects undertake in Birmingham?", answer: "Hepburn Architects supports house extensions, loft conversions, new-build homes, HMOs, flat conversions, planning applications, Building Regulations packages and small residential developments. The suitability and scope of each appointment are reviewed before work begins." },
@@ -137,99 +140,13 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
       ? "Solihull projects often need to respond to mature suburban character, conservation areas, Green Belt edges, trees and made neighbourhood plans as well as the national planning framework."
       : page.planningIntro;
 
-  const schemas: Array<Record<string, unknown>> = isBirmingham ? [{
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": `${site.url}/locations/birmingham-architects#webpage`,
-        url: `${site.url}/locations/birmingham-architects`,
-        name: "Residential Architects in Birmingham",
-        description: "Director-led residential architectural design, planning and Building Regulations services across Birmingham.",
-        isPartOf: { "@id": `${site.url}/#website` },
-        about: { "@id": `${site.url}/#birmingham-studio` },
-        mainEntity: { "@id": `${site.url}/#birmingham-studio` },
-        breadcrumb: { "@id": `${site.url}/locations/birmingham-architects#breadcrumb` },
-        inLanguage: "en-GB",
-      },
-      {
-        "@type": ["ProfessionalService", "ArchitecturalService"],
-        "@id": `${site.url}/#birmingham-studio`,
-        name: "Hepburn Architects Birmingham",
-        legalName: site.legalName,
-        url: `${site.url}/locations/birmingham-architects`,
-        telephone: "+447720813035",
-        email: site.email,
-        parentOrganization: { "@id": `${site.url}/#organization` },
-        address: { "@type": "PostalAddress", streetAddress: site.offices.birmingham.streetAddress, addressLocality: site.offices.birmingham.addressLocality, postalCode: site.offices.birmingham.postalCode, addressCountry: "GB" },
-        areaServed: [
-          { "@type": "City", name: "Birmingham" },
-          { "@type": "AdministrativeArea", name: "West Midlands" },
-          ...["Harborne", "Edgbaston", "Moseley", "Kings Heath", "Bournville", "Sutton Coldfield"].map((name) => ({ "@type": "Place", name })),
-        ],
-        knowsAbout: ["Residential architecture", "House extensions", "Loft conversions", "New-build homes", "Planning applications", "Building Regulations", "HMO conversions", "Residential development"],
-        sameAs: [site.instagram, site.facebook, site.googleBusiness],
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${site.url}/locations/birmingham-architects#breadcrumb`,
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${site.url}/` },
-          { "@type": "ListItem", position: 2, name: "Locations", item: `${site.url}/locations` },
-          { "@type": "ListItem", position: 3, name: "Birmingham Architects", item: `${site.url}/locations/birmingham-architects` },
-        ],
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${site.url}/locations/birmingham-architects#faq`,
-        mainEntity: birminghamFaqs.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })),
-      },
-    ],
-  }] : [
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: site.url },
-        { "@type": "ListItem", position: 2, name: "Locations", item: `${site.url}/locations` },
-        { "@type": "ListItem", position: 3, name: page.shortTitle, item: `${site.url}/locations/${slug}` },
-      ],
-    },
-    isBirmingham
-      ? {
-          "@context": "https://schema.org",
-          "@type": ["Architect", "LocalBusiness"],
-          "@id": `${site.url}/#birmingham-studio`,
-          name: "Hepburn Architects Birmingham",
-          url: `${site.url}/locations/birmingham-architects`,
-          telephone: "+44 7720 813035",
-          email: site.email,
-          address: { "@type": "PostalAddress", streetAddress: site.offices.birmingham.streetAddress, addressLocality: site.offices.birmingham.addressLocality, postalCode: site.offices.birmingham.postalCode, addressCountry: site.offices.birmingham.addressCountry },
-          areaServed: ["Birmingham", "West Midlands"],
-          parentOrganization: { "@id": `${site.url}/#organization` },
-        }
-      : {
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: `Residential architectural services in ${page.shortTitle}`,
-          serviceType: "Residential architectural services",
-          url: `${site.url}/locations/${slug}`,
-          areaServed: [page.shortTitle, ...page.nearbyAreas],
-          provider: { "@id": `${site.url}/#organization` },
-        },
-  ];
-
-  if (faqs.length && !isBirmingham) {
-    schemas.push({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqs.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })),
-    });
-  }
+  const url = `${site.url}/locations/${slug}`;
+  const studio = regionForLocationSlug(slug) === NORTH_EAST_REGION ? "nunthorpe" : "birmingham";
+  const schemas = buildGraph(buildWebPageSchema({ url, name: page.title, description: page.description, breadcrumb: breadcrumbId(url), mainEntity: serviceId(url) }), buildServiceSchema({ url, name: `Residential architectural services in ${page.shortTitle}`, description: page.description, areas: [page.shortTitle, ...page.nearbyAreas].map((name) => ({ name })), studio }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Locations", url: `${site.url}/locations` }, { name: page.shortTitle, url }]), buildFaqSchema(url, faqs));
 
   return (
     <>
-      {schemas.map((schema, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />)}
+      <StructuredData data={schemas} />
 
       <section className="section location-hero">
         <div className="shell content-page">

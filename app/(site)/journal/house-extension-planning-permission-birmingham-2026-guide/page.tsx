@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ExternalLink, Newspaper } from "lucide-react";
-import { serializeJsonLd } from "@/lib/seo";
+import { StructuredData } from "@/components/StructuredData";
+import { buildGraph } from "@/lib/structured-data";
 import { site } from "@/lib/site";
 import styles from "./page.module.css";
 
@@ -46,7 +47,7 @@ export default function BirminghamExtensionPlanningGuidePage() {
     { "@type": "FAQPage", "@id": `${url}#faq`, mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) },
   ] };
   return <>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />
+    <StructuredData data={buildGraph(schema)} />
     <article className={`section ${styles.article}`}><div className="shell article-page">
       <nav aria-label="Breadcrumb" className="muted small-copy"><Link href="/">Home</Link> · <Link href="/blog">Journal</Link></nav>
       <small className="eyebrow"><Newspaper size={14}/> Planning guidance</small><h1>{title}</h1>

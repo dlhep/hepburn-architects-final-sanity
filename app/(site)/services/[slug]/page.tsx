@@ -11,6 +11,8 @@ import { RelatedServices } from "@/components/internal-links/RelatedServices";
 import { Breadcrumbs } from "@/components/internal-links/Breadcrumbs";
 import { createSeoMetadata } from "@/lib/seo";
 import { RelevantReview } from "@/components/reviews/RelevantReview";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildFaqSchema, buildGraph, buildServiceSchema, buildWebPageSchema, breadcrumbId, serviceId } from "@/lib/structured-data";
 
 function selectProjects(projects: Project[], terms: string[]) {
   return projects
@@ -54,42 +56,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   if (!service) notFound();
 
   const projects = selectProjects(await getProjects(), service.projectTerms);
-  const schemas = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      name: service.title,
-      description: service.metaDescription,
-      serviceType: service.title,
-      url: `${site.url}/services/${slug}`,
-      areaServed: ["Birmingham", "Solihull", "West Midlands"],
-      provider: { "@id": `${site.url}/#organization` },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: site.url },
-        { "@type": "ListItem", position: 2, name: "Services", item: `${site.url}/services` },
-        { "@type": "ListItem", position: 3, name: service.title, item: `${site.url}/services/${slug}` },
-      ],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: service.faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: { "@type": "Answer", text: faq.answer },
-      })),
-    },
-  ];
+  const url = `${site.url}/services/${slug}`;
+  const schema = buildGraph(
+    buildWebPageSchema({ url, name: service.title, description: service.metaDescription, breadcrumb: breadcrumbId(url), mainEntity: serviceId(url), primaryImage: service.hero }),
+    buildServiceSchema({ url, name: service.title, description: service.metaDescription, areas: [{ type: "City", name: "Birmingham" }, { name: "Solihull" }, { type: "AdministrativeArea", name: "West Midlands" }], studio: "birmingham", image: service.hero }),
+    buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Services", url: `${site.url}/services` }, { name: service.title, url }]),
+    buildFaqSchema(url, service.faqs),
+  );
 
   return (
     <>
-      {schemas.map((schema, index) => (
-        <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
-      ))}
+      <StructuredData data={schema} />
 
       <div className="shell" style={{ paddingTop: "1rem" }}>
         <Link className="text-link" href="/locations/birmingham-architects">

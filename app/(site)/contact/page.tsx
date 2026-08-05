@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { CalendarDays, Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/lib/site";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildBusinessLocationSchema, buildGraph, buildOrganisationSchema, buildWebPageSchema, breadcrumbId } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Contact Our Architecture Studio",
@@ -41,6 +43,7 @@ function OfficeCard({
 export default function ContactPage() {
   return (
     <>
+      <StructuredData data={buildGraph(buildWebPageSchema({ url: `${site.url}/contact`, name: "Contact Hepburn Architects", description: metadata.description as string, type: "ContactPage", breadcrumb: breadcrumbId(`${site.url}/contact`) }), buildBreadcrumbSchema(`${site.url}/contact`, [{ name: "Home", url: `${site.url}/` }, { name: "Contact", url: `${site.url}/contact` }]), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildBusinessLocationSchema("nunthorpe"))} />
       <section className="section contact-hero">
         <div className="shell contact-grid">
           <div>

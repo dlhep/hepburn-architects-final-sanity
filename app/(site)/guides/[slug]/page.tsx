@@ -18,6 +18,8 @@ import { getGuideArticle } from "@/lib/guides";
 import { site } from "@/lib/site";
 import { createSeoMetadata, guideSeoTitle, seoDescription } from "@/lib/seo";
 import { CommercialNextStep } from "@/components/internal-links/CommercialNextStep";
+import { StructuredData } from "@/components/StructuredData";
+import { buildArticleSchema, buildBreadcrumbSchema, buildFaqSchema, buildGraph, buildWebPageSchema, breadcrumbId } from "@/lib/structured-data";
 
 export function generateStaticParams() {
   return guides.map((item) => ({ slug: item.slug }));
@@ -100,66 +102,12 @@ export default async function GuidePage({
       .filter((item) => item.slug !== slug)
       .slice(0, 4);
 
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Article",
-          headline: sanityPage.title,
-          description: sanityPage.excerpt,
-          datePublished: sanityPage.publishedAt,
-          dateModified: sanityPage._updatedAt || sanityPage.publishedAt,
-          author: {
-            "@type": "Person",
-            name: sanityPage.author || "David Hepburn",
-            jobTitle: "Architect",
-            url: `${site.url}/studio`,
-            worksFor: {
-              "@type": "Organization",
-              name: site.legalName,
-              url: site.url,
-            },
-          },
-          publisher: {
-            "@type": "Organization",
-            name: site.legalName,
-            url: site.url,
-          },
-          mainEntityOfPage: `${site.url}/guides/${slug}`,
-          image,
-        },
-        {
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            {
-              "@type": "ListItem",
-              position: 1,
-              name: "Home",
-              item: site.url,
-            },
-            {
-              "@type": "ListItem",
-              position: 2,
-              name: "Guides",
-              item: `${site.url}/guides`,
-            },
-            {
-              "@type": "ListItem",
-              position: 3,
-              name: sanityPage.title,
-              item: `${site.url}/guides/${slug}`,
-            },
-          ],
-        },
-      ],
-    };
+    const url = `${site.url}/guides/${slug}`;
+    const structuredData = buildGraph(buildWebPageSchema({ url, name: sanityPage.title, description: sanityPage.excerpt, breadcrumb: breadcrumbId(url), mainEntity: `${url}#article`, primaryImage: image }), buildArticleSchema({ url, headline: sanityPage.title, description: sanityPage.excerpt, datePublished: sanityPage.publishedAt, dateModified: sanityPage._updatedAt || sanityPage.publishedAt, image, section: sanityPage.category }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Knowledge Centre", url: `${site.url}/guides` }, { name: sanityPage.title, url }]));
 
     return (
       <>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <StructuredData data={structuredData} />
         <article className="section">
           <div className="shell article-page">
             <nav aria-label="Breadcrumb" style={{ marginBottom: "1.25rem" }}>
@@ -268,78 +216,12 @@ export default async function GuidePage({
     .map((relatedSlug) => guides.find((item) => item.slug === relatedSlug))
     .filter((item): item is (typeof guides)[number] => Boolean(item));
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Article",
-        headline: page.title,
-        description: article.metaDescription,
-        datePublished: article.publishedAt,
-        dateModified: article.lastReviewed,
-        author: {
-          "@type": "Person",
-          name: "David Hepburn",
-          jobTitle: "Architect",
-          url: `${site.url}/studio`,
-          worksFor: {
-            "@type": "Organization",
-            name: site.legalName,
-            url: site.url,
-          },
-        },
-        publisher: {
-          "@type": "Organization",
-          name: site.legalName,
-          url: site.url,
-        },
-        mainEntityOfPage: `${site.url}/guides/${slug}`,
-        articleSection: article.category,
-        about: article.keyPoints,
-      },
-      {
-        "@type": "FAQPage",
-        mainEntity: article.faqs.map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: faq.answer,
-          },
-        })),
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: site.url,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Guides",
-            item: `${site.url}/guides`,
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: page.title,
-            item: `${site.url}/guides/${slug}`,
-          },
-        ],
-      },
-    ],
-  };
+  const url = `${site.url}/guides/${slug}`;
+  const structuredData = buildGraph(buildWebPageSchema({ url, name: page.title, description: article.metaDescription, breadcrumb: breadcrumbId(url), mainEntity: `${url}#article` }), buildArticleSchema({ url, headline: page.title, description: article.metaDescription, datePublished: article.publishedAt, dateModified: article.lastReviewed, section: article.category, keywords: article.keyPoints }), buildFaqSchema(url, article.faqs), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Knowledge Centre", url: `${site.url}/guides` }, { name: page.title, url }]));
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      <StructuredData data={structuredData} />
       <article className="section">
         <div className="shell article-page">
           <nav aria-label="Breadcrumb" style={{ marginBottom: "1.25rem" }}>

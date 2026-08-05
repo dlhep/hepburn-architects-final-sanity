@@ -6,6 +6,8 @@ import { guides } from "@/lib/content";
 import { articleImageUrl, getSanityGuides } from "@/lib/articles";
 import { getGuideArticle } from "@/lib/guides";
 import { site } from "@/lib/site";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, buildItemListSchema, breadcrumbId } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Residential Planning Guides",
@@ -39,31 +41,12 @@ export default async function GuidesPage() {
     })),
   ];
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Residential planning and architecture guides",
-    description:
-      "Architect-reviewed guidance for residential projects in England.",
-    url: `${site.url}/guides`,
-    mainEntity: {
-      "@type": "ItemList",
-      numberOfItems: allItems.length,
-      itemListElement: allItems.map((item, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: item.name,
-        url: item.url,
-      })),
-    },
-  };
+  const url = `${site.url}/guides`;
+  const structuredData = buildGraph(buildCollectionPageSchema({ url, name: "Residential planning and architecture guides", description: "Architect-reviewed guidance for residential projects in England.", breadcrumb: breadcrumbId(url) }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Knowledge Centre", url }]), buildItemListSchema(url, "Published guides", allItems));
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      <StructuredData data={structuredData} />
 
       <section className="section">
         <div className="shell page-intro">

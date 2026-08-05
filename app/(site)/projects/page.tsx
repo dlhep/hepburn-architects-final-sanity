@@ -5,6 +5,10 @@ import { ProjectLocationDirectory } from "@/components/ProjectLocationDirectory"
 import { getProjects } from "@/lib/projects";
 import { getMappedProjects } from "@/lib/mapped-projects.server";
 import { toPublicProjectDirectoryItem } from "@/lib/mapped-projects";
+import { projectImageUrl } from "@/lib/projects";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, buildItemListSchema, breadcrumbId } from "@/lib/structured-data";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Residential Architecture Projects in Birmingham & the West Midlands",
@@ -15,8 +19,10 @@ export const metadata: Metadata = {
 export default async function ProjectsPage() {
   const [projects, mappedProjects] = await Promise.all([getProjects(), getMappedProjects()]);
   const projectDirectory = mappedProjects.map(toPublicProjectDirectoryItem);
+  const url = `${site.url}/projects`;
   return (
     <>
+      <StructuredData data={buildGraph(buildCollectionPageSchema({ url, name: "Projects", description: metadata.description as string, breadcrumb: breadcrumbId(url) }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Projects", url }]), buildItemListSchema(url, "Published projects", projects.map((project) => ({ name: project.title, url: `${url}/${project.slug}`, image: projectImageUrl(project.featuredImage, 1200) }))))} />
       <section className="section projects-index-page">
         <div className="shell page-intro projects-index-intro">
           <small className="eyebrow">Selected residential work</small>

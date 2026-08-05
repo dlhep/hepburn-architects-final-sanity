@@ -7,6 +7,8 @@ import { articleImageUrl, getArticle, getBlogPosts } from "@/lib/articles";
 import { site } from "@/lib/site";
 import { createSeoMetadata, seoDescription } from "@/lib/seo";
 import { CommercialNextStep } from "@/components/internal-links/CommercialNextStep";
+import { StructuredData } from "@/components/StructuredData";
+import { buildArticleSchema, buildBreadcrumbSchema, buildGraph, buildWebPageSchema, breadcrumbId } from "@/lib/structured-data";
 
 const topics = [
   { terms: ["extension", "rear extension", "two-storey", "single-storey"], service: { href: "/services/house-extensions", label: "House extension architect" }, guide: { href: "/house-extension-guide", label: "House Extension Guide" } },
@@ -49,33 +51,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const image = articleImageUrl(page.featuredImage);
   const links = topicLinks(`${page.title} ${page.category || ""} ${page.excerpt}`);
 
-  const schemas = [
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      headline: page.title,
-      description: page.excerpt,
-      datePublished: page.publishedAt,
-      dateModified: page._updatedAt || page.publishedAt,
-      author: { "@type": "Person", "@id": `${site.url}/#david-hepburn`, name: page.author || "David Hepburn", url: `${site.url}/about` },
-      publisher: { "@type": "Organization", "@id": `${site.url}/#organization`, name: "Hepburn Architects Ltd", logo: { "@type": "ImageObject", url: `${site.url}/images/og.svg` } },
-      mainEntityOfPage: `${site.url}/blog/${slug}`,
-      image: image || `${site.url}/images/og.svg`,
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: site.url },
-        { "@type": "ListItem", position: 2, name: "Journal", item: `${site.url}/blog` },
-        { "@type": "ListItem", position: 3, name: page.title, item: `${site.url}/blog/${slug}` },
-      ],
-    },
-  ];
+  const url = `${site.url}/blog/${slug}`;
+  const schemas = buildGraph(buildWebPageSchema({ url, name: page.title, description: page.excerpt, breadcrumb: breadcrumbId(url), mainEntity: `${url}#article`, primaryImage: image }), buildArticleSchema({ url, headline: page.title, description: page.excerpt, datePublished: page.publishedAt, dateModified: page._updatedAt || page.publishedAt, image, section: page.category, journal: true }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Journal", url: `${site.url}/blog` }, { name: page.title, url }]));
 
   return (
     <>
-      {schemas.map((schema, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />)}
+      <StructuredData data={schemas} />
       <article className="section">
         <div className="shell article-page">
           <nav aria-label="Breadcrumb" className="muted small-copy">

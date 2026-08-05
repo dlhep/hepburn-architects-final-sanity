@@ -5,6 +5,8 @@ import { ArrowRight, ArrowUpRight, CalendarDays, Check, ExternalLink } from "luc
 import { getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
 import styles from "./page.module.css";
+import { StructuredData } from "@/components/StructuredData";
+import { buildGraph } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Extension Planning Permission",
@@ -140,7 +142,7 @@ export default async function ExtensionPlanningPermissionPage() {
 
   return (
     <>
-      {[breadcrumbSchema, articleSchema, faqSchema].map((schema) => <script key={schema["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />)}
+      <StructuredData data={buildGraph(breadcrumbSchema, articleSchema, faqSchema)} />
       <header className={styles.hero}><div className="shell">
         <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/knowledge-centre">Knowledge Centre</Link><span>/</span><span aria-current="page">Extension Planning Permission</span></nav>
         <div className={styles.heroGrid}>

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { ArrowRight, Newspaper } from "lucide-react";
 import { articleImageUrl, getBlogPosts } from "@/lib/articles";
 import { site } from "@/lib/site";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, buildItemListSchema, breadcrumbId } from "@/lib/structured-data";
 
 const birminghamAuthorityArticles = [
   {
@@ -48,24 +50,13 @@ export const metadata: Metadata = {
 
 export default async function BlogPage() {
   const posts = await getBlogPosts();
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Hepburn Architects Journal",
-    url: `${site.url}/blog`,
-    description: "Planning updates, project news and residential architecture insights.",
-    mainEntity: {
-      "@type": "ItemList",
-      itemListElement: [
-        ...birminghamAuthorityArticles.map((article, index) => ({ "@type": "ListItem", position: index + 1, url: `${site.url}${article.href}`, name: article.title })),
-        ...posts.map((post, index) => ({ "@type": "ListItem", position: index + birminghamAuthorityArticles.length + 1, url: `${site.url}/blog/${post.slug}`, name: post.title })),
-      ],
-    },
-  };
+  const url = `${site.url}/blog`;
+  const items = [...birminghamAuthorityArticles.map((article) => ({ name: article.title, url: `${site.url}${article.href}` })), ...posts.map((post) => ({ name: post.title, url: `${url}/${post.slug}` }))];
+  const schema = buildGraph(buildCollectionPageSchema({ url, name: "Hepburn Architects Journal", description: metadata.description as string, breadcrumb: breadcrumbId(url) }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Journal", url }]), buildItemListSchema(url, "Published journal articles", items));
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <StructuredData data={schema} />
       <section className="section">
         <div className="shell page-intro">
           <small className="eyebrow"><Newspaper size={14} /> Journal</small>

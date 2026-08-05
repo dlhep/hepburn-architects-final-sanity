@@ -16,6 +16,8 @@ import {
 import { CollaborativeTeamGrid } from "@/components/CollaborativeTeamGrid";
 import { getCollaborators, type Collaborator } from "@/lib/collaborators";
 import { site } from "@/lib/site";
+import { StructuredData } from "@/components/StructuredData";
+import { buildArchitectSchema, buildBreadcrumbSchema, buildBusinessLocationSchema, buildGraph, buildOrganisationSchema, buildWebPageSchema, breadcrumbId } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "About Our Architecture Studio",
@@ -187,6 +189,7 @@ export default async function AboutPage() {
 
   return (
     <>
+      <StructuredData data={buildGraph(buildWebPageSchema({ url: `${site.url}/about`, name: "About Hepburn Architects", description: metadata.description as string, type: "AboutPage", breadcrumb: breadcrumbId(`${site.url}/about`) }), buildBreadcrumbSchema(`${site.url}/about`, [{ name: "Home", url: `${site.url}/` }, { name: "Studio", url: `${site.url}/about` }]), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildBusinessLocationSchema("nunthorpe"), buildArchitectSchema())} />
       <section className="studio-v4-hero">
         <div className="shell studio-v4-hero-grid">
           <div className="studio-v4-hero-copy">

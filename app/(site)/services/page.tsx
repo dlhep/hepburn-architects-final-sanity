@@ -4,6 +4,8 @@ import Image from "next/image";
 import { ArrowRight, Building2, DraftingCompass, FileCheck2, HeartHandshake, Home, Layers3, Ruler } from "lucide-react";
 import { serviceDetails } from "@/lib/service-details";
 import { site } from "@/lib/site";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, buildItemListSchema, breadcrumbId } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Residential Architectural Services",
@@ -17,6 +19,7 @@ const icons = [Home, Layers3, Building2, Ruler, FileCheck2, DraftingCompass];
 export default function ServicesPage() {
   return (
     <>
+      <StructuredData data={buildGraph(buildCollectionPageSchema({ url: `${site.url}/services`, name: "Residential Architectural Services", description: metadata.description as string, breadcrumb: breadcrumbId(`${site.url}/services`) }), buildBreadcrumbSchema(`${site.url}/services`, [{ name: "Home", url: `${site.url}/` }, { name: "Services", url: `${site.url}/services` }]), buildItemListSchema(`${site.url}/services`, "Architectural services", serviceDetails.map((service) => ({ name: service.title, url: `${site.url}/services/${service.slug}` }))))} />
       <section className="section services-hero">
         <div className="shell services-hero-grid">
           <div>

@@ -3,9 +3,11 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ReviewsCollection, ReviewItem } from "@/components/reviews/ReviewsCollection";
 import { getFeaturedReviews, getPublishedReviews } from "@/lib/reviews";
-import { createSeoMetadata, serializeJsonLd } from "@/lib/seo";
+import { createSeoMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { ReviewPageView } from "@/components/reviews/ReviewImpression";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, breadcrumbId } from "@/lib/structured-data";
 
 export const metadata: Metadata = createSeoMetadata({ title: "Hepburn Architects Reviews | Client Experiences", description: "Read verified client reviews of Hepburn Architects for residential, planning and development projects across Birmingham, the West Midlands and the North East.", path: "/reviews" });
 
@@ -19,10 +21,11 @@ export default async function ReviewsPage() {
   const [reviews, featured] = await Promise.all([getPublishedReviews(), getFeaturedReviews()]);
   const featuredReviews = featured.slice(0, 3);
   const featuredIds = featuredReviews.map((review) => review._id);
-  const schemas = { "@context": "https://schema.org", "@graph": [{ "@type": "CollectionPage", "@id": `${site.url}/reviews`, name: "Hepburn Architects Reviews | Client Experiences", url: `${site.url}/reviews`, description: metadata.description }, { "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: site.url }, { "@type": "ListItem", position: 2, name: "Client Reviews", item: `${site.url}/reviews` }] }] };
+  const url = `${site.url}/reviews`;
+  const schemas = buildGraph(buildCollectionPageSchema({ url, name: "Hepburn Architects Reviews | Client Experiences", description: metadata.description as string, breadcrumb: breadcrumbId(url) }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Client Reviews", url }]));
   return <>
     <ReviewPageView />
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schemas) }} />
+    <StructuredData data={schemas} />
     <section className="section reviews-hero"><div className="shell page-intro"><small className="eyebrow">Client experiences</small><h1>Reviews of Hepburn Architects</h1><p className="lead">Read verified client experiences from residential, planning and development projects across Birmingham, the West Midlands and the North East.</p><div className="actions"><Link className="btn primary" href="/contact" data-track-event="review_cta_click">Discuss Your Project <ArrowRight size={17} /></Link><Link className="btn secondary" href="/projects" data-track-event="review_cta_click">View Projects <ArrowRight size={17} /></Link></div></div></section>
     <section className="section reviews-introduction"><div className="shell editorial-grid"><div><small className="eyebrow">A considered decision</small><h2>Choosing an architect is a significant decision.</h2></div><div><p className="lead">Architectural appointments involve trust, communication, planning judgement and technical coordination.</p><p>Client experiences can help you understand how a practice communicates, responds to questions, develops ideas, supports planning and prepares technical information. The scope is agreed for each appointment.</p></div></div></section>
     {featuredReviews.length ? <section className="section reviews-featured"><div className="shell"><div className="section-heading"><small className="eyebrow">Verified experiences</small><h2>What clients have shared</h2></div><div className="reviews-featured-grid">{featuredReviews.map((review) => <ReviewItem key={review._id} review={review} featured />)}</div></div></section> : null}

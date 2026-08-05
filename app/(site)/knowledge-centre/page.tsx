@@ -10,6 +10,8 @@ import {
   type Project,
 } from "@/lib/projects";
 import { site } from "@/lib/site";
+import { StructuredData } from "@/components/StructuredData";
+import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, buildItemListSchema, breadcrumbId } from "@/lib/structured-data";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -151,31 +153,12 @@ export default async function KnowledgeCentrePage() {
     )
     .slice(0, 3);
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: site.url,
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Knowledge Centre",
-        item: `${site.url}/knowledge-centre`,
-      },
-    ],
-  };
+  const url = `${site.url}/knowledge-centre`;
+  const breadcrumbSchema = buildGraph(buildCollectionPageSchema({ url, name: "Architecture Knowledge Centre", description: metadata.description as string, breadcrumb: breadcrumbId(url) }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Knowledge Centre", url }]), buildItemListSchema(url, "Knowledge Centre resources", topicNavigation.map((item) => ({ name: item.label, url: `${site.url}${item.href}` }))));
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <StructuredData data={breadcrumbSchema} />
 
       <section className={styles.hero}>
         <div className={`shell ${styles.heroInner}`}>

@@ -161,6 +161,23 @@ test("published project galleries render usable images", async ({ page }) => {
   expect(broken).toEqual([]);
 });
 
+test("calculator lead gate requires a project region and keeps postcode optional", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await waitForLayout(page, "/estimate");
+  const form = page.locator("#fee-calculator-lead");
+  const region = page.getByLabel("Where is the project located?");
+  const postcode = page.getByLabel("Project postcode");
+  await expect(region).toHaveAttribute("required", "");
+  await expect(postcode).not.toHaveAttribute("required", "");
+  await page.getByLabel("Name").fill("Mohammed Example");
+  await page.getByLabel("Email").fill("mohammed@example.com");
+  await page.getByLabel(/I agree that Hepburn Architects/).check();
+  expect(await form.evaluate((element: HTMLFormElement) => element.checkValidity())).toBe(false);
+  await region.selectOption("West Midlands");
+  await postcode.fill("B13 8AA");
+  expect(await form.evaluate((element: HTMLFormElement) => element.checkValidity())).toBe(true);
+});
+
 test("manual-review screenshots", async ({ page }) => {
   for (const [route, width, height, name] of [["/", 1440, 1000, "home-desktop"], ["/locations/birmingham-architects", 1440, 1000, "birmingham-desktop"], ["/projects/house-extension-in-harborne-birmingham", 1440, 1000, "project-desktop"], ["/knowledge-centre/planning-permission", 390, 844, "planning-mobile"], ["/estimate", 390, 844, "calculator-mobile"], ["/", 320, 700, "home-320"]] as const) {
     await page.setViewportSize({ width, height });

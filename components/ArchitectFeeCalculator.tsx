@@ -26,6 +26,10 @@ const projectTypes = [
   {value:"development",label:"Small residential development",multiplier:1.8,metric:"units"},
 ] as const;
 
+const roundToNearest50 = (value: number) => Math.round(value / 50) * 50;
+const formatCurrency = (value: number) => `£${value.toLocaleString("en-GB")}`;
+const formatRange = (lower: number, upper: number) => `${formatCurrency(lower)}–${formatCurrency(upper)}`;
+
 export function ArchitectFeeCalculator(){
   const started = useRef(false);
   const [type,setType]=useState("single-storey-extension");
@@ -43,10 +47,12 @@ export function ArchitectFeeCalculator(){
     if(route==="full")multiplier*=1.1;
     if(route==="complex")multiplier*=1.22;
     const adjusted=key==="survey"?Math.round((base*(current.metric==="area"?1:1.15))/50)*50:Math.round((base*multiplier*.9)/50)*50;
-    return {key,label,adjusted};
+    return {key,label,adjusted,lower:roundToNearest50(adjusted*.87)};
   }),[current,scaleMultiplier,route,selected]);
 
-  const total=breakdown.reduce((s,x)=>s+x.adjusted,0);
+  const totalLower=breakdown.reduce((s,x)=>s+x.lower,0);
+  const totalUpper=breakdown.reduce((s,x)=>s+x.adjusted,0);
+  const totalRange=totalUpper?formatRange(totalLower,totalUpper):"No services selected";
   const scaleSummary=current.metric==="units"?`${units} residential unit${units===1?"":"s"}`:current.metric==="bedrooms"?`${bedrooms} HMO bedrooms`:`${area} m²`;
 
   useEffect(() => { if (started.current) return; started.current = true; trackEvent("fee_calculator_start", { project_type: current.value, step_number: 1, page_path: window.location.pathname }); }, [current.value]);
@@ -62,10 +68,10 @@ export function ArchitectFeeCalculator(){
       <fieldset><legend>Services required</legend>{services.map(([key,label])=><label className="check-row" key={key}><input type="checkbox" checked={selected.includes(key)} onChange={()=>setSelected(c=>c.includes(key)?c.filter(i=>i!==key):[...c,key])}/><span>{label}</span></label>)}</fieldset>
       <p className="muted small-copy">Measured survey is optional. Fees remain indicative because access, planning history, heritage, site constraints and specialist information can affect the final scope.</p>
     </div>
-    <div className="fee-result"><LeadGate onSuccess={() => trackEvent("fee_calculator_complete", { project_type: current.value, selected_services: selected.join(","), estimated_fee_band: feeBand(total), step_number: 1, page_path: window.location.pathname })} source="architect-fee" projectSummary={{projectType:current.label,projectScale:scaleSummary,planningComplexity:route,selectedServices:selected.map(k=>services.find(s=>s[0]===k)?.[1]??k),indicativeFee:total?`£${total.toLocaleString()}`:"No services selected"}}>
-      <small className="eyebrow">Indicative architectural fee</small><strong className="total">{total?`£${total.toLocaleString()}`:"Select a service"}</strong>
-      <p>A useful early guide, not false precision. A tailored fixed-fee proposal follows after review of the property, brief, planning history and constraints.</p>
-      <div className="breakdown">{breakdown.map(x=><div key={x.key}><span>{x.label}</span><strong>£{x.adjusted.toLocaleString()}</strong></div>)}</div>
+    <div className="fee-result"><LeadGate onSuccess={() => trackEvent("fee_calculator_complete", { project_type: current.value, selected_services: selected.join(","), estimated_fee_band: feeBand(totalUpper), step_number: 1, page_path: window.location.pathname })} source="architect-fee" projectSummary={{projectType:current.label,projectScale:scaleSummary,planningComplexity:route,selectedServices:selected.map(k=>services.find(s=>s[0]===k)?.[1]??k),indicativeFee:totalRange}}>
+      <small className="eyebrow">Estimated architectural fee range</small><strong className="total">{totalRange}</strong>
+      <p>Based on the information selected. A tailored fixed fee will be confirmed after we review the property, brief, planning route and full scope.</p>
+      <div className="breakdown">{breakdown.map(x=><div key={x.key}><span>{x.label}</span><strong>{formatRange(x.lower,x.adjusted)}</strong></div>)}</div>
       <div className="include"><div className="include-heading"><CheckCircle2/>Included</div><ul><li>Architect consultation and project review</li><li>Selected design, planning and technical stages</li><li>Reasonable revisions within the appointed stage</li><li>Planning coordination where selected</li></ul></div>
       <div className="include"><div className="include-heading"><XCircle/>Usually excluded</div><ul><li>Structural engineer and specialist consultant fees</li><li>Authority application charges</li><li>Ecology, trees, drainage and flood-risk reports</li><li>Party Wall, SAP and warranty costs</li></ul></div>
       <div className="notice">Indicative guide only. This is not a quotation or contractual offer.</div>

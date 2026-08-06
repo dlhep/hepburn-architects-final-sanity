@@ -15,13 +15,15 @@ import { feeBand, trackEvent, trackLead, trackSuccessfulFormSubmission } from "@
 export function LeadGate({ source, projectSummary, children, onSuccess }: LeadGateProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [projectRegion, setProjectRegion] = useState("");
+  const [projectPostcode, setProjectPostcode] = useState("");
   const [consent, setConsent] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!name.trim() || !email.trim() || !consent) {
+    if (!name.trim() || !email.trim() || !projectRegion || !consent) {
       setStatus("error");
       return;
     }
@@ -34,6 +36,9 @@ export function LeadGate({ source, projectSummary, children, onSuccess }: LeadGa
         body: JSON.stringify({
           name: name.trim(),
           email: email.trim(),
+          projectRegion,
+          projectPostcode: projectPostcode.trim(),
+          website: String(new FormData(event.currentTarget).get("website") || ""),
           source,
           projectSummary,
         }),
@@ -94,7 +99,20 @@ export function LeadGate({ source, projectSummary, children, onSuccess }: LeadGa
       <div className="lead-fields">
         <label>Name<input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Your full name" autoComplete="name" required /></label>
         <label>Email<input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="you@example.com" autoComplete="email" required /></label>
+        <label>Where is the project located?
+          <select value={projectRegion} onChange={(e) => setProjectRegion(e.target.value)} required>
+            <option value="">Select an area</option>
+            <option value="West Midlands">West Midlands</option>
+            <option value="North East England">North East England</option>
+            <option value="Elsewhere in England">Elsewhere in England</option>
+            <option value="Wales">Wales</option>
+            <option value="Outside England and Wales">Outside England and Wales</option>
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
+        </label>
+        <label>Project postcode<input value={projectPostcode} onChange={(e) => setProjectPostcode(e.target.value)} type="text" placeholder="For example, B13 8AA or TS7 0LG" autoComplete="postal-code" /></label>
       </div>
+      <label className="lead-honeypot" aria-hidden="true">Website<input name="website" type="text" tabIndex={-1} autoComplete="off" /></label>
       <label className="lead-consent">
         <input checked={consent} onChange={(e) => setConsent(e.target.checked)} type="checkbox" required />
         <span>I agree that Hepburn Architects may contact me about this enquiry. <a href="/privacy" target="_blank" rel="noopener noreferrer">Read the privacy notice.</a></span>
@@ -104,7 +122,7 @@ export function LeadGate({ source, projectSummary, children, onSuccess }: LeadGa
       </button>
       <div className="lead-trust"><ShieldCheck size={17} /> No obligation. Your details are used only to respond to this enquiry.</div>
       <div aria-live="polite">
-        {status === "error" && <p className="lead-error" role="alert">Please complete your name, email and consent, then try again.</p>}
+        {status === "error" && <p className="lead-error" role="alert">Please complete your name, email, project area and consent, then try again.</p>}
       </div>
     </form>
   );

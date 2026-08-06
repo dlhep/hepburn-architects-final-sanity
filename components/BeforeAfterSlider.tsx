@@ -25,11 +25,14 @@ export function BeforeAfterSlider({
   return (
     <article className="before-after-card">
       <div className="before-after-stage">
+        {/* The two images must share the exact same rendered box for the interactive clip-path comparison. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img className="before-image" src={before} alt={beforeAlt} loading="lazy" />
         <div
           className="after-image-wrap"
           style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
         >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="after-image" src={after} alt={afterAlt} loading="lazy" />
         </div>
 

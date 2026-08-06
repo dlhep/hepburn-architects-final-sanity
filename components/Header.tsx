@@ -13,17 +13,27 @@ export function Header() {
   useEffect(() => {
     if (!open) return;
 
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     mobileNavRef.current?.querySelector<HTMLElement>("a")?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setOpen(false);
         menuButtonRef.current?.focus();
+        return;
+      }
+      if (event.key === "Tab" && mobileNavRef.current) {
+        const focusable = [menuButtonRef.current, ...mobileNavRef.current.querySelectorAll<HTMLElement>("a,button")].filter((item): item is HTMLElement => Boolean(item));
+        const first = focusable[0];
+        const last = focusable.at(-1);
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
       }
     };
 
     document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    return () => { document.removeEventListener("keydown", handleKeyDown); document.body.style.overflow = previousOverflow; };
   }, [open]);
 
   function closeMenu() {
@@ -41,6 +51,8 @@ export function Header() {
       <header className="header">
         <div className="shell nav">
           <Link className="brand-logo-link" href="/" onClick={closeMenu} aria-label="Hepburn Architects home">
+            {/* The inline SVG wordmark keeps its intrinsic proportions without an image optimisation request. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className="brand-logo"
               src="/hepburn-logo.svg"

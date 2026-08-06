@@ -10,6 +10,7 @@ import {
   PROJECT_SLUGS_QUERY,
 } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
+import type { PortableTextBlock } from "@portabletext/types";
 
 export type SanityProjectImage = {
   alt?: string;
@@ -19,7 +20,7 @@ export type SanityProjectImage = {
   crop?: unknown;
 };
 
-export type ProjectPortableText = any[];
+export type ProjectPortableText = PortableTextBlock[];
 export type ProjectChallenge = { challenge: string; response: string; result?: string };
 export type ProjectHighlight = { label: string; value: string };
 export type ProjectTestimonial = { quote: string; clientName?: string; clientDescriptor?: string; reviewSource?: string; reviewUrl?: string };
@@ -38,7 +39,7 @@ export type Project = {
   description: string;
   seoTitle?: string;
   seoDescription?: string;
-  projectDescription?: any[];
+  projectDescription?: PortableTextBlock[];
   localAuthority?: string;
   applicationType?: string;
   contractValue?: string;
@@ -151,8 +152,13 @@ export async function getProjectSlugs(): Promise<string[]> {
 }
 
 export function projectImageUrl(image: Project["featuredImage"], width = 1600): string {
-  if (typeof image === "string") return image;
-  if (!image?.asset) return "/images/social-sharing.jpg";
+  if (typeof image === "string") {
+    // The retired .com WordPress host rejects optimised image requests. Keep fallback records usable
+    // during a Sanity outage without rendering a broken image or mislabelling another project photo.
+    if (/^https:\/\/(www\.)?hepburnarchitects\.com\/wp-content\//i.test(image)) return "https://hepburnarchitects.co.uk/images/social-sharing.jpg";
+    return image;
+  }
+  if (!image?.asset) return "https://hepburnarchitects.co.uk/images/social-sharing.jpg";
   return urlFor(image).width(width).quality(76).url();
 }
 

@@ -29,7 +29,11 @@ export function buildGraph(...nodes: Array<SchemaNode | undefined | false>) {
   const flattened = nodes.filter((node): node is SchemaNode => Boolean(node)).flatMap((node) => {
     const nested = node["@graph"];
     return Array.isArray(nested) ? nested.filter((item): item is SchemaNode => typeof item === "object" && item !== null && !Array.isArray(item)) : [node];
-  }).map((node) => { const { "@context": _context, ...entity } = cleanSchema(node); return entity; });
+  }).map((node) => {
+    const entity = { ...cleanSchema(node) };
+    delete entity["@context"];
+    return entity;
+  });
   const canonical = flattened.find((node) => ["WebPage", "AboutPage", "ContactPage", "CollectionPage"].includes(String(node["@type"])))?.url
     || flattened.find((node) => typeof node.url === "string")?.url
     || flattened.find((node) => typeof node.mainEntityOfPage === "string")?.mainEntityOfPage;

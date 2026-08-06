@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ExternalLink, MapPin, Quote } from "lucide-react";
+import { ArrowRight, ExternalLink, MapPin, Quote } from "lucide-react";
 import { Breadcrumbs } from "@/components/internal-links/Breadcrumbs";
 import { locations } from "@/lib/content-extended";
 import { getBirminghamProjects, projectImageAlt, projectImageUrl } from "@/lib/projects";

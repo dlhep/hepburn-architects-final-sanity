@@ -19,6 +19,8 @@ export function Footer() {
       <div className="shell footer-grid footer-grid-expanded">
         <div className="footer-practice-column">
           <Link className="footer-brand-logo-link" href="/" aria-label="Hepburn Architects home">
+            {/* The inline SVG wordmark keeps its intrinsic proportions without an image optimisation request. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className="footer-brand-logo"
               src="/hepburn-logo-reversed.svg"

@@ -13,7 +13,6 @@ import {
   Quote,
   Ruler,
   TriangleAlert,
-  UserRound,
 } from "lucide-react";
 import { getProjects, projectImageAlt, projectImageUrl } from "@/lib/projects";
 import { site } from "@/lib/site";
@@ -82,7 +81,8 @@ export default async function HouseExtensionGuidePage() {
   const url = `${site.url}/house-extension-guide`;
 
   return (
-    <main className={styles.page}>
+    <main id="main-content" className={styles.page} tabIndex={-1}>
+      <a className="skip-link" href="#guide-content">Skip to guide content</a>
       <StructuredData data={buildGraph(buildWebPageSchema({ url, name: title, description, breadcrumb: breadcrumbId(url), mainEntity: `${url}#article`, primaryImage: `${site.url}/images/house-extension-guide-cover.png` }), buildArticleSchema({ url, headline: "Planning a House Extension — A Practical Homeowner's Guide", description, image: `${site.url}/images/house-extension-guide-cover.png`, section: "House extensions" }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "House Extension Guide", url }]))} />
       <header className={styles.header}>
         <div className={`shell ${styles.headerInner}`}>
@@ -95,7 +95,7 @@ export default async function HouseExtensionGuidePage() {
         </div>
       </header>
 
-      <section className={styles.hero} id="top">
+      <section className={styles.hero} id="guide-content" tabIndex={-1}>
         <div className={`shell ${styles.heroGrid}`}>
           <div className={styles.heroCopy}>
             <small className="eyebrow">Free guide for homeowners</small>

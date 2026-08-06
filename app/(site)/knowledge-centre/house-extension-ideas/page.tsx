@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, CalendarDays, Check } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CalendarDays } from "lucide-react";
 import { getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";
 import styles from "./page.module.css";

@@ -1,6 +1,6 @@
-import { useFormValue, type StringInputProps } from "sanity";
+import { useFormValue } from "sanity";
 
-export function SeoPreview(_props: StringInputProps) {
+export function SeoPreview() {
   const title = String(useFormValue(["title"]) || "Untitled project");
   const location = String(useFormValue(["location"]) || "");
   const description = String(useFormValue(["description"]) || "Add a project description to generate the search summary.");

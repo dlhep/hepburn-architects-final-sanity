@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ExternalLink, Phone } from "lucide-react";
+import { ArrowRight, CheckCircle2, Phone } from "lucide-react";
 import { getServiceDetail, serviceDetails } from "@/lib/service-details";
 import { getProjects, projectImageAlt, projectImageUrl, type Project } from "@/lib/projects";
 import { site } from "@/lib/site";

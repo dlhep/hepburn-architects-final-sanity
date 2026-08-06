@@ -43,12 +43,17 @@ export function ConversionTracking() {
   const formStarts = useRef(new WeakSet<HTMLFormElement>());
 
   useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem(CONSENT_STORAGE_KEY);
-      setConsent(saved === "accepted" || saved === "rejected" ? saved : null);
-    } catch { setConsent(null); }
-    setReady(true);
+    let active = true;
+    queueMicrotask(() => {
+      if (!active) return;
+      try {
+        const saved = window.localStorage.getItem(CONSENT_STORAGE_KEY);
+        setConsent(saved === "accepted" || saved === "rejected" ? saved : null);
+      } catch { setConsent(null); }
+      setReady(true);
+    });
     installBrowserTracker();
+    return () => { active = false; };
   }, []);
 
   useEffect(() => {

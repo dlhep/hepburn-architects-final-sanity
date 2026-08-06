@@ -1,4 +1,4 @@
-import { guides, locations, services } from "@/lib/content-extended";
+import { locations, services } from "@/lib/content-extended";
 import type { Project } from "@/lib/projects";
 
 export type LinkDestinationType = "service" | "location" | "project" | "guide" | "journal" | "calculator" | "contact" | "resource";

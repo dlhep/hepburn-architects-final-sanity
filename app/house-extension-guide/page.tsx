@@ -159,7 +159,7 @@ export default async function HouseExtensionGuidePage() {
             <span><strong>Residential</strong> extension specialists</span>
             <span><strong>Director-led</strong> service with David Hepburn</span>
             <span><strong>Birmingham</strong> Studio</span>
-            <span><strong>Nunthorpe</strong> Studio</span>
+            <span><strong>West Midlands</strong> Local expertise</span>
           </div>
 
           {project && (

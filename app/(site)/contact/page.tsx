@@ -43,14 +43,14 @@ function OfficeCard({
 export default function ContactPage() {
   return (
     <>
-      <StructuredData data={buildGraph(buildWebPageSchema({ url: `${site.url}/contact`, name: "Contact Hepburn Architects", description: metadata.description as string, type: "ContactPage", breadcrumb: breadcrumbId(`${site.url}/contact`) }), buildBreadcrumbSchema(`${site.url}/contact`, [{ name: "Home", url: `${site.url}/` }, { name: "Contact", url: `${site.url}/contact` }]), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildBusinessLocationSchema("nunthorpe"))} />
+      <StructuredData data={buildGraph(buildWebPageSchema({ url: `${site.url}/contact`, name: "Contact Hepburn Architects", description: metadata.description as string, type: "ContactPage", breadcrumb: breadcrumbId(`${site.url}/contact`) }), buildBreadcrumbSchema(`${site.url}/contact`, [{ name: "Home", url: `${site.url}/` }, { name: "Contact", url: `${site.url}/contact` }]), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"))} />
       <section className="section contact-hero">
         <div className="shell contact-grid">
           <div>
             <small className="eyebrow">Start a project</small>
             <h1>Speak with Hepburn Architects.</h1>
             <p className="lead">
-              Contact our Birmingham or Nunthorpe office to discuss your property,
+              Contact our Birmingham studio to discuss your property,
               likely approval route and the architectural service you need.
             </p>
             <a className="contact-phone-card" href={site.phoneHref}>
@@ -78,7 +78,7 @@ export default function ContactPage() {
         <div className="shell page-intro">
           <h2>Start a conversation about your project</h2>
           <p>Tell us the property address, the type of work you are considering and any timescale or planning concerns. We review each enquiry directly and explain the likely approval route, the information needed and the most suitable next step.</p>
-          <p>Hepburn Architects supports house extensions, loft conversions, new homes, HMOs, changes of use, planning applications and Building Regulations packages. We work from Birmingham and Nunthorpe and advise on projects across the West Midlands, Teesside and wider England.</p>
+          <p>Hepburn Architects supports house extensions, loft conversions, new homes, HMOs, changes of use, planning applications and Building Regulations packages across Birmingham, Solihull and the wider West Midlands.</p>
           <p>An initial conversation is intended to clarify scope and suitability. Formal advice, drawings and submissions are provided only under an agreed written appointment.</p>
         </div>
       </section>
@@ -89,11 +89,6 @@ export default function ContactPage() {
             title="Birmingham Office"
             address={["Izabella House", "24-26 Regent Place", "Birmingham", "B1 3NJ"]}
             mapUrl={site.offices.birmingham.mapUrl}
-          />
-          <OfficeCard
-            title="Nunthorpe Office"
-            address={["1 Church Lane", "Nunthorpe", "Middlesbrough", "TS7 0PD"]}
-            mapUrl={site.offices.nunthorpe.mapUrl}
           />
         </div>
       </section>

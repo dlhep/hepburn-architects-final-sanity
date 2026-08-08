@@ -19,6 +19,10 @@ const nextConfig: NextConfig = {
         source: "/downloads/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, follow" }],
       },
+      {
+        source: "/studio/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
+      },
     ];
   },
   async redirects() {

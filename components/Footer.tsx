@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Facebook, Instagram, MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site";
+import { CookiePreferencesButton } from "@/components/analytics/CookiePreferencesButton";
 
 const footerLocations = [
   { href: "/locations/birmingham-architects", label: "Birmingham" },
@@ -43,11 +44,8 @@ export function Footer() {
               <address>Izabella House<br />24-26 Regent Place<br />Birmingham<br />B1 3NJ</address>
               <a href={site.offices.birmingham.mapUrl} target="_blank" rel="noopener noreferrer">View map</a>
             </div>
-            <div>
-              <h3>Nunthorpe Studio</h3>
-              <address>1 Church Lane<br />Nunthorpe<br />Middlesbrough<br />TS7 0PD</address>
-            </div>
           </div>
+          <a className="footer-north-east-link" href="https://www.hepburnarchitects.com/">Looking for an architect in the North East? Visit Hepburn Architects North East.</a>
         </div>
 
         <div className="footer-link-group">
@@ -90,7 +88,7 @@ export function Footer() {
 
       <div className="shell footer-bottom">
         <span>© {new Date().getFullYear()} Hepburn Architects Ltd.</span>
-        <Link href="/privacy">Privacy &amp; cookies</Link>
+        <CookiePreferencesButton />
       </div>
 
       <style>{`
@@ -174,9 +172,9 @@ export function Footer() {
 
         footer .footer-bottom {
           display: flex;
-          justify-content: space-between;
+          justify-content: flex-start;
           align-items: center;
-          gap: 20px;
+          gap: 28px;
           margin-top: 24px;
         }
 
@@ -187,6 +185,10 @@ export function Footer() {
         footer .footer-bottom a:hover {
           color: #fff;
         }
+
+        .footer-cookie-preferences { border: 0; padding: 0; background: transparent; color: rgba(255,255,255,.8); font-size: 14px; cursor: pointer; }
+        .footer-cookie-preferences:hover, .footer-north-east-link:hover { color: #fff; }
+        .footer-north-east-link { margin-top: 10px; color: rgba(255,255,255,.82); font-size: 15px; line-height: 1.5; text-decoration: underline; text-underline-offset: 3px; }
 
         @media (max-width: 650px) {
           .footer-grid-expanded {

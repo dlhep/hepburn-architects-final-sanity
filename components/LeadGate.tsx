@@ -103,7 +103,6 @@ export function LeadGate({ source, projectSummary, children, onSuccess }: LeadGa
           <select value={projectRegion} onChange={(e) => setProjectRegion(e.target.value)} required>
             <option value="">Select an area</option>
             <option value="West Midlands">West Midlands</option>
-            <option value="North East England">North East England</option>
             <option value="Elsewhere in England">Elsewhere in England</option>
             <option value="Wales">Wales</option>
             <option value="Outside England and Wales">Outside England and Wales</option>

@@ -8,7 +8,7 @@ export function buildOrganisationSchema(): SchemaNode {
     url: `${site.url}/`, logo: { "@type": "ImageObject", url: `${site.url}/images/social-sharing.jpg`, width: 1200, height: 630 },
     image: `${site.url}/images/social-sharing.jpg`, telephone: "+447720813035", email: site.email,
     founder: { "@id": IDS.davidHepburn }, sameAs: [site.instagram, site.facebook],
-    subOrganization: [{ "@id": IDS.birminghamStudio }, { "@id": IDS.nunthorpeStudio }],
+    subOrganization: [{ "@id": IDS.birminghamStudio }],
   };
 }
 

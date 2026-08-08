@@ -9,7 +9,6 @@ import {
   Compass,
   DraftingCompass,
   House,
-  MapPin,
   UsersRound,
   Workflow,
 } from "lucide-react";
@@ -189,7 +188,7 @@ export default async function AboutPage() {
 
   return (
     <>
-      <StructuredData data={buildGraph(buildWebPageSchema({ url: `${site.url}/about`, name: "About Hepburn Architects", description: metadata.description as string, type: "AboutPage", breadcrumb: breadcrumbId(`${site.url}/about`) }), buildBreadcrumbSchema(`${site.url}/about`, [{ name: "Home", url: `${site.url}/` }, { name: "Studio", url: `${site.url}/about` }]), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildBusinessLocationSchema("nunthorpe"), buildArchitectSchema())} />
+      <StructuredData data={buildGraph(buildWebPageSchema({ url: `${site.url}/about`, name: "About Hepburn Architects", description: metadata.description as string, type: "AboutPage", breadcrumb: breadcrumbId(`${site.url}/about`) }), buildBreadcrumbSchema(`${site.url}/about`, [{ name: "Home", url: `${site.url}/` }, { name: "Studio", url: `${site.url}/about` }]), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildArchitectSchema())} />
       <section className="studio-v4-hero">
         <div className="shell studio-v4-hero-grid">
           <div className="studio-v4-hero-copy">
@@ -197,8 +196,7 @@ export default async function AboutPage() {
             <h1>Residential architecture, led with direct expertise.</h1>
             <p className="lead">
               Hepburn Architects is a director-led studio for homeowners, developers
-              and property owners across Birmingham, the West Midlands, Teesside
-              and the wider UK.
+              and property owners across Birmingham, Solihull and the wider West Midlands.
             </p>
             <p>
               Design, planning strategy and technical coordination are brought
@@ -244,8 +242,8 @@ export default async function AboutPage() {
             <span>One consistent architectural lead</span>
           </div>
           <div>
-            <strong>Two studios</strong>
-            <span>Birmingham and Nunthorpe</span>
+            <strong>West Midlands expertise</strong>
+            <span>Birmingham, Solihull and surrounding areas</span>
           </div>
           <div>
             <strong>Residential focus</strong>
@@ -438,9 +436,8 @@ export default async function AboutPage() {
             <h2>Regional knowledge with a wider project reach.</h2>
           </div>
           <p>
-            The Birmingham studio leads work across Birmingham, Solihull and the
-            West Midlands. The Nunthorpe studio supports Teesside and North East
-            enquiries through the dedicated North East website.
+            Our Birmingham studio leads residential work across Birmingham, Solihull
+            and the wider West Midlands.
           </p>
         </div>
 
@@ -470,33 +467,6 @@ export default async function AboutPage() {
             </div>
           </article>
 
-          <article>
-            <div className="studio-v4-studio-card-icon">
-              <MapPin />
-            </div>
-            <small>Teesside and North East</small>
-            <h3>{site.offices.nunthorpe.name}</h3>
-            <address>
-              {site.offices.nunthorpe.streetAddress}<br />
-              {site.offices.nunthorpe.addressLocality}<br />
-              {site.offices.nunthorpe.postalTown}<br />
-              {site.offices.nunthorpe.postalCode}
-            </address>
-            <div>
-              <a
-                href={site.offices.nunthorpe.mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View map <ArrowUpRight size={17} />
-              </a>
-              <a
-                href="/contact"
-              >
-                Discuss a project <ArrowUpRight size={17} />
-              </a>
-            </div>
-          </article>
         </div>
       </section>
 

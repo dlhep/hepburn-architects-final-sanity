@@ -150,7 +150,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <StructuredData data={buildGraph(buildWebSiteSchema(), buildWebPageSchema({ url: `${site.url}/`, name: "Hepburn Architects", description: site.description }), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildBusinessLocationSchema("nunthorpe"), buildArchitectSchema())} />
+      <StructuredData data={buildGraph(buildWebSiteSchema(), buildWebPageSchema({ url: `${site.url}/`, name: "Hepburn Architects", description: site.description }), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildArchitectSchema())} />
       <section className="hero home-hero">
         <div className="shell hero-grid">
           <div className="hero-copy">
@@ -184,7 +184,8 @@ export default async function HomePage() {
               alt="Contemporary residential home designed by Hepburn Architects"
               fill
               priority
-              sizes="(max-width: 950px) 100vw, 45vw"
+              fetchPriority="high"
+              sizes="(max-width: 950px) calc(100vw - 40px), (max-width: 1260px) 43vw, 540px"
               className="hero-image"
             />
             <div className="hero-note">
@@ -238,7 +239,7 @@ export default async function HomePage() {
                   src={projectImageUrl(project.featuredImage, index === 0 ? 1600 : 900)}
                   alt={projectImageAlt(project)}
                   fill
-                  sizes={index === 0 ? "(max-width: 950px) 100vw, 66vw" : "(max-width: 950px) 100vw, 33vw"}
+                  sizes={index === 0 ? "(max-width: 950px) calc(100vw - 40px), (max-width: 1260px) 64vw, 790px" : "(max-width: 950px) calc(100vw - 40px), (max-width: 1260px) 31vw, 380px"}
                 />
               </div>
               <div className="home-project-overlay">
@@ -258,7 +259,7 @@ export default async function HomePage() {
                 src={projectImageUrl(signatureProject.featuredImage, 1600)}
                 alt={projectImageAlt(signatureProject)}
                 fill
-                sizes="(max-width: 950px) 100vw, 62vw"
+                sizes="(max-width: 950px) calc(100vw - 40px), (max-width: 1260px) 60vw, 735px"
               />
             </div>
             <div className="home-case-study-copy">
@@ -290,7 +291,7 @@ export default async function HomePage() {
               src="/images/david-hepburn-studio.jpg"
               alt="David Hepburn, founding director of Hepburn Architects"
               fill
-              sizes="(max-width: 950px) 100vw, 42vw"
+              sizes="(max-width: 950px) calc(100vw - 40px), (max-width: 1260px) 40vw, 490px"
             />
             <div className="home-studio-caption">
               <small>Founding Director</small>
@@ -457,7 +458,7 @@ export default async function HomePage() {
                   src={articleImageUrl(featurePost.featuredImage, 1400) || "/images/og.svg"}
                   alt={featurePost.featuredImage?.alt || featurePost.title}
                   fill
-                  sizes="(max-width: 950px) 100vw, 62vw"
+                  sizes="(max-width: 950px) calc(100vw - 40px), (max-width: 1260px) 60vw, 735px"
                 />
               </div>
               <div>
@@ -478,7 +479,7 @@ export default async function HomePage() {
                       src={articleImageUrl(post.featuredImage, 900) || "/images/og.svg"}
                       alt={post.featuredImage?.alt || post.title}
                       fill
-                      sizes="(max-width: 950px) 100vw, 26vw"
+                      sizes="(max-width: 950px) calc(100vw - 40px), (max-width: 1260px) 25vw, 305px"
                     />
                   </div>
                   <div>

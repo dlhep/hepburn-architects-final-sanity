@@ -17,7 +17,7 @@ export function buildBusinessLocationSchema(key: StudioKey): SchemaNode {
     image: `${site.url}/images/social-sharing.jpg`, hasMap: office.mapUrl,
     address: { "@type": "PostalAddress", streetAddress: office.streetAddress, addressLocality: office.addressLocality, addressRegion: birmingham ? "West Midlands" : "North Yorkshire", postalCode: office.postalCode, addressCountry: "GB" },
     areaServed: birmingham
-      ? [{ "@type": "City", name: "Birmingham" }, { "@type": "AdministrativeArea", name: "West Midlands" }]
+      ? [{ "@type": "City", name: "Birmingham" }, { "@type": "City", name: "Solihull" }, { "@type": "AdministrativeArea", name: "West Midlands" }]
       : [{ "@type": "Place", name: "Nunthorpe" }, { "@type": "Place", name: "Teesside" }, { "@type": "AdministrativeArea", name: "North East England" }],
     sameAs: sameAs ? [sameAs] : undefined,
   };

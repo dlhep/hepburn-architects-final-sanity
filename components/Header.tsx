@@ -59,6 +59,9 @@ export function Header() {
               alt="Hepburn Architects"
               width={581}
               height={155}
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
             />
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation">

@@ -57,6 +57,12 @@ export function ConversionTracking() {
   }, []);
 
   useEffect(() => {
+    const openPreferences = () => setSettingsOpen(true);
+    window.addEventListener("hepburn:open-cookie-preferences", openPreferences);
+    return () => window.removeEventListener("hepburn:open-cookie-preferences", openPreferences);
+  }, []);
+
+  useEffect(() => {
     if (!consent || !scriptLoaded) return;
     trackEvent("page_view", { page_location: window.location.href, page_title: document.title });
     const path = window.location.pathname;
@@ -165,8 +171,7 @@ export function ConversionTracking() {
     {showBanner ? <div className={styles.backdrop} role="presentation"><section className={styles.panel} role="dialog" aria-modal="true" aria-labelledby="cookie-title" aria-describedby="cookie-description">
       <small>Privacy choices</small><h2 id="cookie-title">Optional website analytics</h2><p id="cookie-description">We use optional Google Analytics to understand which pages help visitors. Analytics stays off unless you accept it.</p>
       <div className={styles.actions}><button type="button" className={styles.accept} onClick={() => choose("accepted")}>Accept analytics</button><button type="button" className={styles.reject} onClick={() => choose("rejected")}>Reject optional cookies</button></div>
-      <Link href="/privacy-policy">Read the privacy and cookie notice</Link>
+      <Link href="/privacy">Read the privacy and cookie notice</Link>
     </section></div> : null}
-    {ready && consent !== null && !settingsOpen ? <button type="button" className={styles.settings} onClick={() => setSettingsOpen(true)} aria-label="Change cookie consent">Cookie settings</button> : null}
   </>;
 }

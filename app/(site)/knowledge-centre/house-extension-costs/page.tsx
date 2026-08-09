@@ -9,12 +9,12 @@ import { StructuredData } from "@/components/StructuredData";
 import { buildGraph } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "House Extension Costs 2026",
-  description: "Understand typical house extension costs in 2026, including construction, professional fees, planning, Building Regulations, kitchens, glazing and contingency.",
+  title: "House Extension Costs 2026: Complete Budget Guide",
+  description: "Plan a realistic 2026 house-extension budget covering construction rates, professional fees, VAT, kitchens, glazing and contingency.",
   alternates: { canonical: "https://hepburnarchitects.co.uk/knowledge-centre/house-extension-costs" },
   openGraph: {
-    title: "House Extension Costs 2026: A Complete UK Guide",
-    description: "A practical homeowner guide to construction costs, fees, VAT, contingency and realistic extension budgeting.",
+    title: "House Extension Costs 2026: Complete Budget Guide",
+    description: "Plan a realistic 2026 house-extension budget covering construction rates, professional fees, VAT, kitchens, glazing and contingency.",
     url: "/knowledge-centre/house-extension-costs",
     type: "article",
     images: ["/images/architectural-expertise-home.webp"],

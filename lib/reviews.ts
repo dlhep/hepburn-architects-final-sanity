@@ -36,6 +36,28 @@ export type Review = {
   relatedProject?: { title: string; slug: string; location?: string; featuredImage?: SanityProjectImage };
 };
 
+const REVIEW_SERVICE_LINKS: Record<string, string> = {
+  "house-extensions": "/services/house-extensions",
+  "planning-applications": "/services/planning-applications",
+  "building-regulations": "/services/building-regulations",
+  "new-build-homes": "/services/new-build-homes",
+  "loft-conversions": "/services/loft-conversions",
+  "hmo-conversions": "/services/hmo-conversions",
+  "change-of-use": "/services/planning-applications",
+  "change-of-use-birmingham": "/services/planning-applications",
+  "small-sites-backland": "/services/new-build-homes",
+};
+
+export function getReviewServiceUrl(value?: string | null): string | undefined {
+  const normalised = value
+    ?.trim()
+    .toLowerCase()
+    .replace(/^\/+|\/+$/g, "")
+    .replace(/^services\//, "")
+    .replace(/[\s_]+/g, "-");
+  return normalised ? REVIEW_SERVICE_LINKS[normalised] : undefined;
+}
+
 async function fetchReviews(query: string) {
   if (!isSanityConfigured) return [] as Review[];
   try { return (await client.fetch<Review[]>(query, {}, { next: { revalidate: 60, tags: ["sanity-reviews"] } })) || []; } catch { return []; }

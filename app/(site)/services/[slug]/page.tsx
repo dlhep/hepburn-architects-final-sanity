@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = getServiceDetail(slug);
   if (!service) return {};
   return createSeoMetadata({
-    title: service.title,
+    title: service.metaTitle,
     description: service.metaDescription,
     path: `/services/${slug}`,
     image: service.hero,

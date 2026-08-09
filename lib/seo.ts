@@ -13,7 +13,7 @@ export function cleanSeoTitle(value: string): string {
 }
 
 export const GUIDE_TITLES: Record<string, string> = {
-  "building-regulations-drawings": "Building Regulations Drawings",
+  "building-regulations-drawings": "Building Regulations Drawings Explained",
   "planning-permission-house-extension": "House Extension Planning Permission",
   "planning-conditions-discharge-guide": "Discharging Planning Conditions",
   "architect-fees-residential-project": "Residential Architect Fees",
@@ -23,7 +23,7 @@ export const GUIDE_TITLES: Record<string, string> = {
   "complete-house-extension-guide": "Complete House Extension Guide",
   "permitted-development-rights-explained": "Permitted Development Rights",
   "planning-vs-building-regulations": "Planning vs Building Regulations",
-  "house-extension-cost-uk": "House Extension Costs 2026",
+  "house-extension-cost-uk": "UK House Extension Cost per m²: 2026 Guide",
   "loft-conversion-planning-permission": "Loft Conversion Planning Permission",
   "lawful-development-certificate": "Lawful Development Certificates",
   "planning-application-validation-checklist": "Planning Validation Checklist",
@@ -74,6 +74,8 @@ export const PROJECT_TITLES: Record<string, string> = {
 };
 
 export const PROJECT_DESCRIPTIONS: Record<string, string> = {
+  "residential-masterplan": "A ten-home Birmingham residential masterplan shaped around landscape, sustainable drainage, generous gardens and a central shared green.",
+  "residential-masterplan-birmingham": "An eight-home West Midlands masterplan arranged around a landscaped shared green, with carefully planned access, amenity and natural surveillance.",
   "eight-home-residential-masterplan": "An eight-home residential masterplan balancing site capacity, access, parking, private amenity, landscape and planning constraints.",
   "ten-home-residential-masterplan": "A ten-home residential masterplan in Birmingham, developed around efficient access, strong streetscape, private amenity and landscape.",
   "house-extension-birmingham": "A rear and side extension with loft conversion in Birmingham, creating more space, better daylight and a stronger garden connection.",

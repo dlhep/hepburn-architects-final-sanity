@@ -18,7 +18,7 @@ const canonical = `${site.url}${path}`;
 const description = "RIBA Chartered residential architects in Birmingham for house extensions, loft conversions, planning applications, new homes, HMOs and Building Regulations.";
 
 export const metadata: Metadata = {
-  title: "Residential Architects Birmingham | Hepburn Architects",
+  title: "Residential Architects Birmingham",
   description,
   alternates: { canonical },
   openGraph: { title: "Residential Architects Birmingham | Hepburn Architects", description, url: canonical, siteName: site.name, type: "website", images: [{ url: SOCIAL_IMAGE }] },

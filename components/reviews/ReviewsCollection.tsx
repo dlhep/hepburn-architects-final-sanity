@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight, Star } from "lucide-react";
 import { useState } from "react";
 import type { Review } from "@/lib/reviews";
-import { getReviewAttribution, getReviewDisplayDate, getReviewRegion, getReviewService, getReviewSourceLabel, getReviewSourceUrl, reviewProjectImage } from "@/lib/reviews";
+import { getReviewAttribution, getReviewDisplayDate, getReviewRegion, getReviewService, getReviewServiceUrl, getReviewSourceLabel, getReviewSourceUrl, reviewProjectImage } from "@/lib/reviews";
 import { BIRMINGHAM_REGION, NORTH_EAST_REGION } from "@/lib/google-business/model";
 
 const serviceFilters: Array<[string, string, string[]]> = [["House Extensions", "house-extensions", ["House extension"]], ["Planning Applications", "planning-applications", ["Planning application"]], ["Building Regulations", "building-regulations", ["Building Regulations"]], ["New Homes", "new-build-homes", ["New-build home"]], ["Loft Conversions", "loft-conversions", ["Loft conversion"]], ["HMOs and Conversions", "hmo-conversions", ["HMO conversion", "Change of use"]], ["Developments", "small-sites-backland", ["Residential development", "Commercial project"]]];
@@ -20,6 +20,7 @@ function ReviewItem({ review, featured = false }: { review: Review; featured?: b
   const sourceLabel = getReviewSourceLabel(review);
   const sourceUrl = getReviewSourceUrl(review);
   const date = getReviewDisplayDate(review);
+  const serviceUrl = getReviewServiceUrl(review.relatedService);
   return <article className={`review-item${featured ? " review-item-featured" : ""}`}>
     {image ? <Image src={image} alt={review.relatedProject?.featuredImage?.alt || review.relatedProject?.title || "Related Hepburn Architects project"} width={600} height={400} sizes="(max-width: 800px) 100vw, 33vw" /> : null}
     <div className="review-item-copy">
@@ -27,7 +28,7 @@ function ReviewItem({ review, featured = false }: { review: Review; featured?: b
       <blockquote>{review.quote}</blockquote>
       <p className="review-attribution"><strong>{getReviewAttribution(review)}</strong>{review.projectType ? <span>{review.projectType}</span> : null}{region ? <span>{region}</span> : null}{date ? <span>{date}</span> : null}{sourceLabel ? <span>{sourceLabel}</span> : null}</p>
       {review.relatedProject?.slug ? <Link className="review-context-link" href={`/projects/${review.relatedProject.slug}`} data-track-event="review_project_click" data-track-review-id={review._id} data-track-project-type={review.projectType} data-track-broad-location={review.location} data-track-review-source={review.source}>View related project <ArrowUpRight size={15} /></Link> : null}
-      {review.relatedService ? <Link className="review-context-link" href={`/services/${review.relatedService}`} data-track-event="review_service_click" data-track-review-id={review._id} data-track-project-type={review.projectType} data-track-broad-location={review.location} data-track-review-source={review.source}>Explore related service <ArrowUpRight size={15} /></Link> : null}
+      {serviceUrl ? <Link className="review-context-link" href={serviceUrl} data-track-event="review_service_click" data-track-review-id={review._id} data-track-project-type={review.projectType} data-track-broad-location={review.location} data-track-review-source={review.source}>Explore related service <ArrowUpRight size={15} /></Link> : null}
       {sourceUrl ? <a className="review-source-link" href={sourceUrl} target="_blank" rel="noopener noreferrer" data-track-event="review_source_click" data-track-review-id={review._id} data-track-project-type={review.projectType} data-track-broad-location={region} data-track-review-source={review.source}>Read on {sourceLabel || "original source"} <ArrowUpRight size={15} /></a> : null}
     </div>
   </article>;

@@ -1,225 +1,241 @@
 import Link from "next/link";
-import { Facebook, Instagram, MapPin, Phone } from "lucide-react";
-import { site } from "@/lib/site";
+import { ArrowRight, Mail, Phone } from "lucide-react";
 import { CookiePreferencesButton } from "@/components/analytics/CookiePreferencesButton";
+import { site } from "@/lib/site";
 
-const footerLocations = [
+const practiceLinks = [
+  { href: "/projects", label: "Projects" },
+  { href: "/about", label: "Studio" },
+  { href: "/knowledge-centre", label: "Knowledge Centre" },
+  { href: "/blog", label: "Journal" },
+  { href: "/reviews", label: "Reviews" },
+  { href: "/contact", label: "Contact" },
+];
+
+const serviceLinks = [
+  { href: "/services/house-extensions", label: "House Extensions" },
+  { href: "/services/planning-applications", label: "Planning Applications" },
+  { href: "/services/building-regulations", label: "Building Regulations" },
+  { href: "/services/new-build-homes", label: "New-Build Homes" },
+  { href: "/services/loft-conversions", label: "Loft Conversions" },
+  { href: "/services/hmo-conversions", label: "HMO Conversions" },
+];
+
+const locationLinks = [
   { href: "/locations/birmingham-architects", label: "Birmingham" },
   { href: "/locations/solihull-architects", label: "Solihull" },
-  { href: "/locations/bournville-architects", label: "Bournville" },
-  { href: "/locations/kings-heath-architects", label: "Kings Heath" },
-  { href: "/locations/wolverhampton-architects", label: "Wolverhampton" },
-  { href: "/locations/walsall-architects", label: "Walsall" },
-  { href: "/locations/leamington-spa-architects", label: "Leamington Spa" },
-  { href: "/locations/aldridge-architects", label: "Aldridge" },
+  { href: "/locations/sutton-coldfield-architects", label: "Sutton Coldfield" },
+  { href: "/locations/harborne-architects", label: "Harborne" },
+  { href: "/locations/edgbaston-architects", label: "Edgbaston" },
+  { href: "/locations/moseley-architects", label: "Moseley" },
 ];
+
+function FooterLinkGroup({ heading, links }: { heading: string; links: typeof practiceLinks }) {
+  return (
+    <nav className="footer-link-group" aria-label={`${heading} links`}>
+      <h2>{heading}</h2>
+      {links.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
+      {heading === "Locations" && <Link className="footer-all-link" href="/locations">View all locations <ArrowRight size={14} /></Link>}
+    </nav>
+  );
+}
 
 export function Footer() {
   return (
-    <footer>
-      <div className="shell footer-grid footer-grid-expanded">
+    <footer className="site-footer">
+      <div className="shell footer-main">
         <div className="footer-practice-column">
           <Link className="footer-brand-logo-link" href="/" aria-label="Hepburn Architects home">
-            {/* The inline SVG wordmark keeps its intrinsic proportions without an image optimisation request. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="footer-brand-logo"
-              src="/hepburn-logo-reversed.svg"
-              alt="Hepburn Architects"
-              width={581}
-              height={155}
-            />
+            <img className="footer-brand-logo" src="/hepburn-logo-reversed.svg" alt="Hepburn Architects" width={581} height={155} />
           </Link>
-          <p>Residential architecture, planning and technical design across Birmingham, Solihull and the wider West Midlands.</p>
-          <a className="footer-phone" href={site.phoneHref}><Phone size={16} /> <strong>{site.phone}</strong></a>
-          <a href={`mailto:${site.email}`}>{site.email}</a>
-          <div className="social-links">
-            <a href={site.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram /></a>
-            <a href={site.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook /></a>
-            <a href={site.googleBusinessBirmingham} target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile Birmingham"><MapPin /></a>
+          <p className="footer-description">Residential architecture, planning and technical design across Birmingham, Solihull and the wider West Midlands.</p>
+          <div className="footer-contact-links">
+            <a href={site.phoneHref}><Phone size={15} aria-hidden="true" /> <strong>{site.phone}</strong></a>
+            <a href={`mailto:${site.email}`}><Mail size={15} aria-hidden="true" /> {site.email}</a>
           </div>
-          <div className="footer-studios">
-            <div>
-              <h3>Birmingham Studio</h3>
-              <address>Izabella House<br />24-26 Regent Place<br />Birmingham<br />B1 3NJ</address>
-              <a href={site.offices.birmingham.mapUrl} target="_blank" rel="noopener noreferrer">View map</a>
-            </div>
+          <div className="footer-studio">
+            <h2>Birmingham Studio</h2>
+            <address>Izabella House<br />24–26 Regent Place<br />Birmingham B1 3NJ</address>
           </div>
-          <a className="footer-north-east-link" href="https://www.hepburnarchitects.com/">Looking for an architect in the North East? Visit Hepburn Architects North East.</a>
+          <div className="footer-accreditations" aria-label="Professional accreditations">
+            <a href="https://www.architecture.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit the official RIBA website (opens in a new tab)">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="footer-riba-logo" src="/images/accreditations/riba-chartered-practice.png" alt="RIBA Chartered Practice" width={868} height={385} />
+            </a>
+            <a href="https://arb.org.uk/architects-register/" target="_blank" rel="noopener noreferrer" aria-label="Search the official ARB Architects Register (opens in a new tab)">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="footer-arb-logo" src="/images/accreditations/arb.png" alt="Architects Registration Board" width={365} height={385} />
+            </a>
+          </div>
         </div>
 
-        <div className="footer-link-group">
-          <h3>Explore</h3>
-          <Link href="/projects">Projects</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/locations">Locations</Link>
-          <Link href="/knowledge-centre">Knowledge Centre</Link>
-          <Link href="/blog">Journal</Link>
-          <Link href="/reviews">Client Reviews</Link>
-        </div>
+        <FooterLinkGroup heading="Practice" links={practiceLinks} />
+        <FooterLinkGroup heading="Services" links={serviceLinks} />
+        <FooterLinkGroup heading="Locations" links={locationLinks} />
+      </div>
 
-        <div className="footer-link-group">
-          <h3>Services</h3>
-          <Link href="/services/house-extensions">House Extensions</Link>
-          <Link href="/services/planning-applications">Planning Applications</Link>
-          <Link href="/services/building-regulations">Building Regulations</Link>
-          <Link href="/services/new-build-homes">New-Build Homes</Link>
-          <Link href="/services/loft-conversions">Loft Conversions</Link>
-          <Link href="/services/hmo-conversions">HMO Conversions</Link>
-        </div>
-
-        <div className="footer-link-group">
-          <h3>Resources</h3>
-          <Link href="/house-extension-guide">House Extension Guide</Link>
-          <Link href="/estimate">Fee Calculator</Link>
-          <Link href="/contact">Contact</Link>
+      <div className="footer-region-switch">
+        <div className="shell">
+          <span>North East project?</span>
+          <a href="https://www.hepburnarchitects.com/" target="_blank" rel="noopener noreferrer">Visit Hepburn Architects North East <ArrowRight size={16} /></a>
         </div>
       </div>
 
-      <div className="shell footer-location-band" aria-label="Areas served">
-        <h3>Locations</h3>
-        <nav className="footer-location-links">
-          {footerLocations.map((location) => (
-            <Link key={location.href} href={location.href}>{location.label}</Link>
-          ))}
-          <Link className="footer-location-all" href="/locations">View all locations</Link>
+      <div className="shell footer-legal">
+        <span>© {new Date().getFullYear()} Hepburn Architects Ltd.</span>
+        <nav aria-label="Legal links">
+          <Link href="/privacy">Privacy</Link>
+          <CookiePreferencesButton label="Cookies" />
         </nav>
       </div>
 
-      <div className="shell footer-bottom">
-        <span>© {new Date().getFullYear()} Hepburn Architects Ltd.</span>
-        <CookiePreferencesButton />
-      </div>
-
       <style>{`
-        .footer-grid-expanded {
-          grid-template-columns: minmax(0, 1.7fr) repeat(3, minmax(150px, .75fr));
-          gap: 44px;
+        .site-footer {
+          background: #383e42;
+          color: #fffdf8;
+          padding: 0;
         }
 
-        .footer-studios {
+        .footer-main {
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 24px;
-          margin-top: 20px;
+          grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(150px, 1fr));
+          gap: clamp(34px, 4vw, 64px);
+          padding-top: clamp(52px, 6vw, 76px);
+          padding-bottom: clamp(46px, 5vw, 68px);
         }
 
-        .footer-studios > div {
+        .footer-practice-column,
+        .footer-link-group {
           display: grid;
           align-content: start;
-          gap: 7px;
         }
 
-        .footer-studios h3 {
-          margin-bottom: 2px;
-        }
+        .footer-practice-column { gap: 14px; }
 
         .footer-brand-logo-link {
           display: inline-flex;
-          width: min(100%, 220px);
-          margin-bottom: 12px;
+          width: min(100%, 224px);
+          margin-bottom: 4px;
           line-height: 0;
         }
 
-        .footer-brand-logo {
-          display: block;
-          width: 100%;
-          height: auto;
+        .footer-brand-logo { width: 100%; height: auto; }
+
+        .footer-description {
+          max-width: 43ch;
+          margin: 0;
+          color: rgba(255, 253, 248, .76);
+          font-size: 15px;
+          line-height: 1.6;
         }
 
-        .footer-location-band {
-          display: grid;
-          grid-template-columns: 110px minmax(0, 1fr);
-          gap: 28px;
-          align-items: start;
-          margin-top: 34px;
-          padding-top: 22px;
-          border-top: 1px solid rgba(255, 255, 255, 0.14);
-        }
+        .footer-contact-links { display: grid; gap: 6px; }
+        .footer-contact-links a { display: flex; align-items: center; gap: 8px; width: fit-content; }
+        .footer-contact-links svg { color: #f08a58; flex: none; }
 
-        .footer-location-band h3 {
-          margin: 2px 0 0;
-          color: var(--orange);
-          font-size: 12px;
-          line-height: 1.2;
+        .footer-studio { margin-top: 4px; }
+        .footer-studio h2,
+        .footer-link-group h2 {
+          margin: 0 0 12px;
+          color: #f08a58;
+          font-size: 11px;
+          line-height: 1.3;
+          letter-spacing: .16em;
           text-transform: uppercase;
-          letter-spacing: 0.14em;
         }
 
-        .footer-location-links {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px 26px;
-          align-items: center;
-        }
-
-        .footer-location-links a {
-          color: rgba(255, 255, 255, 0.86);
+        .footer-studio address {
+          color: rgba(255, 253, 248, .76);
           font-size: 14px;
-          line-height: 1.45;
-          white-space: nowrap;
-          transition: color 160ms ease;
+          line-height: 1.55;
         }
 
-        .footer-location-links a:hover {
-          color: #fff;
-        }
-
-        .footer-location-links .footer-location-all {
-          color: var(--orange);
-          font-weight: 700;
-        }
-
-        footer .footer-bottom {
+        .footer-accreditations {
           display: flex;
-          justify-content: flex-start;
           align-items: center;
-          gap: 28px;
-          margin-top: 24px;
+          gap: 22px;
+          margin-top: 8px;
         }
 
-        footer .footer-bottom a {
-          color: rgba(255, 255, 255, 0.72);
+        .footer-accreditations a { display: flex; align-items: center; line-height: 0; }
+        .footer-accreditations img { display: block; width: auto; object-fit: contain; }
+        .footer-riba-logo { height: 58px; }
+        .footer-arb-logo { height: 58px; }
+
+        .footer-link-group { gap: 9px; }
+        .footer-link-group a { width: fit-content; color: rgba(255, 253, 248, .82); font-size: 14px; line-height: 1.45; }
+        .footer-link-group a:hover,
+        .footer-contact-links a:hover { color: #fff; }
+        .footer-link-group .footer-all-link { display: flex; align-items: center; gap: 6px; margin-top: 4px; color: #f5a178; font-weight: 700; }
+
+        .footer-region-switch {
+          border-block: 1px solid rgba(255, 255, 255, .16);
+          background: rgba(0, 0, 0, .1);
         }
 
-        footer .footer-bottom a:hover {
-          color: #fff;
+        .footer-region-switch .shell {
+          min-height: 58px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
         }
 
-        .footer-cookie-preferences { border: 0; padding: 0; background: transparent; color: rgba(255,255,255,.8); font-size: 14px; cursor: pointer; }
-        .footer-cookie-preferences:hover, .footer-north-east-link:hover { color: #fff; }
-        .footer-north-east-link { margin-top: 10px; color: rgba(255,255,255,.82); font-size: 15px; line-height: 1.5; text-decoration: underline; text-underline-offset: 3px; }
+        .footer-region-switch span { color: rgba(255, 253, 248, .7); font-size: 14px; }
+        .footer-region-switch a { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; }
+
+        .footer-legal {
+          min-height: 68px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
+          color: rgba(255, 253, 248, .58);
+          font-size: 12px;
+        }
+
+        .footer-legal nav { display: flex; align-items: center; gap: 22px; }
+        .footer-legal a,
+        .footer-cookie-preferences { color: rgba(255, 253, 248, .7); }
+        .footer-cookie-preferences { border: 0; padding: 0; background: transparent; font-size: 12px; cursor: pointer; }
+        .footer-legal a:hover,
+        .footer-cookie-preferences:hover,
+        .footer-region-switch a:hover { color: #fff; }
+
+        .site-footer a:focus-visible,
+        .site-footer button:focus-visible { outline-color: #f5a178; }
+
+        @media (max-width: 950px) {
+          .footer-main { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+          .footer-practice-column {
+            grid-column: 1 / -1;
+            grid-template-columns: minmax(0, 1.5fr) minmax(180px, .8fr);
+            column-gap: 48px;
+          }
+          .footer-brand-logo-link,
+          .footer-description,
+          .footer-contact-links { grid-column: 1; }
+          .footer-studio,
+          .footer-accreditations { grid-column: 2; }
+          .footer-studio { grid-row: 1 / span 3; margin-top: 0; padding-top: 2px; }
+          .footer-accreditations { grid-row: 4; }
+        }
 
         @media (max-width: 650px) {
-          .footer-grid-expanded {
-            grid-template-columns: 1fr;
-          }
-
-          .footer-studios {
-            grid-template-columns: 1fr;
-          }
-
-          footer .footer-bottom {
-            align-items: flex-start;
-            flex-direction: column;
-            gap: 8px;
-          }
-
-          .footer-location-band {
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin-top: 30px;
-          }
-
-          .footer-location-links {
-            gap: 10px 20px;
-          }
-        }
-
-        @media (min-width: 651px) and (max-width: 1100px) {
-          .footer-grid-expanded {
-            grid-template-columns: 1fr 1fr;
-          }
+          .footer-main { grid-template-columns: 1fr; gap: 34px; }
+          .footer-practice-column { grid-column: auto; grid-template-columns: 1fr; gap: 12px; }
+          .footer-brand-logo-link,
+          .footer-description,
+          .footer-contact-links,
+          .footer-studio,
+          .footer-accreditations { grid-column: auto; grid-row: auto; }
+          .footer-studio { margin-top: 8px; }
+          .footer-accreditations { margin-top: 10px; }
+          .footer-riba-logo,
+          .footer-arb-logo { height: 52px; }
+          .footer-region-switch .shell { min-height: 0; padding-block: 17px; align-items: flex-start; flex-direction: column; gap: 5px; }
+          .footer-legal { padding-block: 19px; align-items: flex-start; flex-direction: column; gap: 10px; }
         }
       `}</style>
     </footer>

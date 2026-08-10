@@ -28,6 +28,18 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/:path*",
+        has: [{ type: "host", value: "hepburnarchitects.net" }],
+        destination: "https://hepburnarchitects.co.uk/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.hepburnarchitects.net" }],
+        destination: "https://hepburnarchitects.co.uk/:path*",
+        permanent: true,
+      },
+      {
         source: "/knowledge-centre/house-extensions",
         destination: "/services/house-extensions",
         permanent: true,

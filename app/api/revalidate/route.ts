@@ -8,7 +8,10 @@ export async function POST(request: Request) {
   }
 
   revalidateTag("sanity-projects", "max");
+  revalidateTag("sanity-articles", "max");
   revalidatePath("/");
+  revalidatePath("/blog");
+  revalidatePath("/blog/[slug]", "page");
   revalidatePath("/projects");
   revalidatePath("/sitemap.xml");
   return NextResponse.json({ revalidated: true, now: Date.now() });

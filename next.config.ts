@@ -1,5 +1,13 @@
 import type { NextConfig } from "next";
 
+const permanentHostRedirects = (hosts: string[], destination: string) =>
+  hosts.map((host) => ({
+    source: "/:path*",
+    has: [{ type: "host" as const, value: host }],
+    destination,
+    permanent: true,
+  }));
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -27,18 +35,36 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "hepburnarchitects.net" }],
-        destination: "https://hepburnarchitects.co.uk/:path*",
-        permanent: true,
-      },
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.hepburnarchitects.net" }],
-        destination: "https://hepburnarchitects.co.uk/:path*",
-        permanent: true,
-      },
+      ...permanentHostRedirects(
+        ["hepburnarchitects.net", "www.hepburnarchitects.net"],
+        "https://hepburnarchitects.co.uk",
+      ),
+      ...permanentHostRedirects(
+        [
+          "solihullarchitects.co.uk",
+          "www.solihullarchitects.co.uk",
+          "architectsolihull.co.uk",
+          "www.architectsolihull.co.uk",
+          "architectssolihull.co.uk",
+          "www.architectssolihull.co.uk",
+        ],
+        "https://hepburnarchitects.co.uk/locations/solihull-architects",
+      ),
+      ...permanentHostRedirects(
+        ["hmo-architects.co.uk", "www.hmo-architects.co.uk"],
+        "https://hepburnarchitects.co.uk/services/hmo-conversions",
+      ),
+      ...permanentHostRedirects(
+        [
+          "dlhepburn.co.uk",
+          "www.dlhepburn.co.uk",
+          "dlhepburn.com",
+          "www.dlhepburn.com",
+          "hepburndaoudi.com",
+          "www.hepburndaoudi.com",
+        ],
+        "https://hepburnarchitects.co.uk/about",
+      ),
       {
         source: "/knowledge-centre/house-extensions",
         destination: "/services/house-extensions",

@@ -109,7 +109,7 @@ async function fetchSanity<T>(query: string, params: Record<string, unknown> = {
   if (!isSanityConfigured) return null;
   try {
     return await client.fetch<T>(query, params, {
-      next: { revalidate: 60, tags: ["sanity-projects"] },
+      next: { revalidate: 21600, tags: ["sanity-projects"] },
     });
   } catch (error) {
     console.error("Sanity project fetch failed; using local fallback.", error);

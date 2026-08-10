@@ -45,7 +45,7 @@ async function fetchSanity<T>(
 
   try {
     return await client.fetch<T>(query, params, {
-      next: { revalidate: 60, tags: ["sanity-articles"] },
+      next: { revalidate: 21600, tags: ["sanity-articles"] },
     });
   } catch (error) {
     console.error("Sanity article fetch failed.", error);

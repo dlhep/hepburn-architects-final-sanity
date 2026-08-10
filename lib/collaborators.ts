@@ -44,7 +44,7 @@ export async function getCollaborators(): Promise<Collaborator[]> {
       {},
       {
         next: {
-          revalidate: 60,
+          revalidate: 21600,
           tags: ["sanity-collaborators"],
         },
       },

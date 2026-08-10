@@ -111,7 +111,7 @@ export async function getMappedProjects(): Promise<PublicMappedProject[]> {
   if (!isSanityConfigured) return [];
   try {
     const sources = await client.fetch<MappedProjectSources>(MAPPED_PROJECT_SOURCES_QUERY, {}, {
-      next: { revalidate: 60, tags: ["sanity-projects"] },
+      next: { revalidate: 21600, tags: ["sanity-projects"] },
     });
     const mappedFullIds = new Set(sources.fullProjects.map((project) => project._id));
     const fullProjects = sources.fullProjects.map(prepareFullProject).filter((project): project is PublicMappedProject => Boolean(project));

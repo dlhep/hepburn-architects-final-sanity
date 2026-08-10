@@ -60,7 +60,7 @@ export function getReviewServiceUrl(value?: string | null): string | undefined {
 
 async function fetchReviews(query: string) {
   if (!isSanityConfigured) return [] as Review[];
-  try { return (await client.fetch<Review[]>(query, {}, { next: { revalidate: 60, tags: ["sanity-reviews"] } })) || []; } catch { return []; }
+  try { return (await client.fetch<Review[]>(query, {}, { next: { revalidate: 21600, tags: ["sanity-reviews"] } })) || []; } catch { return []; }
 }
 
 export async function getPublishedReviews() { return fetchReviews(PUBLISHED_REVIEWS_QUERY); }

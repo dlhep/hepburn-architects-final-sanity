@@ -10,9 +10,9 @@ export type ProjectLink = InternalLink & { destinationType: "project" };
 export type RelatedLinkGroup = { heading: string; links: InternalLink[]; group: string; ariaLabel?: string };
 
 export const cornerstonePages: InternalLink[] = [
-  { href: "/", label: "Hepburn Architects", destinationType: "resource" },
+  { href: "/", label: "Residential Architects Birmingham", destinationType: "resource" },
   ...services.map((item) => ({ href: `/services/${item.slug}`, label: item.shortTitle, description: item.description, destinationType: "service" as const })),
-  { href: "/locations/birmingham-architects", label: "Residential architects across Birmingham", destinationType: "location" },
+  { href: "/locations/birmingham-architects", label: "Birmingham architectural services", destinationType: "location" },
   { href: "/locations", label: "Areas we serve", destinationType: "location" },
   { href: "/projects", label: "Residential architecture projects", destinationType: "project" },
   { href: "/reviews", label: "Client reviews", destinationType: "resource" },

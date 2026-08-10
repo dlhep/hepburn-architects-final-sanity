@@ -150,14 +150,14 @@ export default async function HomePage() {
 
   return (
     <>
-      <StructuredData data={buildGraph(buildWebSiteSchema(), buildWebPageSchema({ url: `${site.url}/`, name: "Hepburn Architects", description: site.description }), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildArchitectSchema())} />
+      <StructuredData data={buildGraph(buildWebSiteSchema(), buildWebPageSchema({ url: `${site.url}/`, name: "Residential Architects Birmingham | Hepburn Architects", description: site.description }), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildArchitectSchema())} />
       <section className="hero home-hero">
         <div className="shell hero-grid">
           <div className="hero-copy">
             <small className="eyebrow">
               Residential architecture · planning · technical design
             </small>
-            <h1>Residential architects creating exceptional homes.</h1>
+            <h1>Residential Architects in Birmingham.</h1>
             <p>
               Design, planning and Building Regulations expertise for extensions,
               loft conversions, new homes, HMOs and residential developments across

@@ -1,9 +1,9 @@
 import { defineField, defineType } from "sanity";
 
 const projectTypes = ["House extension", "Loft conversion", "New-build home", "HMO conversion", "Change of use", "Planning application", "Building Regulations", "Residential development", "Commercial project", "Children’s home", "Other"];
-const sources = ["Google", "Facebook", "Houzz", "Email", "Written testimonial", "Client feedback form", "LinkedIn", "Other"];
+const sources = ["Google", "MyBuilder", "Checkatrade", "Facebook", "Houzz", "Email", "Written testimonial", "Client feedback form", "LinkedIn", "Other"];
 const placements = ["General", "Homepage", "House Extensions", "Planning Applications", "Building Regulations", "New-Build Homes", "Loft Conversions", "HMO Conversions", "Change of Use", "Birmingham", "Solihull", "Other"];
-const onlineSources = ["Google", "Facebook", "Houzz", "LinkedIn"];
+const onlineSources = ["Google", "MyBuilder", "Checkatrade", "Facebook", "Houzz", "LinkedIn"];
 
 export const reviewType = defineType({
   name: "review",

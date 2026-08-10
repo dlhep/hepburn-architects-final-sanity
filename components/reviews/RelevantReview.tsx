@@ -43,10 +43,10 @@ export function ReviewGrid({ reviews }: { reviews: Review[] }) {
             <ReviewImpression review={review} />
             {review.rating ? <p className="relevant-review-rating" aria-label={`${review.rating} out of 5 stars`}><span>{review.rating}/5</span>{Array.from({ length: review.rating }).map((_, index) => <Star key={index} size={13} fill="currentColor" aria-hidden="true" />)}</p> : <Quote className="home-review-quote-mark" aria-hidden="true" />}
             <blockquote>{review.shortQuote || review.quote}</blockquote>
-            <footer>
+            <div className="home-review-card-meta">
               <p className="relevant-review-attribution"><strong>{getReviewAttribution(review)}</strong>{context ? <span>{context}</span> : null}</p>
               {sourceUrl ? <a href={sourceUrl} target="_blank" rel="noopener noreferrer" data-track-event="review_source_click" data-track-review-id={review._id} data-track-review-source={review.source}>Read on {getReviewSourceLabel(review)} <ArrowRight size={14} /></a> : null}
-            </footer>
+            </div>
           </article>;
         })}
       </div>

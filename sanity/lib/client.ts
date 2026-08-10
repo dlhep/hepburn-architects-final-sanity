@@ -5,5 +5,7 @@ export const client = createClient({
   projectId: sanityProjectId || "dummy123",
   dataset: sanityDataset,
   apiVersion: sanityApiVersion,
-  useCdn: true,
+  // Next.js controls article caching and revalidation; read directly so newly
+  // published journal entries are immediately available on their first request.
+  useCdn: false,
 });

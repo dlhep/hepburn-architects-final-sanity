@@ -24,7 +24,7 @@ import {
 import { site } from "@/lib/site";
 import { ROOT_TITLE } from "@/lib/seo";
 import { getHomepageReviews } from "@/lib/reviews";
-import { ReviewQuote } from "@/components/reviews/RelevantReview";
+import { ReviewGrid } from "@/components/reviews/RelevantReview";
 import { StructuredData } from "@/components/StructuredData";
 import { buildArchitectSchema, buildBusinessLocationSchema, buildGraph, buildOrganisationSchema, buildWebPageSchema, buildWebSiteSchema } from "@/lib/structured-data";
 
@@ -510,7 +510,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {homepageReviews[0] ? <ReviewQuote review={homepageReviews[0]} compact /> : null}
+      <ReviewGrid reviews={homepageReviews} />
 
       <section className="section dark-section">
         <div className="shell final-cta">

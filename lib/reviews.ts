@@ -2,7 +2,7 @@ import { client } from "@/sanity/lib/client";
 import { isSanityConfigured } from "@/sanity/env";
 import { FEATURED_REVIEWS_QUERY, PUBLISHED_REVIEWS_QUERY } from "@/sanity/lib/queries";
 import { projectImageUrl, type SanityProjectImage } from "@/lib/projects";
-import { BIRMINGHAM_REGION, NORTH_EAST_REGION, regionForLocationSlug } from "@/lib/google-business/model";
+import { BIRMINGHAM_REGION, regionForLocationSlug } from "@/lib/google-business/model";
 
 export type Review = {
   _id: string;
@@ -102,10 +102,11 @@ export async function getReviewForLocation(locationSlug: string) {
 export async function getReviewForProject(projectSlug: string) { return (await getPublishedReviews()).find((review) => review.relatedProject?.slug === projectSlug); }
 export async function getHomepageReviews() {
   const reviews = await getPublishedReviews();
-  const eligible = reviews.filter((review) => review.showOnHomepage === true || review.featuredPlacement === "Homepage");
-  const birmingham = eligible.find((review) => getReviewRegion(review) === BIRMINGHAM_REGION);
-  const northEast = eligible.find((review) => getReviewRegion(review) === NORTH_EAST_REGION);
-  return [birmingham, northEast, ...eligible].filter((review, index, values): review is Review => Boolean(review) && values.findIndex((item) => item?._id === review?._id) === index).slice(0, 2);
+  const homepage = reviews.filter((review) => review.showOnHomepage === true || review.featuredPlacement === "Homepage");
+  const birmingham = reviews.filter((review) => getReviewRegion(review) === BIRMINGHAM_REGION);
+  return [...homepage, ...birmingham]
+    .filter((review, index, values) => values.findIndex((item) => item._id === review._id) === index)
+    .slice(0, 3);
 }
 export function getReviewAttribution(review: Pick<Review, "publicAttribution" | "clientName" | "clientDescriptor">) { return review.publicAttribution || review.clientName || review.clientDescriptor || "Verified client"; }
 export function getReviewRegion(review: Pick<Review, "manualRegionOverride" | "autoRegion" | "location">) { return review.manualRegionOverride || review.autoRegion || review.location; }

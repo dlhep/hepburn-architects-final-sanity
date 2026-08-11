@@ -41,6 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/journal/house-extension-planning-permission-birmingham-2026-guide",
     "/journal/loft-conversion-planning-rules-birmingham",
     "/estimate",
+    "/planning-tools",
     "/projects",
     "/about",
     "/contact",

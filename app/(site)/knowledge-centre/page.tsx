@@ -39,6 +39,7 @@ const topicNavigation = [
   { label: "Projects", href: "/projects" },
   { label: "Journal", href: "/blog" },
   { label: "Fee Calculator", href: "/estimate" },
+  { label: "Planning Tools", href: "/planning-tools" },
 ] as const;
 
 const questions = [

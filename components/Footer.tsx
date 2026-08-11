@@ -7,6 +7,7 @@ const practiceLinks = [
   { href: "/projects", label: "Projects" },
   { href: "/about", label: "Studio" },
   { href: "/knowledge-centre", label: "Knowledge Centre" },
+  { href: "/planning-tools", label: "Planning Tools" },
   { href: "/blog", label: "Journal" },
   { href: "/reviews", label: "Reviews" },
   { href: "/contact", label: "Contact" },

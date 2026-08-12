@@ -58,15 +58,19 @@
 
 .topicStrip > div {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
 .topicStrip a {
-  padding: 18px 25px;
+  flex: 1 0 auto;
+  padding: 18px 14px;
   border-left: 1px solid var(--line);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: .025em;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .topicStrip a:last-child {

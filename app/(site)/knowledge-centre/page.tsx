@@ -40,6 +40,7 @@ const topicNavigation = [
   { label: "Journal", href: "/blog" },
   { label: "Fee Calculator", href: "/estimate" },
   { label: "Planning Tools", href: "/planning-tools" },
+  { label: "Property Professionals", href: "/knowledge-centre/property-professional-architectural-support" },
 ] as const;
 
 const questions = [

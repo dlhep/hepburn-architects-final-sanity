@@ -1,14 +1,30 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, Phone, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
 
 export function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileNavRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const overlayHeaderPage = pathname === "/" || pathname === "/projects" || pathname === "/services";
+    if (!overlayHeaderPage) {
+      setScrolled(false);
+      return;
+    }
+
+    const updateHeader = () => setScrolled(window.scrollY > 80);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeader);
+  }, [pathname]);
 
   useEffect(() => {
     if (!open) return;
@@ -42,7 +58,7 @@ export function Header() {
 
   return (
     <>
-      <header className="header">
+      <header className={`header${scrolled ? " is-scrolled" : ""}`}>
         <div className="shell nav">
           <Link className="brand-logo-link" href="/" onClick={closeMenu} aria-label="Hepburn Architects home">
             {/* The inline SVG wordmark keeps its intrinsic proportions without an image optimisation request. */}

@@ -13,7 +13,7 @@ const standfirst = "The best architect for one project may not be the right arch
 const articleDescription = "A practical guide to comparing Birmingham architects, verifying professional credentials and choosing the right practice for a residential project.";
 const path = "/journal/how-to-choose-the-best-architect-in-birmingham";
 const url = `${site.url}${path}`;
-const image = `${site.url}/images/birmingham-residential-project.jpg`;
+const image = `${site.url}/images/selected-work-1.webp`;
 const publicationDate = "2026-08-02";
 
 const faqs = [
@@ -128,7 +128,7 @@ export default function BirminghamArchitectGuidePage() {
           <p className={styles.byline}>Published 2 August 2026 · 8 minutes read · By <Link href="/about">David Hepburn</Link></p>
 
           <figure className={styles.hero}>
-            <Image src="/images/birmingham-residential-project.jpg" alt="Architect-designed residential project in Birmingham by Hepburn Architects" width={1024} height={485} priority sizes="(max-width: 1100px) 100vw, 1100px" />
+            <Image src="/images/selected-work-1.webp" alt="Contemporary architect-designed family home" width={1448} height={1086} priority sizes="(max-width: 1100px) 100vw, 1100px" />
             <figcaption>Completed residential extension project in Sutton Coldfield, Birmingham.</figcaption>
           </figure>
 

@@ -133,13 +133,13 @@ export function Footer() {
 
         .footer-contact-links { display: grid; gap: 6px; }
         .footer-contact-links a { display: flex; align-items: center; gap: 8px; width: fit-content; }
-        .footer-contact-links svg { color: #f08a58; flex: none; }
+        .footer-contact-links svg { color: #f36c21; flex: none; }
 
         .footer-studio { margin-top: 4px; }
         .footer-studio h2,
         .footer-link-group h2 {
           margin: 0 0 12px;
-          color: #f08a58;
+          color: #f36c21;
           font-size: 11px;
           line-height: 1.3;
           letter-spacing: .16em;
@@ -168,7 +168,7 @@ export function Footer() {
         .footer-link-group a { width: fit-content; color: rgba(255, 253, 248, .82); font-size: 14px; line-height: 1.45; }
         .footer-link-group a:hover,
         .footer-contact-links a:hover { color: #fff; }
-        .footer-link-group .footer-all-link { display: flex; align-items: center; gap: 6px; margin-top: 4px; color: #f5a178; font-weight: 700; }
+        .footer-link-group .footer-all-link { display: flex; align-items: center; gap: 6px; margin-top: 4px; color: #f36c21; font-weight: 700; }
 
         .footer-region-switch {
           border-block: 1px solid rgba(255, 255, 255, .16);

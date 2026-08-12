@@ -186,8 +186,8 @@ export default async function HomePage() {
 
           <div className="hero-visual photo-frame">
             <Image
-              src="/images/homepage-hero-farmhouse-photoreal.png"
-              alt="Contemporary extension to a traditional farmhouse by Hepburn Architects"
+              src="/images/homepage-hero-taller-trees.png"
+              alt="Contemporary residential home designed by Hepburn Architects"
               fill
               priority
               fetchPriority="high"

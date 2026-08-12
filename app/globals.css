@@ -5436,3 +5436,58 @@ body *::after {
   }
 }
 /* COMPACT JOURNAL EDITORIAL LAYOUT — END */
+
+/* Warm closing panel for the Studio page. */
+.studio-v4-final-cta-section {
+  background: var(--sand);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+}
+
+.studio-v4-final-cta-section h2 {
+  color: var(--ink);
+}
+
+.studio-v4-final-cta-section p {
+  color: var(--muted);
+}
+
+.studio-v4-final-cta-section .eyebrow {
+  color: var(--orange);
+}
+
+.studio-v4-final-cta-section .light-btn {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* Light professional reassurance panel on the Studio page. */
+.studio-v4-standards-section {
+  background: var(--cream);
+  color: var(--ink);
+  border-block: 1px solid var(--line);
+}
+
+.studio-v4-standards-grid .eyebrow {
+  color: var(--orange);
+}
+
+.studio-v4-standards-grid h2 {
+  color: var(--ink);
+}
+
+.studio-v4-standards-grid p {
+  color: var(--muted);
+}
+
+.studio-v4-standards-grid ul {
+  border-top-color: var(--line);
+}
+
+.studio-v4-standards-grid li {
+  border-bottom-color: var(--line);
+}
+
+.studio-v4-standards-grid li svg {
+  color: var(--orange);
+}

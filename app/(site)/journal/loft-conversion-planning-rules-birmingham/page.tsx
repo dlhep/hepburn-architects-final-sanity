@@ -12,7 +12,7 @@ const description = "Do you need planning permission for a loft conversion in Bi
 const schemaDescription = "A practical guide to planning permission, permitted development, dormers, hip-to-gable extensions and Lawful Development Certificates for Birmingham loft conversions.";
 const path = "/journal/loft-conversion-planning-rules-birmingham";
 const url = `${site.url}${path}`;
-const image = `${site.url}/images/selected-work-3.webp`;
+const image = `${site.url}/images/journal-loft-conversion-birmingham.png`;
 const publicationDate = "2026-08-02";
 
 const faqs = [
@@ -49,7 +49,7 @@ export default function BirminghamLoftPlanningGuidePage() {
   return <><StructuredData data={buildGraph(schema)} /><article className={`section ${styles.article}`}><div className="shell article-page">
     <nav aria-label="Breadcrumb" className="muted small-copy"><Link href="/">Home</Link> · <Link href="/blog">Journal</Link></nav><small className="eyebrow"><Newspaper size={14}/> Planning guidance</small><h1>{title}</h1>
     <p className="lead">Many Birmingham loft conversions can potentially proceed under permitted development, but dormers, hip-to-gable extensions, rooflights and conservation-area properties are subject to detailed restrictions. This guide explains the main approval routes and the checks to make before starting work.</p><p className={styles.byline}>Published 2 August 2026 · 10 minutes read · By <Link href="/about">David Hepburn</Link></p>
-    <figure className={styles.hero}><Image src="/images/selected-work-3.webp" alt="Contemporary residential architecture with rooflights" width={1448} height={1086} priority sizes="(max-width: 1100px) 100vw, 1100px"/><figcaption>Contemporary residential architecture featuring carefully integrated rooflights.</figcaption></figure>
+    <figure className={styles.hero}><Image src="/images/journal-loft-conversion-birmingham.png" alt="Interior of a completed Birmingham loft conversion with rooflights and dormer window" width={1672} height={941} priority sizes="(max-width: 1100px) 100vw, 1100px"/><figcaption>Illustrative internal view of a completed loft conversion with rooflights, dormer window and integrated eaves storage.</figcaption></figure>
     <div className={styles.body}><p>A loft conversion can add a bedroom, home office, bathroom or flexible living space without increasing the footprint of a Birmingham home.</p><aside className={styles.question}><strong>Do I need planning permission for a loft conversion?</strong></aside><p>In many cases, internal conversion of an existing roof space does not itself require planning permission. External work such as dormers, hip-to-gable extensions, rooflights, balconies and changes to the roof profile may instead require a permitted-development assessment, Proposed Lawful Development Certificate, householder planning permission, listed-building consent or another approval.</p><p>The correct route depends on the property, roof design, location, previous alterations and exact proposal. Building Regulations approval is normally required even where planning permission is not.</p>
     <nav className={styles.contents} aria-label="Article contents"><small>Contents</small><ol>{contents.map((item,index)=><li key={item}><a href={`#${slugify(item)}`}>{index+1}. {item}</a></li>)}</ol></nav>
 

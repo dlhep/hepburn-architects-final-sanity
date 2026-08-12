@@ -28,8 +28,8 @@ export default async function ProjectsPage() {
         <div className="projects-index-hero">
           <Image
             className="projects-index-hero-background"
-            src="/images/homepage-hero-taller-trees.png"
-            alt="Contemporary residential home designed by Hepburn Architects"
+            src="/images/homepage-hero-farmhouse-photoreal.png"
+            alt="Contemporary extension to a traditional farmhouse by Hepburn Architects"
             fill
             priority
             sizes="100vw"

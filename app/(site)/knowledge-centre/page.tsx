@@ -36,7 +36,6 @@ const topicNavigation = [
   { label: "Building Regulations", href: "/knowledge-centre/building-regulations" },
   { label: "House Extension Services", href: "/services/house-extensions" },
   { label: "Loft Conversions", href: "/knowledge-centre/loft-conversions" },
-  { label: "Projects", href: "/projects" },
   { label: "Journal", href: "/blog" },
   { label: "Fee Calculator", href: "/estimate" },
   { label: "Planning Tools", href: "/planning-tools" },

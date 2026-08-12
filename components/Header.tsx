@@ -42,12 +42,6 @@ export function Header() {
 
   return (
     <>
-      <div className="topbar">
-        <div className="shell topbar-inner">
-          <span>ARB registered · RIBA Chartered Practice</span>
-          <a className="topbar-phone" href={site.phoneHref}><Phone size={13} /> Call {site.phone}</a>
-        </div>
-      </div>
       <header className="header">
         <div className="shell nav">
           <Link className="brand-logo-link" href="/" onClick={closeMenu} aria-label="Hepburn Architects home">
@@ -118,19 +112,19 @@ export function Header() {
 
         .brand-logo {
           display: block;
-          width: clamp(180px, 18vw, 225px);
+          width: 150px;
           height: auto;
         }
 
         @media (max-width: 1100px) {
           .brand-logo {
-            width: 190px;
+            width: 150px;
           }
         }
 
         @media (max-width: 650px) {
           .brand-logo {
-            width: 158px;
+            width: 150px;
           }
         }
       `}</style>

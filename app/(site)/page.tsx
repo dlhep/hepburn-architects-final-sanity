@@ -144,6 +144,7 @@ export default async function HomePage() {
 
   const projectPool = uniqueProjects([...featuredProjects, ...allProjects]);
   const selectedProjects = projectPool.slice(0, 3);
+  const featuredCaseStudy = signatureProject ?? projectPool[0];
   const latestPosts = posts.slice(0, 3);
   const featurePost = latestPosts[0];
   const supportingPosts = latestPosts.slice(1);
@@ -180,12 +181,12 @@ export default async function HomePage() {
 
           <div className="hero-visual photo-frame">
             <Image
-              src="/images/homepage-hero.webp"
+              src="/images/homepage-hero-fullwidth.png"
               alt="Contemporary residential home designed by Hepburn Architects"
               fill
               priority
               fetchPriority="high"
-              sizes="(max-width: 950px) calc(100vw - 40px), (max-width: 1260px) 43vw, 540px"
+              sizes="100vw"
               className="hero-image"
             />
             <div className="hero-note">
@@ -251,32 +252,32 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {signatureProject && (
+      {featuredCaseStudy && (
         <section className="home-case-study-section">
           <div className="shell home-case-study-grid">
             <div className="home-case-study-image">
               <Image
-                src={projectImageUrl(signatureProject.featuredImage, 1600)}
-                alt={projectImageAlt(signatureProject)}
+                src={projectImageUrl(featuredCaseStudy.featuredImage, 1600)}
+                alt={projectImageAlt(featuredCaseStudy)}
                 fill
                 sizes="(max-width: 950px) calc(100vw - 40px), (max-width: 1260px) 60vw, 735px"
               />
             </div>
             <div className="home-case-study-copy">
               <small className="eyebrow">Featured case study</small>
-              <h2>{signatureProject.title}</h2>
-              <p className="lead">{signatureProject.description}</p>
+              <h2>{featuredCaseStudy.title}</h2>
+              <p className="lead">{featuredCaseStudy.description}</p>
               <dl className="home-case-study-facts">
                 <div>
                   <dt>Location</dt>
-                  <dd><MapPin size={15} /> {signatureProject.location}</dd>
+                  <dd><MapPin size={15} /> {featuredCaseStudy.location}</dd>
                 </div>
                 <div>
                   <dt>Project type</dt>
-                  <dd>{signatureProject.projectType}</dd>
+                  <dd>{featuredCaseStudy.projectType}</dd>
                 </div>
               </dl>
-              <Link className="btn light-btn" href={`/projects/${signatureProject.slug}`}>
+              <Link className="btn light-btn" href={`/projects/${featuredCaseStudy.slug}`}>
                 Read the case study <ArrowRight size={18} />
               </Link>
             </div>
@@ -396,7 +397,7 @@ export default async function HomePage() {
               indicative appointment before arranging a consultation.
             </p>
           </div>
-          <Link className="btn light-btn" href="/estimate">
+          <Link className="btn primary" href="/estimate">
             Use the fee calculator <ArrowRight size={18} />
           </Link>
         </div>
@@ -511,30 +512,6 @@ export default async function HomePage() {
       </section>
 
       <ReviewGrid reviews={homepageReviews} />
-
-      <section className="section dark-section">
-        <div className="shell final-cta">
-          <small className="eyebrow">Start with a clear next step</small>
-          <h2>Discuss your residential project directly with David.</h2>
-          <p>
-            Book a consultation, call the studio or use the fee calculator for an early
-            indication of the likely architectural appointment.
-          </p>
-          <div className="actions centered-actions">
-            <a
-              className="btn primary"
-              href={site.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Book consultation
-            </a>
-            <Link className="btn light-btn" href="/estimate">
-              Get an indicative fee
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

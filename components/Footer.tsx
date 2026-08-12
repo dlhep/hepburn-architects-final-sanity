@@ -93,7 +93,7 @@ export function Footer() {
 
       <style>{`
         .site-footer {
-          background: #383e42;
+          background: #2d3235;
           color: #fffdf8;
           padding: 0;
         }

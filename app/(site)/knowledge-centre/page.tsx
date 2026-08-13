@@ -161,7 +161,7 @@ export default async function KnowledgeCentrePage() {
     <>
       <StructuredData data={breadcrumbSchema} />
 
-      <section className={styles.hero}>
+      <section className={`${styles.hero} knowledge-index-hero`}>
         <div className={`shell ${styles.heroInner}`}>
           <nav className={styles.breadcrumb} aria-label="Breadcrumb">
             <Link href="/">Home</Link>

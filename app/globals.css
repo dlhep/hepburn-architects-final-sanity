@@ -5492,6 +5492,97 @@ body *::after {
   color: var(--orange);
 }
 
+/* Consistent mobile hero typography and text origin across primary pages. */
+@media (max-width: 700px) {
+  .home-hero .hero-grid,
+  .services-hero-content,
+  .projects-index-hero .projects-index-hero-grid,
+  .knowledge-index-hero > .shell,
+  .studio-v4-hero-grid,
+  .journal-index-section > .shell {
+    width: calc(100% - 28px) !important;
+    margin-inline: auto !important;
+  }
+
+  .home-hero .hero-copy .eyebrow,
+  .services-hero-copy .eyebrow,
+  .projects-index-intro .eyebrow,
+  .knowledge-index-hero .eyebrow,
+  .studio-v4-hero-copy .eyebrow,
+  .journal-index-intro .eyebrow {
+    margin: 0 0 12px !important;
+    font-size: 10px !important;
+    line-height: 1.45 !important;
+    letter-spacing: .14em !important;
+  }
+
+  .home-hero .hero-copy h1,
+  .services-hero-copy h1,
+  .projects-index-intro h1,
+  .knowledge-index-hero h1,
+  .studio-v4-hero-copy h1,
+  .journal-index-intro h1 {
+    max-width: 11ch !important;
+    margin: 0 0 18px !important;
+    font-size: clamp(40px, 11vw, 48px) !important;
+    font-weight: 400 !important;
+    line-height: 1.02 !important;
+    letter-spacing: -.035em !important;
+    text-wrap: balance;
+  }
+
+  .home-hero .hero-copy > p,
+  .services-hero-copy .lead,
+  .projects-index-intro > p,
+  .knowledge-index-hero h1 + div p,
+  .studio-v4-hero-copy > p,
+  .journal-index-intro > p {
+    margin-top: 0 !important;
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+
+  .home-hero .hero-copy .eyebrow,
+  .services-hero-copy .eyebrow,
+  .projects-index-intro .eyebrow {
+    display: inline-block !important;
+    width: fit-content;
+    max-width: 100%;
+    padding: 5px 8px;
+    background: rgba(24, 29, 31, .82);
+    color: #ff8a4a !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .55);
+  }
+
+  .services-hero-full,
+  .projects-index-hero {
+    min-height: 740px;
+    align-items: flex-start;
+  }
+
+  .services-hero-content,
+  .projects-index-hero .projects-index-hero-grid {
+    box-sizing: border-box;
+    min-height: 740px;
+    padding-top: 112px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .services-hero-shade,
+  .projects-index-hero-shade {
+    background: linear-gradient(180deg, rgba(20, 25, 27, .64) 0%, rgba(20, 25, 27, .38) 48%, rgba(20, 25, 27, .82) 100%);
+  }
+
+  .knowledge-index-hero,
+  .journal-index-section {
+    padding-top: 48px !important;
+  }
+
+  .studio-v4-hero-grid {
+    padding-top: 48px !important;
+  }
+}
+
 /* Mobile homepage hero: clear the transparent header and keep the opening
    content comfortably within the first screen without changing desktop. */
 @media (max-width: 650px) {

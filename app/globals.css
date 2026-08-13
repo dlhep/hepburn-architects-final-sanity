@@ -6836,6 +6836,89 @@ body .studio-v4-final-cta-section .final-cta h2 {
   font-size: clamp(38px, 4.2vw, 58px);
 }
 
+/* HERO COPY LEFT EDGE — final authority.
+   Every primary page hero uses the same site-grid coordinate for its label,
+   heading, supporting copy and actions. This deliberately follows every
+   page-specific rule so no legacy shell can offset one page independently. */
+@media (min-width: 701px) {
+  :root {
+    --primary-hero-copy-gutter: max(20px, calc((100vw - 1220px) / 2));
+  }
+
+  body .home-hero .hero-copy,
+  body .services-hero-content.primary-index-hero-copy,
+  body .projects-index-hero .projects-index-hero-grid.primary-index-hero-copy,
+  body .knowledge-index-hero > .primary-index-hero-copy {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: var(--primary-hero-copy-gutter) !important;
+    padding-right: var(--primary-hero-copy-gutter) !important;
+    text-align: left !important;
+    transform: none !important;
+  }
+
+  body .services-hero-copy,
+  body .projects-index-intro,
+  body .knowledge-index-hero > .primary-index-hero-copy > .eyebrow,
+  body .knowledge-index-hero > .primary-index-hero-copy > h1,
+  body .knowledge-index-hero > .primary-index-hero-copy > div {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 690px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: left !important;
+    transform: none !important;
+  }
+
+  body .home-hero .hero-copy > *,
+  body .services-hero-copy > *,
+  body .projects-index-intro > *,
+  body .knowledge-index-hero > .primary-index-hero-copy > * {
+    margin-left: 0 !important;
+    text-align: left !important;
+  }
+}
+
+@media (max-width: 700px) {
+  :root { --primary-hero-copy-gutter-mobile: 20px; }
+
+  body .home-hero .hero-grid,
+  body .services-hero-content.primary-index-hero-copy,
+  body .projects-index-hero .projects-index-hero-grid.primary-index-hero-copy,
+  body .knowledge-index-hero > .primary-index-hero-copy {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: var(--primary-hero-copy-gutter-mobile) !important;
+    padding-right: var(--primary-hero-copy-gutter-mobile) !important;
+    text-align: left !important;
+    transform: none !important;
+  }
+
+  body .home-hero .hero-copy,
+  body .services-hero-copy,
+  body .projects-index-intro,
+  body .knowledge-index-hero > .primary-index-hero-copy > * {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    text-align: left !important;
+    transform: none !important;
+  }
+}
+
 @media (max-width: 950px) {
   body .studio-v4-hero-grid,
   body .studio-v4-director-grid,

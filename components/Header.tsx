@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Phone, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Menu, Phone, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
 
@@ -10,6 +10,7 @@ export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [megaMenu, setMegaMenu] = useState<"projects" | "services" | "knowledge" | null>(null);
   const overlayHeaderPage = pathname === "/" || pathname === "/projects" || pathname === "/services";
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileNavRef = useRef<HTMLElement>(null);
@@ -51,7 +52,47 @@ export function Header() {
 
   function closeMenu() {
     setOpen(false);
+    setMegaMenu(null);
   }
+
+  const megaMenus = {
+    projects: {
+      eyebrow: "Selected work",
+      title: "Architecture shaped around real homes and places.",
+      intro: "Explore completed extensions, new homes, planning work and residential transformations.",
+      overview: { href: "/projects", label: "View all projects" },
+      image: "/images/selected-work-2.webp",
+      links: [
+        ["House extensions", "/services/house-extensions"], ["New-build homes", "/services/new-build-homes"],
+        ["Birmingham projects", "/locations/birmingham-architects"], ["Solihull projects", "/locations/solihull-architects"],
+        ["Project map", "/projects#project-map"], ["Client reviews", "/reviews"],
+      ],
+    },
+    services: {
+      eyebrow: "Architectural services",
+      title: "A clear route from first idea to technical design.",
+      intro: "Director-led residential architecture, planning and technical support across the West Midlands.",
+      overview: { href: "/services", label: "Explore all services" },
+      image: "/images/services-hero-photoreal.png",
+      links: [
+        ["House extensions", "/services/house-extensions"], ["Planning applications", "/services/planning-applications"],
+        ["Building Regulations", "/services/building-regulations"], ["New-build homes", "/services/new-build-homes"],
+        ["Loft conversions", "/services/loft-conversions"], ["HMO conversions", "/services/hmo-conversions"],
+      ],
+    },
+    knowledge: {
+      eyebrow: "Knowledge Centre",
+      title: "Practical guidance before you commit.",
+      intro: "Straightforward answers on design, planning permission, costs, timescales and Building Regulations.",
+      overview: { href: "/knowledge-centre", label: "Open the Knowledge Centre" },
+      image: "/images/childrens-home-planning-hero.png",
+      links: [
+        ["Planning permission", "/knowledge-centre/planning-permission"], ["Building Regulations", "/knowledge-centre/building-regulations"],
+        ["Extension costs", "/knowledge-centre/house-extension-costs"], ["Extension timeline", "/knowledge-centre/house-extension-timeline"],
+        ["Loft conversions", "/knowledge-centre/loft-conversions"], ["Planning tools", "/planning-tools"],
+      ],
+    },
+  } as const;
 
   return (
     <>
@@ -72,9 +113,11 @@ export function Header() {
             />
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation">
-            <Link href="/projects">Projects</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/knowledge-centre">Knowledge Centre</Link>
+            {([['projects', 'Projects'], ['services', 'Services'], ['knowledge', 'Knowledge Centre']] as const).map(([key, label]) => (
+              <button className={`mega-trigger${megaMenu === key ? " is-active" : ""}`} type="button" key={key} onClick={() => setMegaMenu((current) => current === key ? null : key)} aria-expanded={megaMenu === key} aria-controls="desktop-mega-menu">
+                {label}<ChevronDown size={14} />
+              </button>
+            ))}
             <Link href="/about">About</Link>
             <Link href="/journal">Journal</Link>
             <Link href="/estimate">Fee calculator</Link>
@@ -93,6 +136,26 @@ export function Header() {
             {open ? <X /> : <Menu />}
           </button>
         </div>
+        {megaMenu && (
+          <div className="mega-menu" id="desktop-mega-menu">
+            <div className="shell mega-menu-grid">
+              <div className="mega-menu-intro">
+                <small>{megaMenus[megaMenu].eyebrow}</small>
+                <h2>{megaMenus[megaMenu].title}</h2>
+                <p>{megaMenus[megaMenu].intro}</p>
+                <Link href={megaMenus[megaMenu].overview.href} onClick={closeMenu}>{megaMenus[megaMenu].overview.label}<ArrowRight size={17} /></Link>
+              </div>
+              <nav className="mega-menu-links" aria-label={`${megaMenus[megaMenu].eyebrow} menu`}>
+                {megaMenus[megaMenu].links.map(([label, href], index) => <Link href={href} onClick={closeMenu} key={href}><span>0{index + 1}</span>{label}<ArrowRight size={15} /></Link>)}
+              </nav>
+              <Link className="mega-menu-feature" href={megaMenus[megaMenu].overview.href} onClick={closeMenu}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={megaMenus[megaMenu].image} alt="" />
+                <span>Explore {megaMenus[megaMenu].eyebrow}<ArrowRight size={17} /></span>
+              </Link>
+            </div>
+          </div>
+        )}
         {open && (
           <nav
             ref={mobileNavRef}

@@ -122,7 +122,7 @@ const professionalStandards = [
 export default function AboutPage() {
   return (
     <>
-      <StructuredData data={buildGraph(buildWebPageSchema({ url: `${site.url}/about`, name: "About Hepburn Architects", description: metadata.description as string, type: "AboutPage", breadcrumb: breadcrumbId(`${site.url}/about`) }), buildBreadcrumbSchema(`${site.url}/about`, [{ name: "Home", url: `${site.url}/` }, { name: "Studio", url: `${site.url}/about` }]), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildArchitectSchema())} />
+      <StructuredData data={buildGraph(buildWebPageSchema({ url: `${site.url}/about`, name: "About Hepburn Architects", description: metadata.description as string, type: "AboutPage", breadcrumb: breadcrumbId(`${site.url}/about`) }), buildBreadcrumbSchema(`${site.url}/about`, [{ name: "Home", url: `${site.url}/` }, { name: "About", url: `${site.url}/about` }]), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildArchitectSchema())} />
       <section className="studio-v4-hero">
         <div className="shell studio-v4-hero-grid">
           <div className="studio-v4-hero-copy">

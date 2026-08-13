@@ -1359,6 +1359,66 @@
   }
 }
 
+/* JOURNAL CARD ALIGNMENT — every story follows one column and one internal
+   left edge. The former two-column lead card pulled its copy out of line. */
+body .journal-index-grid {
+  align-items: stretch;
+}
+
+body .journal-index-card,
+body .journal-index-feature {
+  grid-column: auto !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto 1fr !important;
+  gap: 14px !important;
+  align-items: start !important;
+  padding: 20px !important;
+}
+
+body .journal-index-card > span,
+body .journal-index-feature > span {
+  display: block;
+  width: auto;
+  margin: 0;
+  color: var(--orange);
+  font-size: 12px;
+  line-height: 1;
+}
+
+body .journal-index-card > div,
+body .journal-index-feature > div {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+body .journal-index-card > svg,
+body .journal-index-feature > svg {
+  display: none;
+}
+
+body .journal-index-card .journal-index-image,
+body .journal-index-feature .journal-index-image {
+  height: 245px !important;
+  margin: 0 0 20px !important;
+}
+
+body .journal-index-card h2,
+body .journal-index-feature h2,
+body .journal-index-card p,
+body .journal-index-feature p,
+body .journal-index-card small,
+body .journal-index-feature small {
+  margin-left: 0 !important;
+  text-align: left !important;
+}
+
+body .journal-index-feature h2 {
+  max-width: 22ch;
+  font-size: clamp(26px, 2.5vw, 36px);
+}
+
 /* Services page shares the transparent-to-sticky header treatment. */
 body:has(.services-hero-full) .header {
   position: absolute;

@@ -162,15 +162,15 @@ export default async function KnowledgeCentrePage() {
       <StructuredData data={breadcrumbSchema} />
 
       <section className={`${styles.hero} knowledge-index-hero`}>
-        {extensionProject ? (
-          <div className="knowledge-index-hero-visual" aria-hidden="true">
-            <ProjectImage
-              project={extensionProject}
-              sizes="(max-width: 700px) 100vw, 1px"
-              width={1200}
-            />
-          </div>
-        ) : null}
+        <div className="knowledge-index-hero-visual" aria-hidden="true">
+          <Image
+            src="/images/childrens-home-planning-hero.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+          />
+        </div>
         <div className={`shell ${styles.heroInner} primary-index-hero-copy`}>
           <small className="eyebrow">Residential Architecture Guidance</small>
           <h1>Residential Architecture Knowledge Centre</h1>

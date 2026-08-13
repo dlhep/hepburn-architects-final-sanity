@@ -6426,7 +6426,7 @@ body .studio-v4-final-cta-section {
   body .home-hero .hero-visual .hero-image { object-position: center 42% !important; }
   body .services-hero-background { object-position: center 48% !important; }
   body .projects-index-hero-background { object-position: center 46% !important; }
-  body .knowledge-index-hero-visual img { object-position: center 52% !important; }
+  body .knowledge-index-hero-visual img { object-position: center 50% !important; }
 
   body .home-hero::after,
   body .services-hero-shade,
@@ -7010,6 +7010,47 @@ body .studio-v4-final-cta-section .final-cta h2 {
   body .home-hero .hero-grid {
     width: min(calc(100% - 48px), 1450px) !important;
   }
+}
+
+/* ABOUT + JOURNAL FINISHING — final contrast, type and closing spacing. */
+body .studio-v4-standards-section {
+  color: #fff;
+}
+
+body .studio-v4-standards-grid h2,
+body .studio-v4-standards-grid li {
+  color: #fff !important;
+}
+
+body .studio-v4-standards-grid p {
+  color: rgba(255, 255, 255, .72) !important;
+}
+
+body .studio-v4-studios-section {
+  padding-block: 38px !important;
+}
+
+body .studio-v4-final-cta-section {
+  padding-block: 40px !important;
+}
+
+body .studio-v4-final-cta-section .final-cta h2 {
+  max-width: 20ch;
+  margin-block: 12px 14px;
+  font-size: clamp(36px, 3.5vw, 50px);
+  line-height: 1.02;
+}
+
+body .studio-v4-final-cta-section .final-cta p {
+  margin-bottom: 20px;
+}
+
+body .journal-index-card h2,
+body .journal-index-feature h2 {
+  max-width: none;
+  font-size: clamp(24px, 2vw, 30px);
+  line-height: 1.08;
+  text-wrap: balance;
 }
 
 /* ABOUT PORTRAIT FIT — balanced against the hero copy without cropping the subject. */

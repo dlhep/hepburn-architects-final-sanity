@@ -7002,3 +7002,45 @@ body .studio-v4-final-cta-section .final-cta h2 {
     width: min(calc(100% - 48px), 1450px) !important;
   }
 }
+
+/* ABOUT PORTRAIT FIT — balanced against the hero copy without cropping the subject. */
+@media (min-width: 951px) {
+  body .studio-v4-hero-grid {
+    grid-template-columns: minmax(0, 1fr) 400px !important;
+    align-items: center !important;
+  }
+
+  body .studio-v4-founder-visual {
+    width: 400px !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    aspect-ratio: 4 / 5 !important;
+    align-self: center !important;
+    justify-self: end !important;
+    border-radius: 0 !important;
+  }
+}
+
+body .studio-v4-founder-visual > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 50% 18% !important;
+}
+
+body .studio-v4-founder-caption {
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  border-radius: 0 !important;
+}
+
+@media (max-width: 950px) {
+  body .studio-v4-founder-visual {
+    width: min(100%, 400px) !important;
+    max-height: none !important;
+    aspect-ratio: 4 / 5 !important;
+    justify-self: start !important;
+    border-radius: 0 !important;
+  }
+}

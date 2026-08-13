@@ -58,14 +58,31 @@ export default async function BlogPage() {
     <>
       <StructuredData data={schema} />
       <section className="section journal-index-section">
-        <div className="shell page-intro journal-index-intro">
-          <small className="eyebrow"><Newspaper size={14} /> Journal</small>
-          <h1>Architecture news and insights.</h1>
-          <p>Planning updates, design ideas, project news and practical residential architecture advice from a director-led RIBA Chartered practice.</p>
+        <div className="journal-editorial-hero">
+          <div className="shell journal-editorial-heading">
+            <small className="eyebrow"><Newspaper size={14} /> Journal</small>
+            <h1>Ideas and guidance from architectural practice.</h1>
+            <div className="journal-editorial-aside">
+              <span>Planning · Design · Homes</span>
+              <p>Clear thinking on planning, residential design and the decisions that shape better projects across Birmingham and the West Midlands.</p>
+            </div>
+          </div>
+          <Link className="shell journal-hero-story" href={birminghamAuthorityArticles[0].href}>
+            <div className="journal-hero-story-image">
+              <Image src={birminghamAuthorityArticles[0].image} alt={birminghamAuthorityArticles[0].title} fill priority sizes="(max-width: 900px) 100vw, 58vw" />
+            </div>
+            <div className="journal-hero-story-copy">
+              <span>Featured article · 01</span>
+              <small>{birminghamAuthorityArticles[0].category}</small>
+              <h2>{birminghamAuthorityArticles[0].title}</h2>
+              <p>{birminghamAuthorityArticles[0].excerpt}</p>
+              <strong>Read the featured article <ArrowRight size={17} /></strong>
+            </div>
+          </Link>
         </div>
 
         <div className="shell guides-index journal-index-grid">
-          {birminghamAuthorityArticles.map((article, index) => <Link href={article.href} className={`guide-index-card journal-index-card${index === 0 ? " journal-index-feature" : ""}`} key={article.href}>
+          {birminghamAuthorityArticles.slice(1).map((article, index) => <Link href={article.href} className="guide-index-card journal-index-card" key={article.href}>
             <span>{String(index + 1).padStart(2, "0")}</span><div>
               <Image className="journal-index-image" src={article.image} alt={article.title} width={1024} height={485} sizes={index === 0 ? "(max-width: 800px) 100vw, 720px" : "(max-width: 800px) 100vw, 540px"} />
               <small>{article.category}</small><h2>{article.title}</h2><p>{article.excerpt}</p><p className="muted small-copy">2 Aug 2026</p>

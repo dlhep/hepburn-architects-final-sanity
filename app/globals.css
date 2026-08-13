@@ -5721,6 +5721,15 @@ body *::after {
     object-position: 62% 43% !important;
   }
 
+  /* The homepage image lives inside the text shell in the markup, so pull it
+     back out to the viewport edges while leaving the copy aligned below. */
+  .home-hero .hero-visual {
+    right: auto !important;
+    left: 50% !important;
+    width: 100vw !important;
+    transform: translateX(-50%) !important;
+  }
+
   .services-hero-background {
     object-position: 61% 44% !important;
   }

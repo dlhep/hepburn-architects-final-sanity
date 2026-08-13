@@ -21,8 +21,8 @@
 .mapLoading, .mapFallback { display: grid; place-content: center; padding: 30px; text-align: center; color: var(--muted); }
 .mapFallback span, .emptyPanel span { color: var(--ink); font-size: 24px; font-weight: 800; letter-spacing: -.025em; }
 .mapFallback p, .emptyPanel p { margin: 7px 0 0; }
-.mapPin { width: 25px; height: 25px; border: 3px solid #fff; border-radius: 50% 50% 50% 4px; background: var(--orange); box-shadow: 0 4px 12px rgba(23,23,21,.28); transform: rotate(-45deg); }
-.clusterPin { display: grid; place-items: center; width: 48px; height: 48px; border: 3px solid #fff; border-radius: 50%; background: var(--orange); box-shadow: 0 5px 16px rgba(23,23,21,.25); color: #fff; font-weight: 900; }
+.mapPin { width: 25px; height: 25px; border: 3px solid #fff; border-radius: 50% 50% 50% 4px !important; background: var(--orange); box-shadow: 0 4px 12px rgba(23,23,21,.28); transform: rotate(-45deg); }
+.clusterPin { display: grid; place-items: center; width: 48px; height: 48px; border: 3px solid #fff; border-radius: 50% !important; background: var(--orange); box-shadow: 0 5px 16px rgba(23,23,21,.25); color: #fff; font-weight: 900; }
 .infoCard { width: min(300px, 72vw); overflow: hidden; color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
 .infoCard>img { width: 100%; height: 150px; object-fit: cover; }
 .infoCard>div { padding: 15px 3px 5px; }

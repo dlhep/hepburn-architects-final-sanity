@@ -5638,3 +5638,158 @@ body *::after {
     object-position: 62% 42%;
   }
 }
+
+/* Mobile photographic heroes use one calm, repeatable composition:
+   solid navigation, equal-height image, then copy on a separate panel. */
+@media (max-width: 700px) {
+  body:has(.home-hero) .header,
+  body:has(.services-hero-full) .header,
+  body:has(.projects-index-hero) .header,
+  body:has(.home-hero) .header.is-scrolled,
+  body:has(.services-hero-full) .header.is-scrolled,
+  body:has(.projects-index-hero) .header.is-scrolled {
+    position: sticky !important;
+    top: 0;
+    background: rgba(243, 239, 231, .98) !important;
+    border-bottom: 1px solid var(--line) !important;
+    box-shadow: none !important;
+    color: var(--ink) !important;
+    backdrop-filter: blur(14px) !important;
+  }
+
+  body:has(.home-hero) .header .nav,
+  body:has(.services-hero-full) .header .nav,
+  body:has(.projects-index-hero) .header .nav {
+    min-height: 72px !important;
+  }
+
+  body:has(.home-hero) .header .brand-logo,
+  body:has(.services-hero-full) .header .brand-logo,
+  body:has(.projects-index-hero) .header .brand-logo {
+    width: 154px !important;
+    filter: drop-shadow(0 0 .28px #171717) !important;
+  }
+
+  body:has(.home-hero) .header .menu-btn,
+  body:has(.services-hero-full) .header .menu-btn,
+  body:has(.projects-index-hero) .header .menu-btn {
+    color: var(--ink) !important;
+  }
+
+  body:has(.home-hero) .header .mobile-nav,
+  body:has(.services-hero-full) .header .mobile-nav,
+  body:has(.projects-index-hero) .header .mobile-nav {
+    background: rgba(243, 239, 231, .99) !important;
+    color: var(--ink) !important;
+  }
+
+  .home-hero,
+  .services-hero-full,
+  .projects-index-hero {
+    position: relative;
+    display: block !important;
+    min-height: 0 !important;
+    overflow: hidden;
+    background: #252a2d !important;
+  }
+
+  .home-hero::after {
+    display: none !important;
+  }
+
+  .home-hero .hero-visual,
+  .services-hero-background,
+  .projects-index-hero-background {
+    position: absolute !important;
+    inset: 0 0 auto !important;
+    width: 100% !important;
+    height: 320px !important;
+    min-height: 0 !important;
+    transform: none !important;
+  }
+
+  .home-hero .hero-visual .hero-image,
+  .services-hero-background,
+  .projects-index-hero-background {
+    width: 100% !important;
+    height: 320px !important;
+    min-height: 0 !important;
+    object-fit: cover !important;
+  }
+
+  .home-hero .hero-visual .hero-image {
+    object-position: 62% 43% !important;
+  }
+
+  .services-hero-background {
+    object-position: 61% 44% !important;
+  }
+
+  .projects-index-hero-background {
+    object-position: 58% 54% !important;
+  }
+
+  .services-hero-shade,
+  .projects-index-hero-shade {
+    inset: 0 0 auto !important;
+    height: 320px !important;
+    background: linear-gradient(180deg, rgba(20, 24, 26, .02), rgba(20, 24, 26, .18)) !important;
+  }
+
+  .home-hero .hero-grid,
+  .services-hero-content,
+  .projects-index-hero .projects-index-hero-grid {
+    box-sizing: border-box;
+    width: calc(100% - 28px) !important;
+    min-height: 0 !important;
+    margin-inline: auto !important;
+    padding: 356px 0 44px !important;
+  }
+
+  .home-hero .hero-copy,
+  .services-hero-copy,
+  .projects-index-hero .projects-index-intro {
+    position: relative;
+    z-index: 2;
+    max-width: none !important;
+  }
+
+  .home-hero .hero-copy .eyebrow,
+  .services-hero-copy .eyebrow,
+  .projects-index-intro .eyebrow {
+    display: inline-flex !important;
+    width: auto !important;
+    max-width: 100%;
+    padding: 0 !important;
+    background: transparent !important;
+    color: #ff9a61 !important;
+    text-shadow: none !important;
+  }
+
+  .home-hero .hero-copy h1,
+  .services-hero-copy h1,
+  .projects-index-intro h1 {
+    color: #fff !important;
+  }
+
+  .home-hero .hero-copy > p,
+  .services-hero-copy .lead,
+  .projects-index-intro > p {
+    color: rgba(255, 255, 255, .78) !important;
+  }
+
+  .home-hero .actions,
+  .services-hero-copy .actions {
+    display: grid !important;
+    grid-template-columns: 1fr;
+  }
+
+  .home-hero .actions .btn,
+  .services-hero-copy .actions .btn {
+    width: 100%;
+  }
+
+  .projects-index-hero-caption {
+    display: none !important;
+  }
+}

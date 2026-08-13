@@ -162,6 +162,15 @@ export default async function KnowledgeCentrePage() {
       <StructuredData data={breadcrumbSchema} />
 
       <section className={`${styles.hero} knowledge-index-hero`}>
+        {extensionProject ? (
+          <div className="knowledge-index-hero-visual" aria-hidden="true">
+            <ProjectImage
+              project={extensionProject}
+              sizes="(max-width: 700px) 100vw, 1px"
+              width={1200}
+            />
+          </div>
+        ) : null}
         <div className={`shell ${styles.heroInner}`}>
           <nav className={styles.breadcrumb} aria-label="Breadcrumb">
             <Link href="/">Home</Link>

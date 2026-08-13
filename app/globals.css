@@ -6451,3 +6451,291 @@ body .journal-index-feature h2 {
   body .journal-index-image,
   body .journal-index-feature .journal-index-image { height: clamp(220px, 58vw, 340px) !important; }
 }
+
+/* ABOUT / STUDIO — compact editorial composition. This final authority
+   removes the accumulated legacy whitespace without changing the content. */
+body .studio-v4-hero,
+body .studio-v4-director-section,
+body .studio-v4-strengths-section,
+body .studio-v4-values-section,
+body .studio-v4-process-section,
+body .studio-v4-standards-section,
+body .studio-v4-studios-section,
+body .studio-v4-final-cta-section {
+  padding-block: clamp(46px, 4.5vw, 66px) !important;
+}
+
+body .studio-v4-hero {
+  background: #252a2d;
+  color: #fff;
+}
+
+body .studio-v4-hero-grid {
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, .55fr) !important;
+  gap: clamp(36px, 5vw, 68px) !important;
+  align-items: center !important;
+}
+
+body .studio-v4-hero-copy h1 {
+  max-width: 14ch !important;
+  margin: 14px 0 18px !important;
+  font-size: clamp(50px, 5vw, 70px) !important;
+  font-weight: 500 !important;
+}
+
+body .studio-v4-hero-copy > p {
+  max-width: 68ch !important;
+  color: rgba(255,255,255,.68);
+}
+
+body .studio-v4-hero-copy > p.lead {
+  margin-bottom: 10px;
+  color: rgba(255,255,255,.84);
+}
+
+body .studio-v4-hero .secondary {
+  border-color: rgba(255,255,255,.7);
+  color: #fff;
+}
+
+body .studio-v4-founder-visual {
+  width: min(100%, 360px) !important;
+  max-height: none !important;
+  aspect-ratio: 4 / 4.5 !important;
+  border-radius: 0 !important;
+}
+
+body .studio-v4-founder-caption {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 14px 16px;
+  border-radius: 0;
+  backdrop-filter: none;
+}
+
+body .studio-v4-practice-strip {
+  background: var(--cream);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+body .studio-v4-practice-strip .shell > div {
+  min-height: 82px;
+  padding: 16px 20px;
+  border-color: var(--line);
+}
+
+body .studio-v4-practice-strip span {
+  color: var(--muted);
+}
+
+body .studio-v4-director-grid,
+body .studio-v4-values-grid,
+body .studio-v4-standards-grid {
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr) !important;
+  gap: clamp(38px, 6vw, 78px) !important;
+}
+
+body .studio-v4-director-grid h2,
+body .studio-v4-values-intro h2,
+body .studio-v4-standards-grid h2 {
+  max-width: 16ch !important;
+  margin-bottom: 14px;
+  font-size: clamp(38px, 4.1vw, 58px) !important;
+}
+
+body .studio-v4-director-copy {
+  padding-top: 0;
+  columns: 2;
+  column-gap: 32px;
+}
+
+body .studio-v4-director-copy .lead,
+body .studio-v4-director-links {
+  column-span: all;
+}
+
+body .studio-v4-director-copy p {
+  margin-top: 0;
+}
+
+body .studio-v4-section-heading {
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, .6fr) !important;
+  gap: clamp(32px, 5vw, 70px) !important;
+  margin-bottom: 26px !important;
+}
+
+body .studio-v4-section-heading h2 {
+  max-width: 20ch !important;
+  margin-bottom: 0;
+  font-size: clamp(38px, 4vw, 56px) !important;
+}
+
+body .studio-v4-strengths-grid article {
+  padding: 20px 22px 22px !important;
+}
+
+body .studio-v4-strengths-grid h3 {
+  margin-top: 24px;
+}
+
+body .studio-v4-values-intro {
+  position: static !important;
+}
+
+body .studio-v4-value-list article {
+  grid-template-columns: 44px 1fr;
+  padding: 17px 0;
+}
+
+body .studio-v4-value-list h3 {
+  font-size: 24px;
+}
+
+body .studio-v4-process-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body .studio-v4-process-grid article {
+  min-height: 0;
+  grid-template-columns: 38px 1fr;
+  padding: 20px !important;
+}
+
+body .studio-v4-process-grid h3 {
+  font-size: 23px;
+}
+
+body .studio-v4-scope-note {
+  margin-top: 18px;
+  padding: 17px 20px;
+  border-radius: 0;
+  background: transparent;
+}
+
+body .studio-v4-standards-section {
+  background: #3b4246;
+}
+
+body .studio-v4-standards-grid {
+  align-items: start;
+}
+
+body .studio-v4-standards-grid ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+body .studio-v4-standards-grid li {
+  min-height: 58px;
+  padding: 12px 14px;
+  border-right: 1px solid rgba(255,255,255,.22);
+}
+
+body .studio-v4-studio-cards {
+  width: min(100%, 1220px);
+  max-width: none !important;
+}
+
+body .studio-v4-studio-cards article {
+  min-height: 0;
+  padding: 22px 24px;
+  border-radius: 0;
+  display: grid;
+  grid-template-columns: 54px minmax(190px, .7fr) minmax(210px, .8fr) minmax(230px, 1fr);
+  gap: 20px;
+  align-items: center;
+}
+
+body .studio-v4-studio-card-icon {
+  grid-row: 1 / span 3;
+  margin: 0;
+  border-radius: 0;
+}
+
+body .studio-v4-studio-cards article > small,
+body .studio-v4-studio-cards h3,
+body .studio-v4-studio-cards address {
+  grid-column: 2;
+}
+
+body .studio-v4-studio-cards h3 {
+  margin: -8px 0 0;
+}
+
+body .studio-v4-studio-cards address {
+  grid-column: 3;
+  grid-row: 1 / span 3;
+}
+
+body .studio-v4-studio-cards article > div:last-child {
+  grid-column: 4;
+  grid-row: 1 / span 3;
+  margin: 0;
+  padding: 0 0 0 22px;
+  border-top: 0;
+  border-left: 1px solid var(--line);
+}
+
+body .studio-v4-final-cta-section .final-cta h2 {
+  max-width: 18ch;
+  margin-inline: auto;
+  font-size: clamp(38px, 4.2vw, 58px);
+}
+
+@media (max-width: 950px) {
+  body .studio-v4-hero-grid,
+  body .studio-v4-director-grid,
+  body .studio-v4-values-grid,
+  body .studio-v4-standards-grid,
+  body .studio-v4-section-heading {
+    grid-template-columns: 1fr !important;
+  }
+
+  body .studio-v4-founder-visual {
+    width: min(100%, 420px) !important;
+    justify-self: start;
+  }
+
+  body .studio-v4-director-copy { columns: 1; }
+  body .studio-v4-process-grid { grid-template-columns: 1fr 1fr; }
+  body .studio-v4-studio-cards article {
+    grid-template-columns: 54px 1fr;
+  }
+  body .studio-v4-studio-cards address,
+  body .studio-v4-studio-cards article > div:last-child {
+    grid-column: 2;
+    grid-row: auto;
+  }
+  body .studio-v4-studio-cards article > div:last-child {
+    padding: 14px 0 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  body .studio-v4-hero,
+  body .studio-v4-director-section,
+  body .studio-v4-strengths-section,
+  body .studio-v4-values-section,
+  body .studio-v4-process-section,
+  body .studio-v4-standards-section,
+  body .studio-v4-studios-section,
+  body .studio-v4-final-cta-section {
+    padding-block: 38px !important;
+  }
+  body .studio-v4-hero-copy h1 { font-size: clamp(42px, 13vw, 58px) !important; }
+  body .studio-v4-process-grid,
+  body .studio-v4-standards-grid ul { grid-template-columns: 1fr; }
+  body .studio-v4-studio-cards article { grid-template-columns: 1fr; }
+  body .studio-v4-studio-card-icon,
+  body .studio-v4-studio-cards article > small,
+  body .studio-v4-studio-cards h3,
+  body .studio-v4-studio-cards address,
+  body .studio-v4-studio-cards article > div:last-child {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}

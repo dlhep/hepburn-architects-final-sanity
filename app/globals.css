@@ -6214,3 +6214,240 @@ body .studio-v4-final-cta-section {
   body .studio-v4-strengths-grid,
   body .studio-v4-process-grid { grid-template-columns: 1fr; }
 }
+
+/* PRIMARY HERO SYSTEM — one final desktop geometry for every photographic
+   index hero. The orange label begins 176px from the viewport top on all four
+   pages, regardless of whether the header overlays the photograph. */
+@media (min-width: 701px) {
+  :root {
+    --primary-hero-height: 760px;
+    --primary-hero-label-y: 176px;
+    --primary-hero-width: min(calc(100% - 40px), 1220px);
+  }
+
+  body .home-hero,
+  body .services-hero-full,
+  body .projects-index-hero,
+  body .knowledge-index-hero {
+    position: relative;
+    display: block;
+    height: var(--primary-hero-height) !important;
+    min-height: var(--primary-hero-height) !important;
+    padding: 0 !important;
+    overflow: hidden;
+    background: #252a2d;
+  }
+
+  body .home-hero .hero-visual,
+  body .services-hero-background,
+  body .projects-index-hero-background,
+  body .knowledge-index-hero-visual {
+    position: absolute !important;
+    z-index: 0 !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+  }
+
+  /* The home photograph lives inside the centred content shell, so let it
+     break out to the viewport while the copy remains on the shared grid. */
+  body .home-hero .hero-visual {
+    left: 50% !important;
+    right: auto !important;
+    width: 100vw !important;
+    transform: translateX(-50%) !important;
+  }
+
+  body .home-hero .hero-visual .hero-image,
+  body .services-hero-background,
+  body .projects-index-hero-background,
+  body .knowledge-index-hero-visual img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  body .home-hero .hero-visual .hero-image { object-position: center 42% !important; }
+  body .services-hero-background { object-position: center 48% !important; }
+  body .projects-index-hero-background { object-position: center 46% !important; }
+  body .knowledge-index-hero-visual img { object-position: center 52% !important; }
+
+  body .home-hero::after,
+  body .services-hero-shade,
+  body .projects-index-hero-shade,
+  body .knowledge-index-hero::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    display: block;
+    content: "";
+    background: linear-gradient(90deg, rgba(20, 24, 26, .88) 0%, rgba(20, 24, 26, .68) 36%, rgba(20, 24, 26, .2) 68%, rgba(20, 24, 26, .06) 100%) !important;
+  }
+
+  body .home-hero .hero-grid,
+  body .services-hero-content.primary-index-hero-copy,
+  body .projects-index-hero .projects-index-hero-grid.primary-index-hero-copy,
+  body .knowledge-index-hero > .primary-index-hero-copy {
+    position: relative !important;
+    z-index: 2 !important;
+    box-sizing: border-box;
+    display: block !important;
+    width: var(--primary-hero-width) !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    margin-inline: auto !important;
+    padding: var(--primary-hero-label-y) 0 58px !important;
+  }
+
+  /* Knowledge Centre begins below its normal 78px header; subtract that
+     height so its label shares the same viewport baseline as overlay heroes. */
+  body .knowledge-index-hero > .primary-index-hero-copy {
+    padding-top: calc(var(--primary-hero-label-y) - 78px) !important;
+  }
+
+  body .home-hero .hero-copy,
+  body .services-hero-copy,
+  body .projects-index-intro,
+  body .knowledge-index-hero > .primary-index-hero-copy {
+    max-width: 690px !important;
+  }
+
+  body .home-hero .hero-copy .eyebrow,
+  body .services-hero-copy .eyebrow,
+  body .projects-index-intro .eyebrow,
+  body .knowledge-index-hero .eyebrow {
+    display: inline-flex !important;
+    margin: 0 0 18px !important;
+    color: #ff9a61 !important;
+    line-height: 1.4 !important;
+  }
+
+  body .knowledge-index-hero h1,
+  body .knowledge-index-hero h1 + div p {
+    color: #fff !important;
+  }
+
+  body .knowledge-index-hero h1 + div {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding-top: 22px !important;
+    border-top-color: rgba(255,255,255,.28) !important;
+  }
+
+  body .knowledge-index-hero .actions {
+    justify-content: flex-start !important;
+  }
+}
+
+/* JOURNAL — stronger editorial hierarchy with a compact dark introduction,
+   one lead article and a balanced three-column reading grid. */
+body .journal-index-section {
+  padding: 0 0 clamp(68px, 7vw, 96px) !important;
+  background: var(--cream);
+}
+
+body .journal-index-intro {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 0 clamp(42px, 5vw, 64px) !important;
+  padding: clamp(68px, 7vw, 94px) max(20px, calc((100vw - 1220px) / 2)) !important;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(320px, .65fr);
+  gap: clamp(48px, 8vw, 124px);
+  align-items: end;
+  background: #252a2d;
+  color: #fff;
+}
+
+body .journal-index-intro .eyebrow {
+  grid-column: 1 / -1;
+  margin: 0 0 -24px !important;
+  color: #ff9a61 !important;
+}
+
+body .journal-index-intro h1 {
+  max-width: 13ch;
+  margin: 18px 0 0;
+  color: #fff;
+  font-size: clamp(54px, 5.5vw, 78px);
+  font-weight: 500;
+  line-height: .96;
+}
+
+body .journal-index-intro > p {
+  max-width: 46ch;
+  margin: 0 0 5px;
+  color: rgba(255,255,255,.72);
+  font-size: 18px;
+  line-height: 1.58;
+}
+
+body .journal-index-grid {
+  width: min(calc(100% - 40px), 1220px) !important;
+  max-width: 1220px !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+body .journal-index-card,
+body .journal-index-feature {
+  grid-row: auto !important;
+  min-height: 0;
+  padding: 20px !important;
+  border: 0 !important;
+  border-right: 1px solid var(--line) !important;
+  border-bottom: 1px solid var(--line) !important;
+  background: var(--paper);
+}
+
+body .journal-index-feature {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) 24px;
+}
+
+body .journal-index-image,
+body .journal-index-feature .journal-index-image {
+  width: 100%;
+  height: 245px !important;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+body .journal-index-feature .journal-index-image {
+  height: 390px !important;
+}
+
+body .journal-index-card h2,
+body .journal-index-feature h2 {
+  max-width: 22ch;
+  margin: 8px 0 12px;
+  font-size: clamp(26px, 2.5vw, 36px);
+  font-weight: 600;
+  line-height: 1.02;
+}
+
+body .journal-index-feature h2 {
+  max-width: 20ch;
+  font-size: clamp(36px, 3.7vw, 54px);
+}
+
+@media (max-width: 900px) {
+  body .journal-index-intro {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-inline: 20px !important;
+  }
+  body .journal-index-intro .eyebrow { grid-column: 1; margin-bottom: 0 !important; }
+  body .journal-index-grid { grid-template-columns: 1fr !important; }
+  body .journal-index-feature { grid-column: auto; }
+  body .journal-index-image,
+  body .journal-index-feature .journal-index-image { height: clamp(220px, 58vw, 340px) !important; }
+}

@@ -5,7 +5,7 @@ import { getBlogPosts, getSanityGuides } from "@/lib/articles";
 import { getPublishedReviews } from "@/lib/reviews";
 import { site } from "@/lib/site";
 
-const STATIC_LAST_MODIFIED = "2026-07-23";
+const STATIC_LAST_MODIFIED = "2026-08-13";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [projects, blogPosts, sanityGuides, reviews] = await Promise.all([

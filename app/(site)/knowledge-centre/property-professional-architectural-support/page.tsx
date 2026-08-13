@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { createSeoMetadata, serializeJsonLd } from "@/lib/seo";
+import { createSeoMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { StructuredData } from "@/components/StructuredData";
+import { buildArticleSchema, buildBreadcrumbSchema, buildFaqSchema, buildGraph, buildServiceSchema, buildWebPageSchema, breadcrumbId, serviceId } from "@/lib/structured-data";
 import styles from "./page.module.css";
 
 const path = "/knowledge-centre/property-professional-architectural-support";
@@ -70,36 +72,18 @@ const faqs = [
   { question: "How do we send you a referral?", answer: "Send the property address, a short description of the requirement, available plans or title information and any relevant deadline through our contact page." },
 ] as const;
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org", "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: site.url },
-    { "@type": "ListItem", position: 2, name: "Knowledge Centre", item: `${site.url}/knowledge-centre` },
-    { "@type": "ListItem", position: 3, name: title, item: canonical },
-  ],
-};
-
-const articleSchema = {
-  "@context": "https://schema.org", "@type": "Article", headline: title, description,
-  datePublished: "2026-08-12", dateModified: "2026-08-12", mainEntityOfPage: canonical,
-  author: { "@type": "Person", name: "David Hepburn", url: `${site.url}/about` },
-  publisher: { "@id": `${site.url}/#organization` }, image: `${site.url}/images/social-sharing.jpg`,
-};
-
-const serviceSchema = {
-  "@context": "https://schema.org", "@type": "ProfessionalService", "@id": `${site.url}/#birmingham-studio`,
-  name: `${site.name} Birmingham & West Midlands`, url: site.url, telephone: "+447720813035", email: site.email,
-  address: { "@type": "PostalAddress", ...site.offices.birmingham },
-  areaServed: ["Birmingham", "Solihull", "Sutton Coldfield", "Wolverhampton", "Warwickshire", "Staffordshire", "West Midlands"].map((name) => ({ "@type": "Place", name })),
-  makesOffer: { "@type": "Offer", itemOffered: { "@type": "Service", name: "Property plans, feasibility and architectural support", url: canonical, serviceType: ["Measured surveys", "Property plans", "Architectural feasibility", "Planning advice", "Building Regulations drawings"] } },
-};
-
-const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) };
+const structuredData = buildGraph(
+  buildWebPageSchema({ url: canonical, name: title, description, breadcrumb: breadcrumbId(canonical), mainEntity: serviceId(canonical), primaryImage: "/images/social-sharing.jpg" }),
+  buildArticleSchema({ url: canonical, headline: title, description, image: `${site.url}/images/social-sharing.jpg`, datePublished: "2026-08-12", dateModified: "2026-08-13", section: "Property professionals" }),
+  buildServiceSchema({ url: canonical, name: "Property plans, feasibility and architectural support", description, serviceType: "Architectural support for property professionals", studio: "birmingham", areas: ["Birmingham", "Solihull", "Sutton Coldfield", "Wolverhampton", "Warwickshire", "Staffordshire", "West Midlands"].map((name) => ({ name })) }),
+  buildBreadcrumbSchema(canonical, [{ name: "Home", url: `${site.url}/` }, { name: "Knowledge Centre", url: `${site.url}/knowledge-centre` }, { name: title, url: canonical }]),
+  buildFaqSchema(canonical, faqs),
+);
 
 export default function PropertyProfessionalSupportPage() {
   return (
     <main className={styles.page}>
-      {[breadcrumbSchema, articleSchema, serviceSchema, faqSchema].map((schema, index) => <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }} />)}
+      <StructuredData data={structuredData} />
 
       <section className={styles.hero}>
         <div className={`shell ${styles.heroInner}`}>

@@ -20,7 +20,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { buildGraph } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "House Extension Architects Birmingham & West Midlands",
+  title: "House Extension Architects Birmingham",
   description:
     "Architect-led house extension design, planning applications and Building Regulations drawings across Birmingham and the West Midlands. Discuss your project with Hepburn Architects.",
   alternates: {

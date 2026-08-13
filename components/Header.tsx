@@ -10,21 +10,18 @@ export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const overlayHeaderPage = pathname === "/" || pathname === "/projects" || pathname === "/services";
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileNavRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const overlayHeaderPage = pathname === "/" || pathname === "/projects" || pathname === "/services";
-    if (!overlayHeaderPage) {
-      setScrolled(false);
-      return;
-    }
+    if (!overlayHeaderPage) return;
 
     const updateHeader = () => setScrolled(window.scrollY > 80);
     updateHeader();
     window.addEventListener("scroll", updateHeader, { passive: true });
     return () => window.removeEventListener("scroll", updateHeader);
-  }, [pathname]);
+  }, [overlayHeaderPage]);
 
   useEffect(() => {
     if (!open) return;
@@ -58,7 +55,7 @@ export function Header() {
 
   return (
     <>
-      <header className={`header${scrolled ? " is-scrolled" : ""}`}>
+      <header className={`header${overlayHeaderPage && scrolled ? " is-scrolled" : ""}`}>
         <div className="shell nav">
           <Link className="brand-logo-link" href="/" onClick={closeMenu} aria-label="Hepburn Architects home">
             {/* The inline SVG wordmark keeps its intrinsic proportions without an image optimisation request. */}

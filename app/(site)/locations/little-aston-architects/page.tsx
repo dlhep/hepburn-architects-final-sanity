@@ -8,7 +8,7 @@ const canonical = `${site.url}${path}`;
 const description = "Architect-led house extensions, remodelling, new homes, planning applications and Building Regulations in Little Aston and surrounding Staffordshire areas.";
 
 export const metadata: Metadata = {
-  title: "Architects Little Aston | Extensions, New Homes & Planning",
+  title: "Residential Architects Little Aston",
   description,
   alternates: { canonical },
   openGraph: { title: "Architects Little Aston | Extensions, New Homes & Planning", description, url: canonical, siteName: site.name, type: "website", images: [{ url: SOCIAL_IMAGE }] },

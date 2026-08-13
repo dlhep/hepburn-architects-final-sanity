@@ -12,7 +12,7 @@ import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, buildItem
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Residential Architecture Projects in Birmingham & the West Midlands",
+  title: "Residential Architecture Projects Birmingham",
   description: "Explore residential architecture projects across Birmingham and the West Midlands, including house extensions, loft conversions, HMOs, new homes and planning work.",
   alternates: { canonical: "/projects" },
 };

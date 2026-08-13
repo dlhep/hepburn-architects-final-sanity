@@ -7073,3 +7073,54 @@ body .journal-index-feature .journal-index-image {
     aspect-ratio: 16 / 10 !important;
   }
 }
+
+/* SHARED HERO LEFT EDGE — final site-wide authority.
+   Keep every primary page introduction on the same 1450px grid as the
+   header logo and the rest of the page content. */
+@media (min-width: 701px) {
+  :root {
+    --hero-site-width: min(calc(100% - 80px), 1450px);
+  }
+
+  body .home-hero .hero-grid,
+  body .services-hero-content.primary-index-hero-copy,
+  body .projects-index-hero .projects-index-hero-grid.primary-index-hero-copy,
+  body .knowledge-index-hero > .primary-index-hero-copy,
+  body .studio-v4-hero-grid {
+    box-sizing: border-box !important;
+    width: var(--hero-site-width) !important;
+    max-width: 1450px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    transform: none !important;
+  }
+
+  body .home-hero .hero-copy,
+  body .services-hero-copy,
+  body .projects-index-intro,
+  body .knowledge-index-hero > .primary-index-hero-copy,
+  body .studio-v4-hero-copy {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: left !important;
+    transform: none !important;
+  }
+
+  body .journal-index-intro {
+    padding-left: max(40px, calc((100vw - 1450px) / 2)) !important;
+    padding-right: max(40px, calc((100vw - 1450px) / 2)) !important;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1100px) {
+  :root {
+    --hero-site-width: min(calc(100% - 48px), 1450px);
+  }
+
+  body .journal-index-intro {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}

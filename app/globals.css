@@ -6974,3 +6974,31 @@ body .studio-v4-final-cta-section .final-cta h2 {
     grid-row: auto;
   }
 }
+
+/* HOMEPAGE HERO COPY ALIGNMENT — keep the overlay on the same grid as the header. */
+@media (min-width: 701px) {
+  body .home-hero .hero-copy {
+    position: absolute !important;
+    z-index: 3 !important;
+    inset: 0 auto 0 50% !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    width: min(calc(100% - 80px), 1450px) !important;
+    max-width: none !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: var(--primary-hero-label-y) 0 58px !important;
+    text-align: left !important;
+    transform: translateX(-50%) !important;
+  }
+
+  body .home-hero .hero-copy > * {
+    max-width: 690px !important;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1100px) {
+  body .home-hero .hero-copy {
+    width: min(calc(100% - 48px), 1450px) !important;
+  }
+}

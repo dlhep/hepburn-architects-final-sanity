@@ -7044,3 +7044,23 @@ body .studio-v4-founder-caption {
     border-radius: 0 !important;
   }
 }
+
+/* JOURNAL IMAGE CONSISTENCY — every article uses the same editorial frame. */
+body .journal-index-card .journal-index-image,
+body .journal-index-feature .journal-index-image {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 10 !important;
+  margin: 0 0 20px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+@media (max-width: 900px) {
+  body .journal-index-card .journal-index-image,
+  body .journal-index-feature .journal-index-image {
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+}

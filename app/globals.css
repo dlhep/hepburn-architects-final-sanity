@@ -1267,6 +1267,98 @@
   }
 }
 
+/* HERO REGRESSION FIX — keep image, shade and copy in separate guaranteed
+   layers. The previous shared rule placed the homepage image inside the same
+   promoted grid as its text, allowing the photograph to paint over the copy. */
+@media (min-width: 701px) {
+  body .home-hero .hero-grid {
+    position: static !important;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+  }
+
+  body .home-hero .hero-visual {
+    position: absolute !important;
+    z-index: 0 !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+  }
+
+  body .home-hero::after,
+  body .services-hero-shade,
+  body .projects-index-hero-shade,
+  body .knowledge-index-hero::after {
+    z-index: 1 !important;
+    pointer-events: none;
+  }
+
+  body .home-hero .hero-copy,
+  body .services-hero-copy,
+  body .projects-index-intro,
+  body .knowledge-index-hero > .primary-index-hero-copy {
+    position: relative !important;
+    z-index: 3 !important;
+    box-sizing: border-box;
+  }
+
+  body .home-hero .hero-copy {
+    width: var(--primary-hero-width) !important;
+    max-width: none !important;
+    height: 100% !important;
+    margin-inline: auto !important;
+    padding: var(--primary-hero-label-y) 0 58px !important;
+  }
+
+  body .home-hero .hero-copy h1,
+  body .home-hero .hero-copy > p,
+  body .home-hero .hero-copy .actions {
+    max-width: 690px !important;
+  }
+
+  body .home-hero .hero-copy .eyebrow,
+  body .services-hero-copy .eyebrow,
+  body .projects-index-intro .eyebrow,
+  body .knowledge-index-hero .eyebrow {
+    position: relative !important;
+    z-index: 4 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  body .home-hero .hero-copy h1,
+  body .home-hero .hero-copy > p,
+  body .home-hero .hero-copy .actions,
+  body .services-hero-copy h1,
+  body .services-hero-copy .lead,
+  body .projects-index-intro h1,
+  body .projects-index-intro > p,
+  body .knowledge-index-hero h1,
+  body .knowledge-index-hero h1 + div {
+    position: relative !important;
+    z-index: 4 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  body .home-hero .hero-copy h1,
+  body .services-hero-copy h1,
+  body .projects-index-intro h1,
+  body .knowledge-index-hero h1 {
+    margin-top: 0 !important;
+    color: #fff !important;
+  }
+
+  body .home-hero .hero-copy > p,
+  body .services-hero-copy .lead,
+  body .projects-index-intro > p,
+  body .knowledge-index-hero h1 + div p {
+    color: rgba(255,255,255,.82) !important;
+  }
+}
+
 /* Services page shares the transparent-to-sticky header treatment. */
 body:has(.services-hero-full) .header {
   position: absolute;

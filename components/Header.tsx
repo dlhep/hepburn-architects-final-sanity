@@ -113,10 +113,13 @@ export function Header() {
             />
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation">
-            {([['projects', 'Projects'], ['services', 'Services'], ['knowledge', 'Knowledge Centre']] as const).map(([key, label]) => (
-              <button className={`mega-trigger${megaMenu === key ? " is-active" : ""}`} type="button" key={key} onClick={() => setMegaMenu((current) => current === key ? null : key)} aria-expanded={megaMenu === key} aria-controls="desktop-mega-menu">
-                {label}<ChevronDown size={14} />
-              </button>
+            {([['projects', 'Projects', '/projects'], ['services', 'Services', '/services'], ['knowledge', 'Knowledge Centre', '/knowledge-centre']] as const).map(([key, label, href]) => (
+              <span className={`mega-nav-item${megaMenu === key ? " is-active" : ""}`} key={key}>
+                <Link href={href} onClick={closeMenu}>{label}</Link>
+                <button className="mega-trigger" type="button" onClick={() => setMegaMenu((current) => current === key ? null : key)} aria-label={`${megaMenu === key ? "Close" : "Open"} ${label} menu`} aria-expanded={megaMenu === key} aria-controls="desktop-mega-menu">
+                  <ChevronDown size={14} />
+                </button>
+              </span>
             ))}
             <Link href="/about">About</Link>
             <Link href="/journal">Journal</Link>

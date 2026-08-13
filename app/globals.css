@@ -4651,13 +4651,22 @@ body:has(.projects-index-hero) .header.is-scrolled .mobile-nav {
 }
 
 /* EDITORIAL MEGA MENU — local navigation concept. */
-.mega-trigger {
+.mega-nav-item {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 12px 0;
-  border: 0;
+  gap: 2px;
   border-bottom: 2px solid transparent;
+}
+
+.mega-nav-item > a { padding: 12px 0; }
+
+.mega-trigger {
+  display: inline-grid;
+  width: 24px;
+  height: 32px;
+  place-items: center;
+  padding: 0;
+  border: 0;
   background: transparent;
   color: inherit;
   font: inherit;
@@ -4665,8 +4674,8 @@ body:has(.projects-index-hero) .header.is-scrolled .mobile-nav {
 }
 
 .mega-trigger svg { transition: transform 180ms ease; }
-.mega-trigger.is-active { border-bottom-color: var(--orange); }
-.mega-trigger.is-active svg { transform: rotate(180deg); }
+.mega-nav-item.is-active { border-bottom-color: var(--orange); }
+.mega-nav-item.is-active .mega-trigger svg { transform: rotate(180deg); }
 
 .mega-menu {
   position: absolute;

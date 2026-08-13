@@ -171,7 +171,7 @@ export default async function KnowledgeCentrePage() {
             />
           </div>
         ) : null}
-        <div className={`shell ${styles.heroInner}`}>
+        <div className={`shell ${styles.heroInner} primary-index-hero-copy`}>
           <small className="eyebrow">Residential Architecture Guidance</small>
           <h1>Residential Architecture Knowledge Centre</h1>
           <div className={styles.heroBottom}>

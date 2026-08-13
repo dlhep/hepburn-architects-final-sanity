@@ -35,7 +35,7 @@ export default async function ProjectsPage() {
             sizes="100vw"
           />
           <div className="projects-index-hero-shade" aria-hidden="true" />
-          <div className="shell projects-index-hero-grid">
+          <div className="shell projects-index-hero-grid primary-index-hero-copy">
             <div className="projects-index-intro">
               <small className="eyebrow">Selected residential work</small>
               <h1>Residential Architecture Projects Across Birmingham and the West Midlands</h1>

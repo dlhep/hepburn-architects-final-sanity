@@ -3534,6 +3534,205 @@ body .project-gallery-single figure {
   }
 }
 
+/* ABOUT / STUDIO — final compact editorial layout.
+   Kept at the end so this is the single authority over the earlier iterations. */
+@media (min-width: 951px) {
+  .studio-v4-hero {
+    padding: 58px 0 54px;
+  }
+
+  .studio-v4-hero-grid {
+    width: min(calc(100% - 40px), 1220px);
+    grid-template-columns: minmax(0, 1.12fr) minmax(360px, .62fr);
+    gap: clamp(48px, 6vw, 88px);
+    align-items: end;
+  }
+
+  .studio-v4-hero-copy h1 {
+    max-width: 13ch;
+    margin: 16px 0 20px;
+    font-size: clamp(52px, 5vw, 72px);
+    font-weight: 500;
+    line-height: .98;
+  }
+
+  .studio-v4-hero-copy > p.lead {
+    max-width: 66ch;
+    font-size: 18px;
+  }
+
+  .studio-v4-hero-copy > p:not(.lead) {
+    max-width: 68ch;
+    font-size: 15px;
+  }
+
+  .studio-v4-founder-visual {
+    width: min(100%, 410px);
+    justify-self: end;
+    aspect-ratio: 4 / 4.35;
+  }
+
+  .studio-v4-director-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr);
+    gap: clamp(52px, 7vw, 100px);
+    align-items: start;
+  }
+
+  .studio-v4-director-grid h2 {
+    max-width: 15ch;
+    margin-bottom: 0;
+  }
+
+  .studio-v4-section-heading {
+    grid-template-columns: minmax(0, 1.15fr) minmax(360px, .65fr);
+    gap: clamp(50px, 7vw, 100px);
+    align-items: end;
+  }
+
+  .studio-v4-section-heading > div h2 {
+    max-width: 18ch;
+  }
+
+  .studio-v4-section-heading > p {
+    max-width: 48ch;
+    margin-bottom: 4px;
+  }
+
+  .studio-v4-values-grid {
+    grid-template-columns: minmax(360px, .82fr) minmax(0, 1.18fr);
+    gap: clamp(54px, 7vw, 104px);
+  }
+
+  .studio-v4-values-intro {
+    max-width: none;
+  }
+
+  .studio-v4-values-intro h2 {
+    max-width: 12ch;
+  }
+
+  .studio-v4-standards-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(380px, .95fr);
+    gap: clamp(52px, 7vw, 100px);
+    align-items: start;
+  }
+
+  .studio-v4-standards-grid h2 {
+    max-width: 16ch;
+  }
+}
+
+.studio-v4-director-section,
+.studio-v4-values-section,
+.studio-v4-process-section,
+.studio-v4-studios-section {
+  padding-block: clamp(48px, 5vw, 68px);
+}
+
+.studio-v4-strengths-section {
+  padding-block: clamp(50px, 5vw, 70px);
+}
+
+.studio-v4-strengths-grid,
+.studio-v4-process-grid {
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.studio-v4-strengths-grid article,
+.studio-v4-process-grid article {
+  min-height: 0;
+  padding: 22px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+}
+
+.studio-v4-strengths-grid h3,
+.studio-v4-process-grid h3 {
+  margin: 28px 0 10px;
+  font-size: clamp(22px, 2vw, 28px);
+}
+
+.studio-v4-strengths-grid p,
+.studio-v4-process-grid p {
+  margin-bottom: 0;
+}
+
+.studio-v4-value-list article {
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 18px;
+  padding: 20px 0;
+}
+
+.studio-v4-standards-section {
+  padding-block: clamp(50px, 5vw, 70px);
+}
+
+.studio-v4-studios-section .studio-v4-section-heading {
+  margin-bottom: 26px;
+}
+
+.studio-v4-studio-cards article {
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.studio-v4-final-cta-section {
+  padding-block: clamp(52px, 5vw, 72px) !important;
+}
+
+.studio-v4-final-cta-section .final-cta {
+  max-width: 980px;
+}
+
+@media (max-width: 950px) {
+  .studio-v4-hero {
+    padding-block: 46px;
+  }
+
+  .studio-v4-hero-grid {
+    gap: 34px;
+  }
+
+  .studio-v4-founder-visual {
+    max-width: 520px;
+    justify-self: start;
+  }
+
+  .studio-v4-section-heading,
+  .studio-v4-director-grid,
+  .studio-v4-values-grid,
+  .studio-v4-standards-grid {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 650px) {
+  .studio-v4-hero,
+  .studio-v4-director-section,
+  .studio-v4-strengths-section,
+  .studio-v4-values-section,
+  .studio-v4-process-section,
+  .studio-v4-standards-section,
+  .studio-v4-studios-section,
+  .studio-v4-final-cta-section {
+    padding-block: 42px !important;
+  }
+
+  .studio-v4-strengths-grid,
+  .studio-v4-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .studio-v4-strengths-grid article,
+  .studio-v4-process-grid article {
+    padding: 20px 18px;
+  }
+}
+
 
 /* Projects page shares the homepage transparent-to-sticky header behaviour. */
 body:has(.projects-index-hero) .header {
@@ -5501,18 +5700,27 @@ body *::after {
    between the main pages. Photographic heroes begin behind the header, while
    the editorial heroes begin immediately below it. */
 @media (min-width: 701px) {
-  .services-hero-full,
-  .projects-index-hero {
-    align-items: flex-start;
-  }
-
-  .home-hero .hero-grid,
-  .services-hero-content,
-  .projects-index-hero .projects-index-hero-grid {
+  .home-hero .hero-grid {
     box-sizing: border-box;
     align-items: start;
     padding-top: 154px;
     padding-bottom: 76px;
+  }
+
+  /* One authoritative content origin for every primary internal-page hero.
+     This overrides the older, page-specific centring rules above. */
+  .services-hero-full,
+  .projects-index-hero {
+    align-items: flex-start !important;
+  }
+
+  .services-hero-content.primary-index-hero-copy,
+  .projects-index-hero .projects-index-hero-grid.primary-index-hero-copy {
+    box-sizing: border-box;
+    min-height: 0;
+    align-items: flex-start;
+    padding-top: 154px !important;
+    padding-bottom: 76px !important;
   }
 
   .home-hero .hero-copy {
@@ -5524,6 +5732,10 @@ body *::after {
   .journal-index-section {
     position: relative;
     padding-top: 76px;
+  }
+
+  .knowledge-index-hero > .primary-index-hero-copy {
+    padding-top: 0 !important;
   }
 
   .journal-index-intro .eyebrow {
@@ -5920,4 +6132,85 @@ body *::after {
   .knowledge-index-hero .actions .btn {
     width: 100%;
   }
+}
+
+/* Final About page spacing authority. */
+@media (min-width: 951px) {
+  body .studio-v4-hero { padding: 58px 0 54px; }
+  body .studio-v4-hero-grid {
+    width: min(calc(100% - 40px), 1220px);
+    grid-template-columns: minmax(0, 1.12fr) minmax(360px, .62fr);
+    gap: clamp(48px, 6vw, 88px);
+    align-items: end;
+  }
+  body .studio-v4-hero-copy h1 {
+    max-width: 13ch;
+    margin: 16px 0 20px;
+    font-size: clamp(52px, 5vw, 72px);
+    font-weight: 500;
+    line-height: .98;
+  }
+  body .studio-v4-founder-visual {
+    width: min(100%, 410px);
+    justify-self: end;
+    aspect-ratio: 4 / 4.35;
+  }
+  body .studio-v4-director-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr);
+    gap: clamp(52px, 7vw, 100px);
+  }
+  body .studio-v4-section-heading {
+    grid-template-columns: minmax(0, 1.15fr) minmax(360px, .65fr);
+    gap: clamp(50px, 7vw, 100px);
+    align-items: end;
+  }
+  body .studio-v4-values-grid,
+  body .studio-v4-standards-grid {
+    grid-template-columns: minmax(360px, .85fr) minmax(0, 1.15fr);
+    gap: clamp(52px, 7vw, 100px);
+  }
+}
+
+body .studio-v4-director-section,
+body .studio-v4-values-section,
+body .studio-v4-process-section,
+body .studio-v4-studios-section,
+body .studio-v4-strengths-section,
+body .studio-v4-standards-section {
+  padding-block: clamp(48px, 5vw, 68px);
+}
+
+body .studio-v4-strengths-grid,
+body .studio-v4-process-grid {
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+body .studio-v4-strengths-grid article,
+body .studio-v4-process-grid article {
+  min-height: 0;
+  padding: 22px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+}
+
+body .studio-v4-final-cta-section {
+  padding-block: clamp(52px, 5vw, 72px) !important;
+}
+
+@media (max-width: 650px) {
+  body .studio-v4-hero,
+  body .studio-v4-director-section,
+  body .studio-v4-strengths-section,
+  body .studio-v4-values-section,
+  body .studio-v4-process-section,
+  body .studio-v4-standards-section,
+  body .studio-v4-studios-section,
+  body .studio-v4-final-cta-section { padding-block: 42px !important; }
+  body .studio-v4-strengths-grid,
+  body .studio-v4-process-grid { grid-template-columns: 1fr; }
 }

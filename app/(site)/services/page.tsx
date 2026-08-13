@@ -30,7 +30,7 @@ export default function ServicesPage() {
           priority
         />
         <div className="services-hero-shade" aria-hidden="true" />
-        <div className="shell services-hero-content">
+        <div className="shell services-hero-content primary-index-hero-copy">
           <div className="services-hero-copy">
             <small className="eyebrow">Residential architectural services</small>
             <h1>Residential Architectural Services</h1>

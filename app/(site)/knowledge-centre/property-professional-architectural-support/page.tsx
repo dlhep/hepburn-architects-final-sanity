@@ -103,15 +103,25 @@ export default function PropertyProfessionalSupportPage() {
 
       <section className={styles.hero}>
         <div className={`shell ${styles.heroInner}`}>
-          <nav className={styles.breadcrumb} aria-label="Breadcrumb"><Link href="/">Home</Link><span aria-hidden="true">/</span><Link href="/knowledge-centre">Knowledge Centre</Link><span aria-hidden="true">/</span><span aria-current="page">Property professionals</span></nav>
-          <small className="eyebrow">Property professionals</small>
-          <h1>Property plans, feasibility<br />& architectural support<span aria-hidden="true">.</span></h1>
-          <p>Hepburn Architects provides measured drawings, property plans, feasibility and architectural advice for solicitors, agents, landlords, developers and other property professionals across Birmingham and the West Midlands.</p>
-          <Link className="btn primary" href="/contact">Discuss a property requirement</Link>
+          <div className={styles.heroCopy}>
+            <small className="eyebrow">Property professionals</small>
+            <h1>Architectural clarity for better property decisions<span aria-hidden="true">.</span></h1>
+          </div>
+          <div className={styles.heroAside}>
+            <p>Measured drawings, property plans, feasibility and architectural advice for solicitors, agents, landlords, developers and builders across Birmingham and the West Midlands.</p>
+            <Link className="btn primary" href="/contact">Discuss a property requirement</Link>
+          </div>
         </div>
       </section>
 
-      <section className={styles.introduction}><div className="shell"><div className={styles.narrowCopy}><small className="eyebrow">Architectural clarity</small><h2>Architectural input,<br />when property decisions need it.</h2><p>Property transactions and development decisions often raise questions that legal documents, sales particulars or an initial site visit cannot answer alone.</p><p>Accurate drawings, an understanding of planning history and a proportionate architectural assessment can establish what is known, what needs further investigation and which next step is appropriate.</p></div></div></section>
+      <nav className={styles.audienceStrip} aria-label="Property professional services">
+        <div className="shell">
+          {professionalSections.map((section) => <a href={`#${section.id}`} key={section.id}><span>{section.number}</span>{section.eyebrow}</a>)}
+          <a href="#construction"><span>05</span>Construction</a>
+        </div>
+      </nav>
+
+      <section className={styles.introduction}><div className={`shell ${styles.introGrid}`}><div><small className="eyebrow">Architectural clarity</small><h2>Make the next property decision with better information.</h2></div><div className={styles.introCopy}><p>Property transactions and development decisions often raise questions that legal documents, sales particulars or an initial site visit cannot answer alone.</p><p>Accurate drawings, an understanding of planning history and a proportionate architectural assessment establish what is known, what needs further investigation and which next step is appropriate.</p></div></div></section>
 
       <div className={styles.editorialSections}>
         {professionalSections.map((section) => <section className={styles.professionalSection} id={section.id} key={section.id}><div className={`shell ${styles.professionalGrid}`}><div className={styles.sectionTitle}><span>{section.number}</span><small>{section.eyebrow}</small><h2>{section.heading}</h2></div><div className={styles.sectionContent}><p className={styles.leadCopy}>{section.copy}</p><ul className={styles.serviceList}>{section.services.map((service) => <li key={service}>{service}</li>)}</ul>{"note" in section ? <p className={styles.professionalNote}>{section.note}</p> : null}{"highlight" in section ? <p className={styles.highlight}>{section.highlight}</p> : null}</div></div></section>)}

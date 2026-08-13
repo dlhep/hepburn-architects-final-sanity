@@ -79,7 +79,7 @@ export function Header() {
             <Link href="/services">Services</Link>
             <Link href="/knowledge-centre">Knowledge Centre</Link>
             <Link href="/about">Studio</Link>
-            <Link href="/blog">Journal</Link>
+            <Link href="/journal">Journal</Link>
             <Link href="/estimate">Fee calculator</Link>
             <a className="nav-phone" href={site.phoneHref}><Phone size={16} /> {site.phone}</a>
             <a className="btn primary small-btn" href={site.calendly} target="_blank" rel="noopener noreferrer">Book consultation</a>
@@ -107,7 +107,7 @@ export function Header() {
             <Link href="/services" onClick={closeMenu}>Services</Link>
             <Link href="/knowledge-centre" onClick={closeMenu}>Knowledge Centre</Link>
             <Link href="/about" onClick={closeMenu}>Studio</Link>
-            <Link href="/blog" onClick={closeMenu}>Journal</Link>
+            <Link href="/journal" onClick={closeMenu}>Journal</Link>
             <Link href="/estimate" onClick={closeMenu}>Fee calculator</Link>
             <a className="btn call-btn" href={site.phoneHref}><Phone size={18} /> Call {site.phone}</a>
             <a className="btn primary" href={site.calendly} target="_blank" rel="noopener noreferrer">Book consultation</a>

@@ -35,6 +35,11 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/blog",
+        destination: "/journal",
+        permanent: true,
+      },
       ...permanentHostRedirects(
         ["hepburnarchitects.net", "www.hepburnarchitects.net"],
         "https://hepburnarchitects.co.uk",

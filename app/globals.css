@@ -5501,6 +5501,11 @@ body *::after {
    between the main pages. Photographic heroes begin behind the header, while
    the editorial heroes begin immediately below it. */
 @media (min-width: 701px) {
+  .services-hero-full,
+  .projects-index-hero {
+    align-items: flex-start;
+  }
+
   .home-hero .hero-grid,
   .services-hero-content,
   .projects-index-hero .projects-index-hero-grid {
@@ -5521,14 +5526,37 @@ body *::after {
     padding-top: 76px;
   }
 
-  .knowledge-index-hero .breadcrumb {
-    position: absolute;
-    top: 22px;
-    margin: 0;
-  }
-
   .journal-index-intro .eyebrow {
     margin-bottom: 0;
+  }
+
+  .journal-index-section {
+    padding-bottom: 76px;
+  }
+
+  .journal-index-intro {
+    grid-template-columns: minmax(0, 1.35fr) minmax(340px, .65fr);
+    gap: clamp(48px, 7vw, 110px);
+    align-items: end;
+    margin-bottom: 48px;
+  }
+
+  .journal-index-intro h1 {
+    max-width: 13ch;
+    margin-top: 18px;
+    font-size: clamp(52px, 5vw, 72px);
+    line-height: .98;
+  }
+
+  .journal-index-intro > p {
+    max-width: 48ch;
+    margin-bottom: 4px;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .journal-index-grid {
+    gap: 22px;
   }
 }
 
@@ -5865,11 +5893,6 @@ body *::after {
 
   .knowledge-index-hero > .shell {
     padding-top: 36px;
-  }
-
-  .knowledge-index-hero .breadcrumb {
-    margin-bottom: 34px;
-    color: rgba(255, 255, 255, .72);
   }
 
   .knowledge-index-hero .eyebrow {

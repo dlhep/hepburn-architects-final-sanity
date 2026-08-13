@@ -430,7 +430,7 @@ export default async function HomePage() {
               <small className="eyebrow">Latest journal</small>
               <h2>Projects, planning updates and studio news.</h2>
             </div>
-            <Link className="home-text-link" href="/blog">
+            <Link className="home-text-link" href="/journal">
               View the journal <ArrowUpRight size={18} />
             </Link>
           </div>

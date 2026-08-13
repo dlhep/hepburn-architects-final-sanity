@@ -36,7 +36,7 @@ const topicNavigation = [
   { label: "Building Regulations", href: "/knowledge-centre/building-regulations" },
   { label: "House Extension Services", href: "/services/house-extensions" },
   { label: "Loft Conversions", href: "/knowledge-centre/loft-conversions" },
-  { label: "Journal", href: "/blog" },
+  { label: "Journal", href: "/journal" },
   { label: "Fee Calculator", href: "/estimate" },
   { label: "Planning Tools", href: "/planning-tools" },
   { label: "Property Professionals", href: "/knowledge-centre/property-professional-architectural-support" },
@@ -172,11 +172,6 @@ export default async function KnowledgeCentrePage() {
           </div>
         ) : null}
         <div className={`shell ${styles.heroInner}`}>
-          <nav className={styles.breadcrumb} aria-label="Breadcrumb">
-            <Link href="/">Home</Link>
-            <span aria-hidden="true">/</span>
-            <span aria-current="page">Knowledge Centre</span>
-          </nav>
           <small className="eyebrow">Residential Architecture Guidance</small>
           <h1>Residential Architecture Knowledge Centre</h1>
           <div className={styles.heroBottom}>
@@ -450,7 +445,7 @@ export default async function KnowledgeCentrePage() {
               <small className="eyebrow">Journal</small>
               <h2>Latest from the Studio</h2>
             </header>
-            <Link className={styles.arrowLink} href="/blog">
+            <Link className={styles.arrowLink} href="/journal">
               View the Journal <ArrowRight size={17} />
             </Link>
           </div>

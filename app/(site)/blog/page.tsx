@@ -38,11 +38,11 @@ export const metadata: Metadata = {
   title: "Architecture Journal",
   description:
     "Planning updates, project news, residential design ideas and practice insights from Hepburn Architects in Birmingham and the West Midlands.",
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: "/journal" },
   openGraph: {
     title: "Hepburn Architects Journal",
     description: "Planning updates, project news and practical residential architecture insights.",
-    url: "/blog",
+    url: "/journal",
     type: "website",
     images: ["/images/social-sharing.jpg"],
   },
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 
 export default async function BlogPage() {
   const posts = await getBlogPosts();
-  const url = `${site.url}/blog`;
+  const url = `${site.url}/journal`;
   const items = [...birminghamAuthorityArticles.map((article) => ({ name: article.title, url: `${site.url}${article.href}` })), ...posts.map((post) => ({ name: post.title, url: `${url}/${post.slug}` }))];
   const schema = buildGraph(buildCollectionPageSchema({ url, name: "Hepburn Architects Journal", description: metadata.description as string, breadcrumb: breadcrumbId(url) }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Journal", url }]), buildItemListSchema(url, "Published journal articles", items));
 

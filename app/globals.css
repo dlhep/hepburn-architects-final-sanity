@@ -7108,6 +7108,13 @@ body .journal-index-feature .journal-index-image {
     transform: none !important;
   }
 
+  /* On this page the copy element is also the centred hero shell. Keep its
+     shell margins after the shared copy reset above. */
+  body .knowledge-index-hero > .primary-index-hero-copy {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
   body .journal-index-intro {
     padding-left: max(40px, calc((100vw - 1450px) / 2)) !important;
     padding-right: max(40px, calc((100vw - 1450px) / 2)) !important;

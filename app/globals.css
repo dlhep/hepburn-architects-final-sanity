@@ -5497,6 +5497,41 @@ body *::after {
   display: none;
 }
 
+/* Keep the primary orange hero label on one desktop baseline as visitors move
+   between the main pages. Photographic heroes begin behind the header, while
+   the editorial heroes begin immediately below it. */
+@media (min-width: 701px) {
+  .home-hero .hero-grid,
+  .services-hero-content,
+  .projects-index-hero .projects-index-hero-grid {
+    box-sizing: border-box;
+    align-items: start;
+    padding-top: 154px;
+    padding-bottom: 76px;
+  }
+
+  .home-hero .hero-copy {
+    padding-top: 0;
+  }
+
+  .knowledge-index-hero,
+  .studio-v4-hero,
+  .journal-index-section {
+    position: relative;
+    padding-top: 76px;
+  }
+
+  .knowledge-index-hero .breadcrumb {
+    position: absolute;
+    top: 22px;
+    margin: 0;
+  }
+
+  .journal-index-intro .eyebrow {
+    margin-bottom: 0;
+  }
+}
+
 @media (max-width: 700px) {
   .home-hero .hero-grid,
   .services-hero-content,

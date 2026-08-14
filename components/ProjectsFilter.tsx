@@ -31,7 +31,7 @@ export function ProjectsFilter({ projects }: { projects: Project[] }) {
         ))}
       </div>
       <div className="projects-grid expanded-projects genuine-projects" style={{ alignItems: "start" }} aria-live="polite">
-        {visible.map((project) => (
+        {visible.map((project, index) => (
           <Link href={`/projects/${project.slug}`} className="project-card" key={project.slug} style={{ alignSelf: "start" }}>
             <Image
               src={projectImageUrl(project.featuredImage, 900)}
@@ -39,6 +39,7 @@ export function ProjectsFilter({ projects }: { projects: Project[] }) {
               width={900}
               height={600}
               sizes="(max-width: 650px) 100vw, 50vw"
+              priority={index < 3}
             />
             <div>
               <small>{project.location} · {project.projectType}</small>

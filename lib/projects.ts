@@ -105,6 +105,16 @@ function fallback(): Project[] {
   }));
 }
 
+// Guards against the Sanity field label "Project summary" (see schemaTypes/project.ts)
+// being pasted into the description value itself. Strips a stray leading label so it
+// never renders on project cards, the map info window, or meta descriptions.
+const STRAY_SUMMARY_LABEL = /^\s*project\s+summary\s*[:.\-–—]?\s+/i;
+function normaliseProject(project: Project): Project {
+  if (typeof project.description !== "string") return project;
+  const description = project.description.replace(STRAY_SUMMARY_LABEL, "").trim();
+  return description === project.description ? project : { ...project, description };
+}
+
 async function fetchSanity<T>(query: string, params: Record<string, unknown> = {}): Promise<T | null> {
   if (!isSanityConfigured) return null;
   try {
@@ -119,31 +129,31 @@ async function fetchSanity<T>(query: string, params: Record<string, unknown> = {
 
 export async function getProjects(): Promise<Project[]> {
   const result = await fetchSanity<Project[]>(PROJECTS_QUERY);
-  return result && result.length ? result : fallback();
+  return (result && result.length ? result : fallback()).map(normaliseProject);
 }
 
 export async function getBirminghamProjects(): Promise<Project[]> {
   const result = await fetchSanity<Project[]>(BIRMINGHAM_PROJECTS_QUERY);
-  return result || [];
+  return (result || []).map(normaliseProject);
 }
 
 export async function getFeaturedProjects(): Promise<Project[]> {
   const result = await fetchSanity<Project[]>(FEATURED_PROJECTS_QUERY);
-  if (result && result.length) return result;
+  if (result && result.length) return result.map(normaliseProject);
   const local = fallback();
-  return local.filter((project) => project.featured).slice(0, 3).length
-    ? local.filter((project) => project.featured).slice(0, 3)
-    : local.slice(0, 3);
+  const featured = local.filter((project) => project.featured).slice(0, 3);
+  return (featured.length ? featured : local.slice(0, 3)).map(normaliseProject);
 }
 
 export async function getFeaturedCaseStudy(): Promise<Project | undefined> {
   const result = await fetchSanity<Project | null>(FEATURED_CASE_STUDY_QUERY);
-  return result || undefined;
+  return result ? normaliseProject(result) : undefined;
 }
 
 export async function getProject(slug: string): Promise<Project | undefined> {
   const result = await fetchSanity<Project | null>(PROJECT_QUERY, { slug });
-  return result || fallback().find((project) => project.slug === slug);
+  const project = result || fallback().find((item) => item.slug === slug);
+  return project ? normaliseProject(project) : undefined;
 }
 
 export async function getProjectSlugs(): Promise<string[]> {

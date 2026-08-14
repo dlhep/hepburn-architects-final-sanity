@@ -5,7 +5,7 @@ import { getBlogPosts, getSanityGuides } from "@/lib/articles";
 import { getPublishedReviews } from "@/lib/reviews";
 import { site } from "@/lib/site";
 
-const STATIC_LAST_MODIFIED = "2026-07-23";
+const STATIC_LAST_MODIFIED = "2026-08-13";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [projects, blogPosts, sanityGuides, reviews] = await Promise.all([
@@ -37,7 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/knowledge-centre/extension-planning-permission",
     "/knowledge-centre/planning-permission",
     "/knowledge-centre/building-regulations",
-    "/blog",
+    "/journal",
     "/journal/how-to-choose-the-best-architect-in-birmingham",
     "/journal/house-extension-planning-permission-birmingham-2026-guide",
     "/journal/loft-conversion-planning-rules-birmingham",

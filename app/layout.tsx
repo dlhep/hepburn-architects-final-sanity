@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
+import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { ROOT_TITLE, SOCIAL_IMAGE } from "@/lib/seo";
 import { ConversionTracking } from "@/components/analytics/ConversionTracking";
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-source-sans",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -18,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB">
-      <body><ConversionTracking />{children}</body>
+      <body className={sourceSans.variable}><ConversionTracking />{children}</body>
     </html>
   );
 }

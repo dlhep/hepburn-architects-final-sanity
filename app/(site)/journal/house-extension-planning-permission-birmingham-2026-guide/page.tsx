@@ -12,7 +12,7 @@ const description = "Do you need planning permission for a house extension in Bi
 const schemaDescription = "A practical guide to planning permission, permitted development, prior approval and Lawful Development Certificates for Birmingham house extensions.";
 const path = "/journal/house-extension-planning-permission-birmingham-2026-guide";
 const url = `${site.url}${path}`;
-const image = `${site.url}/images/birmingham-residential-project.jpg`;
+const image = `${site.url}/images/selected-work-2.webp`;
 const publicationDate = "2026-08-02";
 
 const faqs = [
@@ -53,7 +53,7 @@ export default function BirminghamExtensionPlanningGuidePage() {
       <small className="eyebrow"><Newspaper size={14}/> Planning guidance</small><h1>{title}</h1>
       <p className="lead">Planning a rear, side or two-storey extension in Birmingham? This guide explains when planning permission may be required, what can sometimes be built under permitted development and how Birmingham City Council assesses householder proposals.</p>
       <p className={styles.byline}>Published 2 August 2026 · 10 minutes read · By <Link href="/about">David Hepburn</Link></p>
-      <figure className={styles.hero}><Image src="/images/birmingham-residential-project.jpg" alt="House extension project in Birmingham designed by Hepburn Architects" width={1024} height={485} priority sizes="(max-width: 1100px) 100vw, 1100px"/><figcaption>Residential extension project in Sutton Coldfield, Birmingham.</figcaption></figure>
+      <figure className={styles.hero}><Image src="/images/selected-work-2.webp" alt="Contemporary rear extension to a traditional family home" width={1448} height={1086} priority sizes="(max-width: 1100px) 100vw, 1100px"/><figcaption>A contemporary rear extension designed around family living and the garden.</figcaption></figure>
       <div className={styles.body}>
         <p>A house extension can transform how a Birmingham home works, but one of the first questions is usually:</p><aside className={styles.question}><strong>Do I need planning permission?</strong></aside>
         <p>The answer depends on much more than the extension’s floor area. The type of house, position of the extension, previous additions, planning history, conservation status, dimensions and relationship with neighbouring properties can all affect the approval route.</p><p>Some extensions require a householder planning application. Others may qualify as permitted development. Larger single-storey rear extensions can sometimes use a separate prior-approval process. Even where planning permission is not required, Building Regulations approval and other consents may still be necessary.</p>

@@ -8,7 +8,7 @@ const canonical = `${site.url}${path}`;
 const description = "Residential architects in Four Oaks for house extensions, remodelling, replacement homes, planning applications and Building Regulations. Director-led advice from Hepburn Architects.";
 
 export const metadata: Metadata = {
-  title: "Architects Four Oaks | Residential Architecture & Planning",
+  title: "Residential Architects Four Oaks",
   description,
   alternates: { canonical },
   openGraph: { title: "Architects Four Oaks | Residential Architecture & Planning", description, url: canonical, siteName: site.name, type: "website", images: [{ url: SOCIAL_IMAGE }] },

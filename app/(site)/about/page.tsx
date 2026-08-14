@@ -9,11 +9,8 @@ import {
   Compass,
   DraftingCompass,
   House,
-  UsersRound,
   Workflow,
 } from "lucide-react";
-import { CollaborativeTeamGrid } from "@/components/CollaborativeTeamGrid";
-import { getCollaborators, type Collaborator } from "@/lib/collaborators";
 import { site } from "@/lib/site";
 import { StructuredData } from "@/components/StructuredData";
 import { buildArchitectSchema, buildBreadcrumbSchema, buildBusinessLocationSchema, buildGraph, buildOrganisationSchema, buildWebPageSchema, breadcrumbId } from "@/lib/structured-data";
@@ -54,63 +51,6 @@ const practiceStrengths = [
     icon: DraftingCompass,
     title: "Technical continuity",
     text: "Concept design can be carried forward into coordinated Building Regulations information and specialist input.",
-  },
-];
-
-const placeholderCollaborators: Collaborator[] = [
-  {
-    _id: "placeholder-structural",
-    roleCategory: "Engineering",
-    name: "Profile to be added",
-    role: "Structural Engineer",
-    relationshipLabel: "Independent collaborator",
-    company: "Company details coming soon",
-    bio: "Structural design, calculations and coordinated advice for alterations, extensions and new-build projects.",
-  },
-  {
-    _id: "placeholder-planning",
-    roleCategory: "Planning",
-    name: "Profile to be added",
-    role: "Planning Consultant",
-    relationshipLabel: "Independent collaborator",
-    company: "Company details coming soon",
-    bio: "Strategic planning advice for complex applications, appeals, policy matters and development opportunities.",
-  },
-  {
-    _id: "placeholder-energy",
-    roleCategory: "Energy & Sustainability",
-    name: "Profile to be added",
-    role: "Energy & Sustainability Consultant",
-    relationshipLabel: "Independent collaborator",
-    company: "Company details coming soon",
-    bio: "Energy assessment, SAP advice, overheating input and practical low-energy design support.",
-  },
-  {
-    _id: "placeholder-drainage",
-    roleCategory: "Engineering",
-    name: "Profile to be added",
-    role: "Drainage & Civil Engineer",
-    relationshipLabel: "Independent collaborator",
-    company: "Company details coming soon",
-    bio: "Drainage strategy, levels, flood-risk input and civil engineering coordination where required.",
-  },
-  {
-    _id: "placeholder-ecology",
-    roleCategory: "Environment & Landscape",
-    name: "Profile to be added",
-    role: "Ecology & Arboricultural Consultant",
-    relationshipLabel: "Independent collaborator",
-    company: "Company details coming soon",
-    bio: "Ecology, protected species, tree constraints and specialist site evidence for planning submissions.",
-  },
-  {
-    _id: "placeholder-interiors",
-    roleCategory: "Interiors & Specialist Design",
-    name: "Profile to be added",
-    role: "Interior & Specialist Designer",
-    relationshipLabel: "Independent collaborator",
-    company: "Company details coming soon",
-    bio: "Interior planning, kitchens, finishes, lighting and specialist design input tailored to the project brief.",
   },
 ];
 
@@ -179,16 +119,10 @@ const professionalStandards = [
   "Direct access to the founding director",
 ];
 
-export default async function AboutPage() {
-  const sanityCollaborators = await getCollaborators();
-  const usingPlaceholders = sanityCollaborators.length === 0;
-  const collaborators = usingPlaceholders
-    ? placeholderCollaborators
-    : sanityCollaborators;
-
+export default function AboutPage() {
   return (
     <>
-      <StructuredData data={buildGraph(buildWebPageSchema({ url: `${site.url}/about`, name: "About Hepburn Architects", description: metadata.description as string, type: "AboutPage", breadcrumb: breadcrumbId(`${site.url}/about`) }), buildBreadcrumbSchema(`${site.url}/about`, [{ name: "Home", url: `${site.url}/` }, { name: "Studio", url: `${site.url}/about` }]), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildArchitectSchema())} />
+      <StructuredData data={buildGraph(buildWebPageSchema({ url: `${site.url}/about`, name: "About Hepburn Architects", description: metadata.description as string, type: "AboutPage", breadcrumb: breadcrumbId(`${site.url}/about`) }), buildBreadcrumbSchema(`${site.url}/about`, [{ name: "Home", url: `${site.url}/` }, { name: "About", url: `${site.url}/about` }]), buildOrganisationSchema(), buildBusinessLocationSchema("birmingham"), buildArchitectSchema())} />
       <section className="studio-v4-hero">
         <div className="shell studio-v4-hero-grid">
           <div className="studio-v4-hero-copy">
@@ -315,38 +249,6 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="section studio-v4-collaborators-section">
-        <div className="shell studio-v4-section-heading studio-v4-section-heading-light">
-          <div>
-            <small className="eyebrow">Collaborative team</small>
-            <h2>A wider project team assembled around each commission.</h2>
-          </div>
-          <p>
-            Hepburn Architects works alongside independent practices and specialist
-            consultants. Each collaborator retains their own professional identity
-            while contributing coordinated expertise to relevant commissions.
-          </p>
-        </div>
-
-        <CollaborativeTeamGrid
-          collaborators={collaborators}
-          usingPlaceholders={usingPlaceholders}
-        />
-
-        <div className="shell studio-v4-team-note">
-          <UsersRound />
-          <div>
-            <strong>A flexible team, not a one-size-fits-all appointment</strong>
-            <p>
-              Consultants remain independent businesses and are appointed or
-              engaged according to the needs of each project. This gives clients
-              access to the right expertise without carrying unnecessary
-              consultant scope.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="section studio-v4-values-section">
         <div className="shell studio-v4-values-grid">
           <div className="studio-v4-values-intro">
@@ -470,7 +372,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className="section dark-section">
+      <section className="section dark-section studio-v4-final-cta-section">
         <div className="shell final-cta">
           <small className="eyebrow">Start with a clear conversation</small>
           <h2>Bring the right architectural and specialist team around your project.</h2>

@@ -58,7 +58,7 @@ export const serviceDetails: ServiceDetail[] = [
   {
     slug: "loft-conversions",
     title: "Loft Conversion Architect",
-    metaTitle: "Loft Conversion Architect | Dormers, Hip-to-Gable & Planning",
+    metaTitle: "Loft Conversion Architect | Planning & Design",
     metaDescription: "Design, permitted development checks and Building Regulations drawings for dormer, hip-to-gable, rooflight and mansard loft conversions.",
     hero: "/images/homepage-hero.webp",
     mobileObjectPosition: "47% 43%",
@@ -93,7 +93,7 @@ export const serviceDetails: ServiceDetail[] = [
   {
     slug: "new-build-homes",
     title: "New Build Home Architect",
-    metaTitle: "New Build Home Architect | One-Off Houses & Small Developments",
+    metaTitle: "New Build Home Architect | Birmingham",
     metaDescription: "Feasibility, planning and technical design for one-off houses, replacement dwellings, infill plots and small residential developments.",
     hero: "/images/selected-work-1.webp",
     mobileObjectPosition: "42% 47%",
@@ -163,7 +163,7 @@ export const serviceDetails: ServiceDetail[] = [
   {
     slug: "planning-applications",
     title: "Planning Application Architect",
-    metaTitle: "Planning Application Architect | Drawings, Statements & Strategy",
+    metaTitle: "Planning Application Architect | Birmingham",
     metaDescription: "Residential planning drawings, planning statements, Design and Access Statements and submission support for extensions, conversions and new homes.",
     hero: "/images/selected-work-3.webp",
     mobileObjectPosition: "54% 47%",
@@ -198,7 +198,7 @@ export const serviceDetails: ServiceDetail[] = [
   {
     slug: "building-regulations",
     title: "Building Regulations Drawings",
-    metaTitle: "Building Regulations Drawings | Residential Technical Design",
+    metaTitle: "Building Regulations Drawings | Birmingham",
     metaDescription: "Detailed Building Regulations drawings for extensions, loft conversions, new homes, HMOs and residential conversions.",
     hero: "/images/architectural-expertise-home.webp",
     mobileObjectPosition: "54% 42%",

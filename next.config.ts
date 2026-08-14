@@ -35,6 +35,11 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: "/blog",
+        destination: "/journal",
+        permanent: true,
+      },
       ...permanentHostRedirects(
         ["hepburnarchitects.net", "www.hepburnarchitects.net"],
         "https://hepburnarchitects.co.uk",
@@ -162,6 +167,7 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 2678400,
     remotePatterns: [
       { protocol: "https", hostname: "cdn.sanity.io" },
+      { protocol: "https", hostname: "hepburnarchitects.co.uk" },
       { protocol: "https", hostname: "www.hepburnarchitects.com" },
       { protocol: "https", hostname: "images.unsplash.com" },
     ],

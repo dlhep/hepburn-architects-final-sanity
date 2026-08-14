@@ -20,9 +20,18 @@ export default function ServicesPage() {
   return (
     <>
       <StructuredData data={buildGraph(buildCollectionPageSchema({ url: `${site.url}/services`, name: "Residential Architectural Services", description: metadata.description as string, breadcrumb: breadcrumbId(`${site.url}/services`) }), buildBreadcrumbSchema(`${site.url}/services`, [{ name: "Home", url: `${site.url}/` }, { name: "Services", url: `${site.url}/services` }]), buildItemListSchema(`${site.url}/services`, "Architectural services", serviceDetails.map((service) => ({ name: service.title, url: `${site.url}/services/${service.slug}` }))))} />
-      <section className="section services-hero">
-        <div className="shell services-hero-grid">
-          <div>
+      <section className="services-hero services-hero-full">
+        <Image
+          className="services-hero-background"
+          src="/images/services-hero-photoreal.png"
+          alt="Modern residential extension with large glazing and landscaped garden"
+          fill
+          sizes="100vw"
+          priority
+        />
+        <div className="services-hero-shade" aria-hidden="true" />
+        <div className="shell services-hero-content primary-index-hero-copy">
+          <div className="services-hero-copy">
             <small className="eyebrow">Residential architectural services</small>
             <h1>Residential Architectural Services</h1>
             <p className="lead">
@@ -34,14 +43,6 @@ export default function ServicesPage() {
               <a className="btn secondary" href={site.phoneHref}>Call {site.phone}</a>
             </div>
           </div>
-          <Image
-            src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1800&q=88"
-            alt="Modern residential extension with large glazing and landscaped garden"
-            width={1800}
-            height={1200}
-            sizes="(max-width: 900px) 100vw, 50vw"
-            priority
-          />
         </div>
       </section>
 
@@ -81,7 +82,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="section dark-section">
+      <section className="section dark-section services-appointments-section">
         <div className="shell studio-process">
           <div>
             <small className="eyebrow">How appointments work</small>

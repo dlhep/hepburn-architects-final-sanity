@@ -563,8 +563,9 @@
 }
 
 .finalCta {
-  background: var(--ink);
-  color: #fff;
+  background: var(--sand);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
 }
 
 .finalCtaInner {
@@ -576,13 +577,13 @@
 .finalCta h2 {
   max-width: 750px;
   margin: 12px 0 0;
-  color: #fff;
+  color: var(--ink);
   font-size: clamp(45px, 5.5vw, 76px);
 }
 
 .finalCta p {
   margin: 12px 0 30px;
-  color: #ffffffa6;
+  color: var(--muted);
   font-size: 18px;
 }
 

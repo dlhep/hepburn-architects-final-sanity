@@ -9,8 +9,13 @@ import {
   CalendarDays,
   Compass,
   DraftingCompass,
+  BadgeCheck,
+  Building2,
+  ClipboardCheck,
   Home,
   MapPin,
+  ShieldCheck,
+  UserRoundCheck,
 } from "lucide-react";
 import { articleImageUrl, getBlogPosts } from "@/lib/articles";
 import {
@@ -144,6 +149,7 @@ export default async function HomePage() {
 
   const projectPool = uniqueProjects([...featuredProjects, ...allProjects]);
   const selectedProjects = projectPool.slice(0, 3);
+  const featuredCaseStudy = signatureProject ?? projectPool[0];
   const latestPosts = posts.slice(0, 3);
   const featurePost = latestPosts[0];
   const supportingPosts = latestPosts.slice(1);
@@ -180,17 +186,14 @@ export default async function HomePage() {
 
           <div className="hero-visual photo-frame">
             <Image
-              src="/images/homepage-hero.webp"
+              src="/images/homepage-hero-taller-trees.png"
               alt="Contemporary residential home designed by Hepburn Architects"
               fill
               priority
               fetchPriority="high"
-              sizes="(max-width: 950px) calc(100vw - 40px), (max-width: 1260px) 43vw, 540px"
+              sizes="100vw"
               className="hero-image"
             />
-            <div className="hero-note">
-              Residential design with planning strategy built in
-            </div>
           </div>
         </div>
       </section>
@@ -198,21 +201,25 @@ export default async function HomePage() {
       <section className="trust-proof home-trust-strip" aria-label="Practice credentials">
         <div className="shell trust-proof-grid">
           <div>
-            <strong>ARB</strong>
-            <span>Registered architect</span>
+            <BadgeCheck aria-hidden="true" />
+            <strong>ARB Registered architect</strong>
           </div>
           <div>
-            <strong>RIBA</strong>
-            <span>Chartered Practice</span>
+            <ShieldCheck aria-hidden="true" />
+            <strong>RIBA Chartered Practice</strong>
           </div>
           <div>
-            <strong>Director-led</strong>
-            <span>Speak directly with David</span>
+            <UserRoundCheck aria-hidden="true" />
+            <strong>Director-led service</strong>
           </div>
-          <Link href="/reviews">
-            <strong>Client reviews</strong>
-            <span>Read verified client experiences</span>
-          </Link>
+          <div>
+            <Building2 aria-hidden="true" />
+            <strong>Planning-aware design</strong>
+          </div>
+          <div>
+            <ClipboardCheck aria-hidden="true" />
+            <strong>Building Regulations expertise</strong>
+          </div>
         </div>
       </section>
 
@@ -251,103 +258,38 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {signatureProject && (
+      {featuredCaseStudy && (
         <section className="home-case-study-section">
           <div className="shell home-case-study-grid">
             <div className="home-case-study-image">
               <Image
-                src={projectImageUrl(signatureProject.featuredImage, 1600)}
-                alt={projectImageAlt(signatureProject)}
+                src={projectImageUrl(featuredCaseStudy.featuredImage, 1600)}
+                alt={projectImageAlt(featuredCaseStudy)}
                 fill
                 sizes="(max-width: 950px) calc(100vw - 40px), (max-width: 1260px) 60vw, 735px"
               />
             </div>
             <div className="home-case-study-copy">
               <small className="eyebrow">Featured case study</small>
-              <h2>{signatureProject.title}</h2>
-              <p className="lead">{signatureProject.description}</p>
+              <h2>{featuredCaseStudy.title}</h2>
+              <p className="lead">{featuredCaseStudy.description}</p>
               <dl className="home-case-study-facts">
                 <div>
                   <dt>Location</dt>
-                  <dd><MapPin size={15} /> {signatureProject.location}</dd>
+                  <dd><MapPin size={15} /> {featuredCaseStudy.location}</dd>
                 </div>
                 <div>
                   <dt>Project type</dt>
-                  <dd>{signatureProject.projectType}</dd>
+                  <dd>{featuredCaseStudy.projectType}</dd>
                 </div>
               </dl>
-              <Link className="btn light-btn" href={`/projects/${signatureProject.slug}`}>
+              <Link className="btn light-btn" href={`/projects/${featuredCaseStudy.slug}`}>
                 Read the case study <ArrowRight size={18} />
               </Link>
             </div>
           </div>
         </section>
       )}
-
-      <section className="section home-studio-section">
-        <div className="shell home-studio-grid">
-          <div className="home-studio-photo">
-            <Image
-              src="/images/david-hepburn-studio.jpg"
-              alt="David Hepburn, founding director of Hepburn Architects"
-              fill
-              sizes="(max-width: 950px) calc(100vw - 40px), (max-width: 1260px) 40vw, 490px"
-            />
-            <div className="home-studio-caption">
-              <small>Founding Director</small>
-              <strong>David Hepburn</strong>
-              <span>ARB · RIBA</span>
-            </div>
-          </div>
-
-          <div className="home-studio-copy">
-            <small className="eyebrow">Why Hepburn Architects</small>
-            <h2>Clear, personal guidance from first appraisal to technical design.</h2>
-            <p className="lead">
-              Work directly with David throughout the design, planning and Building
-              Regulations stages of your residential project.
-            </p>
-            <div className="home-studio-points">
-              <div>
-                <span>01</span>
-                <div>
-                  <h3>Director-led throughout</h3>
-                  <p>No handover to a junior team after the first meeting.</p>
-                </div>
-              </div>
-              <div>
-                <span>02</span>
-                <div>
-                  <h3>Planning-aware design</h3>
-                  <p>Architecture and approval strategy developed together.</p>
-                </div>
-              </div>
-              <div>
-                <span>03</span>
-                <div>
-                  <h3>Design and technical continuity</h3>
-                  <p>The concept is carried through into coordinated technical information.</p>
-                </div>
-              </div>
-              <div>
-                <span>04</span>
-                <div>
-                  <h3>Advice proportionate to the project</h3>
-                  <p>Clear stages and outputs without unnecessary complexity.</p>
-                </div>
-              </div>
-            </div>
-            <div className="actions">
-              <Link className="btn primary" href="/about">
-                Meet the studio <ArrowRight size={18} />
-              </Link>
-              <Link className="btn secondary" href="/contact">
-                Discuss your project
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="section home-services-section">
         <div className="shell home-section-heading home-section-heading-light">
@@ -385,20 +327,62 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <section className="section home-studio-section">
+        <div className="shell home-director-strip">
+          <div className="home-director-heading">
+            <small className="eyebrow">Director-led practice</small>
+            <h2>Work directly with David throughout your project.</h2>
+          </div>
+          <div className="home-studio-copy">
+            <p className="lead">
+              David Hepburn remains directly involved from the initial brief through
+              design, planning and Building Regulations, giving you consistent advice
+              without handovers to a junior team.
+            </p>
+            <div className="home-studio-qualifications">
+              <span>Founding Director</span>
+              <span>ARB registered</span>
+              <span>RIBA Chartered Practice</span>
+            </div>
+            <div className="actions">
+              <Link className="btn primary" href="/about">
+                Meet David <ArrowRight size={18} />
+              </Link>
+              <Link className="btn secondary" href="/contact">
+                Discuss your project
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="home-fee-section">
         <div className="shell home-fee-callout">
-          <div className="home-fee-icon"><Calculator /></div>
-          <div>
+          <div className="home-fee-copy">
             <small className="eyebrow">Start with clearer costs</small>
             <h2>Get an early indication of likely architectural fees.</h2>
             <p>
               Choose the project type, approximate size and services required to see an
               indicative appointment before arranging a consultation.
             </p>
+            <Link className="btn primary" href="/estimate">
+              Use the fee calculator <ArrowRight size={18} />
+            </Link>
           </div>
-          <Link className="btn light-btn" href="/estimate">
-            Use the fee calculator <ArrowRight size={18} />
-          </Link>
+          <aside className="home-fee-summary" aria-label="What the fee calculator provides">
+            <div className="home-fee-summary-heading">
+              <Calculator aria-hidden="true" />
+              <div>
+                <small>What you’ll receive</small>
+                <h3>A useful starting point before we speak.</h3>
+              </div>
+            </div>
+            <ol>
+              <li><span>01</span><strong>An indicative fee range</strong></li>
+              <li><span>02</span><strong>Services matched to your project</strong></li>
+              <li><span>03</span><strong>A clearer basis for consultation</strong></li>
+            </ol>
+          </aside>
         </div>
       </section>
 
@@ -446,7 +430,7 @@ export default async function HomePage() {
               <small className="eyebrow">Latest journal</small>
               <h2>Projects, planning updates and studio news.</h2>
             </div>
-            <Link className="home-text-link" href="/blog">
+            <Link className="home-text-link" href="/journal">
               View the journal <ArrowUpRight size={18} />
             </Link>
           </div>
@@ -511,30 +495,6 @@ export default async function HomePage() {
       </section>
 
       <ReviewGrid reviews={homepageReviews} />
-
-      <section className="section dark-section">
-        <div className="shell final-cta">
-          <small className="eyebrow">Start with a clear next step</small>
-          <h2>Discuss your residential project directly with David.</h2>
-          <p>
-            Book a consultation, call the studio or use the fee calculator for an early
-            indication of the likely architectural appointment.
-          </p>
-          <div className="actions centered-actions">
-            <a
-              className="btn primary"
-              href={site.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Book consultation
-            </a>
-            <Link className="btn light-btn" href="/estimate">
-              Get an indicative fee
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

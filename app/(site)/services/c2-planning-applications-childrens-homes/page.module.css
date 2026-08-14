@@ -2,6 +2,7 @@
   padding: 34px 0 52px;
   overflow: hidden;
   background: #f9f2e8;
+  color: var(--ink);
 }
 
 .breadcrumb {
@@ -9,11 +10,12 @@
   flex-wrap: wrap;
   gap: 9px;
   margin-bottom: 28px;
-  color: var(--muted);
+  color: #625d55;
   font-size: 12px;
 }
 
 .breadcrumb a {
+  color: #4d4942;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -34,6 +36,7 @@
   margin: 18px 0 24px;
   font-size: clamp(48px, 5vw, 76px);
   line-height: 0.96;
+  color: var(--ink);
 }
 
 .heroCopy h1 span {
@@ -42,6 +45,16 @@
 
 .heroCopy > p {
   max-width: 62ch;
+  color: #565149;
+}
+
+.heroCopy :global(.eyebrow) {
+  color: var(--orange);
+}
+
+.heroCopy :global(.btn.secondary) {
+  border-color: var(--ink);
+  color: var(--ink);
 }
 
 .heroVisual {
@@ -75,7 +88,7 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  color: var(--muted);
+  color: #514c45;
   font-size: 12px;
   font-weight: 700;
 }

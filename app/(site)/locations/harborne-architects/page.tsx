@@ -16,7 +16,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { Breadcrumbs } from "@/components/internal-links/Breadcrumbs";
 import { ReviewQuote } from "@/components/reviews/RelevantReview";
 import { StructuredData } from "@/components/StructuredData";
-import { getReviewForLocation } from "@/lib/reviews";
+import { getReviewForService } from "@/lib/reviews";
 import { site } from "@/lib/site";
 import {
   breadcrumbId,
@@ -112,7 +112,7 @@ const schema = buildGraph(
 );
 
 export default async function HarborneArchitectsPage() {
-  const review = await getReviewForLocation("harborne-architects");
+  const review = await getReviewForService("house-extensions", "harborne-architects");
 
   return (
     <>

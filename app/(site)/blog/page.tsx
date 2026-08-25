@@ -9,6 +9,14 @@ import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, buildItem
 
 const birminghamAuthorityArticles = [
   {
+    title: "New NPPF 2026: What the “Default Yes” Planning Rules Mean for Small Residential Sites",
+    excerpt: "England’s planning rules changed on 17 August 2026. Find out what stronger support for development within settlements and around well-connected stations could mean for small residential sites.",
+    href: "/journal/new-nppf-2026-default-yes-residential-development",
+    image: "/images/selected-work-2.webp",
+    category: "Planning update",
+    publishedAt: "2026-08-25",
+  },
+  {
     title: "Loft Conversion Planning Rules in Birmingham: 2026 Guide",
     excerpt: "A practical guide to planning permission, permitted development, dormers, hip-to-gable extensions and Lawful Development Certificates for Birmingham loft conversions.",
     href: "/journal/loft-conversion-planning-rules-birmingham",
@@ -85,7 +93,9 @@ export default async function BlogPage() {
           {birminghamAuthorityArticles.slice(1).map((article, index) => <Link href={article.href} className="guide-index-card journal-index-card" key={article.href}>
             <span>{String(index + 1).padStart(2, "0")}</span><div>
               <Image className="journal-index-image" src={article.image} alt={article.title} width={1024} height={485} sizes={index === 0 ? "(max-width: 800px) 100vw, 720px" : "(max-width: 800px) 100vw, 540px"} />
-              <small>{article.category}</small><h2>{article.title}</h2><p>{article.excerpt}</p><p className="muted small-copy">2 Aug 2026</p>
+              <small>{article.category}</small><h2>{article.title}</h2><p>{article.excerpt}</p><p className="muted small-copy">
+                    {new Intl.DateTimeFormat("en-GB", { dateStyle: "medium" }).format(new Date(article.publishedAt))}
+                  </p>
             </div><ArrowRight />
           </Link>)}
           {posts.map((post, index) => {

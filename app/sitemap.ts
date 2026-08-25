@@ -38,6 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/knowledge-centre/planning-permission",
     "/knowledge-centre/building-regulations",
     "/journal",
+    "/journal/new-nppf-2026-default-yes-residential-development",
     "/journal/how-to-choose-the-best-architect-in-birmingham",
     "/journal/house-extension-planning-permission-birmingham-2026-guide",
     "/journal/loft-conversion-planning-rules-birmingham",

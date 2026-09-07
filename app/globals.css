@@ -7410,129 +7410,6 @@ body .studio-v4-final-cta-section .final-cta h2 {
   }
 }
 
-/* JOURNAL MOBILE FIT — override the generic horizontal card carousel. */
-@media (max-width: 650px) {
-  body .journal-editorial-hero {
-    margin-bottom: 34px;
-    padding-bottom: 28px;
-  }
-
-  body .journal-editorial-heading {
-    gap: 14px;
-    padding-block: 34px 24px;
-  }
-
-  body .journal-editorial-heading h1 {
-    max-width: 10ch;
-    font-size: clamp(42px, 11.5vw, 54px);
-    line-height: .98;
-  }
-
-  body .journal-editorial-aside p {
-    margin-top: 8px;
-    font-size: 15px;
-    line-height: 1.5;
-  }
-
-  body .journal-hero-story {
-    width: calc(100% - 28px) !important;
-    min-height: 0;
-    overflow: visible;
-    border: 0;
-    background: var(--paper);
-  }
-
-  body .journal-hero-story-image {
-    min-height: 0;
-    aspect-ratio: 16 / 10;
-  }
-
-  body .journal-hero-story-copy {
-    position: relative;
-    justify-content: flex-start;
-    padding: 26px 20px 28px;
-    border: 0;
-    background: var(--paper);
-  }
-
-  body .journal-hero-story-copy > span {
-    position: absolute;
-    left: 14px;
-    top: -32px;
-    padding: 8px 10px;
-    background: var(--orange);
-    color: #fff;
-  }
-
-  body .journal-hero-story-copy small {
-    margin-top: 0;
-    color: var(--muted);
-  }
-
-  body .journal-hero-story-copy h2 {
-    margin: 9px 0 12px;
-    color: var(--ink);
-    font-size: clamp(30px, 8.7vw, 38px);
-    line-height: 1.02;
-  }
-
-  body .journal-hero-story-copy p {
-    margin-bottom: 20px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.55;
-  }
-
-  body .journal-hero-story-copy strong {
-    color: var(--orange);
-  }
-
-  body .journal-index-section > .journal-index-grid {
-    box-sizing: border-box !important;
-    width: calc(100% - 28px) !important;
-    max-width: none !important;
-    margin-inline: auto !important;
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) !important;
-    grid-auto-flow: row !important;
-    grid-auto-columns: auto !important;
-    gap: 14px !important;
-    padding: 0 !important;
-    overflow: visible !important;
-    scroll-snap-type: none !important;
-    border: 0 !important;
-  }
-
-  body .journal-index-grid .journal-index-card {
-    box-sizing: border-box !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    padding: 16px !important;
-    border: 1px solid var(--line) !important;
-    scroll-snap-align: none !important;
-  }
-
-  body .journal-index-card > div,
-  body .journal-index-card .journal-index-image {
-    max-width: 100% !important;
-    min-width: 0 !important;
-  }
-
-  body .journal-index-card h2 {
-    max-width: 100% !important;
-    margin: 7px 0 10px !important;
-    font-size: clamp(25px, 7.5vw, 32px) !important;
-    line-height: 1.06 !important;
-    overflow-wrap: anywhere;
-  }
-
-  body .journal-index-card p {
-    max-width: 100%;
-    font-size: 14px;
-    line-height: 1.55;
-  }
-}
-
 /* ABOUT HERO LABEL — match the shared primary-page label baseline and orange. */
 @media (min-width: 701px) {
   body .studio-v4-hero {
@@ -7640,6 +7517,131 @@ body .journal-hero-story-copy strong { display: inline-flex; align-items: center
   body .journal-editorial-aside { padding-left: 0; border-left: 0; }
   body .journal-hero-story-image { min-height: clamp(270px, 66vw, 420px); }
   body .journal-hero-story-copy { border-top: 1px solid rgba(255,255,255,.2); border-left: 0; }
+}
+
+/* JOURNAL MOBILE FIT — keep after the editorial desktop/tablet rules so
+   mobile text stays legible on its light panel and spacing remains compact. */
+@media (max-width: 650px) {
+  body .journal-editorial-hero {
+    margin-bottom: 34px;
+    padding-bottom: 28px;
+  }
+
+  body .journal-editorial-heading {
+    gap: 14px;
+    padding-block: 34px 24px;
+  }
+
+  body .journal-editorial-heading h1 {
+    max-width: 10ch;
+    font-size: clamp(42px, 11.5vw, 54px);
+    line-height: .98;
+  }
+
+  body .journal-editorial-aside p {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  body .journal-hero-story {
+    width: calc(100% - 28px) !important;
+    min-height: 0;
+    overflow: visible;
+    border: 0;
+    background: var(--paper);
+  }
+
+  body .journal-hero-story-image {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  body .journal-hero-story-copy {
+    position: relative;
+    justify-content: flex-start;
+    padding: 20px;
+    color: var(--ink);
+    border: 0;
+    background: var(--paper);
+  }
+
+  body .journal-hero-story-copy > span {
+    position: absolute;
+    left: 14px;
+    top: -32px;
+    padding: 8px 10px;
+    background: var(--orange);
+    color: #fff;
+  }
+
+  body .journal-hero-story-copy small {
+    margin-top: 0;
+    color: var(--muted);
+  }
+
+  body .journal-hero-story-copy h2 {
+    margin: 9px 0 12px;
+    color: var(--ink);
+    font-size: clamp(28px, 7.5vw, 34px);
+    line-height: 1.1;
+  }
+
+  body .journal-hero-story-copy p {
+    margin-bottom: 20px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  body .journal-hero-story-copy strong {
+    color: var(--orange);
+  }
+
+  body .journal-index-section > .journal-index-grid {
+    box-sizing: border-box !important;
+    width: calc(100% - 28px) !important;
+    max-width: none !important;
+    margin-inline: auto !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-auto-flow: row !important;
+    grid-auto-columns: auto !important;
+    gap: 14px !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+    border: 0 !important;
+  }
+
+  body .journal-index-grid .journal-index-card {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 16px !important;
+    border: 1px solid var(--line) !important;
+    scroll-snap-align: none !important;
+  }
+
+  body .journal-index-card > div,
+  body .journal-index-card .journal-index-image {
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  body .journal-index-card h2 {
+    max-width: 100% !important;
+    margin: 7px 0 10px !important;
+    font-size: clamp(25px, 7.5vw, 32px) !important;
+    line-height: 1.06 !important;
+    overflow-wrap: anywhere;
+  }
+
+  body .journal-index-card p {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.55;
+  }
 }
 
 /* ABOUT + JOURNAL FINISHING — final contrast, type and closing spacing. */

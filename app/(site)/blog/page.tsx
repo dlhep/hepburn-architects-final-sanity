@@ -9,6 +9,14 @@ import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, buildItem
 
 const birminghamAuthorityArticles = [
   {
+    title: "Future Homes Standard 2027: What New-Build Homeowners and Developers Need to Design for Now",
+    excerpt: "England’s confirmed 2027 timetable, transitional rules and the heating, solar, ventilation and overheating decisions to resolve while your new home is being designed.",
+    href: "/journal/future-homes-standard-2027",
+    image: "/images/architectural-expertise-home.webp",
+    category: "Building Regulations",
+    publishedAt: "2026-09-07",
+  },
+  {
     title: "New NPPF 2026: What the “Default Yes” Planning Rules Mean for Small Residential Sites",
     excerpt: "England’s planning rules changed on 17 August 2026. Find out what stronger support for development within settlements and around well-connected stations could mean for small residential sites.",
     href: "/journal/new-nppf-2026-default-yes-residential-development",

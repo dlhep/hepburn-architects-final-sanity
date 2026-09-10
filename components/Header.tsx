@@ -64,7 +64,7 @@ export function Header() {
       image: "/images/selected-work-2.webp",
       links: [
         ["House extensions", "/services/house-extensions"], ["New-build homes", "/services/new-build-homes"],
-        ["Birmingham projects", "/locations/birmingham-architects"], ["Solihull projects", "/locations/solihull-architects"],
+        ["Birmingham projects", "/"], ["Solihull projects", "/locations/solihull-architects"],
         ["Project map", "/projects#project-map"], ["Client reviews", "/reviews"],
       ],
     },

@@ -76,8 +76,13 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/locations/birmingham-architects",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/locations/birmingham",
-        destination: "/locations/birmingham-architects",
+        destination: "/",
         permanent: true,
       },
       {
@@ -92,7 +97,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/locations/birmingham-architect",
-        destination: "/locations/birmingham-architects",
+        destination: "/",
         permanent: true,
       },
       {

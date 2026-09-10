@@ -115,11 +115,19 @@ const featuredGuides = [
 ];
 
 const locationLinks = [
-  ["Birmingham", "/locations/birmingham-architects"],
   ["Solihull", "/locations/solihull-architects"],
   ["Moseley", "/locations/moseley-architects"],
   ["Harborne", "/locations/harborne-architects"],
   ["Edgbaston", "/locations/edgbaston-architects"],
+  ["Sutton Coldfield", "/locations/sutton-coldfield-architects"],
+] as const;
+
+const birminghamAreaLinks = [
+  ["Edgbaston", "/locations/edgbaston-architects"],
+  ["Harborne", "/locations/harborne-architects"],
+  ["Moseley", "/locations/moseley-architects"],
+  ["Kings Heath", "/locations/kings-heath-architects"],
+  ["Bournville", "/locations/bournville-architects"],
   ["Sutton Coldfield", "/locations/sutton-coldfield-architects"],
 ] as const;
 
@@ -219,6 +227,26 @@ export default async function HomePage() {
           <div>
             <ClipboardCheck aria-hidden="true" />
             <strong>Building Regulations expertise</strong>
+          </div>
+        </div>
+      </section>
+
+      <section className="section sand-section">
+        <div className="shell service-detail-columns">
+          <div>
+            <small className="eyebrow">Residential architects Birmingham</small>
+            <h2>Architectural design, planning and Building Regulations across Birmingham.</h2>
+          </div>
+          <div>
+            <p className="lead">
+              Hepburn Architects is a Birmingham-based, RIBA Chartered architectural practice providing director-led residential design, planning and technical services for homeowners, developers and property investors.
+            </p>
+            <p>
+              We support house extensions, loft conversions, new homes, HMOs, residential conversions and small development sites across Birmingham. Local planning strategy, neighbouring amenity, conservation constraints, parking, trees and the existing character of the property are considered alongside the design from the outset.
+            </p>
+            <div className="nearby-links" aria-label="Birmingham neighbourhood architecture pages">
+              {birminghamAreaLinks.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
+            </div>
           </div>
         </div>
       </section>

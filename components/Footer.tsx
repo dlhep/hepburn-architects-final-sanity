@@ -23,7 +23,7 @@ const serviceLinks = [
 ];
 
 const locationLinks = [
-  { href: "/locations/birmingham-architects", label: "Birmingham" },
+  { href: "/", label: "Birmingham" },
   { href: "/locations/solihull-architects", label: "Solihull" },
   { href: "/locations/sutton-coldfield-architects", label: "Sutton Coldfield" },
   { href: "/locations/harborne-architects", label: "Harborne" },

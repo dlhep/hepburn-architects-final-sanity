@@ -22,7 +22,9 @@ export default function LocationsPage() {
     ["Black Country and wider West Midlands", ["wolverhampton-architects", "walsall-architects"]],
   ].map(([name, slugs]) => ({ name: name as string, locations: (slugs as string[]).map((slug) => published.get(slug)).filter((item): item is (typeof locations)[number] => Boolean(item)) }));
   const url = `${site.url}/locations`;
-  const items = regions.flatMap((region) => region.locations).map((location) => ({ name: location.title, url: `${url}/${location.slug}` }));
+  const locationUrl = (slug: string) => slug === "birmingham-architects" ? `${site.url}/` : `${url}/${slug}`;
+  const locationHref = (slug: string) => slug === "birmingham-architects" ? "/" : `/locations/${slug}`;
+  const items = regions.flatMap((region) => region.locations).map((location) => ({ name: location.title, url: locationUrl(location.slug) }));
   return (<>
     <StructuredData data={buildGraph(buildCollectionPageSchema({ url, name: "Locations", description: metadata.description as string, breadcrumb: breadcrumbId(url) }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Locations", url }]), buildItemListSchema(url, "Published location pages", items))} />
     <section className="section">
@@ -33,7 +35,7 @@ export default function LocationsPage() {
       </div>
       {regions.map((region) => region.locations.length ? <section className="section" style={{ paddingTop: 24 }} key={region.name}>
         <div className="shell"><div className="page-intro"><small className="eyebrow">Regional cluster</small><h2>{region.name}</h2></div><div className="guides-index">
-          {region.locations.map((location, index) => <Link href={`/locations/${location.slug}`} className="guide-index-card" key={location.slug}><span>{String(index + 1).padStart(2, "0")}</span><div><h2>{location.title}</h2><p>{location.description}</p></div><ArrowRight /></Link>)}
+          {region.locations.map((location, index) => <Link href={locationHref(location.slug)} className="guide-index-card" key={location.slug}><span>{String(index + 1).padStart(2, "0")}</span><div><h2>{location.title}</h2><p>{location.description}</p></div><ArrowRight /></Link>)}
         </div></div>
       </section> : null)}
     </section></>

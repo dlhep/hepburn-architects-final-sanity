@@ -1,3 +1,4 @@
+import { applyShropshireProjectRefresh } from "./shropshire-project-refresh";
 import { birminghamExtensionProjects, birminghamExtensionImportId } from "./birmingham-extension-projects";
 import { westMidlandsLoftProjects, westMidlandsLoftImportId } from "./west-midlands-loft-projects";
 import fallbackProjects from "@/data/projects.json";
@@ -117,6 +118,7 @@ function fallback(): Project[] {
 // never renders on project cards, the map info window, or meta descriptions.
 const STRAY_SUMMARY_LABEL = /^\s*project\s+summary\s*[:.\-–—]?\s+/i;
 function normaliseProject(project: Project): Project {
+  project = applyShropshireProjectRefresh(project);
   if (typeof project.description !== "string") return project;
   const description = project.description.replace(STRAY_SUMMARY_LABEL, "").trim();
   return description === project.description ? project : { ...project, description };

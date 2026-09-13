@@ -65,7 +65,6 @@ export const PROJECT_TITLES: Record<string, string> = {
   "rear-house-extension-yorkshire": "Rear Extension in North Yorkshire",
   "contemporary-rural-extension": "Contemporary Rural Extension",
   "modern-extension-to-rural-property": "Modern Extension in North Yorkshire",
-  "contemporary-renovation-shropshire": "Rural Renovation in Shropshire",
   "contemporary-rear-extension-and-loft-conversion-wynyard": "Wynyard Extension and Loft Conversion",
   "passive-house-new-build": "Passive House New Build",
   "traditional-barn-conversion-northumberland": "Barn Conversion in Northumberland",
@@ -146,3 +145,4 @@ export function createSeoMetadata({
     },
   };
 }
+

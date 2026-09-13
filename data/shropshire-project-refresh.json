@@ -1,0 +1,170 @@
+{
+  "documentId": "f0bfbee2-c4ea-4a9b-81e5-479773abd64b",
+  "baselineUpdatedAt": "2026-08-05T17:54:40Z",
+  "migrationId": "migration-shropshire-renovation-refresh-2026-09-13",
+  "fields": {
+    "description": "A rural house renovation and extension in Shropshire, bringing a double-height glazed gable, generous garden-facing windows and a new terrace to a traditional stone home.",
+    "seoTitle": "Contemporary House Renovation in Shropshire",
+    "seoDescription": "Explore a stone house renovation in Shropshire by Hepburn Architects, with a double-height glazed gable, contemporary detailing and a garden terrace.",
+    "projectDescription": [
+      {
+        "_type": "block",
+        "_key": "shropshire-0-0",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-0-0",
+            "text": "Reworking a rural home in Shropshire",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "shropshire-0-1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-0-1",
+            "text": "This renovation and extension brings a more open, contemporary character to a traditional stone property in Shropshire. The design builds on the familiar pitched roof and central gable, using larger areas of glazing to strengthen the relationship between the house and its landscaped garden.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "shropshire-1-0",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-1-0",
+            "text": "A glazed gable at the heart of the design",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "shropshire-1-1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-1-1",
+            "text": "The central gable becomes the focal point of the garden elevation. Double-height glazing replaces the small, separate openings of the original facade, drawing light deeper into the home and framing views out across the terrace. Slim dark frames give the new opening a clear outline against the stonework.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "shropshire-2-0",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-2-0",
+            "text": "Traditional materials, carefully updated",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "shropshire-2-1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-2-1",
+            "text": "Natural stone and slate keep the renovation connected to the original house and its rural setting. A dark-clad dormer and broad ground-floor glazing introduce a more modern layer, with a restrained palette that lets the existing roof form and stone walls remain prominent. The result is a distinctive update with a recognisable connection to the building it started from.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "shropshire-3-0",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-3-0",
+            "text": "A closer connection to the garden",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "shropshire-3-1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-3-1",
+            "text": "Generous glazed openings bring the living spaces into closer contact with the outside. The terrace provides a transition from the house to the lawn, while planted borders soften the edges of the paving. Together, the glazing and landscape create a welcoming garden-facing side to the home.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "shropshire-4-0",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-4-0",
+            "text": "Design and planning support",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "shropshire-4-1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-4-1",
+            "text": "Our involvement covered feasibility studies, space planning, and design and planning. The project brought these strands together around the relationship between the existing building, the new architectural elements and the garden. The accompanying visualisations show the original house and the renovation design for comparison.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "showFullImage": true,
+    "featuredImage": {
+      "url": "/images/projects/shropshire-renovation-refreshed.webp",
+      "alt": "Architectural visualisation of a renovated stone house in Shropshire with a double-height glazed gable, dark dormer and garden terrace",
+      "caption": "Renovation design — architectural visualisation"
+    },
+    "gallery": [
+      {
+        "url": "/images/projects/shropshire-original-house-refreshed.webp",
+        "alt": "Reconstructed visualisation of the original stone house in Shropshire, with a solid central gable, slate roof and smaller windows",
+        "caption": "Original house — reconstructed visualisation"
+      },
+      {
+        "url": "/images/projects/shropshire-renovation-refreshed.webp",
+        "alt": "Architectural visualisation of a renovated stone house in Shropshire with a double-height glazed gable, dark dormer and garden terrace",
+        "caption": "Renovation design — architectural visualisation"
+      }
+    ]
+  }
+}

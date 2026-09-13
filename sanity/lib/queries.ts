@@ -8,6 +8,8 @@ const PROJECT_FIELDS = `
   location,
   websiteRegion,
   category,
+  isConcept,
+  conceptLabel,
   projectType,
   description,
   seoTitle,
@@ -238,3 +240,4 @@ export const FEATURED_REVIEWS_QUERY = defineQuery(`
     ${PUBLIC_REVIEW_FIELDS}
   }
 `);
+

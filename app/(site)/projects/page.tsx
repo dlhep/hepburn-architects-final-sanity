@@ -39,7 +39,7 @@ export default async function ProjectsPage() {
             <div className="projects-index-intro">
               <small className="eyebrow">Selected residential work</small>
               <h1>Residential Architecture Projects Across Birmingham and the West Midlands</h1>
-              <p>Explore extensions, sustainable new homes and whole-house transformations developed by Hepburn Architects.</p>
+              <p>From small rear extensions and kitchen improvements to new homes and whole-house transformations, explore projects and design proposals by Hepburn Architects.</p>
             </div>
             <span className="projects-index-hero-caption">Contemporary farmhouse extension · Residential architecture</span>
           </div>

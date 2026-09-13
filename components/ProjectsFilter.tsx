@@ -42,7 +42,7 @@ export function ProjectsFilter({ projects }: { projects: Project[] }) {
               priority={index < 3}
             />
             <div>
-              <small>{project.location} · {project.projectType}</small>
+              <small>{project.location} · {project.projectType}{project.isConcept ? ` · ${project.conceptLabel || "Concept study"}` : ""}</small>
               <h2>{project.title}</h2>
               <p style={{ display: "-webkit-box", WebkitLineClamp: 5, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                 {project.description}
@@ -56,3 +56,4 @@ export function ProjectsFilter({ projects }: { projects: Project[] }) {
     </>
   );
 }
+

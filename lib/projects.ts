@@ -1,3 +1,4 @@
+import { birminghamExtensionProjects, birminghamExtensionImportId } from "./birmingham-extension-projects";
 import fallbackProjects from "@/data/projects.json";
 import { client } from "@/sanity/lib/client";
 import { isSanityConfigured } from "@/sanity/env";
@@ -36,6 +37,8 @@ export type Project = {
   location: string;
   websiteRegion?: string;
   category: string;
+  isConcept?: boolean;
+  conceptLabel?: string;
   projectType: string;
   description: string;
   seoTitle?: string;
@@ -120,7 +123,7 @@ async function fetchSanity<T>(query: string, params: Record<string, unknown> = {
   if (!isSanityConfigured) return null;
   try {
     return await client.fetch<T>(query, params, {
-      next: { revalidate: 21600, tags: ["sanity-projects"] },
+      next: { revalidate: 60, tags: ["sanity-projects"] },
     });
   } catch (error) {
     console.error("Sanity project fetch failed; using local fallback.", error);
@@ -128,9 +131,19 @@ async function fetchSanity<T>(query: string, params: Record<string, unknown> = {
   }
 }
 
+const EXTENSION_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${birminghamExtensionImportId}"][0])`;
+
 export async function getProjects(): Promise<Project[]> {
-  const result = await fetchSanity<Project[]>(PROJECTS_QUERY);
-  return (result ?? fallback()).filter(isMidlandsWebsiteProject).map(normaliseProject);
+  const [result, imported] = await Promise.all([
+    fetchSanity<Project[]>(PROJECTS_QUERY),
+    fetchSanity<boolean>(EXTENSION_IMPORT_COMPLETE_QUERY),
+  ]);
+  const projects = (result ?? fallback()).filter(isMidlandsWebsiteProject).map(normaliseProject);
+  if (imported) return projects;
+  const bySlug = new Map(projects.map((project) => [project.slug, project]));
+  const additions = birminghamExtensionProjects.map((project) => bySlug.get(project.slug) ?? project);
+  const addedSlugs = new Set(additions.map((project) => project.slug));
+  return [...additions, ...projects.filter((project) => !addedSlugs.has(project.slug))];
 }
 
 export async function getBirminghamProjects(): Promise<Project[]> {
@@ -154,7 +167,9 @@ export async function getFeaturedCaseStudy(): Promise<Project | undefined> {
 
 export async function getProject(slug: string): Promise<Project | undefined> {
   const result = await fetchSanity<Project | null>(PROJECT_QUERY, { slug });
-  const project = result || fallback().find((item) => item.slug === slug);
+  const seed = birminghamExtensionProjects.find((item) => item.slug === slug);
+  const imported = !result && seed ? await fetchSanity<boolean>(EXTENSION_IMPORT_COMPLETE_QUERY) : true;
+  const project = result || (!imported ? seed : undefined) || fallback().find((item) => item.slug === slug);
   return project && isMidlandsWebsiteProject(project) ? normaliseProject(project) : undefined;
 }
 
@@ -184,3 +199,4 @@ export function projectImageAlt(project: Project): string {
   if (typeof project.featuredImage !== "string" && project.featuredImage?.alt) return project.featuredImage.alt;
   return project.alt || project.title;
 }
+

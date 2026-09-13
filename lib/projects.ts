@@ -162,6 +162,11 @@ export async function getProjectSlugs(): Promise<string[]> {
   return (await getProjects()).map((project) => project.slug);
 }
 
+// Replace Meadow View's previous masterplan image on the website. Matching the
+// asset rather than the project means a later image upload in Sanity takes over.
+const MEADOW_VIEW_PREVIOUS_IMAGE = "image-3d47e6bcdc220656b154b769f0e4b00d38cd6cb0-2096x1774-png";
+const MEADOW_VIEW_IMAGE_ALT = "Meadow View concept street scene with detached brick and stone homes, pitched slate roofs and a landscaped shared green";
+
 export function projectImageUrl(image: Project["featuredImage"], width = 1600): string {
   if (typeof image === "string") {
     // The retired .com WordPress host rejects optimised image requests. Keep fallback records usable
@@ -170,10 +175,12 @@ export function projectImageUrl(image: Project["featuredImage"], width = 1600): 
     return image;
   }
   if (!image?.asset) return "https://hepburnarchitects.co.uk/images/social-sharing.jpg";
+  if (image.asset._id === MEADOW_VIEW_PREVIOUS_IMAGE) return "https://hepburnarchitects.co.uk/images/projects/meadow-view-street-scene.webp";
   return urlFor(image).width(width).quality(76).url();
 }
 
 export function projectImageAlt(project: Project): string {
+  if (typeof project.featuredImage !== "string" && project.featuredImage?.asset?._id === MEADOW_VIEW_PREVIOUS_IMAGE) return MEADOW_VIEW_IMAGE_ALT;
   if (typeof project.featuredImage !== "string" && project.featuredImage?.alt) return project.featuredImage.alt;
   return project.alt || project.title;
 }

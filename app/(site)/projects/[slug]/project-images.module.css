@@ -16,3 +16,11 @@ section.fullImageHero > div {
   padding-bottom: 36px;
 }
 
+
+section.fullImageGallery :global(.project-gallery) :global(.project-gallery-media) {
+  aspect-ratio: 16 / 9 !important;
+}
+
+section.fullImageGallery :global(.project-gallery) :global(.project-gallery-media) > img {
+  object-fit: contain !important;
+}

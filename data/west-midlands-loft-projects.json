@@ -143,6 +143,13 @@
           }
         ]
       }
+    ],
+    "gallery": [
+      {
+        "url": "/images/projects/solihull-dormer-loft-interior.webp",
+        "alt": "Proposed Solihull loft bedroom with a timber double bed, pale blue bedding and two dark-framed dormer windows",
+        "caption": "Interior design proposal: a calm loft bedroom with daylight from the rear dormer."
+      }
     ]
   },
   {
@@ -289,6 +296,13 @@
           }
         ]
       }
+    ],
+    "gallery": [
+      {
+        "url": "/images/projects/sutton-coldfield-dormer-loft-interior.webp",
+        "alt": "Proposed Sutton Coldfield loft bedroom with a grey upholstered bed, sage bedding, a desk and fitted storage",
+        "caption": "Interior design proposal: bedroom space with a desk and storage beneath the roof slope."
+      }
     ]
   },
   {
@@ -433,7 +447,13 @@
           }
         ]
       }
+    ],
+    "gallery": [
+      {
+        "url": "/images/projects/stourbridge-dormer-loft-interior.webp",
+        "alt": "Proposed Stourbridge loft guest room with a white single bed, striped bedding and a blue reading chair",
+        "caption": "Interior design proposal: a guest bedroom with a garden-facing reading corner."
+      }
     ]
   }
 ]
-

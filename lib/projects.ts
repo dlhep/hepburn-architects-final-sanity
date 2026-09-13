@@ -15,6 +15,7 @@ import type { PortableTextBlock } from "@portabletext/types";
 import { isMidlandsWebsiteProject } from "@/lib/project-region";
 
 export type SanityProjectImage = {
+  url?: string;
   alt?: string;
   caption?: string;
   asset?: { url?: string; _id?: string; metadata?: { dimensions?: { width?: number; height?: number } } };
@@ -199,6 +200,7 @@ export function projectImageUrl(image: Project["featuredImage"], width = 1600): 
     if (/^https:\/\/(www\.)?hepburnarchitects\.com\/wp-content\//i.test(image)) return "https://hepburnarchitects.co.uk/images/social-sharing.jpg";
     return image;
   }
+  if (image?.url) return image.url;
   if (!image?.asset) return "https://hepburnarchitects.co.uk/images/social-sharing.jpg";
   if (image.asset._id === MEADOW_VIEW_PREVIOUS_IMAGE) return "https://hepburnarchitects.co.uk/images/projects/meadow-view-street-scene.webp";
   return urlFor(image).width(width).quality(76).url();

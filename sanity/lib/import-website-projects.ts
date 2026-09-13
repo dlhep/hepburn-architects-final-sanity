@@ -15,6 +15,7 @@ type ImportableProject = {
   category: string;
   featuredImage: string;
   alt?: string;
+  gallery?: Array<{ url: string; alt: string; caption?: string }>;
   isTestExample?: boolean;
   [field: string]: unknown;
 };
@@ -65,7 +66,22 @@ export async function importWebsiteProjects(client: ReturnType<typeof useClient>
     const asset = await client.assets.upload("image", await response.blob(), {
       filename: project.featuredImage.split("/").pop(), title: project.title, contentType: "image/webp",
     });
-    const { featuredImage: sourceImage, alt, slug, ...fields } = project;
+    const gallery = [];
+    for (const [galleryIndex, image] of (project.gallery ?? []).entries()) {
+      onProgress(`Uploading interior image ${galleryIndex + 1}: ${project.title}`);
+      const galleryResponse = await fetch(image.url);
+      if (!galleryResponse.ok) throw new Error(`Could not load an interior image for ${project.title}. Please try again.`);
+      const galleryAsset = await client.assets.upload("image", await galleryResponse.blob(), {
+        filename: image.url.split("/").pop(), title: `${project.title} — interior`, contentType: "image/webp",
+      });
+      gallery.push({
+        _type: "image", _key: `gallery-${galleryIndex}`,
+        asset: { _type: "reference", _ref: galleryAsset._id },
+        alt: image.alt, ...(image.caption ? { caption: image.caption } : {}),
+      });
+    }
+    const { featuredImage: sourceImage, gallery: sourceGallery, alt, slug, ...fields } = project;
+    void sourceGallery;
     void sourceImage;
     const document: SanityDocumentStub = {
       ...fields,
@@ -73,6 +89,7 @@ export async function importWebsiteProjects(client: ReturnType<typeof useClient>
       slug: { _type: "slug", current: slug },
       publishedAt: new Date().toISOString(),
       showOnProjectMap: false,
+      ...(gallery.length ? { gallery } : {}),
       featuredImage: { _type: "image", asset: { _type: "reference", _ref: asset._id }, alt },
     };
     transaction = transaction.create(document);

@@ -18,7 +18,7 @@ section.fullImageHero > div {
 
 
 section.fullImageGallery :global(.project-gallery) :global(.project-gallery-media) {
-  aspect-ratio: 16 / 9 !important;
+  aspect-ratio: var(--project-image-aspect, 16 / 9) !important;
 }
 
 section.fullImageGallery :global(.project-gallery) :global(.project-gallery-media) > img {

@@ -152,18 +152,42 @@
     "featuredImage": {
       "url": "/images/projects/shropshire-renovation-refreshed.webp",
       "alt": "Architectural visualisation of a renovated stone house in Shropshire with a double-height glazed gable, dark dormer and garden terrace",
-      "caption": "Renovation design — architectural visualisation"
+      "caption": "Renovation design — architectural visualisation",
+      "asset": {
+        "metadata": {
+          "dimensions": {
+            "width": 1448,
+            "height": 1086
+          }
+        }
+      }
     },
     "gallery": [
       {
         "url": "/images/projects/shropshire-original-house-refreshed.webp",
         "alt": "Reconstructed visualisation of the original stone house in Shropshire, with a solid central gable, slate roof and smaller windows",
-        "caption": "Original house — reconstructed visualisation"
+        "caption": "Original house — reconstructed visualisation",
+        "asset": {
+          "metadata": {
+            "dimensions": {
+              "width": 1448,
+              "height": 1086
+            }
+          }
+        }
       },
       {
         "url": "/images/projects/shropshire-renovation-refreshed.webp",
         "alt": "Architectural visualisation of a renovated stone house in Shropshire with a double-height glazed gable, dark dormer and garden terrace",
-        "caption": "Renovation design — architectural visualisation"
+        "caption": "Renovation design — architectural visualisation",
+        "asset": {
+          "metadata": {
+            "dimensions": {
+              "width": 1448,
+              "height": 1086
+            }
+          }
+        }
       }
     ]
   }

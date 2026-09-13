@@ -1,4 +1,5 @@
 import { birminghamExtensionProjects, birminghamExtensionImportId } from "./birmingham-extension-projects";
+import { westMidlandsLoftProjects, westMidlandsLoftImportId } from "./west-midlands-loft-projects";
 import fallbackProjects from "@/data/projects.json";
 import { client } from "@/sanity/lib/client";
 import { isSanityConfigured } from "@/sanity/env";
@@ -39,6 +40,7 @@ export type Project = {
   category: string;
   isConcept?: boolean;
   conceptLabel?: string;
+  showFullImage?: boolean;
   projectType: string;
   description: string;
   seoTitle?: string;
@@ -131,17 +133,23 @@ async function fetchSanity<T>(query: string, params: Record<string, unknown> = {
   }
 }
 
+const LOFT_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${westMidlandsLoftImportId}"][0])`;
 const EXTENSION_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${birminghamExtensionImportId}"][0])`;
 
 export async function getProjects(): Promise<Project[]> {
-  const [result, imported] = await Promise.all([
+  const [result, imported, loftsImported] = await Promise.all([
     fetchSanity<Project[]>(PROJECTS_QUERY),
     fetchSanity<boolean>(EXTENSION_IMPORT_COMPLETE_QUERY),
+    fetchSanity<boolean>(LOFT_IMPORT_COMPLETE_QUERY),
   ]);
   const projects = (result ?? fallback()).filter(isMidlandsWebsiteProject).map(normaliseProject);
-  if (imported) return projects;
+  if (imported && loftsImported) return projects;
   const bySlug = new Map(projects.map((project) => [project.slug, project]));
-  const additions = birminghamExtensionProjects.map((project) => bySlug.get(project.slug) ?? project);
+  const pending = [
+    ...(!loftsImported ? westMidlandsLoftProjects : []),
+    ...(!imported ? birminghamExtensionProjects : []),
+  ];
+  const additions = pending.map((project) => bySlug.get(project.slug) ?? project);
   const addedSlugs = new Set(additions.map((project) => project.slug));
   return [...additions, ...projects.filter((project) => !addedSlugs.has(project.slug))];
 }
@@ -167,8 +175,10 @@ export async function getFeaturedCaseStudy(): Promise<Project | undefined> {
 
 export async function getProject(slug: string): Promise<Project | undefined> {
   const result = await fetchSanity<Project | null>(PROJECT_QUERY, { slug });
-  const seed = birminghamExtensionProjects.find((item) => item.slug === slug);
-  const imported = !result && seed ? await fetchSanity<boolean>(EXTENSION_IMPORT_COMPLETE_QUERY) : true;
+  const loftSeed = westMidlandsLoftProjects.find((item) => item.slug === slug);
+  const seed = loftSeed || birminghamExtensionProjects.find((item) => item.slug === slug);
+  const markerQuery = loftSeed ? LOFT_IMPORT_COMPLETE_QUERY : EXTENSION_IMPORT_COMPLETE_QUERY;
+  const imported = !result && seed ? await fetchSanity<boolean>(markerQuery) : true;
   const project = result || (!imported ? seed : undefined) || fallback().find((item) => item.slug === slug);
   return project && isMidlandsWebsiteProject(project) ? normaliseProject(project) : undefined;
 }

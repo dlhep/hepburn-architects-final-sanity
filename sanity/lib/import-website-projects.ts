@@ -1,5 +1,7 @@
 import type { SanityDocumentStub } from "@sanity/client";
 import type { useClient } from "sanity";
+import loftProjects from "../../data/west-midlands-loft-projects.json";
+import { westMidlandsLoftImportId } from "../../lib/west-midlands-loft-projects";
 import projects from "../../data/birmingham-extension-projects.json";
 import { birminghamExtensionImportId } from "../../lib/birmingham-extension-projects";
 
@@ -18,6 +20,7 @@ type ImportableProject = {
 };
 export type WebsiteProjectImportBatch = { id: string; title: string; projects: ImportableProject[] };
 export const websiteProjectImportBatches: WebsiteProjectImportBatch[] = [
+  { id: westMidlandsLoftImportId, title: "Three modern West Midlands dormer loft conversions", projects: loftProjects },
   { id: websiteProjectImportId, title: "Three small Birmingham rear extensions", projects },
 ];
 
@@ -30,7 +33,7 @@ type ExistingProject = {
   isTestExample?: boolean;
 };
 
-export async function importWebsiteProjects(client: ReturnType<typeof useClient>, onProgress: (message: string) => void, batch: WebsiteProjectImportBatch = websiteProjectImportBatches[0]) {
+export async function importWebsiteProjects(client: ReturnType<typeof useClient>, onProgress: (message: string) => void, batch: WebsiteProjectImportBatch = websiteProjectImportBatches[1]) {
   const { projects, id: importId } = batch;
   const config = client.config();
   if (config.projectId !== "5xwjrn3e" || config.dataset !== "production") {

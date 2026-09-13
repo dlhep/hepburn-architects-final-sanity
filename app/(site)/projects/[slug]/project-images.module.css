@@ -1,0 +1,18 @@
+section.fullImageHero {
+  height: auto;
+}
+
+section.fullImageHero > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 1;
+}
+
+section.fullImageHero > div {
+  position: static;
+  padding-top: 32px;
+  padding-bottom: 36px;
+}
+

@@ -1,6 +1,7 @@
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import imageStyles from "./project-images.module.css";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, MapPin } from "lucide-react";
 import { getProject, getProjectSlugs, projectImageAlt, projectImageUrl } from "@/lib/projects";
@@ -77,8 +78,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return <>
     <StructuredData data={schemas} />
-    <section className="project-detail-hero">
-      <Image src={heroImage} alt={projectImageAlt(project)} width={1920} height={1200} priority sizes="100vw" />
+    <section className={`project-detail-hero${project.showFullImage ? ` ${imageStyles.fullImageHero}` : ""}`}>
+      <Image src={heroImage} alt={projectImageAlt(project)} width={1920} height={project.showFullImage ? 1080 : 1200} priority sizes="100vw" />
       <div className="shell project-detail-overlay"><small>{project.category}{project.isConcept ? ` · ${project.conceptLabel || "Concept study"}` : ""}</small><h1>{project.title}</h1><p><MapPin size={16} /> {project.location}</p></div>
     </section>
     <section className="section project-content-section"><div className="shell">

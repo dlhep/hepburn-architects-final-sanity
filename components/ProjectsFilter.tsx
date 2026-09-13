@@ -37,7 +37,8 @@ export function ProjectsFilter({ projects }: { projects: Project[] }) {
               src={projectImageUrl(project.featuredImage, 900)}
               alt={projectImageAlt(project)}
               width={900}
-              height={600}
+              height={project.showFullImage ? 506 : 600}
+              style={project.showFullImage ? { height: "auto", aspectRatio: "16 / 9", objectFit: "contain" } : undefined}
               sizes="(max-width: 650px) 100vw, 50vw"
               priority={index < 3}
             />

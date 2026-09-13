@@ -10,6 +10,7 @@ const PROJECT_FIELDS = `
   category,
   isConcept,
   conceptLabel,
+  showFullImage,
   projectType,
   description,
   seoTitle,

@@ -103,6 +103,7 @@ export const projectType = defineType({
     defineField({ name: "applicationType", title: "Application type", type: "string", group: "content" }),
     defineField({ name: "contractValue", title: "Indicative contract value", type: "string", group: "content" }),
     defineField({ name: "completion", title: "Completion / status", type: "string", group: "content" }),
+    defineField({ name: "showFullImage", title: "Show full featured image", type: "boolean", group: "images", description: "Shows the complete image on project cards and above the page title. Useful for roof designs and drawings.", initialValue: false }),
     defineField({ name: "isConcept", title: "Feasibility / concept study", type: "boolean", group: "content", initialValue: false, description: "Shows the study label on project cards and the project page." }),
     defineField({ name: "conceptLabel", title: "Study / proposal label", type: "string", group: "content", hidden: ({document}) => !document?.isConcept, options: { list: ["Feasibility study", "Site appraisal", "Options appraisal", "Massing study", "Concept study", "Concept design", "Design proposal", "Pre-application study", "Illustrative planning scenario"] }, description: "Used when the feasibility / concept study toggle is on. Defaults to Concept study." }),
     defineField({ name: "projectStatus", title: "Project status (optional)", type: "string", group: "content", options: { list: ["Concept design", "Planning submitted", "Planning approved", "Technical design", "Under construction", "Completed", "Ongoing"] } }),

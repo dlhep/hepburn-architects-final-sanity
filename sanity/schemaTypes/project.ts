@@ -9,6 +9,9 @@ const categories = [
   "Conversions",
   "Garden Rooms",
   "Developments",
+  "C2 Projects",
+  "Residential Development",
+  "Change of Use",
 ];
 
 const likelyHouseNumber = /^\s*\d{1,3}[a-z]?(?:\s*[-/]\s*\d{1,3}[a-z]?)?\s+\S/i;

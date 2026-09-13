@@ -6,19 +6,19 @@ import { useMemo, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/lib/projects";
 import { projectImageAlt, projectImageUrl } from "@/lib/projects";
+import { matchesProjectFilter, projectFilters, type ProjectFilter } from "@/lib/project-filters";
 
 export function ProjectsFilter({ projects }: { projects: Project[] }) {
-  const categories = useMemo(() => ["All", ...Array.from(new Set(projects.map((project) => project.category)))], [projects]);
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState<ProjectFilter>("All");
   const visible = useMemo(
-    () => filter === "All" ? projects : projects.filter((project) => project.category === filter),
+    () => projects.filter((project) => matchesProjectFilter(project, filter)),
     [filter, projects]
   );
 
   return (
     <>
       <div className="project-filters" role="group" aria-label="Filter projects by type">
-        {categories.map((item) => (
+        {projectFilters.map((item) => (
           <button
             key={item}
             type="button"
@@ -51,6 +51,7 @@ export function ProjectsFilter({ projects }: { projects: Project[] }) {
             </div>
           </Link>
         ))}
+        {visible.length === 0 && <p className="project-empty-state">No projects in this category yet. Choose another filter to explore our work.</p>}
       </div>
     </>
   );

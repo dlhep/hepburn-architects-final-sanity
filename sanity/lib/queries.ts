@@ -6,6 +6,7 @@ const PROJECT_FIELDS = `
   title,
   "slug": slug.current,
   location,
+  websiteRegion,
   category,
   projectType,
   description,
@@ -90,20 +91,20 @@ export const BIRMINGHAM_PROJECTS_QUERY = defineQuery(`
       lower(location) match "*yardley*" ||
       lower(location) match "*erdington*"
     )
-  ] | order(featuredCaseStudy desc, featured desc, _updatedAt desc)[0...3] {
+  ] | order(featuredCaseStudy desc, featured desc, _updatedAt desc) {
     ${PROJECT_FIELDS}
   }
 `);
 
 export const FEATURED_PROJECTS_QUERY = defineQuery(`
-  *[_type == "project" && defined(slug.current) && featured == true && featuredCaseStudy != true] | order(_updatedAt desc)[0...3] {
+  *[_type == "project" && defined(slug.current) && featured == true && featuredCaseStudy != true] | order(_updatedAt desc) {
     ${PROJECT_FIELDS}
   }
 `);
 
 export const FEATURED_CASE_STUDY_QUERY = defineQuery(`
   *[_type == "project" && defined(slug.current) && featuredCaseStudy == true]
-  | order(_updatedAt desc)[0] {
+  | order(_updatedAt desc) {
     ${PROJECT_FIELDS}
   }
 `);
@@ -127,7 +128,7 @@ export const MAPPED_PROJECT_SOURCES_QUERY = defineQuery(`{
     defined(mapLatitude) &&
     defined(mapLongitude)
   ] | order(featuredCaseStudy desc, featured desc, _updatedAt desc) {
-    _id, title, "slug": slug.current, category, projectType, description,
+    _id, title, "slug": slug.current, category, projectType, description, location, websiteRegion,
     featuredImage { alt, hotspot, crop, asset->{_id, url, metadata{dimensions}} },
     mapStreetName, mapPostcode, mapTownOrCity, mapLatitude, mapLongitude
   },
@@ -137,11 +138,12 @@ export const MAPPED_PROJECT_SOURCES_QUERY = defineQuery(`{
     defined(mapLatitude) &&
     defined(mapLongitude)
   ] | order(_updatedAt desc) {
-    _id, projectName, projectType, shortDescription,
+    _id, projectName, projectType, shortDescription, websiteRegion,
     image { alt, hotspot, crop, asset->{_id, url, metadata{dimensions}} },
     streetName, postcode, townOrCity, mapLatitude, mapLongitude,
     "linkedProjectId": linkedProject._ref,
-    "linkedProjectSlug": linkedProject->slug.current
+    "linkedProjectSlug": linkedProject->slug.current,
+    "linkedProjectRegion": linkedProject->{"slug": slug.current, location, websiteRegion}
   }
 }
 `);
@@ -218,7 +220,7 @@ const PUBLIC_REVIEW_FIELDS = `
     projectType, location, services, source, sourceUrl, featured, relatedService, relatedLocation,
     showOnHomepage, showOnReviewsPage, showOnServicePages, showOnLocationPages, featuredPlacement,
     externalSource, googleReviewUrl, autoRegion, autoService, manualRegionOverride, manualServiceOverride,
-    "relatedProject": relatedProject->{title, "slug": slug.current, location, featuredImage {alt, asset->{_id, url, metadata{dimensions}}}}
+    "relatedProject": relatedProject->{title, "slug": slug.current, location, websiteRegion, featuredImage {alt, asset->{_id, url, metadata{dimensions}}}}
 `;
 
 const PUBLIC_REVIEW_FILTER = `_type == "review" && published == true && verified == true && permissionToPublish == true && showOnReviewsPage != false && hiddenFromWebsite != true && sourceUnavailable != true && archived != true && length(quote) > 0`;

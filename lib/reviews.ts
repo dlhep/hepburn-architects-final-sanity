@@ -3,6 +3,7 @@ import { isSanityConfigured } from "@/sanity/env";
 import { FEATURED_REVIEWS_QUERY, PUBLISHED_REVIEWS_QUERY } from "@/sanity/lib/queries";
 import { projectImageUrl, type SanityProjectImage } from "@/lib/projects";
 import { BIRMINGHAM_REGION, regionForLocationSlug } from "@/lib/google-business/model";
+import { isNorthEastProject } from "@/lib/project-region";
 
 export type Review = {
   _id: string;
@@ -33,7 +34,7 @@ export type Review = {
   autoService?: string;
   manualRegionOverride?: string;
   manualServiceOverride?: string;
-  relatedProject?: { title: string; slug: string; location?: string; featuredImage?: SanityProjectImage };
+  relatedProject?: { title: string; slug: string; location?: string; websiteRegion?: string; featuredImage?: SanityProjectImage };
 };
 
 const REVIEW_SERVICE_LINKS: Record<string, string> = {
@@ -60,7 +61,12 @@ export function getReviewServiceUrl(value?: string | null): string | undefined {
 
 async function fetchReviews(query: string) {
   if (!isSanityConfigured) return [] as Review[];
-  try { return (await client.fetch<Review[]>(query, {}, { next: { revalidate: 21600, tags: ["sanity-reviews"] } })) || []; } catch { return []; }
+  try {
+    const reviews = (await client.fetch<Review[]>(query, {}, { next: { revalidate: 21600, tags: ["sanity-reviews"] } })) || [];
+    return reviews.map((review) => review.relatedProject && isNorthEastProject(review.relatedProject)
+      ? { ...review, relatedProject: undefined }
+      : review);
+  } catch { return []; }
 }
 
 export async function getPublishedReviews() { return fetchReviews(PUBLISHED_REVIEWS_QUERY); }

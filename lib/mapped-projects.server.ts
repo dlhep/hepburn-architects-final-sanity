@@ -1,4 +1,5 @@
 import "server-only";
+import { isNorthEastProject } from "@/lib/project-region";
 
 import { client } from "@/sanity/lib/client";
 import { isSanityConfigured } from "@/sanity/env";
@@ -10,6 +11,8 @@ import { roundPublicCoordinate, safePublicLocationPart, toPublicPostcodeDistrict
 type FullProjectSource = {
   _id: string;
   title: string;
+  location?: string;
+  websiteRegion?: string;
   slug: string;
   category?: string;
   projectType?: string;
@@ -25,6 +28,7 @@ type FullProjectSource = {
 type MapProjectSource = {
   _id: string;
   projectName: string;
+  websiteRegion?: string;
   projectType: string;
   shortDescription?: string;
   image?: SanityProjectImage;
@@ -35,6 +39,7 @@ type MapProjectSource = {
   mapLongitude?: number;
   linkedProjectId?: string;
   linkedProjectSlug?: string;
+  linkedProjectRegion?: { slug?: string; location?: string; websiteRegion?: string };
 };
 
 type MappedProjectSources = { fullProjects: FullProjectSource[]; mapProjects: MapProjectSource[] };
@@ -64,6 +69,7 @@ function publicLocation(source: {
 }
 
 function prepareFullProject(project: FullProjectSource): PublicMappedProject | null {
+  if (isNorthEastProject({ ...project, townOrCity: project.mapTownOrCity, postcode: project.mapPostcode })) return null;
   const location = publicLocation({
     streetName: project.mapStreetName,
     postcode: project.mapPostcode,
@@ -86,6 +92,7 @@ function prepareFullProject(project: FullProjectSource): PublicMappedProject | n
 }
 
 function prepareMapProject(project: MapProjectSource): PublicMappedProject | null {
+  if (isNorthEastProject(project) || (project.linkedProjectRegion && isNorthEastProject(project.linkedProjectRegion))) return null;
   const location = publicLocation({
     streetName: project.streetName,
     postcode: project.postcode,

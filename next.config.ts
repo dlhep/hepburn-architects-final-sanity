@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { northEastProjectSlugs } from "./lib/project-region";
 
 const permanentHostRedirects = (hosts: string[], destination: string) =>
   hosts.map((host) => ({
@@ -35,6 +36,11 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      ...northEastProjectSlugs.map((slug) => ({
+        source: `/projects/${slug}`,
+        destination: `https://www.hepburnarchitects.com/projects/${slug}`,
+        permanent: true,
+      })),
       {
         source: "/blog",
         destination: "/journal",

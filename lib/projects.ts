@@ -7,10 +7,10 @@ import {
   FEATURED_PROJECTS_QUERY,
   PROJECT_QUERY,
   PROJECTS_QUERY,
-  PROJECT_SLUGS_QUERY,
 } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import type { PortableTextBlock } from "@portabletext/types";
+import { isMidlandsWebsiteProject } from "@/lib/project-region";
 
 export type SanityProjectImage = {
   alt?: string;
@@ -34,6 +34,7 @@ export type Project = {
   slug: string;
   title: string;
   location: string;
+  websiteRegion?: string;
   category: string;
   projectType: string;
   description: string;
@@ -102,7 +103,7 @@ function fallback(): Project[] {
     featuredImage: String(project.featuredImage || project.image || ""),
     featured: Boolean(project.featured ?? false),
     gallery: [],
-  }));
+  })).filter(isMidlandsWebsiteProject);
 }
 
 // Guards against the Sanity field label "Project summary" (see schemaTypes/project.ts)
@@ -129,36 +130,36 @@ async function fetchSanity<T>(query: string, params: Record<string, unknown> = {
 
 export async function getProjects(): Promise<Project[]> {
   const result = await fetchSanity<Project[]>(PROJECTS_QUERY);
-  return (result && result.length ? result : fallback()).map(normaliseProject);
+  return (result ?? fallback()).filter(isMidlandsWebsiteProject).map(normaliseProject);
 }
 
 export async function getBirminghamProjects(): Promise<Project[]> {
   const result = await fetchSanity<Project[]>(BIRMINGHAM_PROJECTS_QUERY);
-  return (result || []).map(normaliseProject);
+  return (result || []).filter(isMidlandsWebsiteProject).slice(0, 3).map(normaliseProject);
 }
 
 export async function getFeaturedProjects(): Promise<Project[]> {
   const result = await fetchSanity<Project[]>(FEATURED_PROJECTS_QUERY);
-  if (result && result.length) return result.map(normaliseProject);
+  if (result) return result.filter(isMidlandsWebsiteProject).slice(0, 3).map(normaliseProject);
   const local = fallback();
   const featured = local.filter((project) => project.featured).slice(0, 3);
   return (featured.length ? featured : local.slice(0, 3)).map(normaliseProject);
 }
 
 export async function getFeaturedCaseStudy(): Promise<Project | undefined> {
-  const result = await fetchSanity<Project | null>(FEATURED_CASE_STUDY_QUERY);
-  return result ? normaliseProject(result) : undefined;
+  const result = await fetchSanity<Project[]>(FEATURED_CASE_STUDY_QUERY);
+  const project = result?.find(isMidlandsWebsiteProject);
+  return project ? normaliseProject(project) : undefined;
 }
 
 export async function getProject(slug: string): Promise<Project | undefined> {
   const result = await fetchSanity<Project | null>(PROJECT_QUERY, { slug });
   const project = result || fallback().find((item) => item.slug === slug);
-  return project ? normaliseProject(project) : undefined;
+  return project && isMidlandsWebsiteProject(project) ? normaliseProject(project) : undefined;
 }
 
 export async function getProjectSlugs(): Promise<string[]> {
-  const result = await fetchSanity<Array<{ slug: string }>>(PROJECT_SLUGS_QUERY);
-  return result && result.length ? result.map((item) => item.slug) : fallback().map((project) => project.slug);
+  return (await getProjects()).map((project) => project.slug);
 }
 
 export function projectImageUrl(image: Project["featuredImage"], width = 1600): string {

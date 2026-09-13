@@ -83,7 +83,7 @@ export function ProjectMapSection({
         <header className={styles.intro}>
           <small className="eyebrow">Projects by location</small>
           <h2 id="project-map-heading">Explore Projects Near You</h2>
-          <p>Explore a selection of residential architecture projects completed across Birmingham, Solihull, Worcestershire, Warwickshire, the wider West Midlands and Teesside.</p>
+          <p>Explore a selection of residential architecture projects completed across Birmingham, Solihull, Worcestershire, Warwickshire and the wider West Midlands.</p>
           <p>Browse the interactive map or search by area to discover house extensions, loft conversions, HMOs, new homes, change-of-use schemes and planning projects near you.</p>
         </header>
 

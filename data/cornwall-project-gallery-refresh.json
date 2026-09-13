@@ -1,0 +1,33 @@
+{
+  "documentId": "9a778a7c-cd53-4d7a-a69d-e1ee9cfaffe8",
+  "baselineUpdatedAt": "2026-09-12T14:59:55Z",
+  "migrationId": "migration-cornwall-gallery-refresh-2026-09-13",
+  "images": [
+    {
+      "url": "/images/projects/cornwall-apartments-marketing-interior.webp",
+      "alt": "Cornwall apartment interior visualisation with an open-plan kitchen, dining space and bay-window sitting area in warm evening light",
+      "caption": "Apartment interior — marketing visualisation",
+      "asset": {
+        "metadata": {
+          "dimensions": {
+            "width": 941,
+            "height": 1672
+          }
+        }
+      }
+    },
+    {
+      "url": "/images/projects/cornwall-apartments-hepburn-sketch.webp",
+      "alt": "Loose architectural concept sketch of the Cornwall apartment building, showing its pitched roofs, dormer windows, projecting bays and shared entrance",
+      "caption": "Architectural concept sketch — Cornwall apartments",
+      "asset": {
+        "metadata": {
+          "dimensions": {
+            "width": 1536,
+            "height": 1024
+          }
+        }
+      }
+    }
+  ]
+}

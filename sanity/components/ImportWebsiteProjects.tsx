@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { definePlugin, useClient } from "sanity";
+import { RefreshCornwallGallery } from "./RefreshCornwallGallery";
 import { RefreshShropshireProject } from "./RefreshShropshireProject";
 import { importWebsiteProjects, websiteProjectImportBatches, type WebsiteProjectImportBatch } from "../lib/import-website-projects";
 
@@ -71,6 +72,7 @@ export function ImportWebsiteProjects() {
     <main style={{ padding: "40px 24px", maxWidth: 900, margin: "0 auto", fontFamily: "inherit" }}>
       <p style={{ fontSize: 13, letterSpacing: "0.08em", textTransform: "uppercase" }}>Midlands website</p>
       <h1 style={{ fontSize: 30 }}>Import website projects</h1>
+      <RefreshCornwallGallery />
       <RefreshShropshireProject />
       {websiteProjectImportBatches.map((batch) => <ProjectImportBatch key={batch.id} batch={batch} />)}
     </main>

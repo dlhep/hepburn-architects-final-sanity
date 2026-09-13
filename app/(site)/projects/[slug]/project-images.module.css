@@ -24,3 +24,20 @@ section.fullImageGallery :global(.project-gallery) :global(.project-gallery-medi
 section.fullImageGallery :global(.project-gallery) :global(.project-gallery-media) > img {
   object-fit: contain !important;
 }
+
+/* A tall interior beside three landscape views, stacked normally on mobile. */
+@media (min-width: 951px) {
+  section.fullImageGallery > div.portraitLeadGallery {
+    grid-template-columns: 1.15fr 1fr !important;
+    align-items: start;
+  }
+
+  section.fullImageGallery > div.portraitLeadGallery > figure:first-child {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+  }
+
+  section.fullImageGallery > div.portraitLeadGallery > figure:not(:first-child) {
+    grid-column: 2;
+  }
+}

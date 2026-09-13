@@ -1,7 +1,7 @@
 import type { Project } from "./projects";
 
 export const projectFilters = [
-  "All", "Extensions", "New homes", "Conversions", "Technical design",
+  "All", "Extensions", "Loft Conversions", "New homes", "Conversions", "Technical design",
   "C2 Projects", "Residential Development", "Change of Use",
 ] as const;
 
@@ -13,6 +13,7 @@ export function matchesProjectFilter(project: Project, filter: ProjectFilter): b
   const text = [identity, project.description, ...(project.services || [])].filter(Boolean).join(" ").toLowerCase();
   switch (filter) {
     case "Extensions": return /extension|remodell|alteration/.test(text);
+    case "Loft Conversions": return /\bloft\b|\bdormer\b/.test(identity);
     case "New homes": return /new.?build|new home|replacement dwelling/.test(text);
     case "Conversions": return /conversion|loft|hmo|change of use/.test(text);
     case "Technical design": return /technical|building regulation|planning|survey|design/.test(text);

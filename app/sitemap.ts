@@ -22,7 +22,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   add("/development-potential-appraisal", "2026-09-14");
   add("/services/new-build-homes", "2026-09-14");
   add("/journal/future-homes-standard-2027", "2026-09-07");
-  add("/journal", "2026-09-07");
+  add("/journal", "2026-09-14");
+  add("/journal/solihull-wheelchair-accessible-bungalow-planning-permission", "2026-09-14");
   locations.filter((item) => item.slug !== "birmingham-architects").forEach((item) => add(`/locations/${item.slug}`));
   sanityGuides.forEach((item) => add(`/guides/${item.slug}`, item._updatedAt || item.publishedAt || STATIC_LAST_MODIFIED));
   guides.forEach((item) => add(`/guides/${item.slug}`));

@@ -9,6 +9,14 @@ import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, buildItem
 
 const birminghamAuthorityArticles = [
   {
+    title: "Planning permission secured for an accessible bungalow in Solihull",
+    excerpt: "From garage site to accessible home: planning approval for a wheelchair-accessible bungalow marks phase two of our client’s wider property project in Solihull.",
+    href: "/journal/solihull-wheelchair-accessible-bungalow-planning-permission",
+    image: "/images/solihull-accessible-bungalow-existing-proposed.jpg",
+    category: "Project news · Solihull",
+    publishedAt: "2026-09-14",
+  },
+  {
     title: "Future Homes Standard 2027: What New-Build Homeowners and Developers Need to Design for Now",
     excerpt: "England’s confirmed 2027 timetable, transitional rules and the heating, solar, ventilation and overheating decisions to resolve while your new home is being designed.",
     href: "/journal/future-homes-standard-2027",

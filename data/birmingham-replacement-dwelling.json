@@ -1,0 +1,199 @@
+[
+  {
+    "_id": "proposal-birmingham-replacement-dwelling",
+    "slug": "replacement-dwelling-birmingham",
+    "title": "Replacement Dwelling, Birmingham",
+    "location": "Birmingham",
+    "websiteRegion": "Midlands",
+    "category": "New Homes",
+    "projectType": "Detached replacement dwelling",
+    "description": "A replacement-dwelling design proposal in Birmingham, combining warm brickwork, ivory render, a prominent front gable and a landscaped suburban setting.",
+    "seoTitle": "Replacement Dwelling Birmingham | New Home Design",
+    "seoDescription": "Explore a replacement-dwelling proposal in Birmingham with warm brick, ivory render, a gabled frontage and landscaped gardens by Hepburn Architects.",
+    "isConcept": true,
+    "conceptLabel": "Design proposal",
+    "projectStatus": "Concept design",
+    "propertyType": "Detached house",
+    "featured": false,
+    "featuredCaseStudy": false,
+    "showFullImage": true,
+    "featuredImage": "/images/homepage-birmingham-brick-residence.webp",
+    "alt": "Architectural visualisation of a replacement dwelling in Birmingham with red brick, ivory render, a two-storey bay, pitched roof and landscaped front garden",
+    "services": [
+      "Replacement-dwelling design",
+      "Street elevation and roof composition",
+      "Materials and architectural detailing",
+      "Front garden and arrival design"
+    ],
+    "relatedServices": [
+      "new-build-homes"
+    ],
+    "relatedLocations": [
+      "birmingham-architects"
+    ],
+    "projectDescription": [
+      {
+        "_type": "block",
+        "_key": "section-0-0",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-0-0",
+            "text": "A new home with a familiar character",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "section-0-1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-0-1",
+            "text": "This replacement-dwelling proposal in Birmingham brings together traditional house forms and carefully composed detailing. The design takes its character from warm brickwork, a prominent front gable and a generous pitched roof, with lighter rendered surfaces giving the frontage a softer balance.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "section-1-0",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-1-0",
+            "text": "A welcoming street elevation",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "section-1-1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-1-1",
+            "text": "A two-storey bay anchors one side of the house, while a recessed entrance with a pale stone-coloured surround creates a clear focal point. Dark window frames provide a consistent accent across the elevation. Smaller roof-level windows sit within the main roof, keeping the composition connected to the overall form of the house.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "section-2-0",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-2-0",
+            "text": "Brick, render and considered detail",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "section-2-1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-2-1",
+            "text": "The palette combines textured red brick, ivory render, pale window surrounds and a dark tiled roof. Brick detailing above the bay and beneath the gable adds depth without relying on elaborate ornament. The contrast between solid masonry, lighter wall surfaces and glazing gives each part of the frontage a distinct role.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "section-3-0",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-3-0",
+            "text": "A landscaped suburban setting",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "section-3-1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-3-1",
+            "text": "The visualisation places the house among established neighbouring homes and mature trees. A planted front garden, low hedge and driveway soften its relationship with the street, while the garage sits lower and to one side. Together, these elements explore how a substantial new home can have presence while retaining a welcoming domestic character.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "section-4-0",
+        "style": "h2",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-4-0",
+            "text": "Replacement-dwelling design in Birmingham",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "section-4-1",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "text-4-1",
+            "text": "The proposal explores the architectural character of a replacement home, from its roofline and entrance to the balance of materials and landscaping. The image is an architectural visualisation of the design proposal. For homeowners considering a similar project, it offers a starting point for a discussion about the site, accommodation brief and design priorities.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "services-link",
+        "style": "normal",
+        "markDefs": [
+          {
+            "_type": "link",
+            "_key": "new-homes",
+            "href": "/services/new-build-homes"
+          }
+        ],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "services-link-text",
+            "text": "Explore our architectural services for new-build homes.",
+            "marks": [
+              "new-homes"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

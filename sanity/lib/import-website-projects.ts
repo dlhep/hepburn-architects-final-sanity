@@ -1,3 +1,5 @@
+import replacementProjects from "../../data/birmingham-replacement-dwelling.json";
+import { birminghamReplacementImportId } from "../../lib/birmingham-replacement-dwelling";
 import type { SanityDocumentStub } from "@sanity/client";
 import type { useClient } from "sanity";
 import loftProjects from "../../data/west-midlands-loft-projects.json";
@@ -23,6 +25,7 @@ export type WebsiteProjectImportBatch = { id: string; title: string; projects: I
 export const websiteProjectImportBatches: WebsiteProjectImportBatch[] = [
   { id: westMidlandsLoftImportId, title: "Three modern West Midlands dormer loft conversions", projects: loftProjects },
   { id: websiteProjectImportId, title: "Three small Birmingham rear extensions", projects },
+  { id: birminghamReplacementImportId, title: "Replacement Dwelling, Birmingham", projects: replacementProjects },
 ];
 
 type ExistingProject = {

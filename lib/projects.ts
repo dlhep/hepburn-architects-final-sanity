@@ -1,3 +1,4 @@
+import { birminghamReplacementProjects, birminghamReplacementImportId } from "./birmingham-replacement-dwelling";
 import { applyShropshireProjectRefresh } from "./shropshire-project-refresh";
 import { applyCornwallGalleryRefresh } from "./cornwall-project-gallery-refresh";
 import { birminghamExtensionProjects, birminghamExtensionImportId } from "./birmingham-extension-projects";
@@ -138,19 +139,22 @@ async function fetchSanity<T>(query: string, params: Record<string, unknown> = {
   }
 }
 
+const REPLACEMENT_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${birminghamReplacementImportId}"][0])`;
 const LOFT_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${westMidlandsLoftImportId}"][0])`;
 const EXTENSION_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${birminghamExtensionImportId}"][0])`;
 
 export async function getProjects(): Promise<Project[]> {
-  const [result, imported, loftsImported] = await Promise.all([
+  const [result, imported, loftsImported, replacementImported] = await Promise.all([
     fetchSanity<Project[]>(PROJECTS_QUERY),
     fetchSanity<boolean>(EXTENSION_IMPORT_COMPLETE_QUERY),
     fetchSanity<boolean>(LOFT_IMPORT_COMPLETE_QUERY),
+    fetchSanity<boolean>(REPLACEMENT_IMPORT_COMPLETE_QUERY),
   ]);
   const projects = (result ?? fallback()).filter(isMidlandsWebsiteProject).map(normaliseProject);
-  if (imported && loftsImported) return projects;
+  if (imported && loftsImported && replacementImported) return projects;
   const bySlug = new Map(projects.map((project) => [project.slug, project]));
   const pending = [
+    ...(!replacementImported ? birminghamReplacementProjects : []),
     ...(!loftsImported ? westMidlandsLoftProjects : []),
     ...(!imported ? birminghamExtensionProjects : []),
   ];
@@ -181,8 +185,9 @@ export async function getFeaturedCaseStudy(): Promise<Project | undefined> {
 export async function getProject(slug: string): Promise<Project | undefined> {
   const result = await fetchSanity<Project | null>(PROJECT_QUERY, { slug });
   const loftSeed = westMidlandsLoftProjects.find((item) => item.slug === slug);
-  const seed = loftSeed || birminghamExtensionProjects.find((item) => item.slug === slug);
-  const markerQuery = loftSeed ? LOFT_IMPORT_COMPLETE_QUERY : EXTENSION_IMPORT_COMPLETE_QUERY;
+  const replacementSeed = birminghamReplacementProjects.find((item) => item.slug === slug);
+  const seed = replacementSeed || loftSeed || birminghamExtensionProjects.find((item) => item.slug === slug);
+  const markerQuery = replacementSeed ? REPLACEMENT_IMPORT_COMPLETE_QUERY : loftSeed ? LOFT_IMPORT_COMPLETE_QUERY : EXTENSION_IMPORT_COMPLETE_QUERY;
   const imported = !result && seed ? await fetchSanity<boolean>(markerQuery) : true;
   const project = result || (!imported ? seed : undefined) || fallback().find((item) => item.slug === slug);
   return project && isMidlandsWebsiteProject(project) ? normaliseProject(project) : undefined;

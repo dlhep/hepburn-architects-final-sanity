@@ -48,6 +48,7 @@ export const metadata: Metadata = {
 };
 
 const contents = [
+  ["appointing-hepburn", "Your extension appointment"],
   ["planning-an-extension", "Planning an extension"],
   ["why-hepburn", "Why Hepburn Architects"],
   ["extension-types", "Types of house extension"],
@@ -138,7 +139,7 @@ const flagshipProcess = [
   ["Planning", "Confirm the appropriate route and prepare a clear, coordinated submission."],
   ["Building Regulations", "Develop the approved design into coordinated technical information."],
   ["Construction information", "Coordinate structure, details, specifications and the information needed to price the work."],
-  ["Completed home", "Support the agreed process through construction queries, inspections and completion records."],
+  ["Construction queries", "Any additional design-query support is agreed separately. Site project management and contractor supervision are not included in the architectural design appointment."],
 ] as const;
 
 const designChecklist = [
@@ -283,6 +284,14 @@ const relatedResources = [
 ] as const;
 
 const faqs = [
+  {
+    question: "Does Hepburn Architects design house extensions in Birmingham and Solihull?",
+    answer: "Yes. Hepburn Architects provides director-led design for rear, side, wraparound and two-storey extensions, kitchen extensions and internal remodelling across Birmingham, Solihull and the wider West Midlands. The design starts with your existing home, priorities, budget and the constraints affecting the property.",
+  },
+  {
+    question: "Can I appoint you for survey, planning and Building Regulations in stages?",
+    answer: "Yes. A typical appointment can be divided into measured survey, design and planning, then Building Regulations drawings. Each stage has an agreed scope and fee. Structural engineering, specialist reports and authority fees are identified separately. Site project management and contractor supervision are not included.",
+  },
   {
     question: "Do I need planning permission for a house extension?",
     answer: "Some extensions require householder planning permission, while others may benefit from permitted development rights or a prior approval route. The answer depends on the property, original house, planning history, dimensions, design, location and any restrictions affecting the site.",
@@ -485,11 +494,11 @@ export default async function HouseExtensionsPage() {
           <h1>House Extension Architects in Birmingham and the West Midlands</h1>
           <div className={styles.heroIntro}>
             <p>
-              A well-designed house extension can transform how a home works, create
-              valuable additional space and improve the connection between existing
-              rooms and the garden. This guide explains the main extension types,
-              approvals, design decisions, costs, timescales and technical
-              considerations.
+              Hepburn Architects is a RIBA Chartered Practice providing director-led
+              house extension design in Birmingham, Solihull and the West Midlands.
+              We design rear, side, wraparound and two-storey extensions, kitchen
+              extensions and internal remodelling, with measured surveys, planning
+              support and Building Regulations drawings available in agreed stages.
             </p>
             <div className={styles.reviewed}>
               <span>General guidance for England</span>
@@ -520,6 +529,17 @@ export default async function HouseExtensionsPage() {
         </aside>
 
         <main className={styles.article}>
+          <section id="appointing-hepburn">
+            <small className="eyebrow">Your extension appointment</small>
+            <h2>Clear stages, from the existing house to technical drawings.</h2>
+            <div className={styles.projectTypeList}>
+              <article><h3>1. Measured survey</h3><p>Record the existing home and establish the information needed to test your brief. Send the address, photographs and any existing plans so we can confirm the survey scope.</p></article>
+              <article><h3>2. Design and planning</h3><p>Explore layout, daylight, storage and the garden connection, then develop the preferred proposal and appropriate planning submission where required.</p></article>
+              <article><h3>3. Building Regulations</h3><p>Prepare technical drawings and coordinate structural and specialist information within the agreed appointment. Engineering, specialist reports and authority fees are identified separately.</p></article>
+            </div>
+            <p>Discuss the property directly with David Hepburn and receive a written scope for the stages you need. Site project management and contractor supervision are not included.</p>
+            <p>Working on a home in <Link href="/locations/solihull-architects">Solihull</Link>? Explore our local services and planning context. You can also <a href={projects.length ? "#extension-projects" : "/projects"}>view extension and remodelling projects</a> or <Link href="/about">meet the Birmingham practice</Link>.</p>
+          </section>
           <section id="planning-an-extension">
             <small className="eyebrow">Start with the whole home</small>
             <h2>Planning an extension properly from the start</h2>
@@ -866,12 +886,12 @@ export default async function HouseExtensionsPage() {
       </div>
 
       {projects.length > 0 && (
-        <section className={styles.projects}>
+        <section id="extension-projects" className={styles.projects}>
           <div className="shell">
             <div className={styles.sectionHeading}>
               <small className="eyebrow">Selected work</small>
               <h2>House extension projects</h2>
-              <p>Extension and remodelling projects selected dynamically from the practice portfolio.</p>
+              <p>Explore extension and remodelling designs from the practice portfolio. See each project for its location, scope and recorded stage.</p>
             </div>
             <div className={styles.projectGrid}>
               {projects.map((project) => (
@@ -879,7 +899,7 @@ export default async function HouseExtensionsPage() {
                   <div className={styles.projectImage}>
                     <Image src={projectImageUrl(project.featuredImage, 900)} alt={projectImageAlt(project)} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw" />
                   </div>
-                  <small>{project.location} · {project.projectType}</small>
+                  <small>{project.location} · {project.projectType}{project.isConcept ? ` · ${project.conceptLabel || "Concept study"}` : ""}</small>
                   <h3>{project.title}</h3>
                 </Link>
               ))}

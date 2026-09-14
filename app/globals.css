@@ -6547,7 +6547,8 @@ body *::after {
   }
 
   .home-hero .hero-visual .hero-image {
-    object-position: 62% 43% !important;
+    /* Keep the house, rather than the trees, in the mobile crop. */
+    object-position: right 43% !important;
   }
 
   /* The homepage image lives inside the text shell in the markup, so pull it

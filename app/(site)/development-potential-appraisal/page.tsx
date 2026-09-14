@@ -78,9 +78,9 @@ export default function DevelopmentPotentialAppraisalPage() {
             <p style={{ fontSize: 20, lineHeight: 1.55, maxWidth: 720, margin: "28px 0 0" }}>Hepburn Architects assesses the development potential of garden plots, infill sites, small housing sites and conversion opportunities across Birmingham, Solihull and the wider West Midlands. Our Development Potential Appraisal combines planning research with architectural capacity testing before you commit to a purchase or full design.</p>
           </div>
           <aside style={{ background: "#202321", color: "white", padding: 32 }}>
-            <p style={{ margin: 0, opacity: .72 }}>Fixed-fee appraisal</p>
-            <p style={{ fontSize: 58, margin: "8px 0", letterSpacing: "-.04em" }}>£750</p>
-            <p style={{ lineHeight: 1.55, margin: "0 0 24px" }}>£350 credited against a subsequent Hepburn design/planning appointment instructed within 60 days.</p>
+            <p style={{ margin: 0, color: "white", opacity: .85 }}>Fixed-fee appraisal</p>
+            <p style={{ fontSize: 58, margin: "8px 0", letterSpacing: "-.04em", color: "white" }}>£750</p>
+            <p style={{ lineHeight: 1.55, margin: "0 0 24px", color: "white" }}>£350 credited against a subsequent Hepburn design/planning appointment instructed within 60 days.</p>
             <Link href="/contact?service=development-potential-appraisal" style={{ display: "inline-block", background: "white", color: "#202321", padding: "14px 20px", textDecoration: "none", fontWeight: 600 }}>Assess my site →</Link>
           </aside>
         </div>

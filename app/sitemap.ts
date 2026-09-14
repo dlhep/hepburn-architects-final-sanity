@@ -19,6 +19,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   add("", "2026-09-10");
   services.forEach((item) => add(`/services/${item.slug}`));
+  add("/development-potential-appraisal", "2026-09-14");
+  add("/services/new-build-homes", "2026-09-14");
   add("/journal/future-homes-standard-2027", "2026-09-07");
   add("/journal", "2026-09-07");
   locations.filter((item) => item.slug !== "birmingham-architects").forEach((item) => add(`/locations/${item.slug}`));

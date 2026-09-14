@@ -194,8 +194,8 @@ export default async function HomePage() {
 
           <div className="hero-visual photo-frame">
             <Image
-              src="/images/homepage-hero-taller-trees.png"
-              alt="Contemporary residential home designed by Hepburn Architects"
+              src="/images/homepage-birmingham-brick-residence.webp"
+              alt="Architectural visualisation of a brick-and-render detached home in a leafy Birmingham suburban setting"
               fill
               priority
               fetchPriority="high"
@@ -526,3 +526,4 @@ export default async function HomePage() {
     </>
   );
 }
+

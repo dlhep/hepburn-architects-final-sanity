@@ -216,6 +216,14 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <div className="shell">
           <small className="eyebrow">Supporting guidance</small>
           <h2>Read before you commit.</h2>
+          {slug === "new-build-homes" ? (
+            <p className="lead">
+              Considering a garden plot, backland site or infill opportunity in Birmingham,
+              Solihull or the wider West Midlands? Our{" "}
+              <Link href="/development-potential-appraisal">backland and infill Development Potential Appraisal</Link>{" "}
+              tests planning risk, constraints and indicative capacity before a purchase or full design appointment.
+            </p>
+          ) : null}
           {slug === "house-extensions" ? (
             <p className="lead">
               For an in-depth overview of extension types, design decisions,

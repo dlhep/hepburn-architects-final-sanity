@@ -377,7 +377,9 @@ export default async function SolihullArchitectPage() {
         </div>
       </section>
 
-      <RelatedGuides serviceSlug="house-extensions" heading="Helpful guides for Solihull projects" />
+      <div className="shell">
+        <RelatedGuides serviceSlug="house-extensions" heading="Helpful guides for Solihull projects" />
+      </div>
 
       <section
         className="section dark-section birmingham-enquiry-section"

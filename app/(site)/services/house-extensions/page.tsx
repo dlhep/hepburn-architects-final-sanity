@@ -394,7 +394,6 @@ const projectGroups = [
   ["side extension", "side return"],
   ["wraparound", "wrap-around"],
   ["two storey", "two-storey"],
-  ["loft", "dormer"],
   ["renovation", "remodelling"],
 ] as const;
 
@@ -410,10 +409,8 @@ function projectSearchText(project: Project) {
 
 function selectExtensionProjects(projects: Project[]) {
   const extensionProjects = projects.filter((project) => {
-    const text = projectSearchText(project);
-    return ["extension", "loft", "dormer", "remodelling", "renovation"].some((term) =>
-      text.includes(term),
-    );
+    const text = [project.title, project.category, project.projectType].join(" ").toLowerCase();
+    return ["extension", "remodelling", "renovation"].some(term => text.includes(term));
   });
   const selected: Project[] = [];
   projectGroups.forEach((terms) => {
@@ -514,6 +511,30 @@ export default async function HouseExtensionsPage() {
           </div>
         </div>
       </header>
+
+      {projects.length > 0 && (
+        <section id="extension-projects" className={styles.projects}>
+          <div className="shell">
+            <div className={styles.sectionHeading}>
+              <small className="eyebrow">Selected work</small>
+              <h2>House extension projects</h2>
+              <p>Explore extension and remodelling designs from the practice portfolio. See each project for its location, scope and recorded stage.</p>
+            </div>
+            <div className={styles.projectGrid}>
+              {projects.map((project) => (
+                <Link href={`/projects/${project.slug}`} key={project.slug}>
+                  <div className={styles.projectImage}>
+                    <Image src={projectImageUrl(project.featuredImage, 900)} alt={projectImageAlt(project)} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw" />
+                  </div>
+                  <small>{project.location} · {project.projectType}{project.isConcept ? ` · ${project.conceptLabel || "Concept study"}` : ""}</small>
+                  <h3>{project.title}</h3>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
 
       <div className={`shell ${styles.pageLayout}`}>
         <aside className={styles.toc}>
@@ -830,7 +851,7 @@ export default async function HouseExtensionsPage() {
 
           <section id="our-process">
             <small className="eyebrow">A clear sequence</small>
-            <h2>Our process from first survey to completed home.</h2>
+            <h2>Our design and technical appointment.</h2>
             <div className={styles.flagshipProcess}>{flagshipProcess.map(([title, body], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{body}</p></div></article>)}</div>
           </section>
 
@@ -842,7 +863,7 @@ export default async function HouseExtensionsPage() {
                 <li key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{body}</p></div></li>
               ))}
             </ol>
-            <p>Hepburn Architects does not provide site project management or continuous site supervision unless a separate construction-stage service is expressly agreed.</p>
+            <p>Hepburn Architects provides architectural design, planning and technical drawings. Site project management and contractor supervision are not included. Any additional design-query support is scoped separately.</p>
           </section>
 
           <section id="choosing-an-architect">
@@ -885,28 +906,6 @@ export default async function HouseExtensionsPage() {
         </main>
       </div>
 
-      {projects.length > 0 && (
-        <section id="extension-projects" className={styles.projects}>
-          <div className="shell">
-            <div className={styles.sectionHeading}>
-              <small className="eyebrow">Selected work</small>
-              <h2>House extension projects</h2>
-              <p>Explore extension and remodelling designs from the practice portfolio. See each project for its location, scope and recorded stage.</p>
-            </div>
-            <div className={styles.projectGrid}>
-              {projects.map((project) => (
-                <Link href={`/projects/${project.slug}`} key={project.slug}>
-                  <div className={styles.projectImage}>
-                    <Image src={projectImageUrl(project.featuredImage, 900)} alt={projectImageAlt(project)} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw" />
-                  </div>
-                  <small>{project.location} · {project.projectType}{project.isConcept ? ` · ${project.conceptLabel || "Concept study"}` : ""}</small>
-                  <h3>{project.title}</h3>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       <section className={styles.coverage}>
         <div className="shell">

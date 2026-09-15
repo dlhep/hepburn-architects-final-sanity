@@ -70,17 +70,18 @@ const solihullProjectTerms = [
   "shirley",
   "olton",
   "balsall common",
-  "warwickshire",
-  "west midlands",
+  "dickens heath",
 ];
 
 function selectSolihullProjects(projects: Project[]): Project[] {
-  const regional = projects.filter((project) => {
-    const location = project.location.toLowerCase();
-    return solihullProjectTerms.some((term) => location.includes(term));
-  });
-
-  return regional.slice(0, 3);
+  const localProjects = projects.filter(project =>
+    solihullProjectTerms.some(term => project.location.toLowerCase().includes(term)),
+  );
+  const relevance = (project: Project) => {
+    const type = [project.title, project.projectType, project.category].join(" ").toLowerCase();
+    return Number(/extension|remodelling|renovation/.test(type)) * 2 + Number(!project.isConcept);
+  };
+  return localProjects.sort((a, b) => relevance(b) - relevance(a)).slice(0, 3);
 }
 
 export default async function SolihullArchitectPage() {
@@ -151,22 +152,67 @@ export default async function SolihullArchitectPage() {
       <section className="section sand-section">
         <div className="shell content-grid">
           {[
-            "House extensions and remodelling",
-            "Loft conversions and roof alterations",
-            "Replacement and new-build homes",
-            "Planning and Building Regulations",
-          ].map((point) => (
+            ["House extensions and remodelling", "Explore rear, side and two-storey additions alongside changes to the existing layout. We test daylight, kitchen and family spaces, storage and the connection to the garden."],
+            ["Loft conversions and roof alterations", "Assess usable roof space, stair position and room layouts, then develop the architectural drawings with structural and fire-safety input where required."],
+            ["Replacement and new-build homes", "Start with the plot, access, surroundings and your brief. Compare design options before developing the preferred home through planning and technical design."],
+            ["Planning and Building Regulations", "Appoint us for measured surveys, design and planning, or a coordinated technical drawing package. Each stage has a written scope, with consultant inputs and authority fees identified separately."],
+          ].map(([point, description]) => (
             <article key={point}>
               <CheckCircle2 />
               <h2>{point}</h2>
-              <p>
-                Design, planning and technical support tailored to the property,
-                local context and approval route.
-              </p>
+              <p>{description}</p>
             </article>
           ))}
         </div>
       </section>
+
+      {regionalProjects.length > 0 && (
+        <section className="section selected-work-section">
+          <div className="shell">
+            <div className="selected-work-heading">
+              <small className="eyebrow">Solihull project examples</small>
+              <h2>Extensions and residential design in Solihull.</h2>
+              <p>
+                Explore local extension and residential design examples.
+                Each project retains its recorded location and stage.
+              </p>
+            </div>
+
+            <div className="selected-work-grid">
+              {regionalProjects.map((project, index) => (
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className={
+                    index === 0 ? "selected-work-main" : "selected-work-small"
+                  }
+                  key={project.slug}
+                >
+                  <Image
+                    src={projectImageUrl(project.featuredImage, index === 0 ? 1400 : 900)}
+                    alt={projectImageAlt(project)}
+                    width={index === 0 ? 1400 : 900}
+                    height={index === 0 ? 900 : 600}
+                    sizes={index === 0 ? "(max-width: 950px) 100vw, 66vw" : "(max-width: 950px) 100vw, 33vw"}
+                  />
+                  <div className="selected-work-overlay">
+                    <span>
+                      {project.location} · {project.projectType}{project.isConcept ? ` · ${project.conceptLabel || "Concept study"}` : project.completion ? ` · ${project.completion}` : ""}
+                    </span>
+                    <strong>{project.title}</strong>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="selected-work-action">
+              <Link className="btn secondary" href="/projects">
+                View all projects <ArrowRight size={17} />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
 
       <section className="section">
         <div className="shell">
@@ -265,52 +311,6 @@ export default async function SolihullArchitectPage() {
         </div>
       </section>
 
-      {regionalProjects.length > 0 && (
-        <section className="section selected-work-section">
-          <div className="shell">
-            <div className="selected-work-heading">
-              <small className="eyebrow">Solihull and West Midlands projects</small>
-              <h2>Relevant residential work.</h2>
-              <p>
-                A selection of house extensions, remodelling projects, new homes and
-                residential design work from Solihull and the wider region.
-              </p>
-            </div>
-
-            <div className="selected-work-grid">
-              {regionalProjects.map((project, index) => (
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className={
-                    index === 0 ? "selected-work-main" : "selected-work-small"
-                  }
-                  key={project.slug}
-                >
-                  <Image
-                    src={projectImageUrl(project.featuredImage, index === 0 ? 1400 : 900)}
-                    alt={projectImageAlt(project)}
-                    width={index === 0 ? 1400 : 900}
-                    height={index === 0 ? 900 : 600}
-                    sizes={index === 0 ? "(max-width: 950px) 100vw, 66vw" : "(max-width: 950px) 100vw, 33vw"}
-                  />
-                  <div className="selected-work-overlay">
-                    <span>
-                      {project.location} · {project.projectType}
-                    </span>
-                    <strong>{project.title}</strong>
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            <div className="selected-work-action">
-              <Link className="btn secondary" href="/projects">
-                View all projects <ArrowRight size={17} />
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
 
       <section className="section sand-section">
         <div className="shell service-detail-columns">

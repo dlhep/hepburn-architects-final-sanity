@@ -410,9 +410,14 @@ function projectSearchText(project: Project) {
 function selectExtensionProjects(projects: Project[]) {
   const extensionProjects = projects.filter((project) => {
     const text = [project.title, project.category, project.projectType].join(" ").toLowerCase();
-    return ["extension", "remodelling", "renovation"].some(term => text.includes(term));
+    const local = /birmingham|solihull|harborne|edgbaston|moseley|kings heath|hall green|sutton coldfield|west midlands|wolverhampton|walsall|stourbridge|staffordshire|warwickshire|worcestershire/i.test(project.location);
+    return local && ["extension", "remodelling", "renovation"].some(term => text.includes(term));
   });
-  const selected: Project[] = [];
+  const prioritySlugs = ["house-extension-in-harborne-birmingham", "house-extension-solihull", "contemporary-extension-calthorpe"];
+  const selected: Project[] = prioritySlugs.flatMap(slug => {
+    const project = extensionProjects.find(item => item.slug === slug);
+    return project ? [project] : [];
+  });
   projectGroups.forEach((terms) => {
     const match = extensionProjects.find(
       (project) =>
@@ -526,7 +531,7 @@ export default async function HouseExtensionsPage() {
                   <div className={styles.projectImage}>
                     <Image src={projectImageUrl(project.featuredImage, 900)} alt={projectImageAlt(project)} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw" />
                   </div>
-                  <small>{project.location} · {project.projectType}{project.isConcept ? ` · ${project.conceptLabel || "Concept study"}` : ""}</small>
+                  <small>{project.location} · {project.projectType}{project.isConcept ? ` · ${project.conceptLabel || "Concept study"}` : project.completion ? ` · ${project.completion}` : ""}</small>
                   <h3>{project.title}</h3>
                 </Link>
               ))}

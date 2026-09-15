@@ -1,3 +1,4 @@
+import styles from "./page.module.css";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,9 +23,9 @@ import { StructuredData } from "@/components/StructuredData";
 import { buildBreadcrumbSchema, buildFaqSchema, buildGraph, buildServiceSchema, buildWebPageSchema, breadcrumbId, serviceId } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Architects in Solihull",
+  title: "Residential Architects Solihull | Extensions & New Homes",
   description:
-    "RIBA Chartered residential architect in Solihull for house extensions, loft conversions, new homes, planning applications and Building Regulations.",
+    "Director-led architects serving Solihull, Knowle, Dorridge and Shirley. House extensions, remodelling, new homes, planning and Building Regulations drawings.",
   alternates: { canonical: "/locations/solihull-architects" },
   openGraph: {
     title: "Residential Architect Solihull | Extensions & New Homes",
@@ -36,6 +37,14 @@ export const metadata: Metadata = {
 };
 
 const solihullFaqs = [
+  {
+    question: "Where is your studio, and do you work in Solihull?",
+    answer: "Our West Midlands studio is at Izabella House, 24–26 Regent Place, Birmingham B1 3NJ. We serve homeowners across Solihull, Knowle, Dorridge, Shirley and the surrounding area, with project visits and surveys arranged as part of the agreed appointment.",
+  },
+  {
+    question: "Can I appoint you for design and planning, then Building Regulations?",
+    answer: "Yes. We can scope a measured survey, design and planning stage, followed by a separate Building Regulations drawing package. David remains directly involved, and each fee proposal explains the deliverables, consultant inputs and exclusions. Site project management is not included.",
+  },
   {
     question: "Do I need planning permission for a house extension in Solihull?",
     answer:
@@ -96,61 +105,65 @@ export default async function SolihullArchitectPage() {
   );
 
   const regionalProjects = selectSolihullProjects(await getProjects());
+  const heroProject = regionalProjects.find(project => project.slug === "house-extension-solihull") || regionalProjects[0];
   const office = site.offices.birmingham;
 
   const url = `${site.url}/locations/solihull-architects`;
   const schemas = buildGraph(buildWebPageSchema({ url, name: "Residential Architects in Solihull", description: metadata.description as string, breadcrumb: breadcrumbId(url), mainEntity: serviceId(url) }), buildServiceSchema({ url, name: "Residential architectural services in Solihull", description: metadata.description as string, areas: ["Solihull", "Knowle", "Dorridge", "Shirley", "Olton", "Dickens Heath", "Balsall Common"].map((name) => ({ name })), studio: "birmingham" }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Locations", url: `${site.url}/locations` }, { name: "Solihull", url }]), buildFaqSchema(url, solihullFaqs));
 
   return (
-    <>
+    <div className={styles.page}>
       <StructuredData data={schemas} />
 
-      <section className="section location-hero">
-        <div className="shell content-page">
-          <small className="eyebrow">
-            <MapPin size={14} /> Solihull and the West Midlands
-          </small>
-          <h1>Residential Architects in Solihull</h1>
-          <p className="lead">
-            Hepburn Architects provides director-led residential design, planning
-            and technical services for homeowners, developers and property owners
-            across Solihull and surrounding West Midlands communities.
-          </p>
+      <section className={styles.hero}>
+        <div className={styles.heroImage}>
+          <Image src={heroProject ? projectImageUrl(heroProject.featuredImage, 2200) : "/images/homepage-birmingham-brick-residence.webp"} alt={heroProject ? projectImageAlt(heroProject) : "Residential design visualisation by Hepburn Architects"} fill priority fetchPriority="high" sizes="100vw" />
+        </div>
+        <div className={styles.heroShade} />
+        <div className={`shell ${styles.heroContent}`}>
+          <small className="eyebrow">Thoughtful homes. Personal architectural service.</small>
+          <h1>Residential Architects<br />in Solihull.</h1>
+          <p>More light, more space and a home that works beautifully for you. Director-led design for house extensions, remodelling and new homes across Solihull.</p>
           <div className="actions">
-            <a className="btn primary" href={site.phoneHref}>
-              <Phone size={17} /> Call {site.phone}
-            </a>
-            <a className="btn secondary" href="#project-enquiry">
-              Discuss your project <ArrowRight size={17} />
-            </a>
+            <a className="btn primary" href="#project-enquiry">Discuss your Solihull home <ArrowRight size={18} /></a>
+            <Link className={`btn ${styles.heroSecondary}`} href="/estimate">Get an indicative fee</Link>
           </div>
+          {heroProject && <Link className={styles.heroCaption} href={`/projects/${heroProject.slug}`}>{heroProject.title} · {heroProject.isConcept ? heroProject.conceptLabel || "Design study" : heroProject.completion || heroProject.location} <ArrowRight size={15} /></Link>}
         </div>
       </section>
+
+      <div className={styles.trust}><div className="shell">
+        <span><CheckCircle2 size={18} />RIBA Chartered Practice</span>
+        <span><CheckCircle2 size={18} />Work directly with David</span>
+        <span><CheckCircle2 size={18} />Design, planning &amp; technical drawings</span>
+      </div></div>
+      <nav className={`shell ${styles.breadcrumb}`} aria-label="Breadcrumb"><Link href="/">Home</Link><span>/</span><Link href="/locations">Locations</Link><span>/</span><span aria-current="page">Solihull</span></nav>
 
       <section className="section">
         <div className="shell service-detail-columns">
           <div>
             <small className="eyebrow">Local residential expertise</small>
-            <h2>Architecture shaped around Solihull homes and sites.</h2>
+            <h2>A better home starts with the right ideas.</h2>
           </div>
           <div>
             <p className="lead">
-              Solihull includes established suburban streets, larger detached
-              properties, period homes, mature landscapes and development sites
-              close to conservation areas and the Green Belt.
+              Whether you want a sociable kitchen, a calmer family layout or a
+              new home shaped around your way of life, we start by listening.
+              David Hepburn works directly with you to turn your brief into a
+              considered design and a clear next step.
             </p>
             <p>
-              Good residential design must do more than add floor area. We consider
-              the original house, neighbouring outlook, garden depth, trees,
-              parking, access, drainage and the likely planning route before the
-              proposal is developed in detail.
+              We provide architectural services across Solihull, Knowle, Dorridge,
+              Shirley, Olton and Dickens Heath from our Birmingham studio.
+              Existing character, daylight, neighbours, garden space and the
+              planning context inform the design from the outset.
             </p>
           </div>
         </div>
       </section>
 
       <section className="section sand-section">
-        <div className="shell content-grid">
+        <div className={`shell ${styles.serviceHighlights}`}>
           {[
             ["House extensions and remodelling", "Explore rear, side and two-storey additions alongside changes to the existing layout. We test daylight, kitchen and family spaces, storage and the connection to the garden."],
             ["Loft conversions and roof alterations", "Assess usable roof space, stair position and room layouts, then develop the architectural drawings with structural and fire-safety input where required."],
@@ -178,13 +191,11 @@ export default async function SolihullArchitectPage() {
               </p>
             </div>
 
-            <div className="selected-work-grid">
+            <div className={styles.projectGrid}>
               {regionalProjects.map((project, index) => (
                 <Link
                   href={`/projects/${project.slug}`}
-                  className={
-                    index === 0 ? "selected-work-main" : "selected-work-small"
-                  }
+                  className={styles.projectCard}
                   key={project.slug}
                 >
                   <Image
@@ -192,9 +203,9 @@ export default async function SolihullArchitectPage() {
                     alt={projectImageAlt(project)}
                     width={index === 0 ? 1400 : 900}
                     height={index === 0 ? 900 : 600}
-                    sizes={index === 0 ? "(max-width: 950px) 100vw, 66vw" : "(max-width: 950px) 100vw, 33vw"}
+                    sizes="(max-width: 760px) calc(100vw - 40px), 50vw"
                   />
-                  <div className="selected-work-overlay">
+                  <div className={styles.projectCopy}>
                     <span>
                       {project.location} · {project.projectType}{project.isConcept ? ` · ${project.conceptLabel || "Concept study"}` : project.completion ? ` · ${project.completion}` : ""}
                     </span>
@@ -239,6 +250,17 @@ export default async function SolihullArchitectPage() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className={`section ${styles.director}`}>
+        <div className="shell service-detail-columns">
+          <div><small className="eyebrow">A clear, personal appointment</small><h2>From your first ideas to the detail that matters.</h2><Link className="btn primary" href="/about">Meet David <ArrowRight size={17} /></Link></div>
+          <ol className={styles.steps}>
+            <li><span>01</span><div><h3>Listen and explore</h3><p>Discuss the property, priorities and budget, then agree the survey and early design scope.</p></div></li>
+            <li><span>02</span><div><h3>Design and planning</h3><p>Compare options and develop the preferred scheme into the architectural information needed for the agreed application route.</p></div></li>
+            <li><span>03</span><div><h3>Technical drawings</h3><p>Develop the design for Building Regulations and coordinate engineer and specialist information within the appointment.</p></div></li>
+          </ol>
         </div>
       </section>
 
@@ -455,6 +477,6 @@ export default async function SolihullArchitectPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

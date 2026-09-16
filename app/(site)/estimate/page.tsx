@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { getFeeSettings } from "@/sanity/lib/fee-settings";
+
 import { ArchitectFeeCalculator } from "@/components/ArchitectFeeCalculator";
 import { StructuredData } from "@/components/StructuredData";
 import { buildBreadcrumbSchema, buildGraph, buildWebPageSchema, breadcrumbId } from "@/lib/structured-data";
 import { site } from "@/lib/site";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Architect Fee Calculator",
@@ -10,7 +14,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/estimate" },
 };
 
-export default function EstimatePage() {
+export default async function EstimatePage() {
+  const feeSettings = await getFeeSettings();
   const url = `${site.url}/estimate`;
   const application = { "@type": "WebApplication", "@id": `${url}#application`, name: "Architect Fee Calculator", description: metadata.description as string, url, applicationCategory: "BusinessApplication", operatingSystem: "Web", isPartOf: { "@id": `${url}#webpage` } };
   return (<>
@@ -21,7 +26,7 @@ export default function EstimatePage() {
         <h1>Get an indicative architectural fee.</h1>
         <p>Select the project type, approximate size, planning complexity and services required. The result is a guide only and not a formal quotation.</p>
       </div>
-      <div className="shell"><ArchitectFeeCalculator /></div>
+      <div className="shell">{feeSettings ? <ArchitectFeeCalculator settings={feeSettings} /> : <p role="status">Our fee calculator is temporarily unavailable. Please <a href="/contact">contact us for a tailored fee proposal</a>.</p>}</div>
       <div className="shell page-intro">
         <h2>What the fee estimate includes</h2>
         <p>The calculator provides an early indication of architectural fees based on the project type and services selected. It is not a quotation and does not replace a review of the property, planning history, brief and technical complexity.</p>

@@ -1,36 +1,16 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { LeadGate } from "@/components/LeadGate";
 import { feeBand, trackEvent } from "@/lib/analytics";
 import { useEffect, useRef } from "react";
 
-const services = [
-  ["survey","Measured survey",450],
-  ["planning","Design and planning package",1650],
-  ["building","Building Regulations package",1500],
-] as const;
+import { calculateFees, feeServices as services, feeProjectTypes as projectTypes, type FeeSettings } from "@/lib/fee-settings";
 
-const projectTypes = [
-  {value:"single-storey-extension",label:"Single-storey extension",multiplier:1,metric:"area"},
-  {value:"two-storey-extension",label:"Two-storey extension",multiplier:1.2,metric:"area"},
-  {value:"wraparound-extension",label:"Wrap-around extension",multiplier:1.15,metric:"area"},
-  {value:"loft",label:"Loft conversion",multiplier:1.05,metric:"area"},
-  {value:"remodelling",label:"Internal remodelling",multiplier:1,metric:"area"},
-  {value:"garden-room",label:"Garden room",multiplier:.9,metric:"area"},
-  {value:"hmo",label:"HMO conversion",multiplier:1.2,metric:"bedrooms"},
-  {value:"flats",label:"House-to-flats conversion",multiplier:1.3,metric:"units"},
-  {value:"change-of-use",label:"Change of use",multiplier:1.3,metric:"area"},
-  {value:"newbuild",label:"New-build house",multiplier:1.5,metric:"area"},
-  {value:"replacement",label:"Replacement dwelling",multiplier:1.45,metric:"area"},
-  {value:"development",label:"Small residential development",multiplier:1.8,metric:"units"},
-] as const;
-
-const roundToNearest50 = (value: number) => Math.round(value / 50) * 50;
 const formatCurrency = (value: number) => `£${value.toLocaleString("en-GB")}`;
 const formatRange = (lower: number, upper: number) => `${formatCurrency(lower)}–${formatCurrency(upper)}`;
 
-export function ArchitectFeeCalculator(){
+export function ArchitectFeeCalculator({ settings }: { settings: FeeSettings }){
   const started = useRef(false);
   const [type,setType]=useState("single-storey-extension");
   const [area,setArea]=useState(30);
@@ -40,19 +20,11 @@ export function ArchitectFeeCalculator(){
   const [selected,setSelected]=useState<string[]>(["planning","building"]);
   const current=projectTypes.find(x=>x.value===type)??projectTypes[0];
 
-  const scaleMultiplier = current.metric==="units" ? 1 + Math.max(0,units-1)*.18 : current.metric==="bedrooms" ? 1 + Math.max(0,bedrooms-4)*.08 : area>150?1.35:area>80?1.2:area>40?1.1:1;
-
-  const breakdown=useMemo(()=>services.filter(([key])=>selected.includes(key)).map(([key,label,base])=>{
-    let multiplier=current.multiplier*scaleMultiplier;
-    if(route==="full")multiplier*=1.1;
-    if(route==="complex")multiplier*=1.22;
-    const adjusted=key==="survey"?Math.round((base*(current.metric==="area"?1:1.15))/50)*50:Math.round((base*multiplier*.9)/50)*50;
-    return {key,label,adjusted,lower:roundToNearest50(adjusted*.87)};
-  }),[current,scaleMultiplier,route,selected]);
+  const breakdown = calculateFees(settings, { type, area, units, bedrooms, route, selected });
 
   const totalLower=breakdown.reduce((s,x)=>s+x.lower,0);
   const totalUpper=breakdown.reduce((s,x)=>s+x.adjusted,0);
-  const totalRange=totalUpper?formatRange(totalLower,totalUpper):"No services selected";
+  const totalRange=breakdown.length?formatRange(totalLower,totalUpper):"No services selected";
   const scaleSummary=current.metric==="units"?`${units} residential unit${units===1?"":"s"}`:current.metric==="bedrooms"?`${bedrooms} HMO bedrooms`:`${area} m²`;
 
   useEffect(() => { if (started.current) return; started.current = true; trackEvent("fee_calculator_start", { project_type: current.value, step_number: 1, page_path: window.location.pathname }); }, [current.value]);

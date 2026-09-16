@@ -18,6 +18,7 @@ export default defineConfig({
   plugins: [
     structureTool({
       structure: (S) => S.list().title("Content").items([
+        S.listItem().id("fee-settings").title("Fee Settings").child(S.document().schemaType("feeSettings").documentId("feeSettings")),
         S.documentTypeListItem("project").title("Projects"),
         S.documentTypeListItem("mapProject").title("Map Projects"),
         S.documentTypeListItem("article").title("Journal & Guides"),
@@ -28,6 +29,14 @@ export default defineConfig({
     visionTool(),
     websiteProjectImportTool(),
   ],
-  schema: { types: schemaTypes },
+  schema: {
+    types: schemaTypes,
+    templates: templates => templates.filter(template => template.schemaType !== "feeSettings"),
+  },
+  document: {
+    actions: (actions, context) => context.schemaType === "feeSettings"
+      ? actions.filter(action => ["publish", "discardChanges", "restore"].includes(action.action ?? ""))
+      : actions,
+  },
 });
 

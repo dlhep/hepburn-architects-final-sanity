@@ -7816,3 +7816,35 @@ body .journal-index-feature .journal-index-image {
     padding-right: 24px !important;
   }
 }
+
+/* Preserve both panels of the Solihull comparison at every viewport size. */
+body .journal-hero-story[href$="/solihull-wheelchair-accessible-bungalow-planning-permission"] .journal-hero-story-image {
+  min-height: 0;
+  aspect-ratio: auto;
+  align-self: center;
+}
+body .journal-hero-story[href$="/solihull-wheelchair-accessible-bungalow-planning-permission"] .journal-hero-story-image img {
+  position: relative !important;
+  inset: auto !important;
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain;
+  transform: none !important;
+}
+@media (min-width: 901px) {
+  body .journal-hero-story[href$="/solihull-wheelchair-accessible-bungalow-planning-permission"] {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    min-height: 0;
+    align-items: center;
+  }
+  body .journal-hero-story[href$="/solihull-wheelchair-accessible-bungalow-planning-permission"] .journal-hero-story-copy {
+    align-self: stretch;
+    padding: clamp(24px, 3vw, 48px);
+  }
+  body .journal-hero-story[href$="/solihull-wheelchair-accessible-bungalow-planning-permission"] .journal-hero-story-copy h2 {
+    font-size: clamp(28px, 2.6vw, 40px);
+    font-weight: 500;
+    line-height: 1.12;
+  }
+}

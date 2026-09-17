@@ -68,7 +68,6 @@ const contents = [
   ["costs", "Extension costs"],
   ["timescales", "Extension timescales"],
   ["our-process", "Our process"],
-  ["design-process", "The design process"],
   ["choosing-an-architect", "Choosing an architect"],
   ["mistakes", "Common mistakes"],
   ["questions", "Questions before drawings"],
@@ -177,23 +176,6 @@ const costChecklist = [
   "Furniture and window treatments",
   "Temporary accommodation where needed",
   "A proportionate contingency",
-] as const;
-
-const process = [
-  ["Define the brief", "Identify the problems to solve, priorities, future needs and realistic budget."],
-  ["Review the existing house", "Assess layout, character, levels, structure, daylight, services and garden relationships."],
-  ["Check planning history and constraints", "Review the original house, earlier additions, designations, conditions and local policy."],
-  ["Measure the property", "Prepare reliable survey information appropriate to the proposed work."],
-  ["Test layout options", "Compare different footprints, internal arrangements, roof forms and degrees of intervention."],
-  ["Develop the preferred design", "Coordinate space, appearance, materials, light, furniture and buildability."],
-  ["Confirm the planning route", "Establish whether permitted development, prior approval, a certificate or an application is appropriate."],
-  ["Prepare and submit an application where needed", "Produce consistent drawings and the supporting information required by the route."],
-  ["Develop technical drawings", "Translate the approved design into coordinated construction information."],
-  ["Coordinate structural design", "Integrate engineer calculations, openings, foundations and stability requirements."],
-  ["Obtain Building Control approval", "Use the appropriate application route and respond to technical comments."],
-  ["Select a contractor", "Price a defined package and check scope, programme, capability and exclusions."],
-  ["Construct and inspect the work", "Arrange Building Control inspections and manage design queries through the agreed appointments."],
-  ["Obtain completion documentation", "Close conditions, certificates and other records needed for the property file."],
 ] as const;
 
 const mistakes = [
@@ -843,11 +825,6 @@ export default async function HouseExtensionsPage() {
           <section id="timescales">
             <small className="eyebrow">Project programme</small>
             <h2>How long does a house extension take?</h2>
-            <ol className={styles.process}>
-              {["Initial consultation", "Measured survey", "Feasibility and concept design", "Planning or permitted development review", "Technical design", "Structural coordination", "Building Control", "Contractor pricing", "Construction", "Completion"].map((item, index) => (
-                <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{item}</h3></div></li>
-              ))}
-            </ol>
             <p>Timescales depend on complexity, approval routes, authority responses, consultant information, contractor availability, procurement and changes during the project. Fixed completion dates should not be assumed without a project-specific programme.</p>
             <Link className={styles.textLink} href="/knowledge-centre/house-extension-timeline">
               Read the complete house extension timeline <ArrowRight size={17} />
@@ -860,16 +837,9 @@ export default async function HouseExtensionsPage() {
             <div className={styles.flagshipProcess}>{flagshipProcess.map(([title, body], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{body}</p></div></article>)}</div>
           </section>
 
-          <section id="design-process">
-            <small className="eyebrow">From brief to completion</small>
-            <h2>What is the process for designing a house extension?</h2>
-            <ol className={styles.process}>
-              {process.map(([title, body], index) => (
-                <li key={title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{title}</h3><p>{body}</p></div></li>
-              ))}
-            </ol>
-            <p>Hepburn Architects provides architectural design, planning and technical drawings. Site project management and contractor supervision are not included. Any additional design-query support is scoped separately.</p>
-          </section>
+          <div id="design-process">
+            <p>For the full sequence from briefing to completion, read our <Link href="/knowledge-centre/house-extension-timeline">house extension timeline</Link>. Our appointment covers the agreed design, planning and technical stages; site project management and contractor supervision are not included.</p>
+          </div>
 
           <section id="choosing-an-architect">
             <small className="eyebrow">Professional input</small>

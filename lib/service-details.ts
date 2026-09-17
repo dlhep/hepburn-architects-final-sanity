@@ -57,12 +57,12 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "loft-conversions",
-    title: "Loft Conversion Architect",
-    metaTitle: "Loft Conversion Architect | Planning & Design",
-    metaDescription: "Design, permitted development checks and Building Regulations drawings for dormer, hip-to-gable, rooflight and mansard loft conversions.",
+    title: "Loft Conversion Architects in Birmingham",
+    metaTitle: "Loft Conversion Architects Birmingham",
+    metaDescription: "Loft conversion architects serving Birmingham, Solihull and the West Midlands. Dormer design, planning advice and Building Regulations drawings.",
     hero: "/images/homepage-hero.webp",
     mobileObjectPosition: "47% 43%",
-    intro: "Loft conversions can unlock valuable space, but headroom, stairs, fire safety, roof structure and external appearance all need to work together.",
+    intro: "Hepburn Architects designs loft conversions across Birmingham, Solihull and the West Midlands. David works directly with you to assess the roof space and develop the layout, stair, planning approach and Building Regulations drawings.",
     idealFor: ["Rear dormer conversions", "Hip-to-gable conversions", "Rooflight conversions", "Mansard proposals", "Loft bedrooms and home offices"],
     process: [
       { title: "Roof-space appraisal", text: "We assess headroom, ridge height, stair position, roof structure and likely usable floor area." },
@@ -84,6 +84,7 @@ export const serviceDetails: ServiceDetail[] = [
     projectTerms: ["loft", "dormer", "roof", "conversion"],
     projectIntro: "Residential projects involving loft accommodation, roof alterations and coordinated internal remodelling.",
     faqs: [
+      { question: "Which areas do you cover for loft conversions?", answer: "We serve Birmingham, Solihull, Sutton Coldfield, Harborne, Edgbaston and surrounding West Midlands communities from our Birmingham studio. We assess the existing roof, planning history and property constraints before recommending the design and approval route." },
       { question: "How much roof volume is permitted?", answer: "The standard limits are generally 40m³ for terraced houses and 50m³ for detached and semi-detached houses, subject to the detailed conditions." },
       { question: "Can a front dormer be permitted development?", answer: "Usually not on the principal elevation facing a highway. Front dormers commonly require planning permission." },
       { question: "Will I need a protected stair?", answer: "Many loft conversions require a compliant protected escape route. The solution depends on the height, layout and Building Regulations strategy." },

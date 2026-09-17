@@ -1,3 +1,4 @@
+import { applySolarArticleReview } from "./solar-article-review";
 import { client } from "@/sanity/lib/client";
 import { isSanityConfigured } from "@/sanity/env";
 import {
@@ -56,17 +57,16 @@ async function fetchSanity<T>(
 export const getSanityGuides = () =>
   fetchSanity<Article[]>(GUIDES_QUERY, {}, []);
 
-export const getBlogPosts = () =>
-  fetchSanity<Article[]>(BLOG_POSTS_QUERY, {}, []);
+export const getBlogPosts = async () =>
+  (await fetchSanity<Article[]>(BLOG_POSTS_QUERY, {}, [])).map(applySolarArticleReview);
 
-export const getArticle = (
+export const getArticle = async (
   slug: string,
   contentType: "guide" | "blog",
-) => fetchSanity<Article | null>(
-  ARTICLE_QUERY,
-  { slug, contentType },
-  null,
-);
+) => {
+  const article = await fetchSanity<Article | null>(ARTICLE_QUERY, { slug, contentType }, null);
+  return article ? applySolarArticleReview(article) : null;
+};
 
 export function articleImageUrl(
   image?: ArticleImage,

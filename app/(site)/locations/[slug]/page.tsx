@@ -70,6 +70,7 @@ const solihullPlanningTopics = [
 
 function pointDescription(point: string) {
   const value = point.toLowerCase();
+  if (value === "whole-house remodelling") return "Reorganise rooms, circulation and services around how you live, coordinating internal changes with the existing structure and any proposed extension.";
   if (value.includes("extension") || value.includes("remodelling")) return "Layouts, massing and materials developed around daylight, neighbour amenity, garden connection and the character of the existing home.";
   if (value.includes("loft") || value.includes("roof")) return "Roof form, dormer position, stair design, headroom, fire safety and planning controls considered together.";
   if (value.includes("hmo") || value.includes("flat") || value.includes("change")) return "Use class, occupancy, space standards, refuse, cycle storage, licensing and fire-safety implications reviewed from the start.";
@@ -131,7 +132,13 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
     isBirmingham ? getBirminghamProjects() : Promise.resolve([]),
     getReviewForLocation(slug),
   ]);
-  const regionalProjects = isBirmingham ? birminghamProjects : isEnhanced ? selectProjects(allProjects, projectTerms) : [];
+  const edgbastonProjectSlugs = ["contemporary-extension-calthorpe", "house-extension-in-harborne-birmingham", "house-extension-birmingham"];
+  const regionalProjects = slug === "edgbaston-architects"
+    ? edgbastonProjectSlugs.flatMap((projectSlug) => {
+        const project = allProjects.find((item) => item.slug === projectSlug);
+        return project ? [project] : [];
+      })
+    : isBirmingham ? birminghamProjects : isEnhanced ? selectProjects(allProjects, projectTerms) : [];
   const faqs = isBirmingham ? birminghamFaqs : isSolihull ? solihullFaqs : page.faqs ?? [];
   const planningTopics = isBirmingham ? birminghamPlanningTopics : isSolihull ? solihullPlanningTopics : page.planningTopics ?? [];
   const planningIntro = isBirmingham
@@ -220,9 +227,9 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
       {!isBirmingham && regionalProjects.length > 0 && (
         <section className="section selected-work-section">
           <div className="shell">
-            <div className="selected-work-heading"><small className="eyebrow">{page.shortTitle} and regional projects</small><h2>Relevant residential work.</h2><p>{isSolihull ? "Extensions, new homes and residential projects from Solihull and the surrounding West Midlands." : page.projectIntro || "A selection of extensions, new homes and residential transformations from the wider region."}</p></div>
+            <div className="selected-work-heading"><small className="eyebrow">{page.shortTitle} and regional projects</small><h2>Relevant residential work.</h2><p>{isSolihull ? "Extensions, new homes and residential projects from Solihull and the surrounding West Midlands." : slug === "edgbaston-architects" ? "Selected extension and remodelling projects from Birmingham and nearby Harborne. Each case study identifies its recorded location and project stage." : page.projectIntro || "A selection of extensions, new homes and residential transformations from the wider region."}</p></div>
             <div className="selected-work-grid">
-              {regionalProjects.map((project, index) => <Link href={`/projects/${project.slug}`} className={index === 0 ? "selected-work-main" : "selected-work-small"} key={project.slug}><Image src={projectImageUrl(project.featuredImage, index === 0 ? 1400 : 900)} alt={projectImageAlt(project)} width={index === 0 ? 1400 : 900} height={index === 0 ? 900 : 600} sizes={index === 0 ? "(max-width: 950px) 100vw, 66vw" : "(max-width: 950px) 100vw, 33vw"} /><div className="selected-work-overlay"><span>{project.location} · {project.projectType}</span><strong>{project.title}</strong></div></Link>)}
+              {regionalProjects.map((project, index) => <Link href={`/projects/${project.slug}`} className={index === 0 ? "selected-work-main" : "selected-work-small"} key={project.slug}><Image src={projectImageUrl(project.featuredImage, index === 0 ? 1400 : 900)} alt={projectImageAlt(project)} width={index === 0 ? 1400 : 900} height={index === 0 ? 900 : 600} sizes={index === 0 ? "(max-width: 950px) 100vw, 66vw" : "(max-width: 950px) 100vw, 33vw"} /><div className="selected-work-overlay"><span>{project.location} · {project.projectType}{project.completion ? ` · ${project.completion}` : ""}</span><strong>{project.title}</strong></div></Link>)}
             </div>
             <div className="selected-work-action"><Link className="btn secondary" href="/projects">View all projects <ArrowRight size={17} /></Link></div>
           </div>

@@ -19,16 +19,16 @@ import { StructuredData } from "@/components/StructuredData";
 import { buildGraph } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "HMO Conversion Architect",
+  title: "HMO Architects Birmingham & West Midlands",
   description:
-    "Specialist HMO architectural advice, feasibility, planning applications, Article 4 reviews, fire-safety coordination and Building Regulations drawings.",
+    "HMO architects in Birmingham and the West Midlands. Feasibility, Article 4 checks, conversion design, planning and Building Regulations drawings.",
   alternates: {
     canonical: "/services/hmo-conversions",
   },
   openGraph: {
-    title: "HMO Architect | Hepburn Architects",
+    title: "HMO Architects Birmingham & West Midlands | Hepburn Architects",
     description:
-      "Planning-led architectural design and technical support for C4 and sui generis HMO conversions.",
+      "HMO feasibility, planning and technical design for property owners and investors across Birmingham and the West Midlands.",
     images: [
       {
         url: "https://images.unsplash.com/photo-1600585152915-d208bec867a1?auto=format&fit=crop&w=1800&q=88",
@@ -226,9 +226,9 @@ export default async function HmoConversionsPage() {
     areaServed: [
       "Birmingham",
       "West Midlands",
-      "Middlesbrough",
-      "Teesside",
-      "England",
+      "Solihull",
+      "Walsall",
+      "Wolverhampton",
     ],
     serviceType:
       "HMO feasibility, planning applications and Building Regulations drawings",
@@ -238,7 +238,7 @@ export default async function HmoConversionsPage() {
   return (
     <>
       <div className="shell" style={{ paddingTop: "1rem" }}>
-        <Link className="text-link" href="/locations/birmingham-architects">
+        <Link className="text-link" href="/">
           Residential architects in Birmingham <ArrowRight size={15} />
         </Link>
       </div>
@@ -251,12 +251,12 @@ export default async function HmoConversionsPage() {
               HMO architecture · planning · technical design
             </small>
 
-            <h1>Specialist HMO architects for property owners and investors.</h1>
+            <h1>HMO architects in Birmingham and the West Midlands.</h1>
 
             <p className="lead">
               Planning-led HMO feasibility, conversion design and Building
               Regulations support for C4, sui generis and existing HMO
-              properties.
+              properties across Birmingham, Solihull, Walsall and Wolverhampton.
             </p>
 
             <p>

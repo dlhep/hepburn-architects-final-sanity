@@ -122,6 +122,12 @@ const STRAY_SUMMARY_LABEL = /^\s*project\s+summary\s*[:.\-–—]?\s+/i;
 function normaliseProject(project: Project): Project {
   project = applyShropshireProjectRefresh(project);
   project = applyCornwallGalleryRefresh(project);
+  // Correct only the known misspellings; subsequent CMS edits remain authoritative.
+  const location = project.location.replace(/\bStafforshire\b/g, "Staffordshire");
+  const localAuthority = project.localAuthority?.replace(/\bBirmingham City Counil\b/g, "Birmingham City Council");
+  if (location !== project.location || localAuthority !== project.localAuthority) {
+    project = { ...project, location, localAuthority };
+  }
   if (typeof project.description !== "string") return project;
   const description = project.description.replace(STRAY_SUMMARY_LABEL, "").trim();
   return description === project.description ? project : { ...project, description };

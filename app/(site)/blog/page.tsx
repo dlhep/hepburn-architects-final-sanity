@@ -12,7 +12,7 @@ const birminghamAuthorityArticles = [
     title: "Planning permission secured for an accessible bungalow in Solihull",
     excerpt: "From garage site to accessible home: planning approval for a wheelchair-accessible bungalow marks phase two of our client’s wider property project in Solihull.",
     href: "/journal/solihull-wheelchair-accessible-bungalow-planning-permission",
-    image: "/images/solihull-accessible-bungalow-existing-proposed.jpg",
+    image: "/images/solihull-bungalow-comparison-enhanced.webp",
     category: "Project news · Solihull",
     publishedAt: "2026-09-14",
   },

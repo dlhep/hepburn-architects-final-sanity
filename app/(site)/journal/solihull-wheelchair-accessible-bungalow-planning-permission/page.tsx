@@ -10,7 +10,7 @@ import styles from "../house-extension-planning-permission-birmingham-2026-guide
 const title = "Planning permission secured for an accessible bungalow in Solihull";
 const description = "Hepburn Architects and planning consultant Joanne McCallion help secure permission for a wheelchair-accessible bungalow on a garage site in Solihull.";
 const url = `${site.url}/journal/solihull-wheelchair-accessible-bungalow-planning-permission`;
-const image = "/images/solihull-accessible-bungalow-existing-proposed.jpg";
+const image = "/images/solihull-bungalow-comparison-enhanced.webp";
 const date = "2026-09-14";
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ export default function SolihullBungalowArticle() {
           <p>We’re delighted to share planning approval for a wheelchair-accessible bungalow on an existing garage site in Solihull—a significant next step in our client’s wider vision for the property.</p>
           <p>Working alongside planning consultant Joanne McCallion, Hepburn Architects has helped secure permission to bring a new residential use to the site, creating an opportunity for a home designed around accessible, single-storey living.</p>
           <figure className={styles.hero}>
-            <Image src={image} alt="Before and proposed comparison: existing garage site above and CGI of a brick bungalow with a pitched roof in Solihull below" width={1281} height={1536} priority sizes="(max-width: 760px) 100vw, 820px" />
+            <Image src={image} alt="Before and proposed comparison: existing garage site above and CGI of a brick bungalow with a pitched roof in Solihull below" width={1173} height={1341} unoptimized priority sizes="(max-width: 760px) 100vw, 820px" />
             <figcaption>Existing garage site (above) and proposed bungalow CGI (below), Solihull. The CGI illustrates the proposal; it is not a photograph of a completed building.</figcaption>
           </figure>
           <p>The proposed CGI illustrates a brick bungalow with a pitched roof and a clearly defined entrance, drawing on the character of the neighbouring houses. It shows how a modest garage site can accommodate a new home within an established residential setting.</p>

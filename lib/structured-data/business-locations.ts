@@ -12,7 +12,7 @@ export function buildBusinessLocationSchema(key: StudioKey): SchemaNode {
   return {
     "@type": ["LocalBusiness", "ProfessionalService"], "@id": studioId(key),
     name: `Hepburn Architects ${birmingham ? "Birmingham" : "Nunthorpe"}`,
-    url: birmingham ? `${site.url}/locations/birmingham-architects` : `${site.url}/locations/nunthorpe-architects`,
+    url: birmingham ? `${site.url}/` : `${site.url}/locations/nunthorpe-architects`,
     parentOrganization: { "@id": IDS.organisation }, telephone: "+447720813035", email: site.email,
     image: `${site.url}/images/social-sharing.jpg`, hasMap: office.mapUrl,
     address: { "@type": "PostalAddress", streetAddress: office.streetAddress, addressLocality: office.addressLocality, addressRegion: birmingham ? "West Midlands" : "North Yorkshire", postalCode: office.postalCode, addressCountry: "GB" },

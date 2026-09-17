@@ -88,7 +88,7 @@ export function truncateAtWord(value: string, limit = 155): string {
   return `${shortened
     .slice(0, boundary > 0 ? boundary : limit)
     .replace(/\s+(a|an|and|at|by|for|from|in|of|on|or|the|to|with)$/i, "")
-    .replace(/[,:;\s]+$/, "")}.`;
+    .replace(/[.,:;!?\s]+$/, "")}.`;
 }
 
 export function seoDescription(

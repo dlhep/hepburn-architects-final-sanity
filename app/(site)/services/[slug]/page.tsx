@@ -69,7 +69,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       <StructuredData data={schema} />
 
       <div className="shell" style={{ paddingTop: "1rem" }}>
-        <Link className="text-link" href="/locations/birmingham-architects">
+        <Link className="text-link" href="/">
           Residential architects in Birmingham <ArrowRight size={15} />
         </Link>
       </div>

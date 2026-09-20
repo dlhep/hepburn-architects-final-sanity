@@ -1,3 +1,4 @@
+import { SolihullDevelopmentCaseStudy } from "@/components/SolihullDevelopmentCaseStudy";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { notFound } from "next/navigation";
@@ -131,6 +132,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </div>
       </section>
+
+      {slug === "new-build-homes" ? <SolihullDevelopmentCaseStudy /> : null}
 
       {projects.length > 0 && (
         <section className="section selected-work-section">

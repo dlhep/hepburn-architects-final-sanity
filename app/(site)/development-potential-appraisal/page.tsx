@@ -1,3 +1,4 @@
+import { SolihullDevelopmentCaseStudy } from "@/components/SolihullDevelopmentCaseStudy";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -104,6 +105,8 @@ export default function DevelopmentPotentialAppraisalPage() {
           <p style={{ marginTop: 28, lineHeight: 1.7 }}>For the design stages that can follow an appraisal, explore our <Link href="/services/new-build-homes">new-build homes and small residential development service</Link>. Read about the practice on our <Link href="/about">Birmingham studio page</Link>.</p>
         </div>
       </section>
+
+      <SolihullDevelopmentCaseStudy />
 
       <section style={{ maxWidth: 1180, margin: "0 auto", padding: "76px 24px" }}>
         <p style={{ textTransform: "uppercase", letterSpacing: ".12em", fontSize: 13 }}>How it works</p><h2 style={{ fontSize: 46, fontWeight: 500, letterSpacing: "-.035em", marginTop: 12 }}>One clear decision-making process.</h2>

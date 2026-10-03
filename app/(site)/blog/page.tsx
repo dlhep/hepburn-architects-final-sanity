@@ -9,6 +9,14 @@ import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, buildItem
 
 const birminghamAuthorityArticles = [
   {
+    title: "Do I Need C2 Planning Permission for a 1 or 2 Child Children’s Home in Birmingham?",
+    excerpt: "There is no automatic one- or two-child exemption. We explain when a small children’s home may need C2 permission, when a lawful-development route may be appropriate, and what Birmingham decisions tell us.",
+    href: "/journal/c2-planning-permission-one-two-child-childrens-home-birmingham",
+    image: "/images/childrens-home-planning-hero.png",
+    category: "Planning guidance · Children’s homes",
+    publishedAt: "2026-10-03",
+  },
+  {
     title: "C3 to C2 Planning for Children’s Homes in Birmingham and the West Midlands",
     excerpt: "A practical guide to children’s-home planning: when C2 permission may be needed, when C3 may still apply, and why staffing, parking and the operating model matter.",
     href: "/journal/c3-to-c2-childrens-home-planning-west-midlands",

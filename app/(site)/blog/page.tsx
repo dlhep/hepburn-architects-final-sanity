@@ -9,6 +9,14 @@ import { buildBreadcrumbSchema, buildCollectionPageSchema, buildGraph, buildItem
 
 const birminghamAuthorityArticles = [
   {
+    title: "C3 to C2 Planning for Children’s Homes in Birmingham and the West Midlands",
+    excerpt: "A practical guide to children’s-home planning: when C2 permission may be needed, when C3 may still apply, and why staffing, parking and the operating model matter.",
+    href: "/journal/c3-to-c2-childrens-home-planning-west-midlands",
+    image: "/images/childrens-home-planning-hero.png",
+    category: "Planning guidance · Children’s homes",
+    publishedAt: "2026-10-03",
+  },
+  {
     title: "Planning permission secured for an accessible bungalow in Solihull",
     excerpt: "From garage site to accessible home: planning approval for a wheelchair-accessible bungalow marks phase two of our client’s wider property project in Solihull.",
     href: "/journal/solihull-wheelchair-accessible-bungalow-planning-permission",

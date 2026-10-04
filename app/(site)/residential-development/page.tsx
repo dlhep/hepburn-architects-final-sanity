@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Site appraisal, residential masterplanning, planning and technical design for housebuilders, developers and landowners across the West Midlands.",
     url: `${site.url}/residential-development`,
-    images: ["/images/selected-work-1.webp"],
+    images: ["/images/residential-development-masterplan.webp"],
   },
 };
 
@@ -109,7 +109,7 @@ export default function ResidentialDevelopmentPage() {
           className="shell"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+            gridTemplateColumns: "repeat(auto-fit,minmax(min(320px,100%),1fr))",
             gap: 48,
             alignItems: "center",
           }}
@@ -145,27 +145,23 @@ export default function ResidentialDevelopmentPage() {
             </p>
           </div>
 
-          <div
+          <figure
             style={{
-              position: "relative",
-              minHeight: 500,
-              overflow: "hidden",
-              background: "#ddd9d0",
+              margin: 0,
+              background: "#f1efe9",
             }}
           >
             <Image
-              src="/images/selected-work-1.webp"
-              alt="Residential development architecture by Hepburn Architects"
-              fill
+              src="/images/residential-development-masterplan.webp"
+              alt="Illustrative site plan for four detached homes with private gardens, garages and a shared access road by Hepburn Architects"
+              width={1448}
+              height={1086}
               priority
               sizes="(max-width: 850px) 100vw, 50vw"
-              style={{ objectFit: "cover" }}
+              style={{ width: "100%", height: "auto", objectFit: "contain" }}
             />
-            <div
+            <figcaption
               style={{
-                position: "absolute",
-                left: 20,
-                bottom: 20,
                 background: "rgba(32,35,33,.88)",
                 color: "white",
                 padding: "12px 16px",
@@ -175,8 +171,8 @@ export default function ResidentialDevelopmentPage() {
               }}
             >
               Land · Planning · Homes · Delivery
-            </div>
-          </div>
+            </figcaption>
+          </figure>
         </div>
       </section>
 

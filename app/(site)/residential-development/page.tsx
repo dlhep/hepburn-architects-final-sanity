@@ -185,7 +185,7 @@ export default function ResidentialDevelopmentPage() {
           className="shell"
           style={{
             display: "grid",
-            gridTemplateColumns: "minmax(0,.85fr) minmax(0,1.15fr)",
+            gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))",
             gap: 64,
             alignItems: "start",
           }}

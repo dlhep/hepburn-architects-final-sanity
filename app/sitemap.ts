@@ -15,10 +15,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entries.set(url, { url, lastModified });
   };
 
-  ["", "/services", "/services/c2-planning-applications-childrens-homes", "/development-potential-appraisal", "/locations", "/guides", "/knowledge-centre", "/services/house-extensions", "/knowledge-centre/house-extension-costs", "/knowledge-centre/house-extension-timeline", "/knowledge-centre/house-extension-ideas", "/knowledge-centre/property-professional-architectural-support", "/knowledge-centre/loft-conversions", "/knowledge-centre/extension-planning-permission", "/knowledge-centre/planning-permission", "/knowledge-centre/building-regulations", "/journal", "/journal/new-nppf-2026-default-yes-residential-development", "/journal/how-to-choose-the-best-architect-in-birmingham", "/journal/house-extension-planning-permission-birmingham-2026-guide", "/journal/loft-conversion-planning-rules-birmingham", "/estimate", "/planning-tools", "/projects", "/about", "/contact", "/privacy"].forEach((path) => add(path, path === "/development-potential-appraisal" ? "2026-09-05" : STATIC_LAST_MODIFIED));
+  ["", "/services", "/residential-development", "/services/c2-planning-applications-childrens-homes", "/development-potential-appraisal", "/locations", "/guides", "/knowledge-centre", "/services/house-extensions", "/knowledge-centre/house-extension-costs", "/knowledge-centre/house-extension-timeline", "/knowledge-centre/house-extension-ideas", "/knowledge-centre/property-professional-architectural-support", "/knowledge-centre/loft-conversions", "/knowledge-centre/extension-planning-permission", "/knowledge-centre/planning-permission", "/knowledge-centre/building-regulations", "/journal", "/journal/new-nppf-2026-default-yes-residential-development", "/journal/how-to-choose-the-best-architect-in-birmingham", "/journal/house-extension-planning-permission-birmingham-2026-guide", "/journal/loft-conversion-planning-rules-birmingham", "/estimate", "/planning-tools", "/projects", "/about", "/contact", "/privacy"].forEach((path) => add(path, path === "/development-potential-appraisal" ? "2026-09-05" : STATIC_LAST_MODIFIED));
 
   add("", "2026-09-10");
   services.forEach((item) => add(`/services/${item.slug}`));
+  add("/residential-development", "2026-10-04");
   add("/development-potential-appraisal", "2026-09-14");
   add("/services/new-build-homes", "2026-09-14");
   add("/journal/future-homes-standard-2027", "2026-09-07");

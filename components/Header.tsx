@@ -75,9 +75,10 @@ export function Header() {
       overview: { href: "/services", label: "Explore all services" },
       image: "/images/services-hero-photoreal.png",
       links: [
+        ["Residential development", "/residential-development"], ["New-build homes", "/services/new-build-homes"],
         ["House extensions", "/services/house-extensions"], ["Planning applications", "/services/planning-applications"],
-        ["Building Regulations", "/services/building-regulations"], ["New-build homes", "/services/new-build-homes"],
-        ["Loft conversions", "/services/loft-conversions"], ["HMO conversions", "/services/hmo-conversions"],
+        ["Building Regulations", "/services/building-regulations"], ["Loft conversions", "/services/loft-conversions"],
+        ["HMO conversions", "/services/hmo-conversions"],
       ],
     },
     knowledge: {

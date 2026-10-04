@@ -63,11 +63,28 @@ export default function ServicesPage() {
             );
           })}
           <Link
-            href="/services/c2-planning-applications-childrens-homes"
+            href="/residential-development"
             className="service-overview-card"
           >
             <div className="service-overview-copy">
               <span>07</span>
+              <Building2 />
+              <h2>Residential Development</h2>
+              <p>
+                Site appraisal, capacity studies, masterplanning, planning and
+                technical design for housebuilders, developers and landowners.
+              </p>
+              <strong>
+                Explore developer services <ArrowRight size={16} />
+              </strong>
+            </div>
+          </Link>
+          <Link
+            href="/services/c2-planning-applications-childrens-homes"
+            className="service-overview-card"
+          >
+            <div className="service-overview-copy">
+              <span>08</span>
               <HeartHandshake />
               <h2>Planning Applications for Children’s Homes</h2>
               <p>

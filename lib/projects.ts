@@ -1,3 +1,4 @@
+import c2ConceptData from "@/data/west-midlands-c2-projects.json";
 import { birminghamReplacementProjects, birminghamReplacementImportId } from "./birmingham-replacement-dwelling";
 import { applyShropshireProjectRefresh } from "./shropshire-project-refresh";
 import { applyCornwallGalleryRefresh } from "./cornwall-project-gallery-refresh";
@@ -145,6 +146,8 @@ async function fetchSanity<T>(query: string, params: Record<string, unknown> = {
   }
 }
 
+const c2ConceptProjects = c2ConceptData as Project[];
+
 const REPLACEMENT_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${birminghamReplacementImportId}"][0])`;
 const LOFT_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${westMidlandsLoftImportId}"][0])`;
 const EXTENSION_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${birminghamExtensionImportId}"][0])`;
@@ -157,9 +160,9 @@ export async function getProjects(): Promise<Project[]> {
     fetchSanity<boolean>(REPLACEMENT_IMPORT_COMPLETE_QUERY),
   ]);
   const projects = (result ?? fallback()).filter(isMidlandsWebsiteProject).map(normaliseProject);
-  if (imported && loftsImported && replacementImported) return projects;
   const bySlug = new Map(projects.map((project) => [project.slug, project]));
   const pending = [
+    ...c2ConceptProjects,
     ...(!replacementImported ? birminghamReplacementProjects : []),
     ...(!loftsImported ? westMidlandsLoftProjects : []),
     ...(!imported ? birminghamExtensionProjects : []),
@@ -195,7 +198,7 @@ export async function getProject(slug: string): Promise<Project | undefined> {
   const seed = replacementSeed || loftSeed || birminghamExtensionProjects.find((item) => item.slug === slug);
   const markerQuery = replacementSeed ? REPLACEMENT_IMPORT_COMPLETE_QUERY : loftSeed ? LOFT_IMPORT_COMPLETE_QUERY : EXTENSION_IMPORT_COMPLETE_QUERY;
   const imported = !result && seed ? await fetchSanity<boolean>(markerQuery) : true;
-  const project = result || (!imported ? seed : undefined) || fallback().find((item) => item.slug === slug);
+  const project = result || c2ConceptProjects.find((item) => item.slug === slug) || (!imported ? seed : undefined) || fallback().find((item) => item.slug === slug);
   return project && isMidlandsWebsiteProject(project) ? normaliseProject(project) : undefined;
 }
 

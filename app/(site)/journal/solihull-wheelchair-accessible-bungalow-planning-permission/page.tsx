@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 import styles from "../house-extension-planning-permission-birmingham-2026-guide/page.module.css";
 
 const title = "Planning permission secured for an accessible bungalow in Solihull";
-const description = "Hepburn Architects and planning consultant Joanne McCallion help secure permission for a wheelchair-accessible bungalow on a garage site in Solihull.";
+const description = "Hepburn Architects and a planning consultant help secure permission for a wheelchair-accessible bungalow on a garage site in Solihull.";
 const url = `${site.url}/journal/solihull-wheelchair-accessible-bungalow-planning-permission`;
 const image = "/images/solihull-bungalow-comparison-enhanced.webp";
 const date = "2026-09-14";
@@ -37,7 +37,7 @@ export default function SolihullBungalowArticle() {
         <p className={styles.byline}>Published 14 September 2026 · By <Link href="/about">David Hepburn</Link></p>
         <div className={styles.body}>
           <p>We’re delighted to share planning approval for a wheelchair-accessible bungalow on an existing garage site in Solihull—a significant next step in our client’s wider vision for the property.</p>
-          <p>Working alongside planning consultant Joanne McCallion, Hepburn Architects has helped secure permission to bring a new residential use to the site, creating an opportunity for a home designed around accessible, single-storey living.</p>
+          <p>Working alongside a planning consultant, Hepburn Architects has helped secure permission to bring a new residential use to the site, creating an opportunity for a home designed around accessible, single-storey living.</p>
           <figure className={styles.hero}>
             <Image src={image} alt="Before and proposed comparison: existing garage site above and CGI of a brick bungalow with a pitched roof in Solihull below" width={1173} height={1341} unoptimized priority sizes="(max-width: 760px) 100vw, 820px" />
             <figcaption>Existing garage site (above) and proposed bungalow CGI (below), Solihull. The CGI illustrates the proposal; it is not a photograph of a completed building.</figcaption>
@@ -51,7 +51,7 @@ export default function SolihullBungalowArticle() {
           <section><h2>The architect’s eye: finding hidden value</h2>
             <p>For us, this project captures an important part of residential architecture—recognising opportunities in spaces that can easily be overlooked and shaping them into proposals with a clear purpose.</p>
             <p>Here, the planning approval opens the way for an existing garage site to become a wheelchair-accessible home, adding a different type of accommodation to the client’s wider development.</p>
-            <p>A big thank you to our client for sharing the good news, and to Joanne McCallion for her work as planning consultant. We’re delighted to have played our part.</p>
+            <p>A big thank you to our client for sharing the good news, and to the planning consultant for their work. We’re delighted to have played our part.</p>
           </section>
           <section><h2>Could your property offer more potential?</h2>
             <p>If you own a garage site, a side plot or land alongside an existing building, Hepburn Architects can help you explore its potential.</p>

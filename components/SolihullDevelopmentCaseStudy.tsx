@@ -8,7 +8,7 @@ export function SolihullDevelopmentCaseStudy() {
         <div>
           <small className="eyebrow">Solihull · Planning permission secured</small>
           <h2 id="solihull-development-case-study">From garage site to accessible home.</h2>
-          <p>Hepburn Architects worked alongside planning consultant Joanne McCallion to help secure permission for a wheelchair-accessible bungalow on an existing garage site in Solihull.</p>
+          <p>Hepburn Architects worked alongside a planning consultant to help secure permission for a wheelchair-accessible bungalow on an existing garage site in Solihull.</p>
           <p>The proposal creates an opportunity for accessible, single-storey living within an established residential setting. It is a practical example of finding potential in land alongside an existing property.</p>
           <p>The bungalow is the second phase of the client’s wider project, following a six-bedroom HMO in the main house. A possible apartment development with a neighbouring owner remains a future proposal, subject to feasibility and planning approval.</p>
           <Link className="text-link" href="/journal/solihull-wheelchair-accessible-bungalow-planning-permission">

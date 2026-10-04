@@ -3,14 +3,14 @@
     "slug": "birmingham-childrens-home-conversion-concept",
     "title": "Children’s Home Conversion — Birmingham",
     "location": "Birmingham, West Midlands",
-    "websiteRegion": "West Midlands",
+    "websiteRegion": "Midlands",
     "category": "C2 Projects",
     "isConcept": true,
     "conceptLabel": "Concept study",
     "projectType": "C3 to C2 change-of-use concept",
     "description": "A concept study exploring how a traditional semi-detached house could become a small children’s home, with comfortable shared rooms, private bedrooms and a discreet domestic appearance.",
-    "seoTitle": "Children’s Home Conversion — Birmingham | Concept Study",
-    "seoDescription": "A concept study exploring how a traditional semi-detached house could become a small children’s home, with comfortable shared rooms, private bedrooms and a discreet domestic appearance.",
+    "seoTitle": "Children’s Home Conversion Birmingham | Concept",
+    "seoDescription": "A Birmingham children’s-home conversion concept exploring shared living, private bedrooms and a discreet domestic appearance.",
     "services": [
       "Spatial feasibility",
       "Domestic character",
@@ -133,20 +133,21 @@
           }
         ]
       }
-    ]
+    ],
+    "_id": "project-birmingham-childrens-home-conversion-concept"
   },
   {
     "slug": "sandwell-childrens-home-extension-concept",
     "title": "Children’s Home Garden Extension — Sandwell",
     "location": "Sandwell, West Midlands",
-    "websiteRegion": "West Midlands",
+    "websiteRegion": "Midlands",
     "category": "C2 Projects",
     "isConcept": true,
     "conceptLabel": "Concept study",
     "projectType": "C2 adaptation and extension concept",
     "description": "A children’s-home concept exploring a modest rear extension to create a brighter shared living space and a stronger connection with an enclosed garden.",
-    "seoTitle": "Children’s Home Garden Extension — Sandwell | Concept Study",
-    "seoDescription": "A children’s-home concept exploring a modest rear extension to create a brighter shared living space and a stronger connection with an enclosed garden.",
+    "seoTitle": "Children’s Home Extension Sandwell | Concept",
+    "seoDescription": "A Sandwell children’s-home extension concept exploring brighter shared living space and a connection with an enclosed garden.",
     "services": [
       "Spatial feasibility",
       "Domestic character",
@@ -269,20 +270,21 @@
           }
         ]
       }
-    ]
+    ],
+    "_id": "project-sandwell-childrens-home-extension-concept"
   },
   {
     "slug": "west-midlands-childrens-home-remodelling-concept",
     "title": "Children’s Home Internal Remodelling — West Midlands",
     "location": "West Midlands",
-    "websiteRegion": "West Midlands",
+    "websiteRegion": "Midlands",
     "category": "C2 Projects",
     "isConcept": true,
     "conceptLabel": "Concept study",
     "projectType": "C2 internal remodelling concept",
     "description": "An interior concept study for a children’s home, exploring calm shared rooms, clear circulation and a warm domestic setting with views towards the garden.",
-    "seoTitle": "Children’s Home Internal Remodelling — West Midlands | Concept Study",
-    "seoDescription": "An interior concept study for a children’s home, exploring calm shared rooms, clear circulation and a warm domestic setting with views towards the garden.",
+    "seoTitle": "Children’s Home Remodelling West Midlands | Concept",
+    "seoDescription": "A West Midlands children’s-home interior concept exploring calm shared rooms, clear circulation and a warm domestic setting.",
     "services": [
       "Spatial feasibility",
       "Domestic character",
@@ -405,6 +407,7 @@
           }
         ]
       }
-    ]
+    ],
+    "_id": "project-west-midlands-childrens-home-remodelling-concept"
   }
 ]

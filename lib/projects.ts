@@ -1,4 +1,4 @@
-import c2ConceptData from "@/data/west-midlands-c2-projects.json";
+import { westMidlandsC2Projects, westMidlandsC2ImportId } from "./west-midlands-c2-projects";
 import { birminghamReplacementProjects, birminghamReplacementImportId } from "./birmingham-replacement-dwelling";
 import { applyShropshireProjectRefresh } from "./shropshire-project-refresh";
 import { applyCornwallGalleryRefresh } from "./cornwall-project-gallery-refresh";
@@ -146,23 +146,24 @@ async function fetchSanity<T>(query: string, params: Record<string, unknown> = {
   }
 }
 
-const c2ConceptProjects = c2ConceptData as Project[];
+const C2_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${westMidlandsC2ImportId}"][0])`;
 
 const REPLACEMENT_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${birminghamReplacementImportId}"][0])`;
 const LOFT_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${westMidlandsLoftImportId}"][0])`;
 const EXTENSION_IMPORT_COMPLETE_QUERY = `defined(*[_id == "${birminghamExtensionImportId}"][0])`;
 
 export async function getProjects(): Promise<Project[]> {
-  const [result, imported, loftsImported, replacementImported] = await Promise.all([
+  const [result, imported, loftsImported, replacementImported, c2Imported] = await Promise.all([
     fetchSanity<Project[]>(PROJECTS_QUERY),
     fetchSanity<boolean>(EXTENSION_IMPORT_COMPLETE_QUERY),
     fetchSanity<boolean>(LOFT_IMPORT_COMPLETE_QUERY),
     fetchSanity<boolean>(REPLACEMENT_IMPORT_COMPLETE_QUERY),
+    fetchSanity<boolean>(C2_IMPORT_COMPLETE_QUERY),
   ]);
   const projects = (result ?? fallback()).filter(isMidlandsWebsiteProject).map(normaliseProject);
   const bySlug = new Map(projects.map((project) => [project.slug, project]));
   const pending = [
-    ...c2ConceptProjects,
+    ...(!c2Imported ? westMidlandsC2Projects : []),
     ...(!replacementImported ? birminghamReplacementProjects : []),
     ...(!loftsImported ? westMidlandsLoftProjects : []),
     ...(!imported ? birminghamExtensionProjects : []),
@@ -193,12 +194,13 @@ export async function getFeaturedCaseStudy(): Promise<Project | undefined> {
 
 export async function getProject(slug: string): Promise<Project | undefined> {
   const result = await fetchSanity<Project | null>(PROJECT_QUERY, { slug });
+  const c2Seed = westMidlandsC2Projects.find((item) => item.slug === slug);
   const loftSeed = westMidlandsLoftProjects.find((item) => item.slug === slug);
   const replacementSeed = birminghamReplacementProjects.find((item) => item.slug === slug);
-  const seed = replacementSeed || loftSeed || birminghamExtensionProjects.find((item) => item.slug === slug);
-  const markerQuery = replacementSeed ? REPLACEMENT_IMPORT_COMPLETE_QUERY : loftSeed ? LOFT_IMPORT_COMPLETE_QUERY : EXTENSION_IMPORT_COMPLETE_QUERY;
+  const seed = c2Seed || replacementSeed || loftSeed || birminghamExtensionProjects.find((item) => item.slug === slug);
+  const markerQuery = c2Seed ? C2_IMPORT_COMPLETE_QUERY : replacementSeed ? REPLACEMENT_IMPORT_COMPLETE_QUERY : loftSeed ? LOFT_IMPORT_COMPLETE_QUERY : EXTENSION_IMPORT_COMPLETE_QUERY;
   const imported = !result && seed ? await fetchSanity<boolean>(markerQuery) : true;
-  const project = result || c2ConceptProjects.find((item) => item.slug === slug) || (!imported ? seed : undefined) || fallback().find((item) => item.slug === slug);
+  const project = result || (!imported ? seed : undefined) || fallback().find((item) => item.slug === slug);
   return project && isMidlandsWebsiteProject(project) ? normaliseProject(project) : undefined;
 }
 

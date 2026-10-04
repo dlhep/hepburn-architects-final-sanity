@@ -1,3 +1,5 @@
+import c2Projects from "../../data/west-midlands-c2-projects.json";
+import { westMidlandsC2ImportId } from "../../lib/west-midlands-c2-projects";
 import replacementProjects from "../../data/birmingham-replacement-dwelling.json";
 import { birminghamReplacementImportId } from "../../lib/birmingham-replacement-dwelling";
 import type { SanityDocumentStub } from "@sanity/client";
@@ -26,6 +28,7 @@ export const websiteProjectImportBatches: WebsiteProjectImportBatch[] = [
   { id: westMidlandsLoftImportId, title: "Three modern West Midlands dormer loft conversions", projects: loftProjects },
   { id: websiteProjectImportId, title: "Three small Birmingham rear extensions", projects },
   { id: birminghamReplacementImportId, title: "Replacement Dwelling, Birmingham", projects: replacementProjects },
+  { id: westMidlandsC2ImportId, title: "Three West Midlands C2 children’s-home concepts", projects: c2Projects },
 ];
 
 type ExistingProject = {

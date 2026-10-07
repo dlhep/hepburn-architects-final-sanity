@@ -24,8 +24,9 @@ export function LocationHero({ name, title, intro, project, fallbackImage, studi
 }) {
   return <>
     <section className={styles.hero} aria-label={`Architectural services in ${name}`}>
-      <Image className={styles.heroImage} src={project ? projectImageUrl(project.featuredImage, 2200) : fallbackImage} alt={project ? projectImageAlt(project) : "Residential design by Hepburn Architects"} fill priority sizes="100vw" />
-      <div className={styles.shade} />
+      <div className={styles.heroMedia}>
+        <Image className={styles.heroImage} src={project ? projectImageUrl(project.featuredImage, 2200) : fallbackImage} alt={project ? projectImageAlt(project) : "Residential design by Hepburn Architects"} width={1600} height={1000} priority sizes="(max-width: 900px) 100vw, 58vw" />
+      </div>
       <div className={`shell ${styles.heroContent}`}>
         <small className={styles.eyebrow}>HEPBURN ARCHITECTS · {name}</small>
         <h1>{title}</h1><p>{intro}</p>

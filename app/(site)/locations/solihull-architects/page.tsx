@@ -196,7 +196,7 @@ export default async function SolihullArchitectPage() {
                   />
                   <div className={styles.projectCopy}>
                     <span>
-                      {project.location} · {project.projectType}{project.isConcept ? ` · ${project.conceptLabel || "Concept study"}` : project.completion ? ` · ${project.completion}` : ""}
+                      {project.location} · {project.projectType}{!project.isConcept && project.completion ? ` · ${project.completion}` : ""}
                     </span>
                     <strong>{project.title}</strong>
                   </div>

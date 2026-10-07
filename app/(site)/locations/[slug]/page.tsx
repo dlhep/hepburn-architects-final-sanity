@@ -107,7 +107,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
   return createSeoMetadata({
-    title: `Architects in ${page.shortTitle}`,
+    title: slug === "wolverhampton-architects" ? "Wolverhampton Architects | Extensions & Renovations" : `Architects in ${page.shortTitle}`,
     description: page.description,
     path: `/locations/${slug}`,
   });

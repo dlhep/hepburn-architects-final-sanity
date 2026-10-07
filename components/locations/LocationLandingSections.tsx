@@ -9,9 +9,13 @@ import styles from "./location-landing.module.css";
 type LocationProject = Project & { isTestExample?: boolean };
 type Service = { title: string; description: string; href: string };
 
+function isDesignStudy(project: LocationProject) {
+  return Boolean(project.isConcept || /concept|illustrative|a study exploring|design study/i.test(`${project.title} ${project.description}`));
+}
+
 export function selectLocationWork(projects: LocationProject[], terms: string[]) {
   return projects.filter((project) => !project.isTestExample && project.featuredImage && project.slug)
-    .map((project, index) => ({ project, index, score: (terms.some((term) => project.location.toLowerCase().includes(term.toLowerCase())) ? 10 : 0) + (project.isConcept ? 0 : 3) + (/extension|house|home|dwelling|loft|renovation/i.test(`${project.projectType} ${project.title}`) ? 2 : 0) }))
+    .map((project, index) => ({ project, index, score: (terms.some((term) => project.location.toLowerCase().includes(term.toLowerCase())) ? 10 : 0) + (terms[0] && project.location.toLowerCase().includes(terms[0].toLowerCase()) ? 5 : 0) + (isDesignStudy(project) ? 0 : 3) + (/extension|house|home|dwelling|loft|renovation/i.test(`${project.projectType} ${project.title}`) ? 2 : 0) }))
     .sort((a, b) => b.score - a.score || a.index - b.index).slice(0, 3).map(({ project }) => project);
 }
 
@@ -26,7 +30,7 @@ export function LocationHero({ name, title, intro, project, fallbackImage, studi
         <small className={styles.eyebrow}>HEPBURN ARCHITECTS · {name}</small>
         <h1>{title}</h1><p>{intro}</p>
         <div className={styles.actions}><a className={styles.primary} href={`#${enquiryId}`}>Discuss your project <ArrowRight size={17} /></a><Link className={styles.secondary} href="/estimate">Get an indicative fee</Link></div>
-        <div className={styles.heroFoot}><span>Work directly with David Hepburn<br /><small>{studio}</small></span>{project ? <Link href={`/projects/${project.slug}`}>{project.location} · {project.isConcept ? project.conceptLabel || "Concept design" : project.projectType || "Residential project"}<ArrowUpRight size={18} /></Link> : <Link href="/projects">Explore our residential work <ArrowUpRight size={18} /></Link>}</div>
+        <div className={styles.heroFoot}><span>Work directly with David Hepburn<br /><small>{studio}</small></span>{project ? <Link href={`/projects/${project.slug}`}>{project.location} · {isDesignStudy(project) ? project.conceptLabel || "Concept design" : project.projectType || "Residential project"}<ArrowUpRight size={18} /></Link> : <Link href="/projects">Explore our residential work <ArrowUpRight size={18} /></Link>}</div>
       </div>
     </section>
     <div className={styles.introBar}><div className="shell"><span>Thoughtful design. A clear way forward.</span><a href={site.phoneHref}><Phone size={15} />{site.phone}</a><a href={`mailto:${site.email}`}><Mail size={15} />Email David</a></div></div>
@@ -39,7 +43,7 @@ export function LocationServices({ name, services }: { name: string; services: S
 
 export function LocationWork({ projects }: { projects: LocationProject[] }) {
   if (!projects.length) return null;
-  return <section className={styles.work} id="location-work"><div className="shell"><div className={styles.heading}><div><small className={styles.eyebrow}>A FEEL FOR OUR WORK</small><h2>Ideas brought into focus.</h2></div><p>Selected projects and design studies from the practice. Explore the brief, design and thinking behind each proposal.</p></div><div className={styles.projectGrid}>{projects.map((project) => <Link key={project.slug} href={`/projects/${project.slug}`}><div className={styles.projectImage}><Image src={projectImageUrl(project.featuredImage, 1000)} alt={projectImageAlt(project)} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw" />{project.isConcept ? <span>{project.conceptLabel || "Concept design"}</span> : null}</div><small>{project.location}</small><h3>{project.title}<ArrowUpRight size={20} /></h3><p>{project.description}</p></Link>)}</div><Link className={styles.textLink} href="/projects">Explore all projects <ArrowRight size={16} /></Link></div></section>;
+  return <section className={styles.work} id="location-work"><div className="shell"><div className={styles.heading}><div><small className={styles.eyebrow}>A FEEL FOR OUR WORK</small><h2>Ideas brought into focus.</h2></div><p>Selected projects and design studies from the practice. Explore the brief, design and thinking behind each proposal.</p></div><div className={styles.projectGrid}>{projects.map((project) => <Link key={project.slug} href={`/projects/${project.slug}`}><div className={styles.projectImage}><Image src={projectImageUrl(project.featuredImage, 1000)} alt={projectImageAlt(project)} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw" />{isDesignStudy(project) ? <span>{project.conceptLabel || "Concept design"}</span> : null}</div><small>{project.location}</small><h3>{project.title}<ArrowUpRight size={20} /></h3><p>{project.description}</p></Link>)}</div><Link className={styles.textLink} href="/projects">Explore all projects <ArrowRight size={16} /></Link></div></section>;
 }
 
 export function LocationContactDetails({ studio }: { studio: string }) {

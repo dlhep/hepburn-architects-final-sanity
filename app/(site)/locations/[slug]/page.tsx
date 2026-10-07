@@ -1,3 +1,4 @@
+import { LocationProjectBrief } from "@/components/locations/LocationProjectBrief";
 import { LocationHero, LocationServices, LocationWork, LocationContact, LocationContactDetails, LocationFeedback, selectLocationWork } from "@/components/locations/LocationLandingSections";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -108,7 +109,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
   return createSeoMetadata({
-    title: slug === "wolverhampton-architects" ? "Wolverhampton Architects | Extensions & Renovations" : ["moseley-architects", "sutton-coldfield-architects"].includes(slug) ? page.seoTitle : `Architects in ${page.shortTitle}`,
+    title: ["wolverhampton-architects", "moseley-architects", "sutton-coldfield-architects", "edgbaston-architects"].includes(slug) ? page.seoTitle : `Architects in ${page.shortTitle}`,
     description: page.description,
     path: `/locations/${slug}`,
   });
@@ -160,6 +161,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
       <LocationHero name={page.shortTitle} title={page.title} intro={isBirmingham ? birminghamIntro : page.intro} project={regionalProjects[0]} fallbackImage="/images/homepage-birmingham-brick-residence.webp" studio="Birmingham studio · Izabella House, Regent Place" />
       <LocationServices name={page.shortTitle} services={relatedServices.map((service) => ({ title: service.shortTitle, description: service.description, href: `/services/${service.slug}` }))} />
       <LocationWork projects={regionalProjects} />
+      <LocationProjectBrief slug={slug} />
 
       <div className="shell" style={{ paddingTop: "1.25rem" }}><Breadcrumbs items={[{ label: "Locations", href: "/locations" }, { label: page.shortTitle }]} /></div>
 

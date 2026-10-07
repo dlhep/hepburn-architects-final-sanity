@@ -1,3 +1,4 @@
+import { LocationProjectBrief } from "@/components/locations/LocationProjectBrief";
 import { LocationHero, LocationServices, LocationWork, LocationContact, LocationContactDetails, LocationFeedback, selectLocationWork } from "@/components/locations/LocationLandingSections";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -122,6 +123,7 @@ export default async function HarborneArchitectsPage() {
 
       <LocationHero name="Harborne" title="Residential Architects in Harborne, Birmingham." intro="House renovations, extensions and loft conversions in Harborne, with David Hepburn guiding the design, planning and Building Regulations drawings." fallbackImage="/images/selected-work-2.webp" studio="Birmingham studio · Izabella House, Regent Place" />
 
+      <LocationProjectBrief slug="harborne-architects" />
       <section className={styles.trust} aria-label="Practice credentials">
         <div className="shell">
           <div><BadgeCheck aria-hidden="true" /><strong>ARB Registered architect</strong></div>

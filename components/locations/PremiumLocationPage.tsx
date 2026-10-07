@@ -1,3 +1,4 @@
+import { LocationHero, LocationServices, LocationWork, LocationContact, LocationContactDetails, LocationFeedback, selectLocationWork } from "@/components/locations/LocationLandingSections";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ExternalLink, MapPin } from "lucide-react";
@@ -77,22 +78,15 @@ export async function PremiumLocationPage({ content }: { content: PremiumLocatio
 
   return <>
     <StructuredData data={schema} />
-    <section className={styles.hero}>
-      <div className="shell">
-        <small className="eyebrow"><MapPin size={14} /> {content.eyebrow}</small>
-        <h1>{content.h1}</h1>
-        <div className={styles.heroGrid}>
-          <div className={styles.prose}>{content.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
-          <aside><strong>Director-led residential architecture</strong><p>Design, planning applications and Building Regulations information developed as a coordinated architectural service.</p></aside>
-        </div>
-        <div className="actions"><Link className="btn primary" href="/contact">Discuss Your Project <ArrowRight size={17} /></Link><Link className="btn secondary" href="/estimate">Get an Indicative Fee</Link></div>
-      </div>
-    </section>
+    <LocationHero name={content.name} title={content.h1} intro={content.intro[0]} project={projects[0]} fallbackImage="/images/homepage-birmingham-brick-residence.webp" studio="Birmingham studio · Izabella House, Regent Place" />
+    <LocationServices name={content.name} services={content.services} />
+    <LocationWork projects={projects} />
+    {content.intro.slice(1).map((paragraph) => <div className="shell" key={paragraph}><p className="lead">{paragraph}</p></div>)}
     <div className="shell" style={{ paddingTop: "1.25rem" }}><Breadcrumbs items={[{ label: "Locations", href: "/locations" }, { label: content.name }]} /></div>
 
     <section className="section"><div className={`shell ${styles.split}`}><div><small className="eyebrow">Local architectural context</small><h2>{content.contextHeading}</h2></div><div className={styles.prose}>{content.context.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></div></section>
 
-    <section className="section sand-section" id="services"><div className="shell"><div className={styles.sectionIntro}><small className="eyebrow">Services in {content.name}</small><h2>Residential design, approvals and technical information.</h2><p>Appointments are scoped around the property, the proposed work and the stage already reached. These core services can be commissioned individually or as a coordinated sequence.</p></div><div className={styles.serviceList}>{content.services.map((service, index) => <Link href={service.href} key={service.title}><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{service.title}</h3><p>{service.description}</p></div><ArrowRight aria-hidden="true" /></Link>)}</div></div></section>
+
 
     <section className="section" id="planning"><div className={`shell ${styles.split}`}><div><small className="eyebrow">Local planning context</small><h2>{content.planningHeading}</h2><div className={styles.authority}><span>Local planning authority</span><strong>{content.planningAuthority}</strong><a href={content.planningAuthorityUrl} target="_blank" rel="noopener noreferrer">Official planning information <ExternalLink size={14} /></a></div></div><div className={styles.prose}>{content.planning.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}<p className={styles.disclaimer}>{content.disclaimer}</p></div></div></section>
 
@@ -102,14 +96,14 @@ export async function PremiumLocationPage({ content }: { content: PremiumLocatio
 
     <section className="section sand-section" id="building-regulations"><div className={`shell ${styles.split}`}><div><small className="eyebrow">Building Regulations</small><h2>From an approved concept to coordinated technical information.</h2></div><div className={styles.prose}>{content.technical.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></div></section>
 
-    {projects.length > 0 ? <section className="section dark-section" id="projects"><div className="shell"><div className={styles.sectionIntro}><small className="eyebrow">Published projects</small><h2>Relevant residential work.</h2><p>{content.projectIntro}</p></div><div className={styles.projectGrid}>{projects.map((project) => <Link href={`/projects/${project.slug}`} key={project.slug}><Image src={projectImageUrl(project.featuredImage, 1000)} alt={projectImageAlt(project)} width={1000} height={680} sizes="(max-width: 720px) 100vw, 33vw" /><div><small>{project.location}</small><h3>{project.title}</h3><p>{project.description}</p><span>View project <ArrowRight size={15} /></span></div></Link>)}</div><div className="actions"><Link className="btn light-btn" href="/projects">View all projects</Link></div></div></section> : null}
 
-    {review ? <ReviewQuote review={review} compact /> : null}
+
+    {review ? <ReviewQuote review={review} compact /> : <LocationFeedback href={site.googleBusiness} />}
 
     <section className="section"><div className={`shell ${styles.faqGrid}`}><div><small className="eyebrow">Frequently asked questions</small><h2>Architectural and planning questions in {content.name}.</h2><p>These answers are general guidance. The position for a particular project depends on the property, proposal, planning history and current policy.</p></div><div className={styles.faqList}>{content.faqs.map((faq) => <details key={faq.question}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div></div></section>
 
     <section className="section dark-section"><div className={`shell ${styles.nearby}`}><div><small className="eyebrow">Nearby areas</small><h2>Residential architecture across the surrounding area.</h2></div><nav aria-label={`Locations near ${content.name}`}>{content.nearby.map((item) => <Link href={item.href} key={item.href}>{item.label}<ArrowRight size={14} /></Link>)}</nav></div></section>
 
-    <section className="section"><div className={`shell ${styles.cta}`}><small className="eyebrow">Start with the property</small><h2>Planning a project in {content.name}?</h2><p>{content.finalCopy}</p><div className="actions"><Link className="btn primary" href="/contact">Discuss Your Project <ArrowRight size={17} /></Link><Link className="btn secondary" href="/estimate">Get an Indicative Fee</Link></div></div></section>
+    <LocationContact name={content.name} studio="Birmingham studio · Izabella House, Regent Place" />
   </>;
 }

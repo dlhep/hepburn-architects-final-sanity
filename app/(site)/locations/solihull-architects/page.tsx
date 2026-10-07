@@ -1,3 +1,6 @@
+import { LocationHero, LocationServices, LocationWork, LocationContact, LocationContactDetails, LocationFeedback, selectLocationWork } from "@/components/locations/LocationLandingSections";
+import { getReviewForLocation } from "@/lib/reviews";
+import { ReviewQuote } from "@/components/reviews/RelevantReview";
 import styles from "./page.module.css";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -107,6 +110,7 @@ export default async function SolihullArchitectPage() {
   const regionalProjects = selectSolihullProjects(await getProjects());
   const heroProject = regionalProjects.find(project => project.slug === "house-extension-solihull") || regionalProjects[0];
   const office = site.offices.birmingham;
+  const review = await getReviewForLocation("solihull-architects");
 
   const url = `${site.url}/locations/solihull-architects`;
   const schemas = buildGraph(buildWebPageSchema({ url, name: "Residential Architects in Solihull", description: metadata.description as string, breadcrumb: breadcrumbId(url), mainEntity: serviceId(url) }), buildServiceSchema({ url, name: "Residential architectural services in Solihull", description: metadata.description as string, areas: ["Solihull", "Knowle", "Dorridge", "Shirley", "Olton", "Dickens Heath", "Balsall Common"].map((name) => ({ name })), studio: "birmingham" }), buildBreadcrumbSchema(url, [{ name: "Home", url: `${site.url}/` }, { name: "Locations", url: `${site.url}/locations` }, { name: "Solihull", url }]), buildFaqSchema(url, solihullFaqs));
@@ -115,22 +119,7 @@ export default async function SolihullArchitectPage() {
     <div className={styles.page}>
       <StructuredData data={schemas} />
 
-      <section className={styles.hero}>
-        <div className={styles.heroImage}>
-          <Image src={heroProject ? projectImageUrl(heroProject.featuredImage, 2200) : "/images/homepage-birmingham-brick-residence.webp"} alt={heroProject ? projectImageAlt(heroProject) : "Residential design visualisation by Hepburn Architects"} fill priority fetchPriority="high" sizes="100vw" />
-        </div>
-        <div className={styles.heroShade} />
-        <div className={`shell ${styles.heroContent}`}>
-          <small className="eyebrow">Thoughtful homes. Personal architectural service.</small>
-          <h1>Residential Architects<br />in Solihull.</h1>
-          <p>More light, more space and a home that works beautifully for you. Director-led design for house extensions, remodelling and new homes across Solihull.</p>
-          <div className="actions">
-            <a className="btn primary" href="#project-enquiry">Discuss your Solihull home <ArrowRight size={18} /></a>
-            <Link className={`btn ${styles.heroSecondary}`} href="/estimate">Get an indicative fee</Link>
-          </div>
-          {heroProject && <Link className={styles.heroCaption} href={`/projects/${heroProject.slug}`}>{heroProject.title} · {heroProject.isConcept ? heroProject.conceptLabel || "Design study" : heroProject.completion || heroProject.location} <ArrowRight size={15} /></Link>}
-        </div>
-      </section>
+      <LocationHero name="Solihull" title="Residential Architects in Solihull." intro="Thoughtful house extensions, renovations, loft conversions and new homes in Solihull. Work directly with David Hepburn on design, planning and Building Regulations, with a clear scope at each stage." project={heroProject} fallbackImage="/images/homepage-birmingham-brick-residence.webp" studio="Birmingham studio · Izabella House, Regent Place" />
 
       <div className={styles.trust}><div className="shell">
         <span><CheckCircle2 size={18} />RIBA Chartered Practice</span>
@@ -252,6 +241,8 @@ export default async function SolihullArchitectPage() {
           </div>
         </div>
       </section>
+
+      {review ? <ReviewQuote review={review} /> : <LocationFeedback href={site.googleBusiness} />}
 
       <section className={`section ${styles.director}`}>
         <div className="shell service-detail-columns">

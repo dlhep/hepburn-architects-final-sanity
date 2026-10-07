@@ -1,3 +1,4 @@
+import { LocationHero, LocationServices, LocationWork, LocationContact, LocationContactDetails, LocationFeedback, selectLocationWork } from "@/components/locations/LocationLandingSections";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -119,35 +120,7 @@ export default async function HarborneArchitectsPage() {
     <>
       <StructuredData data={schema} />
 
-      <section className={styles.hero}>
-        <Image
-          className={styles.heroImage}
-          src="/images/selected-work-2.webp"
-          alt="Contemporary extension to a period family home in Harborne"
-          fill
-          priority
-          fetchPriority="high"
-          sizes="100vw"
-        />
-        <div className={styles.heroShade} />
-        <div className={`shell ${styles.heroInner}`}>
-          <div className={styles.heroCopy}>
-            <small className="eyebrow"><MapPin size={14} /> Harborne residential architecture</small>
-            <h1>Residential Architects in Harborne, Birmingham.</h1>
-            <p>House renovations, extensions and loft conversions in Harborne, with David Hepburn guiding the design, planning and Building Regulations drawings.</p>
-            <div className="actions">
-              <Link className="btn primary" href="/estimate">Get an indicative fee <ArrowRight size={18} /></Link>
-              <a className={`btn ${styles.heroSecondary}`} href={site.calendly} target="_blank" rel="noopener noreferrer"><CalendarDays size={18} /> Book a free consultation</a>
-            </div>
-            <p className={styles.heroNote}><CheckCircle2 size={16} /> Share your postcode and project idea—David will advise on the most useful next step.</p>
-          </div>
-          <Link className={styles.projectBadge} href="/projects/house-extension-in-harborne-birmingham">
-            <span>Featured local project</span>
-            <strong>House extension in Harborne</strong>
-            <span>View the case study <ArrowRight size={15} /></span>
-          </Link>
-        </div>
-      </section>
+      <LocationHero name="Harborne" title="Residential Architects in Harborne, Birmingham." intro="House renovations, extensions and loft conversions in Harborne, with David Hepburn guiding the design, planning and Building Regulations drawings." fallbackImage="/images/selected-work-2.webp" studio="Birmingham studio · Izabella House, Regent Place" />
 
       <section className={styles.trust} aria-label="Practice credentials">
         <div className="shell">
@@ -243,7 +216,7 @@ export default async function HarborneArchitectsPage() {
         </div>
       </section>
 
-      {review ? <ReviewQuote review={review} serviceSlug="house-extensions" /> : null}
+      {review ? <ReviewQuote review={review} serviceSlug="house-extensions" /> : <LocationFeedback href={site.googleBusiness} />}
 
       <section className="section sand-section">
         <div className={`shell ${styles.faqGrid}`}>

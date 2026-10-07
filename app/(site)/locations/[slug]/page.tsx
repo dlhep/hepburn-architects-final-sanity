@@ -1,3 +1,4 @@
+import { LocationHero, LocationServices, LocationWork, LocationContact, LocationContactDetails, LocationFeedback, selectLocationWork } from "@/components/locations/LocationLandingSections";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -128,17 +129,18 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
   const relatedLocations = locations.filter((location) => nearbyAreaNames.includes(location.shortTitle)).slice(0, 6);
   const projectTerms = isBirmingham ? birminghamProjectTerms : isSolihull ? ["solihull", "knowle", "dorridge", "shirley", "olton", "balsall common", "warwickshire"] : page.projectTerms ?? [];
   const [allProjects, birminghamProjects, locationReview] = await Promise.all([
-    isEnhanced && !isBirmingham ? getProjects() : Promise.resolve([]),
+    !isBirmingham ? getProjects() : Promise.resolve([]),
     isBirmingham ? getBirminghamProjects() : Promise.resolve([]),
     getReviewForLocation(slug),
   ]);
   const edgbastonProjectSlugs = ["contemporary-extension-calthorpe", "house-extension-in-harborne-birmingham", "house-extension-birmingham"];
-  const regionalProjects = slug === "edgbaston-architects"
+  const preferredProjects = slug === "edgbaston-architects"
     ? edgbastonProjectSlugs.flatMap((projectSlug) => {
         const project = allProjects.find((item) => item.slug === projectSlug);
         return project ? [project] : [];
       })
-    : isBirmingham ? birminghamProjects : isEnhanced ? selectProjects(allProjects, projectTerms) : [];
+    : isBirmingham ? birminghamProjects : selectLocationWork(allProjects, [page.shortTitle, ...projectTerms]);
+  const regionalProjects = preferredProjects.length ? preferredProjects : selectLocationWork(allProjects, [page.shortTitle, ...projectTerms]);
   const faqs = isBirmingham ? birminghamFaqs : isSolihull ? solihullFaqs : page.faqs ?? [];
   const planningTopics = isBirmingham ? birminghamPlanningTopics : isSolihull ? solihullPlanningTopics : page.planningTopics ?? [];
   const planningIntro = isBirmingham
@@ -155,18 +157,9 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
     <>
       <StructuredData data={schemas} />
 
-      <section className="section location-hero">
-        <div className="shell content-page">
-          <small className="eyebrow"><MapPin size={14} /> Local residential architecture</small>
-          <h1>{page.title}</h1>
-          <p className="lead">{isBirmingham ? birminghamIntro : page.intro}</p>
-          <div className="actions">
-            <a className="btn primary" href={site.phoneHref}><Phone size={17} /> Call {site.phone}</a>
-            <a className="btn secondary" href="#project-enquiry">Discuss your project <ArrowRight size={17} /></a>
-          </div>
-          {isBirmingham && <div className="hero-trust location-hero-trust" aria-label="Practice credentials"><span><CheckCircle2 /> ARB-registered architect</span><span><CheckCircle2 /> RIBA Chartered Practice</span><span><CheckCircle2 /> Birmingham studio</span><span><CheckCircle2 /> Director-led service</span></div>}
-        </div>
-      </section>
+      <LocationHero name={page.shortTitle} title={page.title} intro={isBirmingham ? birminghamIntro : page.intro} project={regionalProjects[0]} fallbackImage="/images/homepage-birmingham-brick-residence.webp" studio="Birmingham studio · Izabella House, Regent Place" />
+      <LocationServices name={page.shortTitle} services={relatedServices.map((service) => ({ title: service.shortTitle, description: service.description, href: `/services/${service.slug}` }))} />
+      <LocationWork projects={regionalProjects} />
 
       <div className="shell" style={{ paddingTop: "1.25rem" }}><Breadcrumbs items={[{ label: "Locations", href: "/locations" }, { label: page.shortTitle }]} /></div>
 
@@ -200,14 +193,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
-      <section className="section">
-        <div className="shell">
-          <div className="page-intro"><small className="eyebrow">Architectural services</small><h2>Services available in {page.shortTitle}.</h2></div>
-          <div className="service-grid">
-            {relatedServices.map((service) => <Link className="service-card" href={`/services/${service.slug}`} key={service.slug}><h3>{service.shortTitle}</h3><p>{service.description}</p><span>View service <ArrowRight size={16} /></span></Link>)}
-          </div>
-        </div>
-      </section>
+
 
       {isBirmingham && (
         <section className="section sand-section birmingham-process-section">
@@ -231,17 +217,7 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
         </section>
       )}
 
-      {!isBirmingham && regionalProjects.length > 0 && (
-        <section className="section selected-work-section">
-          <div className="shell">
-            <div className="selected-work-heading"><small className="eyebrow">{page.shortTitle} and regional projects</small><h2>Relevant residential work.</h2><p>{isSolihull ? "Extensions, new homes and residential projects from Solihull and the surrounding West Midlands." : slug === "edgbaston-architects" ? "Selected extension and remodelling projects from Birmingham and nearby Harborne. Each case study identifies its recorded location and project stage." : page.projectIntro || "A selection of extensions, new homes and residential transformations from the wider region."}</p></div>
-            <div className="selected-work-grid">
-              {regionalProjects.map((project, index) => <Link href={`/projects/${project.slug}`} className={index === 0 ? "selected-work-main" : "selected-work-small"} key={project.slug}><Image src={projectImageUrl(project.featuredImage, index === 0 ? 1400 : 900)} alt={projectImageAlt(project)} width={index === 0 ? 1400 : 900} height={index === 0 ? 900 : 600} sizes={index === 0 ? "(max-width: 950px) 100vw, 66vw" : "(max-width: 950px) 100vw, 33vw"} /><div className="selected-work-overlay"><span>{project.location} · {project.projectType}{project.completion ? ` · ${project.completion}` : ""}</span><strong>{project.title}</strong></div></Link>)}
-            </div>
-            <div className="selected-work-action"><Link className="btn secondary" href="/projects">View all projects <ArrowRight size={17} /></Link></div>
-          </div>
-        </section>
-      )}
+
 
       {isBirmingham && (
         <section className="section sand-section">
@@ -260,16 +236,11 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
         </section>
       )}
 
-      {locationReview ? <ReviewQuote review={locationReview} /> : null}
+      {locationReview ? <ReviewQuote review={locationReview} /> : <LocationFeedback href={site.googleBusiness} />}
 
       <RelatedGuides serviceSlug={page.serviceSlugs[0]} heading={`Helpful guides for ${page.shortTitle}`} />
 
-      <section className="section dark-section birmingham-enquiry-section" id="project-enquiry">
-        <div className="shell contact-grid">
-          <div><small className="eyebrow">Discuss your {page.shortTitle} project</small><h2>Start with the property, the brief and the likely approval route.</h2><p className="lead">Tell us where the property is and what you are considering. David will review the enquiry and advise on a proportionate next step.</p><ul className="enquiry-trust-list"><li><CheckCircle2 size={18} /> Direct involvement from David</li><li><CheckCircle2 size={18} /> RIBA Chartered and ARB registered</li><li><CheckCircle2 size={18} /> Planning and technical services</li></ul><div className="actions"><a className="btn primary" href={site.phoneHref}><Phone size={17} /> Call {site.phone}</a><a className="btn light-btn" href={site.calendly} target="_blank" rel="noopener noreferrer">Book a consultation</a></div></div>
-          <ContactForm source={`${page.shortTitle} architect landing page`} />
-        </div>
-      </section>
+      <LocationContact name={page.shortTitle} studio="Birmingham studio · Izabella House, Regent Place" />
 
       <section className="section dark-section">
         <div className="shell studio-process"><div><small className="eyebrow">Areas nearby</small><h2>Residential architect serving {page.shortTitle} and surrounding areas.</h2></div><div>{isBirmingham ? <><p>Residential architectural services are available across Birmingham and the wider West Midlands. These links describe local planning and property context; they do not imply a completed project in every district.</p><div className="nearby-links">{birminghamAreas.map(([name, href]) => <Link href={href} key={href}>{name}</Link>)}</div></> : <><p>We also support projects across {page.nearbyAreas.join(", ")}.</p><div className="nearby-links">{slug === "sutton-coldfield-architects" ? <><Link href="/locations/four-oaks-architects">Four Oaks</Link><Link href="/locations/little-aston-architects">Little Aston</Link></> : null}{relatedLocations.filter((location) => slug !== "sutton-coldfield-architects" || !["Four Oaks", "Little Aston"].includes(location.shortTitle)).map((location) => <Link href={`/locations/${location.slug}`} key={location.slug}>{location.shortTitle}</Link>)}</div></>}</div></div>

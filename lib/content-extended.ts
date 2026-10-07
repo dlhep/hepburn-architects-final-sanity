@@ -116,7 +116,7 @@ const additionalLocations: LocationItem[] = [
     shortTitle: "Wolverhampton",
     seoTitle: "Wolverhampton Architects | House Extensions & Renovations",
     description:
-      "Plan your Wolverhampton house extension, renovation or loft conversion with Hepburn Architects. Design, planning and Building Regulations with clear stage fees.",
+      "Wolverhampton architects for house extensions, renovations and loft conversions. Design, planning and Building Regulations with clear stage fees.",
     intro:
       "Work directly with David Hepburn on a house extension, kitchen extension, renovation or loft conversion in Wolverhampton. We help you compare layouts, prepare planning drawings and develop Building Regulations information, with the scope and fees agreed for each stage.",
     localContext:

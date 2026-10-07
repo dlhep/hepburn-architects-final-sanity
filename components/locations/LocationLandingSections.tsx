@@ -25,7 +25,7 @@ export function LocationHero({ name, title, intro, project, fallbackImage, studi
   return <>
     <section className={styles.hero} aria-label={`Architectural services in ${name}`}>
       <div className={styles.heroMedia}>
-        <Image className={styles.heroImage} src="/images/homepage-birmingham-brick-residence.webp" alt="Architectural visualisation of a brick-and-render detached home in a leafy Birmingham suburban setting" width={1672} height={941} priority sizes="100vw" />
+        <Image className={styles.heroImage} src={project ? projectImageUrl(project.featuredImage, 2200) : fallbackImage} alt={project ? projectImageAlt(project) : `Residential architecture by Hepburn Architects`} width={1672} height={941} priority sizes="100vw" />
       </div>
       <div className={styles.shade} aria-hidden="true" />
       <div className={`shell ${styles.heroContent}`}>

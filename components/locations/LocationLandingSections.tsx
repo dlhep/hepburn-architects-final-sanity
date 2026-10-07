@@ -25,13 +25,14 @@ export function LocationHero({ name, title, intro, project, fallbackImage, studi
   return <>
     <section className={styles.hero} aria-label={`Architectural services in ${name}`}>
       <div className={styles.heroMedia}>
-        <Image className={styles.heroImage} src={project ? projectImageUrl(project.featuredImage, 2200) : fallbackImage} alt={project ? projectImageAlt(project) : "Residential design by Hepburn Architects"} width={1600} height={1000} priority sizes="(max-width: 900px) 100vw, 58vw" />
+        <Image className={styles.heroImage} src="/images/homepage-birmingham-brick-residence.webp" alt="Architectural visualisation of a brick-and-render detached home in a leafy Birmingham suburban setting" width={1672} height={941} priority sizes="100vw" />
       </div>
+      <div className={styles.shade} aria-hidden="true" />
       <div className={`shell ${styles.heroContent}`}>
         <small className={styles.eyebrow}>HEPBURN ARCHITECTS · {name}</small>
         <h1>{title}</h1><p>{intro}</p>
         <div className={styles.actions}><a className={styles.primary} href={`#${enquiryId}`}>Discuss your project <ArrowRight size={17} /></a><Link className={styles.secondary} href="/estimate">Get an indicative fee</Link></div>
-        <div className={styles.heroFoot}><span>Work directly with David Hepburn<br /><small>{studio}</small></span>{project ? <Link href={`/projects/${project.slug}`}>{project.location} · View project<ArrowUpRight size={18} /></Link> : <Link href="/projects">Explore our residential work <ArrowUpRight size={18} /></Link>}</div>
+        <div className={styles.heroFoot}><span>Work directly with David Hepburn<br /><small>{studio}</small></span><Link href="/projects">Explore our residential work <ArrowUpRight size={18} /></Link></div>
       </div>
     </section>
     <div className={styles.introBar}><div className="shell"><span>Thoughtful design. A clear way forward.</span><a href={site.phoneHref}><Phone size={15} />{site.phone}</a><a href={`mailto:${site.email}`}><Mail size={15} />Email David</a></div></div>

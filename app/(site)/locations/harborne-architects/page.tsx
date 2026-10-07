@@ -33,28 +33,28 @@ import styles from "./page.module.css";
 const path = "/locations/harborne-architects";
 const canonical = `${site.url}${path}`;
 const description =
-  "RIBA Chartered residential architects in Harborne, Birmingham for house extensions, loft conversions, remodelling, planning and Building Regulations.";
+  "Planning a house renovation or extension in Harborne? Work with David Hepburn on layouts, planning and Building Regulations. Get an indicative architectural fee.";
 
 export const metadata: Metadata = {
-  title: "Residential Architects Harborne, Birmingham",
+  title: "Harborne Architects | House Renovations & Extensions",
   description,
   alternates: { canonical },
   openGraph: {
-    title: "Residential Architects in Harborne, Birmingham | Hepburn Architects",
+    title: "Harborne Architects | House Renovations & Extensions",
     description,
     url: canonical,
     siteName: site.name,
     type: "website",
     images: [{ url: "/images/selected-work-2.webp", width: 1448, height: 1086, alt: "Contemporary house extension in Harborne" }],
   },
-  twitter: { card: "summary_large_image", title: "Residential Architects in Harborne, Birmingham", description, images: ["/images/selected-work-2.webp"] },
+  twitter: { card: "summary_large_image", title: "Harborne Architects | House Renovations & Extensions", description, images: ["/images/selected-work-2.webp"] },
 };
 
 const services = [
   {
     number: "01",
-    title: "Improve your home",
-    body: "Extensions, loft conversions and whole-house remodelling designed around daylight, daily life and the character of the original property.",
+    title: "Renovate or extend your home",
+    body: "House renovations, extensions and loft conversions designed around daylight, daily life and the character of the original property. We test changes to the existing layout alongside any new floor area.",
     links: [
       ["House extensions", "/services/house-extensions"],
       ["Loft conversions", "/services/loft-conversions"],
@@ -94,6 +94,7 @@ const planningPoints = [
 ] as const;
 
 const faqs = [
+  ["Can you help with a house renovation in Harborne without an extension?", "Yes. We can review internal layouts, kitchen and living spaces, daylight, storage and the relationship with the garden. The appointment can cover refurbishment and remodelling of the existing house, an extension, or both. Structural engineering and other specialist input are identified separately where needed."],
   ["Do I need planning permission for an extension in Harborne?", "Not always. Some house extensions may use permitted development rights, but the dimensions, position, original property, previous additions, planning conditions, conservation status and any Article 4 Direction must be checked first."],
   ["Which parts of Harborne have additional heritage controls?", "Harborne Old Village, Greenfield Road and Moor Pool are conservation areas. Greenfield Road and Moor Pool also have Article 4 controls that can require permission for certain external alterations."],
   ["Can you design a contemporary extension to a period home?", "Yes. Contemporary design can work well where its scale, materials, proportions and junctions respond carefully to the existing house. The aim is a confident addition that improves the home without competing with its character."],
@@ -133,7 +134,7 @@ export default async function HarborneArchitectsPage() {
           <div className={styles.heroCopy}>
             <small className="eyebrow"><MapPin size={14} /> Harborne residential architecture</small>
             <h1>Residential Architects in Harborne, Birmingham.</h1>
-            <p>Thoughtful design, planning and Building Regulations expertise for extensions, loft conversions and homes that need to work better.</p>
+            <p>House renovations, extensions and loft conversions in Harborne, with David Hepburn guiding the design, planning and Building Regulations drawings.</p>
             <div className="actions">
               <Link className="btn primary" href="/estimate">Get an indicative fee <ArrowRight size={18} /></Link>
               <a className={`btn ${styles.heroSecondary}`} href={site.calendly} target="_blank" rel="noopener noreferrer"><CalendarDays size={18} /> Book a free consultation</a>
@@ -164,11 +165,12 @@ export default async function HarborneArchitectsPage() {
         <div className={`shell ${styles.introGrid}`}>
           <div>
             <small className="eyebrow">Make more of your home</small>
-            <h2>More space is useful. A better home is the real goal.</h2>
+            <h2>House renovations and extensions in Harborne.</h2>
           </div>
           <div className={styles.prose}>
             <p className="lead">The best residential projects do more than add square metres. They make everyday life calmer, bring light deeper into the plan and create a natural connection between the existing house and the garden.</p>
             <p>Harborne&apos;s terraces, period villas, inter-war houses and mature garden suburbs each need a different response. We start with the way the property is built, the way you want to live and the planning context that will shape a realistic proposal.</p>
+            <p>A refurbishment may need a better layout rather than a larger footprint. We can compare opening up existing rooms, moving a kitchen, improving storage and adding a rear or side extension, so you can decide where design work and building costs will make the most difference.</p>
             <p>Hepburn Architects combines creative residential design with planning strategy and technical coordination. That means the proposal is considered as a home, an application and a buildable project—not as three disconnected stages.</p>
             <div className={styles.inlineActions}><Link href="/estimate">See likely architectural fees <ArrowRight size={16} /></Link><a href="#project-enquiry">Tell us about your property <ArrowRight size={16} /></a></div>
           </div>

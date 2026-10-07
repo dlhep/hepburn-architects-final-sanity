@@ -114,17 +114,17 @@ const additionalLocations: LocationItem[] = [
     slug: "wolverhampton-architects",
     title: "Residential Architects in Wolverhampton",
     shortTitle: "Wolverhampton",
-    seoTitle: "Residential Architects Wolverhampton | Extensions & Planning",
+    seoTitle: "Wolverhampton Architects | House Extensions & Renovations",
     description:
-      "RIBA Chartered residential architects in Wolverhampton for extensions, loft conversions, new homes, HMOs, planning and Building Regulations.",
+      "Plan your Wolverhampton house extension, renovation or loft conversion with Hepburn Architects. Design, planning and Building Regulations with clear stage fees.",
     intro:
-      "Architectural design and planning support for homeowners, developers and property investors across Wolverhampton and the western West Midlands.",
+      "Work directly with David Hepburn on a house extension, kitchen extension, renovation or loft conversion in Wolverhampton. We help you compare layouts, prepare planning drawings and develop Building Regulations information, with the scope and fees agreed for each stage.",
     localContext:
       "Wolverhampton includes Victorian and Edwardian terraces, inter-war suburbs, larger detached homes, conservation areas and brownfield development opportunities. Good residential design must respond to local character, neighbouring amenity, access, parking, trees and the technical realities of the existing building.",
     nearbyAreas: ["Walsall", "Aldridge", "Sutton Coldfield", "Birmingham", "Tettenhall", "Codsall"],
     serviceSlugs: ["house-extensions", "loft-conversions", "new-build-homes", "hmo-conversions", "planning-applications", "building-regulations"],
     points: [
-      "House extensions and whole-home remodelling",
+      "Rear, side and kitchen extensions with whole-home remodelling",
       "Loft conversions and roof alterations",
       "HMOs, flats and changes of use",
       "New homes and residential development",
@@ -160,6 +160,11 @@ const additionalLocations: LocationItem[] = [
         question: "Do I need planning permission for a Wolverhampton house extension?",
         answer:
           "Some extensions may be permitted development, but the dimensions, position, previous additions, planning conditions and any conservation or Article 4 controls must be checked before relying on that route.",
+      },
+      {
+        question: "How do I start a house or kitchen extension in Wolverhampton?",
+        answer:
+          "Send the property address, photographs, any existing drawings and a short brief. We can agree the survey and design scope, compare layout options and identify the planning and technical information needed. The fee calculator gives an early indication before a written proposal confirms the appointment and exclusions.",
       },
       {
         question: "Can you design an HMO conversion in Wolverhampton?",

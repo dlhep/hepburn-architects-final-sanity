@@ -57,7 +57,7 @@ export const PROJECT_TITLES: Record<string, string> = {
   "house-extension-solihull": "House Extension in Solihull",
   "eight-home-residential-masterplan": "Eight-Home Residential Masterplan",
   "ten-home-residential-masterplan": "Ten-Home Masterplan in Birmingham",
-  "house-extension-in-harborne-birmingham": "House Extension in Harborne",
+  "house-extension-in-harborne-birmingham": "House Extension & Renovation in Harborne, Birmingham",
   "replacement-bungalow": "Replacement Dwelling in Upton-upon-Severn",
   "barn-conversion-staffordshire": "Barn Conversion in Staffordshire",
   "new-build-apartments-cornwall": "New-Build Apartments in Cornwall",
@@ -73,6 +73,7 @@ export const PROJECT_TITLES: Record<string, string> = {
 };
 
 export const PROJECT_DESCRIPTIONS: Record<string, string> = {
+  "house-extension-in-harborne-birmingham": "Explore a house extension and renovation in Harborne, Birmingham by Hepburn Architects, then discuss the design and drawings for your own home.",
   "residential-masterplan": "A ten-home Birmingham residential masterplan shaped around landscape, sustainable drainage, generous gardens and a central shared green.",
   "residential-masterplan-birmingham": "An eight-home West Midlands masterplan arranged around a landscaped shared green, with carefully planned access, amenity and natural surveillance.",
   "eight-home-residential-masterplan": "An eight-home residential masterplan balancing site capacity, access, parking, private amenity, landscape and planning constraints.",
@@ -145,4 +146,3 @@ export function createSeoMetadata({
     },
   };
 }
-

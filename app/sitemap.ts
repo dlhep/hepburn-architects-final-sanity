@@ -33,5 +33,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   blogPosts.forEach((item) => add(`/blog/${item.slug}`, item._updatedAt || item.publishedAt || STATIC_LAST_MODIFIED));
   projects.forEach((project) => add(`/projects/${project.slug}`, project._updatedAt || STATIC_LAST_MODIFIED));
   if (reviews.length > 0) add("/reviews");
+  ["/locations/harborne-architects", "/locations/wolverhampton-architects", "/locations/moseley-architects", "/locations/sutton-coldfield-architects", "/services/house-extensions", "/services/new-build-homes", "/projects/house-extension-in-harborne-birmingham"].forEach((path) => add(path, "2026-10-07"));
   return Array.from(entries.values());
 }

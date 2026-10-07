@@ -266,6 +266,7 @@ const relatedResources = [
 ] as const;
 
 const faqs = [
+  { question: "What should I send an architect about my extension?", answer: "Start with the property address, photographs, any existing drawings and a short list of the rooms or changes you need. Tell us your budget priorities and whether you plan to build in phases. We can then identify the survey and design work needed and give a written fee proposal for the agreed stages." },
   {
     question: "Does Hepburn Architects design house extensions in Birmingham and Solihull?",
     answer: "Yes. Hepburn Architects provides director-led design for rear, side, wraparound and two-storey extensions, kitchen extensions and internal remodelling across Birmingham, Solihull and the wider West Midlands. The design starts with your existing home, priorities, budget and the constraints affecting the property.",
@@ -459,7 +460,7 @@ export default async function HouseExtensionsPage() {
   return (
     <>
       <div className="shell" style={{ paddingTop: "1rem" }}>
-        <Link className={styles.textLink} href="/locations/birmingham-architects">
+        <Link className={styles.textLink} href="/">
           Residential architects in Birmingham <ArrowRight size={15} />
         </Link>
       </div>

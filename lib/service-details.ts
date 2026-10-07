@@ -93,12 +93,12 @@ export const serviceDetails: ServiceDetail[] = [
   },
   {
     slug: "new-build-homes",
-    title: "New Build Home Architect",
-    metaTitle: "New Build Home Architect | Birmingham",
-    metaDescription: "Feasibility, planning and technical design for one-off houses, replacement dwellings, infill plots and small residential developments.",
+    title: "New Build House Architects in Birmingham",
+    metaTitle: "New Build House Architects Birmingham",
+    metaDescription: "Birmingham architects for new-build houses, self-builds and replacement homes. Site feasibility, planning and Building Regulations with clear stage fees.",
     hero: "/images/selected-work-1.webp",
     mobileObjectPosition: "42% 47%",
-    intro: "New homes need a strong response to context, access, amenity, landscape, planning policy and buildability. We develop the design and planning case together.",
+    intro: "Designing a new-build house starts with the plot and how you want to live. Hepburn Architects supports self-builders and homeowners across Birmingham and the West Midlands with site feasibility, bespoke house design, planning applications and Building Regulations drawings. David Hepburn works with you to test the brief, site constraints and budget priorities before developing the design.",
     idealFor: ["One-off houses", "Replacement dwellings", "Backland and infill plots", "Small residential developments", "Low-energy homes"],
     process: [
       { title: "Site feasibility", text: "We test access, constraints, planning history, local character, likely capacity and development risks." },
@@ -120,7 +120,7 @@ export const serviceDetails: ServiceDetail[] = [
     projectTerms: ["new build", "new-build", "masterplan", "development", "replacement", "apartments"],
     projectIntro: "One-off homes, apartment schemes and small residential masterplans developed around context, capacity and planning strategy.",
     faqs: [
-      { question: "Can you assess a plot before purchase?", answer: "Yes. Early feasibility can help identify planning risks, likely capacity and whether further specialist work is justified." },
+      { question: "Can I appoint an architect before buying a self-build plot?", answer: "Yes. A separately commissioned feasibility review can test the planning history, access, likely layout and information still needed before purchase. Send the site address, boundary plan, sales particulars and any existing permission. We identify the scope of the review and where specialist advice is needed; it does not guarantee permission or replace legal due diligence." },
       { question: "Do you work on small housing developments?", answer: "Yes. We support one-off homes and small residential sites, with fees scaled to the number and complexity of proposed units." },
       { question: "Can you coordinate planning consultants?", answer: "Yes. We can coordinate ecology, trees, drainage, highways, heritage and other specialist inputs where required." },
       { question: "Can you guarantee planning permission?", answer: "No. We provide a realistic, evidence-led strategy, but the local planning authority remains the decision-maker." }

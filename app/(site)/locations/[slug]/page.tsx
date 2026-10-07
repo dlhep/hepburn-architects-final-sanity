@@ -107,7 +107,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
   return createSeoMetadata({
-    title: slug === "wolverhampton-architects" ? "Wolverhampton Architects | Extensions & Renovations" : `Architects in ${page.shortTitle}`,
+    title: slug === "wolverhampton-architects" ? "Wolverhampton Architects | Extensions & Renovations" : ["moseley-architects", "sutton-coldfield-architects"].includes(slug) ? page.seoTitle : `Architects in ${page.shortTitle}`,
     description: page.description,
     path: `/locations/${slug}`,
   });
@@ -185,6 +185,13 @@ export default async function LocationPage({ params }: { params: Promise<{ slug:
             <div className="selected-work-action"><Link className="btn secondary" href="/projects">View all Birmingham-area projects <ArrowRight size={17} /></Link></div>
           </div>
         </section>
+      )}
+
+      {slug === "moseley-architects" && (
+        <section className="section"><div className="shell editorial-grid">
+          <div><small className="eyebrow">Renovating your home</small><h2>House renovations and refurbishment in Moseley.</h2><p>A renovation starts with what is not working: a dark kitchen, awkward circulation, disconnected rooms or too little storage. We compare changes within the existing house with the extra space an extension could provide.</p></div>
+          <div><p>The brief should identify the features you want to retain, the rooms you need and the work you could phase. Opening up a plan also means considering structure, services and how the remaining rooms will function.</p><p>Explore our <Link href="/services/house-extensions">house extension design service</Link> and <Link href="/services/building-regulations">Building Regulations drawings</Link>, or <Link href="/contact">send David your renovation brief</Link>.</p></div>
+        </div></section>
       )}
 
       <section className="section sand-section">

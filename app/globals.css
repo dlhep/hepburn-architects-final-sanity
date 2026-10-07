@@ -7848,3 +7848,8 @@ body .journal-hero-story[href$="/solihull-wheelchair-accessible-bungalow-plannin
     line-height: 1.12;
   }
 }
+
+/* Contact forms remain light cards even inside dark enquiry sections. */
+body main .contact-form .muted.small-copy,
+body main .contact-form .muted.small-copy a { color: #565c5f; }
+body main .contact-form .muted.small-copy a { text-decoration: underline; text-underline-offset: 3px; }

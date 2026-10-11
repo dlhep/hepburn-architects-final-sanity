@@ -1,0 +1,1122 @@
+[
+  {
+    "source": "/",
+    "destination": "https://www.hepburnarchitects.com/locations/birmingham-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations",
+    "destination": "https://www.hepburnarchitects.com/locations/midlands",
+    "permanent": true
+  },
+  {
+    "source": "/about",
+    "destination": "https://www.hepburnarchitects.com/studio",
+    "permanent": true
+  },
+  {
+    "source": "/privacy-policy",
+    "destination": "https://www.hepburnarchitects.com/privacy",
+    "permanent": true
+  },
+  {
+    "source": "/blog",
+    "destination": "https://www.hepburnarchitects.com/journal",
+    "permanent": true
+  },
+  {
+    "source": "/blog/:path*",
+    "destination": "https://www.hepburnarchitects.com/journal/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/architects-birmingham",
+    "destination": "https://www.hepburnarchitects.com/locations/birmingham-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architects-birmingham/",
+    "destination": "https://www.hepburnarchitects.com/locations/birmingham-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architects-solihull",
+    "destination": "https://www.hepburnarchitects.com/locations/solihull-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architect-solihull",
+    "destination": "https://www.hepburnarchitects.com/locations/solihull-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/birmingham",
+    "destination": "https://www.hepburnarchitects.com/locations/birmingham-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/birmingham-architect",
+    "destination": "https://www.hepburnarchitects.com/locations/birmingham-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/solihull",
+    "destination": "https://www.hepburnarchitects.com/locations/solihull-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/solihull-architect",
+    "destination": "https://www.hepburnarchitects.com/locations/solihull-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/moseley",
+    "destination": "https://www.hepburnarchitects.com/locations/moseley-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/moseley-architect",
+    "destination": "https://www.hepburnarchitects.com/locations/moseley-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architects-harborne",
+    "destination": "https://www.hepburnarchitects.com/locations/harborne-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architects-harborne/",
+    "destination": "https://www.hepburnarchitects.com/locations/harborne-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/harborne",
+    "destination": "https://www.hepburnarchitects.com/locations/harborne-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/harborne-architect",
+    "destination": "https://www.hepburnarchitects.com/locations/harborne-architects",
+    "permanent": true
+  },
+  {
+    "source": "/edgbaston",
+    "destination": "https://www.hepburnarchitects.com/locations/edgbaston-architects",
+    "permanent": true
+  },
+  {
+    "source": "/edgbaston/",
+    "destination": "https://www.hepburnarchitects.com/locations/edgbaston-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/edgbaston",
+    "destination": "https://www.hepburnarchitects.com/locations/edgbaston-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/edgbaston-architect",
+    "destination": "https://www.hepburnarchitects.com/locations/edgbaston-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/sutton-coldfield",
+    "destination": "https://www.hepburnarchitects.com/locations/sutton-coldfield-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/sutton-coldfield-architect",
+    "destination": "https://www.hepburnarchitects.com/locations/sutton-coldfield-architects",
+    "permanent": true
+  },
+  {
+    "source": "/blog/planning-permission-approved-for-a-solihull-home-extension",
+    "destination": "https://www.hepburnarchitects.com/journal/planning-permission-approved-for-a-solihull-home-extension",
+    "permanent": true
+  },
+  {
+    "source": "/projects/passivhaus-shropshire",
+    "destination": "https://www.hepburnarchitects.com/projects/passive-house-new-build",
+    "permanent": true
+  },
+  {
+    "source": "/knowledge-centre/house-extensions",
+    "destination": "https://www.hepburnarchitects.com/services/house-extensions",
+    "permanent": true
+  },
+  {
+    "source": "/house-extensions-birmingham",
+    "destination": "https://www.hepburnarchitects.com/locations/birmingham-architects",
+    "permanent": true
+  },
+  {
+    "source": "/house-extensions-solihull",
+    "destination": "https://www.hepburnarchitects.com/locations/solihull-architects",
+    "permanent": true
+  },
+  {
+    "source": "/house-extensions-bournville",
+    "destination": "https://www.hepburnarchitects.com/locations/bournville-architects",
+    "permanent": true
+  },
+  {
+    "source": "/house-extensions-wolverhampton",
+    "destination": "https://www.hepburnarchitects.com/locations/wolverhampton-architects",
+    "permanent": true
+  },
+  {
+    "source": "/house-extensions-aldridge",
+    "destination": "https://www.hepburnarchitects.com/locations/aldridge-architects",
+    "permanent": true
+  },
+  {
+    "source": "/house-extensions-moseley",
+    "destination": "https://www.hepburnarchitects.com/locations/moseley-architects",
+    "permanent": true
+  },
+  {
+    "source": "/house-extensions-sutton-coldfield",
+    "destination": "https://www.hepburnarchitects.com/locations/sutton-coldfield-architects",
+    "permanent": true
+  },
+  {
+    "source": "/house-extensions-walsall",
+    "destination": "https://www.hepburnarchitects.com/locations/walsall-architects",
+    "permanent": true
+  },
+  {
+    "source": "/house-extensions-kings-heath",
+    "destination": "https://www.hepburnarchitects.com/locations/kings-heath-architects",
+    "permanent": true
+  },
+  {
+    "source": "/house-extensions-four-oaks",
+    "destination": "https://www.hepburnarchitects.com/locations/four-oaks-architects",
+    "permanent": true
+  },
+  {
+    "source": "/house-extensions-little-aston",
+    "destination": "https://www.hepburnarchitects.com/locations/little-aston-architects",
+    "permanent": true
+  },
+  {
+    "source": "/house-extensions-leamington-spa",
+    "destination": "https://www.hepburnarchitects.com/locations/leamington-spa-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architects-bournville",
+    "destination": "https://www.hepburnarchitects.com/locations/bournville-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architects-wolverhampton",
+    "destination": "https://www.hepburnarchitects.com/locations/wolverhampton-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architects-walsall",
+    "destination": "https://www.hepburnarchitects.com/locations/walsall-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architects-kings-heath",
+    "destination": "https://www.hepburnarchitects.com/locations/kings-heath-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architects-sutton-coldfield",
+    "destination": "https://www.hepburnarchitects.com/locations/sutton-coldfield-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architects-four-oaks",
+    "destination": "https://www.hepburnarchitects.com/locations/four-oaks-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architects-little-aston",
+    "destination": "https://www.hepburnarchitects.com/locations/little-aston-architects",
+    "permanent": true
+  },
+  {
+    "source": "/architects-leamington-spa",
+    "destination": "https://www.hepburnarchitects.com/locations/leamington-spa-architects",
+    "permanent": true
+  },
+  {
+    "source": "/blog/bopp-property-networking-solihull",
+    "destination": "https://www.hepburnarchitects.com/journal/bopp-property-networking-solihull",
+    "permanent": true
+  },
+  {
+    "source": "/contact",
+    "destination": "https://www.hepburnarchitects.com/contact",
+    "permanent": true
+  },
+  {
+    "source": "/development-potential-appraisal",
+    "destination": "https://www.hepburnarchitects.com/development-potential-appraisal",
+    "permanent": true
+  },
+  {
+    "source": "/estimate",
+    "destination": "https://www.hepburnarchitects.com/estimate",
+    "permanent": true
+  },
+  {
+    "source": "/guides",
+    "destination": "https://www.hepburnarchitects.com/guides",
+    "permanent": true
+  },
+  {
+    "source": "/guides/architect-fees-residential-project",
+    "destination": "https://www.hepburnarchitects.com/guides/architect-fees-residential-project",
+    "permanent": true
+  },
+  {
+    "source": "/guides/architect-for-planning-permission",
+    "destination": "https://www.hepburnarchitects.com/guides/architect-for-planning-permission",
+    "permanent": true
+  },
+  {
+    "source": "/guides/building-regulations-drawings",
+    "destination": "https://www.hepburnarchitects.com/guides/building-regulations-drawings",
+    "permanent": true
+  },
+  {
+    "source": "/guides/complete-house-extension-guide",
+    "destination": "https://www.hepburnarchitects.com/guides/complete-house-extension-guide",
+    "permanent": true
+  },
+  {
+    "source": "/guides/convert-house-into-flats",
+    "destination": "https://www.hepburnarchitects.com/guides/convert-house-into-flats",
+    "permanent": true
+  },
+  {
+    "source": "/guides/garden-room-planning-permission",
+    "destination": "https://www.hepburnarchitects.com/guides/garden-room-planning-permission",
+    "permanent": true
+  },
+  {
+    "source": "/guides/hmo-conversion-planning-guide",
+    "destination": "https://www.hepburnarchitects.com/guides/hmo-conversion-planning-guide",
+    "permanent": true
+  },
+  {
+    "source": "/guides/house-extension-cost-uk",
+    "destination": "https://www.hepburnarchitects.com/guides/house-extension-cost-uk",
+    "permanent": true
+  },
+  {
+    "source": "/guides/house-extension-planning-newcastle",
+    "destination": "https://www.hepburnarchitects.com/guides/house-extension-planning-newcastle",
+    "permanent": true
+  },
+  {
+    "source": "/guides/lawful-development-certificate",
+    "destination": "https://www.hepburnarchitects.com/guides/lawful-development-certificate",
+    "permanent": true
+  },
+  {
+    "source": "/guides/listed-building-extension-guide",
+    "destination": "https://www.hepburnarchitects.com/guides/listed-building-extension-guide",
+    "permanent": true
+  },
+  {
+    "source": "/guides/loft-conversion-planning-permission",
+    "destination": "https://www.hepburnarchitects.com/guides/loft-conversion-planning-permission",
+    "permanent": true
+  },
+  {
+    "source": "/guides/permitted-development-rights-explained",
+    "destination": "https://www.hepburnarchitects.com/guides/permitted-development-rights-explained",
+    "permanent": true
+  },
+  {
+    "source": "/guides/planning-application-timescales",
+    "destination": "https://www.hepburnarchitects.com/guides/planning-application-timescales",
+    "permanent": true
+  },
+  {
+    "source": "/guides/planning-application-validation-checklist",
+    "destination": "https://www.hepburnarchitects.com/guides/planning-application-validation-checklist",
+    "permanent": true
+  },
+  {
+    "source": "/guides/planning-conditions-discharge-guide",
+    "destination": "https://www.hepburnarchitects.com/guides/planning-conditions-discharge-guide",
+    "permanent": true
+  },
+  {
+    "source": "/guides/planning-permission-conservation-area",
+    "destination": "https://www.hepburnarchitects.com/guides/planning-permission-conservation-area",
+    "permanent": true
+  },
+  {
+    "source": "/guides/planning-permission-house-extension",
+    "destination": "https://www.hepburnarchitects.com/guides/planning-permission-house-extension",
+    "permanent": true
+  },
+  {
+    "source": "/guides/planning-refusal-next-steps",
+    "destination": "https://www.hepburnarchitects.com/guides/planning-refusal-next-steps",
+    "permanent": true
+  },
+  {
+    "source": "/guides/planning-vs-building-regulations",
+    "destination": "https://www.hepburnarchitects.com/guides/planning-vs-building-regulations",
+    "permanent": true
+  },
+  {
+    "source": "/guides/rear-extension-design-ideas",
+    "destination": "https://www.hepburnarchitects.com/guides/rear-extension-design-ideas",
+    "permanent": true
+  },
+  {
+    "source": "/guides/replacement-dwelling-planning",
+    "destination": "https://www.hepburnarchitects.com/guides/replacement-dwelling-planning",
+    "permanent": true
+  },
+  {
+    "source": "/guides/side-extension-planning-rules",
+    "destination": "https://www.hepburnarchitects.com/guides/side-extension-planning-rules",
+    "permanent": true
+  },
+  {
+    "source": "/guides/single-storey-extension-rules",
+    "destination": "https://www.hepburnarchitects.com/guides/single-storey-extension-rules",
+    "permanent": true
+  },
+  {
+    "source": "/guides/two-storey-extension-rules",
+    "destination": "https://www.hepburnarchitects.com/guides/two-storey-extension-rules",
+    "permanent": true
+  },
+  {
+    "source": "/guides/wraparound-extension-planning",
+    "destination": "https://www.hepburnarchitects.com/guides/wraparound-extension-planning",
+    "permanent": true
+  },
+  {
+    "source": "/journal",
+    "destination": "https://www.hepburnarchitects.com/journal",
+    "permanent": true
+  },
+  {
+    "source": "/journal/biodiversity-net-gain-rules-changed-in-august-2026-what-small-developers-need-to-know",
+    "destination": "https://www.hepburnarchitects.com/journal/biodiversity-net-gain-rules-changed-in-august-2026-what-small-developers-need-to-know",
+    "permanent": true
+  },
+  {
+    "source": "/journal/bopp-property-networking-solihull",
+    "destination": "https://www.hepburnarchitects.com/journal/bopp-property-networking-solihull",
+    "permanent": true
+  },
+  {
+    "source": "/journal/building-regulations-drawings-house-extensions-north-east",
+    "destination": "https://www.hepburnarchitects.com/journal/building-regulations-drawings-house-extensions-north-east",
+    "permanent": true
+  },
+  {
+    "source": "/journal/c2-planning-permission-one-two-child-childrens-home-birmingham",
+    "destination": "https://www.hepburnarchitects.com/journal/c2-planning-permission-one-two-child-childrens-home-birmingham",
+    "permanent": true
+  },
+  {
+    "source": "/journal/c2-planning-permission-one-two-child-childrens-home-north-east",
+    "destination": "https://www.hepburnarchitects.com/journal/c2-planning-permission-one-two-child-childrens-home-north-east",
+    "permanent": true
+  },
+  {
+    "source": "/journal/c3-to-c2-childrens-home-planning-north-east",
+    "destination": "https://www.hepburnarchitects.com/journal/c3-to-c2-childrens-home-planning-north-east",
+    "permanent": true
+  },
+  {
+    "source": "/journal/c3-to-c2-childrens-home-planning-west-midlands",
+    "destination": "https://www.hepburnarchitects.com/journal/c3-to-c2-childrens-home-planning-west-midlands",
+    "permanent": true
+  },
+  {
+    "source": "/journal/future-homes-standard-2026-homeowners-guide",
+    "destination": "https://www.hepburnarchitects.com/journal/future-homes-standard-2026-homeowners-guide",
+    "permanent": true
+  },
+  {
+    "source": "/journal/future-homes-standard-2027",
+    "destination": "https://www.hepburnarchitects.com/journal/future-homes-standard-2027",
+    "permanent": true
+  },
+  {
+    "source": "/journal/garden-land-small-residential-development-feasibility",
+    "destination": "https://www.hepburnarchitects.com/journal/garden-land-small-residential-development-feasibility",
+    "permanent": true
+  },
+  {
+    "source": "/journal/house-extension-planning-permission-birmingham-2026-guide",
+    "destination": "https://www.hepburnarchitects.com/journal/house-extension-planning-permission-birmingham-2026-guide",
+    "permanent": true
+  },
+  {
+    "source": "/journal/house-extension-planning-permission-middlesbrough-2026",
+    "destination": "https://www.hepburnarchitects.com/journal/house-extension-planning-permission-middlesbrough-2026",
+    "permanent": true
+  },
+  {
+    "source": "/journal/how-to-choose-the-best-architect-in-birmingham",
+    "destination": "https://www.hepburnarchitects.com/journal/how-to-choose-the-best-architect-in-birmingham",
+    "permanent": true
+  },
+  {
+    "source": "/journal/loft-conversion-planning-rules-birmingham",
+    "destination": "https://www.hepburnarchitects.com/journal/loft-conversion-planning-rules-birmingham",
+    "permanent": true
+  },
+  {
+    "source": "/journal/new-biodiversity-net-gain-exemption",
+    "destination": "https://www.hepburnarchitects.com/journal/new-biodiversity-net-gain-exemption",
+    "permanent": true
+  },
+  {
+    "source": "/journal/new-nppf-2026-default-yes-residential-development",
+    "destination": "https://www.hepburnarchitects.com/journal/new-nppf-2026-default-yes-residential-development",
+    "permanent": true
+  },
+  {
+    "source": "/journal/planning-permission-approved-for-a-solihull-home-extension",
+    "destination": "https://www.hepburnarchitects.com/journal/planning-permission-approved-for-a-solihull-home-extension",
+    "permanent": true
+  },
+  {
+    "source": "/journal/solar-panel-planning-rules-august-2026",
+    "destination": "https://www.hepburnarchitects.com/journal/solar-panel-planning-rules-august-2026",
+    "permanent": true
+  },
+  {
+    "source": "/journal/solihull-wheelchair-accessible-bungalow-planning-permission",
+    "destination": "https://www.hepburnarchitects.com/journal/solihull-wheelchair-accessible-bungalow-planning-permission",
+    "permanent": true
+  },
+  {
+    "source": "/journal/why-a-planning-approval-does-not-mean-your-extension-is-ready-to-build",
+    "destination": "https://www.hepburnarchitects.com/journal/why-a-planning-approval-does-not-mean-your-extension-is-ready-to-build",
+    "permanent": true
+  },
+  {
+    "source": "/knowledge-centre",
+    "destination": "https://www.hepburnarchitects.com/knowledge-centre",
+    "permanent": true
+  },
+  {
+    "source": "/knowledge-centre/building-regulations",
+    "destination": "https://www.hepburnarchitects.com/knowledge-centre/building-regulations",
+    "permanent": true
+  },
+  {
+    "source": "/knowledge-centre/extension-planning-permission",
+    "destination": "https://www.hepburnarchitects.com/knowledge-centre/extension-planning-permission",
+    "permanent": true
+  },
+  {
+    "source": "/knowledge-centre/house-extension-costs",
+    "destination": "https://www.hepburnarchitects.com/knowledge-centre/house-extension-costs",
+    "permanent": true
+  },
+  {
+    "source": "/knowledge-centre/house-extension-ideas",
+    "destination": "https://www.hepburnarchitects.com/knowledge-centre/house-extension-ideas",
+    "permanent": true
+  },
+  {
+    "source": "/knowledge-centre/house-extension-timeline",
+    "destination": "https://www.hepburnarchitects.com/knowledge-centre/house-extension-timeline",
+    "permanent": true
+  },
+  {
+    "source": "/knowledge-centre/loft-conversions",
+    "destination": "https://www.hepburnarchitects.com/knowledge-centre/loft-conversions",
+    "permanent": true
+  },
+  {
+    "source": "/knowledge-centre/planning-permission",
+    "destination": "https://www.hepburnarchitects.com/knowledge-centre/planning-permission",
+    "permanent": true
+  },
+  {
+    "source": "/knowledge-centre/property-professional-architectural-support",
+    "destination": "https://www.hepburnarchitects.com/knowledge-centre/property-professional-architectural-support",
+    "permanent": true
+  },
+  {
+    "source": "/locations/aldridge-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/aldridge-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/birmingham-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/birmingham-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/bournville-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/bournville-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/county-durham-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/county-durham-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/darlington-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/darlington-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/edgbaston-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/edgbaston-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/four-oaks-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/four-oaks-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/gateshead-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/gateshead-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/great-ayton-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/great-ayton-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/guisborough-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/guisborough-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/harborne-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/harborne-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/harrogate-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/harrogate-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/hartlepool-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/hartlepool-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/hutton-rudby-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/hutton-rudby-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/kings-heath-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/kings-heath-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/leamington-spa-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/leamington-spa-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/leeds-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/leeds-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/little-aston-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/little-aston-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/middlesbrough-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/middlesbrough-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/midlands",
+    "destination": "https://www.hepburnarchitects.com/locations/midlands",
+    "permanent": true
+  },
+  {
+    "source": "/locations/moseley-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/moseley-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/newcastle-upon-tyne-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/newcastle-upon-tyne-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/north-east",
+    "destination": "https://www.hepburnarchitects.com/locations/north-east",
+    "permanent": true
+  },
+  {
+    "source": "/locations/north-yorkshire-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/north-yorkshire-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/northallerton-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/northallerton-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/nunthorpe-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/nunthorpe-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/ponteland-darras-hall-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/ponteland-darras-hall-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/redcar-and-cleveland-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/redcar-and-cleveland-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/ripon-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/ripon-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/solihull-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/solihull-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/spennymoor-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/spennymoor-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/stockton-on-tees-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/stockton-on-tees-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/stokesley-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/stokesley-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/sunderland-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/sunderland-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/sutton-coldfield-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/sutton-coldfield-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/teesside-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/teesside-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/tynemouth-whitley-bay-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/tynemouth-whitley-bay-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/walsall-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/walsall-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/wolverhampton-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/wolverhampton-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/yarm-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/yarm-architects",
+    "permanent": true
+  },
+  {
+    "source": "/locations/york-architects",
+    "destination": "https://www.hepburnarchitects.com/locations/york-architects",
+    "permanent": true
+  },
+  {
+    "source": "/planning-tools",
+    "destination": "https://www.hepburnarchitects.com/planning-tools",
+    "permanent": true
+  },
+  {
+    "source": "/privacy",
+    "destination": "https://www.hepburnarchitects.com/privacy",
+    "permanent": true
+  },
+  {
+    "source": "/projects",
+    "destination": "https://www.hepburnarchitects.com/projects",
+    "permanent": true
+  },
+  {
+    "source": "/projects/apartment-scheme-birmingham",
+    "destination": "https://www.hepburnarchitects.com/projects/apartment-scheme-birmingham",
+    "permanent": true
+  },
+  {
+    "source": "/projects/apartment-scheme-concept-west-midlands",
+    "destination": "https://www.hepburnarchitects.com/projects/apartment-scheme-concept-west-midlands",
+    "permanent": true
+  },
+  {
+    "source": "/projects/ashfield-house-rear-extension-concept",
+    "destination": "https://www.hepburnarchitects.com/projects/ashfield-house-rear-extension-concept",
+    "permanent": true
+  },
+  {
+    "source": "/projects/barn-conversion-staffordshire",
+    "destination": "https://www.hepburnarchitects.com/projects/barn-conversion-staffordshire",
+    "permanent": true
+  },
+  {
+    "source": "/projects/beckside-mews-concept",
+    "destination": "https://www.hepburnarchitects.com/projects/beckside-mews-concept",
+    "permanent": true
+  },
+  {
+    "source": "/projects/black-cladding-extension",
+    "destination": "https://www.hepburnarchitects.com/projects/black-cladding-extension",
+    "permanent": true
+  },
+  {
+    "source": "/projects/briar-cottage-rear-extension-concept",
+    "destination": "https://www.hepburnarchitects.com/projects/briar-cottage-rear-extension-concept",
+    "permanent": true
+  },
+  {
+    "source": "/projects/childrens-home-conversion-birmingham",
+    "destination": "https://www.hepburnarchitects.com/projects/childrens-home-conversion-birmingham",
+    "permanent": true
+  },
+  {
+    "source": "/projects/childrens-home-garden-extension-sandwell",
+    "destination": "https://www.hepburnarchitects.com/projects/childrens-home-garden-extension-sandwell",
+    "permanent": true
+  },
+  {
+    "source": "/projects/childrens-home-internal-remodelling-west-midlands",
+    "destination": "https://www.hepburnarchitects.com/projects/childrens-home-internal-remodelling-west-midlands",
+    "permanent": true
+  },
+  {
+    "source": "/projects/civic-chambers",
+    "destination": "https://www.hepburnarchitects.com/projects/civic-chambers",
+    "permanent": true
+  },
+  {
+    "source": "/projects/contemporary-extension-calthorpe",
+    "destination": "https://www.hepburnarchitects.com/projects/contemporary-extension-calthorpe",
+    "permanent": true
+  },
+  {
+    "source": "/projects/contemporary-farmhouse-extension",
+    "destination": "https://www.hepburnarchitects.com/projects/contemporary-farmhouse-extension",
+    "permanent": true
+  },
+  {
+    "source": "/projects/contemporary-new-build",
+    "destination": "https://www.hepburnarchitects.com/projects/contemporary-new-build",
+    "permanent": true
+  },
+  {
+    "source": "/projects/contemporary-rear-extension-and-loft-conversion-wynyard",
+    "destination": "https://www.hepburnarchitects.com/projects/contemporary-rear-extension-and-loft-conversion-wynyard",
+    "permanent": true
+  },
+  {
+    "source": "/projects/contemporary-rear-extension-and-remodelling",
+    "destination": "https://www.hepburnarchitects.com/projects/contemporary-rear-extension-and-remodelling",
+    "permanent": true
+  },
+  {
+    "source": "/projects/contemporary-rear-extension-in-newcastle",
+    "destination": "https://www.hepburnarchitects.com/projects/contemporary-rear-extension-in-newcastle",
+    "permanent": true
+  },
+  {
+    "source": "/projects/contemporary-renovation-shropshire",
+    "destination": "https://www.hepburnarchitects.com/projects/contemporary-renovation-shropshire",
+    "permanent": true
+  },
+  {
+    "source": "/projects/contemporary-rural-extension",
+    "destination": "https://www.hepburnarchitects.com/projects/contemporary-rural-extension",
+    "permanent": true
+  },
+  {
+    "source": "/projects/elmfield-house-c3-c2-childrens-home",
+    "destination": "https://www.hepburnarchitects.com/projects/elmfield-house-c3-c2-childrens-home",
+    "permanent": true
+  },
+  {
+    "source": "/projects/exchange-house-concept",
+    "destination": "https://www.hepburnarchitects.com/projects/exchange-house-concept",
+    "permanent": true
+  },
+  {
+    "source": "/projects/farm-house-contemporary-extension",
+    "destination": "https://www.hepburnarchitects.com/projects/farm-house-contemporary-extension",
+    "permanent": true
+  },
+  {
+    "source": "/projects/foundry-court",
+    "destination": "https://www.hepburnarchitects.com/projects/foundry-court",
+    "permanent": true
+  },
+  {
+    "source": "/projects/from-land-to-layout-testing-the-potential-for-new-homes-in-birmingham",
+    "destination": "https://www.hepburnarchitects.com/projects/from-land-to-layout-testing-the-potential-for-new-homes-in-birmingham",
+    "permanent": true
+  },
+  {
+    "source": "/projects/hall-green-small-gabled-rear-extension",
+    "destination": "https://www.hepburnarchitects.com/projects/hall-green-small-gabled-rear-extension",
+    "permanent": true
+  },
+  {
+    "source": "/projects/harborne-pitched-roof-rear-extension",
+    "destination": "https://www.hepburnarchitects.com/projects/harborne-pitched-roof-rear-extension",
+    "permanent": true
+  },
+  {
+    "source": "/projects/hawthorn-villa-rear-extension-concept",
+    "destination": "https://www.hepburnarchitects.com/projects/hawthorn-villa-rear-extension-concept",
+    "permanent": true
+  },
+  {
+    "source": "/projects/house-extension",
+    "destination": "https://www.hepburnarchitects.com/projects/house-extension",
+    "permanent": true
+  },
+  {
+    "source": "/projects/house-extension-birmingham",
+    "destination": "https://www.hepburnarchitects.com/projects/house-extension-birmingham",
+    "permanent": true
+  },
+  {
+    "source": "/projects/house-extension-in-harborne-birmingham",
+    "destination": "https://www.hepburnarchitects.com/projects/house-extension-in-harborne-birmingham",
+    "permanent": true
+  },
+  {
+    "source": "/projects/house-extension-solihull",
+    "destination": "https://www.hepburnarchitects.com/projects/house-extension-solihull",
+    "permanent": true
+  },
+  {
+    "source": "/projects/kings-heath-small-kitchen-extension",
+    "destination": "https://www.hepburnarchitects.com/projects/kings-heath-small-kitchen-extension",
+    "permanent": true
+  },
+  {
+    "source": "/projects/modern-contemporary-new-build",
+    "destination": "https://www.hepburnarchitects.com/projects/modern-contemporary-new-build",
+    "permanent": true
+  },
+  {
+    "source": "/projects/modern-extension-to-rural-property",
+    "destination": "https://www.hepburnarchitects.com/projects/modern-extension-to-rural-property",
+    "permanent": true
+  },
+  {
+    "source": "/projects/new-build-apartments-cornwall",
+    "destination": "https://www.hepburnarchitects.com/projects/new-build-apartments-cornwall",
+    "permanent": true
+  },
+  {
+    "source": "/projects/passive-house-new-build",
+    "destination": "https://www.hepburnarchitects.com/projects/passive-house-new-build",
+    "permanent": true
+  },
+  {
+    "source": "/projects/rear-extension-warwick",
+    "destination": "https://www.hepburnarchitects.com/projects/rear-extension-warwick",
+    "permanent": true
+  },
+  {
+    "source": "/projects/rear-house-extension-yorkshire",
+    "destination": "https://www.hepburnarchitects.com/projects/rear-house-extension-yorkshire",
+    "permanent": true
+  },
+  {
+    "source": "/projects/replacement-bungalow",
+    "destination": "https://www.hepburnarchitects.com/projects/replacement-bungalow",
+    "permanent": true
+  },
+  {
+    "source": "/projects/replacement-dwelling-birmingham",
+    "destination": "https://www.hepburnarchitects.com/projects/replacement-dwelling-birmingham",
+    "permanent": true
+  },
+  {
+    "source": "/projects/rowan-house-c3-c2-childrens-home",
+    "destination": "https://www.hepburnarchitects.com/projects/rowan-house-c3-c2-childrens-home",
+    "permanent": true
+  },
+  {
+    "source": "/projects/solihull-full-width-dormer-loft-conversion",
+    "destination": "https://www.hepburnarchitects.com/projects/solihull-full-width-dormer-loft-conversion",
+    "permanent": true
+  },
+  {
+    "source": "/projects/stokesley-pitched-roof-rear-extension",
+    "destination": "https://www.hepburnarchitects.com/projects/stokesley-pitched-roof-rear-extension",
+    "permanent": true
+  },
+  {
+    "source": "/projects/stourbridge-full-width-dormer-loft-conversion",
+    "destination": "https://www.hepburnarchitects.com/projects/stourbridge-full-width-dormer-loft-conversion",
+    "permanent": true
+  },
+  {
+    "source": "/projects/sutton-coldfield-full-width-dormer-loft-conversion",
+    "destination": "https://www.hepburnarchitects.com/projects/sutton-coldfield-full-width-dormer-loft-conversion",
+    "permanent": true
+  },
+  {
+    "source": "/projects/traditional-barn-conversion-northumberland",
+    "destination": "https://www.hepburnarchitects.com/projects/traditional-barn-conversion-northumberland",
+    "permanent": true
+  },
+  {
+    "source": "/projects/victorian-gothic-residence-heritage-extension",
+    "destination": "https://www.hepburnarchitects.com/projects/victorian-gothic-residence-heritage-extension",
+    "permanent": true
+  },
+  {
+    "source": "/projects/willow-lodge",
+    "destination": "https://www.hepburnarchitects.com/projects/willow-lodge",
+    "permanent": true
+  },
+  {
+    "source": "/residential-development",
+    "destination": "https://www.hepburnarchitects.com/residential-development",
+    "permanent": true
+  },
+  {
+    "source": "/reviews",
+    "destination": "https://www.hepburnarchitects.com/reviews",
+    "permanent": true
+  },
+  {
+    "source": "/services",
+    "destination": "https://www.hepburnarchitects.com/services",
+    "permanent": true
+  },
+  {
+    "source": "/services/building-regulations",
+    "destination": "https://www.hepburnarchitects.com/services/building-regulations",
+    "permanent": true
+  },
+  {
+    "source": "/services/c2-planning-applications-childrens-homes",
+    "destination": "https://www.hepburnarchitects.com/services/c2-planning-applications-childrens-homes",
+    "permanent": true
+  },
+  {
+    "source": "/services/care-home-dementia-planning",
+    "destination": "https://www.hepburnarchitects.com/services/care-home-dementia-planning",
+    "permanent": true
+  },
+  {
+    "source": "/services/change-of-use",
+    "destination": "https://www.hepburnarchitects.com/services/change-of-use",
+    "permanent": true
+  },
+  {
+    "source": "/services/class-ma-commercial-to-residential",
+    "destination": "https://www.hepburnarchitects.com/services/class-ma-commercial-to-residential",
+    "permanent": true
+  },
+  {
+    "source": "/services/class-q-barn-conversions",
+    "destination": "https://www.hepburnarchitects.com/services/class-q-barn-conversions",
+    "permanent": true
+  },
+  {
+    "source": "/services/development-change-of-use",
+    "destination": "https://www.hepburnarchitects.com/services/development-change-of-use",
+    "permanent": true
+  },
+  {
+    "source": "/services/feasibility-development-advice",
+    "destination": "https://www.hepburnarchitects.com/services/feasibility-development-advice",
+    "permanent": true
+  },
+  {
+    "source": "/services/hmo-conversions",
+    "destination": "https://www.hepburnarchitects.com/services/hmo-conversions",
+    "permanent": true
+  },
+  {
+    "source": "/services/house-extensions",
+    "destination": "https://www.hepburnarchitects.com/services/house-extensions",
+    "permanent": true
+  },
+  {
+    "source": "/services/loft-conversions",
+    "destination": "https://www.hepburnarchitects.com/services/loft-conversions",
+    "permanent": true
+  },
+  {
+    "source": "/services/new-build-homes",
+    "destination": "https://www.hepburnarchitects.com/services/new-build-homes",
+    "permanent": true
+  },
+  {
+    "source": "/services/planning-applications",
+    "destination": "https://www.hepburnarchitects.com/services/planning-applications",
+    "permanent": true
+  },
+  {
+    "source": "/projects/:path*",
+    "destination": "https://www.hepburnarchitects.com/projects/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/locations/:path*",
+    "destination": "https://www.hepburnarchitects.com/locations/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/services/:path*",
+    "destination": "https://www.hepburnarchitects.com/services/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/guides/:path*",
+    "destination": "https://www.hepburnarchitects.com/guides/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/journal/:path*",
+    "destination": "https://www.hepburnarchitects.com/journal/:path*",
+    "permanent": true
+  },
+  {
+    "source": "/knowledge-centre/:path*",
+    "destination": "https://www.hepburnarchitects.com/knowledge-centre/:path*",
+    "permanent": true
+  }
+]

@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import { northEastProjectSlugs } from "./lib/project-region";
+import combinedSiteRedirects from "./data/combined-site-redirects.json";
 
 const permanentHostRedirects = (hosts: string[], destination: string) =>
   hosts.map((host) => ({
@@ -36,141 +36,11 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      ...northEastProjectSlugs.map((slug) => ({
-        source: `/projects/${slug}`,
-        destination: `https://www.hepburnarchitects.com/projects/${slug}`,
-        permanent: true,
-      })),
-      {
-        source: "/blog",
-        destination: "/journal",
-        permanent: true,
-      },
-      ...permanentHostRedirects(
-        ["hepburnarchitects.net", "www.hepburnarchitects.net"],
-        "https://hepburnarchitects.co.uk",
-      ),
-      ...permanentHostRedirects(
-        [
-          "solihullarchitects.co.uk",
-          "www.solihullarchitects.co.uk",
-          "architectsolihull.co.uk",
-          "www.architectsolihull.co.uk",
-          "architectssolihull.co.uk",
-          "www.architectssolihull.co.uk",
-        ],
-        "https://hepburnarchitects.co.uk/locations/solihull-architects",
-      ),
-      ...permanentHostRedirects(
-        ["hmo-architects.co.uk", "www.hmo-architects.co.uk"],
-        "https://hepburnarchitects.co.uk/services/hmo-conversions",
-      ),
-      ...permanentHostRedirects(
-        [
-          "dlhepburn.co.uk",
-          "www.dlhepburn.co.uk",
-          "dlhepburn.com",
-          "www.dlhepburn.com",
-          "hepburndaoudi.com",
-          "www.hepburndaoudi.com",
-        ],
-        "https://hepburnarchitects.co.uk/about",
-      ),
-      {
-        source: "/knowledge-centre/house-extensions",
-        destination: "/services/house-extensions",
-        permanent: true,
-      },
-      {
-        source: "/locations/birmingham-architects",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/locations/birmingham",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/locations/solihull-architect",
-        destination: "/locations/solihull-architects",
-        permanent: true,
-      },
-      {
-        source: "/locations/solihull",
-        destination: "/locations/solihull-architects",
-        permanent: true,
-      },
-      {
-        source: "/locations/birmingham-architect",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/locations/moseley",
-        destination: "/locations/moseley-architects",
-        permanent: true,
-      },
-      {
-        source: "/locations/moseley-architect",
-        destination: "/locations/moseley-architects",
-        permanent: true,
-      },
-      {
-        source: "/locations/harborne",
-        destination: "/locations/harborne-architects",
-        permanent: true,
-      },
-      {
-        source: "/locations/harborne-architect",
-        destination: "/locations/harborne-architects",
-        permanent: true,
-      },
-      {
-        source: "/locations/edgbaston",
-        destination: "/locations/edgbaston-architects",
-        permanent: true,
-      },
-      {
-        source: "/locations/edgbaston-architect",
-        destination: "/locations/edgbaston-architects",
-        permanent: true,
-      },
-      {
-        source: "/locations/sutton-coldfield",
-        destination: "/locations/sutton-coldfield-architects",
-        permanent: true,
-      },
-      {
-        source: "/locations/sutton-coldfield-architect",
-        destination: "/locations/sutton-coldfield-architects",
-        permanent: true,
-      },
-      {
-        source: "/locations/middlesbrough",
-        destination: "https://www.hepburnarchitects.com/architects-middlesbrough",
-        permanent: true,
-      },
-      {
-        source: "/locations/teesside",
-        destination: "https://www.hepburnarchitects.com/architects-middlesbrough",
-        permanent: true,
-      },
-      {
-        source: "/locations/nunthorpe",
-        destination: "https://www.hepburnarchitects.com/architects-middlesbrough",
-        permanent: true,
-      },
-      {
-        source: "/locations/stockton-on-tees",
-        destination: "https://www.hepburnarchitects.com/architects-middlesbrough",
-        permanent: true,
-      },
-      {
-        source: "/locations/yarm",
-        destination: "https://www.hepburnarchitects.com/architects-middlesbrough",
-        permanent: true,
-      },
+      ...permanentHostRedirects(["hepburnarchitects.net", "www.hepburnarchitects.net"], "https://www.hepburnarchitects.com/locations/birmingham-architects"),
+      ...permanentHostRedirects(["solihullarchitects.co.uk", "www.solihullarchitects.co.uk", "architectsolihull.co.uk", "www.architectsolihull.co.uk", "architectssolihull.co.uk", "www.architectssolihull.co.uk"], "https://www.hepburnarchitects.com/locations/solihull-architects"),
+      ...permanentHostRedirects(["hmo-architects.co.uk", "www.hmo-architects.co.uk"], "https://www.hepburnarchitects.com/services/hmo-conversions"),
+      ...permanentHostRedirects(["dlhepburn.co.uk", "www.dlhepburn.co.uk", "dlhepburn.com", "www.dlhepburn.com", "hepburndaoudi.com", "www.hepburndaoudi.com"], "https://www.hepburnarchitects.com/studio"),
+      ...combinedSiteRedirects,
     ];
   },
   images: {

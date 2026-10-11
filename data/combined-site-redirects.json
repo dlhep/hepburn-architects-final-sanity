@@ -1,5 +1,25 @@
 [
   {
+    "source": "/blog/c2-planning-permission-one-two-child-childrens-home-birmingham",
+    "destination": "https://www.hepburnarchitects.com/journal/c3-to-c2-childrens-home-planning-west-midlands",
+    "permanent": true
+  },
+  {
+    "source": "/blog/c2-planning-permission-one-two-child-childrens-home-north-east",
+    "destination": "https://www.hepburnarchitects.com/journal/c3-to-c2-childrens-home-planning-north-east",
+    "permanent": true
+  },
+  {
+    "source": "/blog/biodiversity-net-gain-rules-changed-in-august-2026-what-small-developers-need-to-know",
+    "destination": "https://www.hepburnarchitects.com/journal/new-biodiversity-net-gain-exemption",
+    "permanent": true
+  },
+  {
+    "source": "/blog/future-homes-standard-2026-homeowners-guide",
+    "destination": "https://www.hepburnarchitects.com/journal/future-homes-standard-2027",
+    "permanent": true
+  },
+  {
     "source": "/",
     "destination": "https://www.hepburnarchitects.com/locations/birmingham-architects",
     "permanent": true
@@ -406,7 +426,7 @@
   },
   {
     "source": "/journal/biodiversity-net-gain-rules-changed-in-august-2026-what-small-developers-need-to-know",
-    "destination": "https://www.hepburnarchitects.com/journal/biodiversity-net-gain-rules-changed-in-august-2026-what-small-developers-need-to-know",
+    "destination": "https://www.hepburnarchitects.com/journal/new-biodiversity-net-gain-exemption",
     "permanent": true
   },
   {
@@ -421,12 +441,12 @@
   },
   {
     "source": "/journal/c2-planning-permission-one-two-child-childrens-home-birmingham",
-    "destination": "https://www.hepburnarchitects.com/journal/c2-planning-permission-one-two-child-childrens-home-birmingham",
+    "destination": "https://www.hepburnarchitects.com/journal/c3-to-c2-childrens-home-planning-west-midlands",
     "permanent": true
   },
   {
     "source": "/journal/c2-planning-permission-one-two-child-childrens-home-north-east",
-    "destination": "https://www.hepburnarchitects.com/journal/c2-planning-permission-one-two-child-childrens-home-north-east",
+    "destination": "https://www.hepburnarchitects.com/journal/c3-to-c2-childrens-home-planning-north-east",
     "permanent": true
   },
   {
@@ -441,7 +461,7 @@
   },
   {
     "source": "/journal/future-homes-standard-2026-homeowners-guide",
-    "destination": "https://www.hepburnarchitects.com/journal/future-homes-standard-2026-homeowners-guide",
+    "destination": "https://www.hepburnarchitects.com/journal/future-homes-standard-2027",
     "permanent": true
   },
   {

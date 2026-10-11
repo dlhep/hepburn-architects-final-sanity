@@ -45,7 +45,7 @@ async function fetchSanity<T>(
   if (!isSanityConfigured) return fallback;
 
   try {
-    return await client.fetch<T>(query, params, {
+    return await client.fetch<T>(`${query}\n// Content revision: four-home-feasibility-2026-10-11`, params, {
       next: { revalidate: 21600, tags: ["sanity-articles"] },
     });
   } catch (error) {

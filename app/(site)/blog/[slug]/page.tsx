@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const page = await getArticle(slug, "blog");
   if (!page) return {};
-  const image = slug === "garden-land-small-residential-development-feasibility" ? "/images/garden-land-housing-development-concept.svg" : articleImageUrl(page.featuredImage, 1200);
+  const image = slug === gardenConceptSlug ? gardenConceptImage : articleImageUrl(page.featuredImage, 1200);
   return createSeoMetadata({
     title: page.seoTitle || page.title,
     description: seoDescription(page.seoDescription, page.excerpt),
@@ -51,7 +51,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     .filter((item) => item.slug !== slug)
     .sort((a, b) => Number(b.category === page.category) - Number(a.category === page.category))
     .slice(0, 3);
-  const image = slug === "garden-land-small-residential-development-feasibility" ? "/images/garden-land-housing-development-concept.svg" : articleImageUrl(page.featuredImage);
+  const image = slug === gardenConceptSlug ? gardenConceptImage : articleImageUrl(page.featuredImage);
   const links = topicLinks(`${page.title} ${page.category || ""} ${page.excerpt}`);
 
   const url = `${site.url}/blog/${slug}`;
@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {image ? (
             <Image
               src={image}
-              alt={slug === "garden-land-small-residential-development-feasibility" ? "Architectural concept drawing of a small landscaped housing development with detached houses, access roads and gardens" : (page.featuredImage?.alt || page.title)}
+              alt={slug === gardenConceptSlug ? "Architectural concept drawing of a small landscaped housing development with detached houses, access roads and gardens" : (page.featuredImage?.alt || page.title)}
               width={1600}
               height={950}
               priority

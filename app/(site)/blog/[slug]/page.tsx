@@ -10,9 +10,6 @@ import { CommercialNextStep } from "@/components/internal-links/CommercialNextSt
 import { StructuredData } from "@/components/StructuredData";
 import { buildArticleSchema, buildBreadcrumbSchema, buildGraph, buildWebPageSchema, breadcrumbId } from "@/lib/structured-data";
 
-const gardenConceptSlug = "garden-land-small-residential-development-feasibility";
-const gardenConceptImage = "https://cdn.sanity.io/images/5xwjrn3e/production/99a88f135fad55a2ee86178f37fc6f16dfb5f4dc-1448x1086.png";
-
 const topics = [
   { terms: ["extension", "rear extension", "two-storey", "single-storey"], service: { href: "/services/house-extensions", label: "House extension architect" }, guide: { href: "/house-extension-guide", label: "House Extension Guide" } },
   { terms: ["loft", "dormer", "roof"], service: { href: "/services/loft-conversions", label: "Loft conversion architect" }, guide: { href: "/knowledge-centre/loft-conversions", label: "Loft conversion planning guide" } },
@@ -31,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const page = await getArticle(slug, "blog");
   if (!page) return {};
-  const image = slug === gardenConceptSlug ? gardenConceptImage : articleImageUrl(page.featuredImage, 1200);
+  const image = articleImageUrl(page.featuredImage, 1200);
   return createSeoMetadata({
     title: page.seoTitle || page.title,
     description: seoDescription(page.seoDescription, page.excerpt),
@@ -51,7 +48,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     .filter((item) => item.slug !== slug)
     .sort((a, b) => Number(b.category === page.category) - Number(a.category === page.category))
     .slice(0, 3);
-  const image = slug === gardenConceptSlug ? gardenConceptImage : articleImageUrl(page.featuredImage);
+  const image = articleImageUrl(page.featuredImage);
   const links = topicLinks(`${page.title} ${page.category || ""} ${page.excerpt}`);
 
   const url = `${site.url}/blog/${slug}`;
@@ -77,7 +74,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {image ? (
             <Image
               src={image}
-              alt={slug === gardenConceptSlug ? "Site plan of four detached homes with private gardens, parking and a shared landscaped access" : (page.featuredImage?.alt || page.title)}
+              alt={page.featuredImage?.alt || page.title}
               width={1600}
               height={950}
               priority

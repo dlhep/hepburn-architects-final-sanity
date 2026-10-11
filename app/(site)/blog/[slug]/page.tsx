@@ -10,6 +10,9 @@ import { CommercialNextStep } from "@/components/internal-links/CommercialNextSt
 import { StructuredData } from "@/components/StructuredData";
 import { buildArticleSchema, buildBreadcrumbSchema, buildGraph, buildWebPageSchema, breadcrumbId } from "@/lib/structured-data";
 
+const gardenConceptSlug = "garden-land-small-residential-development-feasibility";
+const gardenConceptImage = "/images/garden-land-housing-development-concept.svg";
+
 const topics = [
   { terms: ["extension", "rear extension", "two-storey", "single-storey"], service: { href: "/services/house-extensions", label: "House extension architect" }, guide: { href: "/house-extension-guide", label: "House Extension Guide" } },
   { terms: ["loft", "dormer", "roof"], service: { href: "/services/loft-conversions", label: "Loft conversion architect" }, guide: { href: "/knowledge-centre/loft-conversions", label: "Loft conversion planning guide" } },

@@ -131,7 +131,7 @@ export default async function BlogPage() {
             </div><ArrowRight />
           </Link>)}
           {posts.map((post, index) => {
-            const image = post.slug === "garden-land-small-residential-development-feasibility" ? "/images/garden-land-housing-development-concept.svg" : articleImageUrl(post.featuredImage, 900);
+            const image = post.slug === "garden-land-small-residential-development-feasibility" ? "https://cdn.sanity.io/images/5xwjrn3e/production/2febfe11bada0ed8bbf15742a0592cbe26968cb9-1672x941.png" : articleImageUrl(post.featuredImage, 900);
             return (
               <Link href={`/blog/${post.slug}`} className="guide-index-card journal-index-card" key={post._id}>
                 <span>{String(index + birminghamAuthorityArticles.length + 1).padStart(2, "0")}</span>

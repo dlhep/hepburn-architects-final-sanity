@@ -131,7 +131,7 @@ export default async function BlogPage() {
             </div><ArrowRight />
           </Link>)}
           {posts.map((post, index) => {
-            const image = articleImageUrl(post.featuredImage, 900);
+            const image = post.slug === "garden-land-small-residential-development-feasibility" ? "/images/garden-land-housing-development-concept.svg" : articleImageUrl(post.featuredImage, 900);
             return (
               <Link href={`/blog/${post.slug}`} className="guide-index-card journal-index-card" key={post._id}>
                 <span>{String(index + birminghamAuthorityArticles.length + 1).padStart(2, "0")}</span>
@@ -139,7 +139,7 @@ export default async function BlogPage() {
                   {image ? (
                     <Image
                       src={image}
-                      alt={post.featuredImage?.alt || post.title}
+                      alt={post.slug === "garden-land-small-residential-development-feasibility" ? "Concept drawing of a landscaped small housing development" : (post.featuredImage?.alt || post.title)}
                       width={900}
                       height={560}
                       sizes="(max-width: 950px) 100vw, 760px"

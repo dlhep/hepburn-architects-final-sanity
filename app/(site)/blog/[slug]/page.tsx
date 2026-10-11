@@ -11,7 +11,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { buildArticleSchema, buildBreadcrumbSchema, buildGraph, buildWebPageSchema, breadcrumbId } from "@/lib/structured-data";
 
 const gardenConceptSlug = "garden-land-small-residential-development-feasibility";
-const gardenConceptImage = "/images/garden-land-housing-development-concept.svg";
+const gardenConceptImage = "https://cdn.sanity.io/images/5xwjrn3e/production/2febfe11bada0ed8bbf15742a0592cbe26968cb9-1672x941.png";
 
 const topics = [
   { terms: ["extension", "rear extension", "two-storey", "single-storey"], service: { href: "/services/house-extensions", label: "House extension architect" }, guide: { href: "/house-extension-guide", label: "House Extension Guide" } },

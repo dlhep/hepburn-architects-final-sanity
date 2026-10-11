@@ -11,7 +11,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { buildArticleSchema, buildBreadcrumbSchema, buildGraph, buildWebPageSchema, breadcrumbId } from "@/lib/structured-data";
 
 const gardenConceptSlug = "garden-land-small-residential-development-feasibility";
-const gardenConceptImage = "https://cdn.sanity.io/images/5xwjrn3e/production/2febfe11bada0ed8bbf15742a0592cbe26968cb9-1672x941.png";
+const gardenConceptImage = "https://cdn.sanity.io/images/5xwjrn3e/production/99a88f135fad55a2ee86178f37fc6f16dfb5f4dc-1448x1086.png";
 
 const topics = [
   { terms: ["extension", "rear extension", "two-storey", "single-storey"], service: { href: "/services/house-extensions", label: "House extension architect" }, guide: { href: "/house-extension-guide", label: "House Extension Guide" } },
@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {image ? (
             <Image
               src={image}
-              alt={slug === gardenConceptSlug ? "Architectural concept drawing of a small landscaped housing development with detached houses, access roads and gardens" : (page.featuredImage?.alt || page.title)}
+              alt={slug === gardenConceptSlug ? "Site plan of four detached homes with private gardens, parking and a shared landscaped access" : (page.featuredImage?.alt || page.title)}
               width={1600}
               height={950}
               priority

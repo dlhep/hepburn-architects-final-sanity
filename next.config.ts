@@ -40,6 +40,10 @@ const nextConfig: NextConfig = {
       ...permanentHostRedirects(["solihullarchitects.co.uk", "www.solihullarchitects.co.uk", "architectsolihull.co.uk", "www.architectsolihull.co.uk", "architectssolihull.co.uk", "www.architectssolihull.co.uk"], "https://www.hepburnarchitects.com/locations/solihull-architects"),
       ...permanentHostRedirects(["hmo-architects.co.uk", "www.hmo-architects.co.uk"], "https://www.hepburnarchitects.com/services/hmo-conversions"),
       ...permanentHostRedirects(["dlhepburn.co.uk", "www.dlhepburn.co.uk", "dlhepburn.com", "www.dlhepburn.com", "hepburndaoudi.com", "www.hepburndaoudi.com"], "https://www.hepburnarchitects.com/studio"),
+      // Retire the old-domain sitemap and retain the direct guide URLs.
+      { source: "/sitemap.xml", destination: "https://www.hepburnarchitects.com/sitemap.xml", permanent: true },
+      { source: "/house-extension-guide", destination: "https://www.hepburnarchitects.com/house-extension-guide", permanent: true },
+      { source: "/house-extension-guide/:path*", destination: "https://www.hepburnarchitects.com/house-extension-guide/:path*", permanent: true },
       ...combinedSiteRedirects,
     ];
   },

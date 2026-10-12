@@ -6,8 +6,7 @@ export default function robots(): MetadataRoute.Robots {
     return { rules: [{ userAgent: "*", disallow: "/" }] };
   }
   return {
-    rules: [{ userAgent: "*", allow: "/", disallow: ["/admin/"] }],
-    sitemap: `${site.url}/sitemap.xml`,
-    host: site.url,
+    rules: [{ userAgent: "*", allow: "/", disallow: ["/studio", "/admin", "/api/"] }],
+    sitemap: "https://www.hepburnarchitects.com/sitemap.xml",
   };
 }
